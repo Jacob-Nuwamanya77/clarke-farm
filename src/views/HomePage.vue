@@ -1,11 +1,14 @@
 <template>
-  <div class="hero-container">
-    <div class="content-container"></div>
-  </div>
+    <HeroLandingPage/>
 </template>
 
 <script>
+import HeroLandingPage from '@/components/HeroLanding.vue';
+
 export default {
   name: 'HomePage',
+  components: {
+    HeroLandingPage,
+  },
 };
 </script>

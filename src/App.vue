@@ -1,5 +1,6 @@
 <template>
-  <div class="nav-container">
+  <div class="container">
+    <div class="nav-container">
     <ul>
       <li><router-link to="/">Home</router-link></li>
       <li><a href="">Visit Us</a></li>
@@ -8,6 +9,7 @@
     </ul>
   </div>
   <router-view />
+  </div>
 </template>
 
 <style>
@@ -36,11 +38,26 @@ body {
   margin:0 auto;
   position:relative;
   max-width: 1280px;
+  background-color:var(--smoky-white);
+}
+@media screen and (max-width:1280px) {
+  #app{
+    width:100%;
+  }
+}
+.container{
+  padding-top:20px;
+  min-height:100vh;
 }
 .nav-container{
-  width:50%;
+  width:50vw;
   height:30px;
-  margin: 10px auto;
+  margin: 0px auto;
+}
+@media screen and (max-width:1280px){
+  .nav-container{
+    width:65vw;
+  }
 }
 .nav-container ul{
   display:flex;
@@ -63,6 +80,6 @@ body {
   display:block;
   width:100%;
   text-decoration: none;
-  color:var(--black60);
+  color:inherit;
 }
 </style>
