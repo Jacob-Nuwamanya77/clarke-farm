@@ -6,6 +6,10 @@
       <li><a href="">Visit Us</a></li>
       <li><a href="">Buy Coffee</a></li>
       <li><a href="">Training Programs</a></li>
+      <li>
+        <span class="phone-icon"><fa icon="phone"/></span>
+        <span id="telephone">+256 (0) 392 201 400</span>
+      </li>
     </ul>
   </div>
   <router-view />
@@ -27,6 +31,10 @@
 @font-face {
   font-family: "Roboto";
   src: url("./assets/Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: "Playfair";
+  src: url("./assets/PlayfairDisplay-Regular.ttf");
 }
 body {
   margin: 0;
@@ -50,18 +58,18 @@ body {
   min-height:100vh;
 }
 .nav-container{
-  width:50vw;
+  width:65vw;
   height:30px;
   margin: 0px auto;
 }
 @media screen and (max-width:1280px){
   .nav-container{
-    width:65vw;
+    width:80vw;
   }
 }
 .nav-container ul{
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: row;
   margin:0;
   padding:0;
@@ -70,7 +78,7 @@ body {
   text-decoration: none;
   list-style-type: none;
   height: 30px;
-  width:140px;
+  min-width:140px;
   display: flex;
   align-items: center;
   text-align: center;
@@ -81,5 +89,14 @@ body {
   width:100%;
   text-decoration: none;
   color:inherit;
+}
+.phone-icon{
+  margin-left: 10px;
+  transform: rotate(90deg);
+  margin-right: 10px;
+  color:var(--dark-green)
+}
+#telephone{
+  color:var(--dark-green)
 }
 </style>
