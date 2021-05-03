@@ -2,9 +2,9 @@
   <div class="hero-section">
     <div class="left-container">
       <div class="hero-header">
-        <h2>A farm for the</h2>
-        <h2>Active adventurous traveler</h2>
-        <h2>And source of high quality Coffee</h2>
+        <p>A farm for the</p>
+        <p>Active adventurous traveler</p>
+        <p>And source of high quality Coffee</p>
       </div>
       <div class="image-biker">
         <img src="@/assets/home-images/bike-bg-grey.png" alt="biker" aria-hidden="true">
@@ -12,17 +12,16 @@
       <div class="hero-text">
         <p>We are an eco-friendly farm with amazing hilltop views</p>
         <p>rivers and surrounded by a natural forest.</p>
+        <p>Clarke farm is about 1,500 acres of land and predominately</p>
+        <p>grows coffee.</p>
         <p>It is coffee, laughter and games.</p>
       </div>
       <div class="call-to-action">
         <a href="" id="book-trip">Book A Trip</a>
-        <a href="" id="buy-coffee">Buy Coffee</a>
-      </div>
+         <a href="" id="buy-coffee">Buy Coffee</a>
+        </div>
     </div>
     <div class="right-container">
-      <div class="farm-name" id="clarke-name">
-        CLARKE
-      </div>
       <div class="images-right">
         <div class="image-left-section">
           <img src="@/assets/home-images/farm.jpg" alt="farm" aria-hidden="true">
@@ -39,66 +38,145 @@
 </template>
 
 <style scoped>
+
+/* Parent container element */
+
 .hero-section{
   display:flex;
   flex-direction: row;
-  justify-content: space-between;
-  width:90vw;
-  height:90vh;
-  margin-left: auto;
-  margin-right: auto;
+  min-height: 90vh;
 }
-.left-container{
+@media screen and (max-width:768px){
+  .hero-section{
+    margin-top: 4%;
+    font-size: 14px;
+  }
+}
+
+/* Content containers. Left and Right hero section */
+.right-container{
   width:45%;
   position:relative;
-  margin-left:60px;
 }
-/* Circle for top left corner, use before selector of left-container */
+.left-container{
+  width:55%;
+  padding-left: 4%;
+}
+@media screen and (min-width: 992px){
+  .left-container{
+    padding-left: 7%;
+  }
+}
+
 .left-container::before{
   content:"";
-  width:650px;
-  height:650px;
+  width:250px;
+  height:250px;
   border-radius: 50%;
   background-color: rgba(4,228,116,.1);
   position:absolute;
-  top:-400px;
-  left:-400px;
+  top:0px;
+  left:0px;
 }
-.right-container{
-  width:50%;
+@media screen and (max-width:576px){
+  .hero-section{
+    flex-direction: column;
+  }
+  .left-container{
+    width:100%;
+    padding-left: 4%;
+  }
+  .right-container{
+    width:100%;
+  }
+}
+
+/* Left side content styles. */
+
+.hero-header{
+  margin-top: 10%;
   position:relative;
 }
-.hero-header{
-  margin-top: 55px;
+.hero-header p{
+  font-weight: bold;
+  font-size: 25px;
+  margin:12px auto;
 }
 .hero-text{
-  margin-top: 50px;
+  margin-top:6%;
 }
+@media screen and (max-width:768px){
+  .hero-header{
+    margin-top: 10%;
+  }
+  .hero-text{
+    margin-top: 10%;
+  }
+}
+@media screen and (max-width:1280px){
+  .hero-header p{
+    font-size: 20px;
+  }
+}
+
 .image-biker{
   position:absolute;
-  top:45px;
-  left:300px;
-  width:150px;
-  height: 110px;
+  top:14%;
+  left:36%;
+  width:140px;
+  height: 90px;
 }
 .image-biker img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
+@media screen and (max-width: 768px){
+  .image-biker{
+    left:42%;
+    top:10%;
+  }
+}
+@media screen and (max-width: 660px){
+  .image-biker{
+    left:38%;
+    top:5%;
+  }
+}
+@media screen and (max-width: 576px){
+  .image-biker{
+    left:70%;
+    top:3%;
+    width: 60px;
+    height:120px;
+  }
+}
+@media screen and (max-width: 390px){
+  .image-biker{
+    display: none;
+  }
+}
 .call-to-action{
-  margin-top:70px;
+  margin-top:10%;
 }
 .call-to-action a{
   text-decoration: none;
   display:inline-block;
-  color:inherit;
   height:35px;
-  width:157px;
+  width: 40%;
+  max-width:157px;
   text-align: center;
-  padding-top:7px;
+  padding-top:8px;
   border-radius: 2px;
   color:white;
+}
+@media screen and (max-width:768px){
+  .call-to-action a{
+    font-size: 14px;
+  }
+  .call-to-action{
+    margin-top: 15%;
+  }
 }
 #book-trip{
   background-color: var(--dark-green);
@@ -107,13 +185,15 @@
   background-color:#828282;
   margin-left:12%;
 }
+
+/* Right side content styles. */
+
 .images-right{
-  width:85%;
-  height:85%;
+  width:95%;
+  height:95%;
   display:grid;
   grid-gap: 5px;
-  margin-top: 40px;
-  margin-left: 20px;
+  margin-top:10px;
 }
 .image-left-section{
   grid-row-start: 1;
@@ -138,15 +218,24 @@
   height:100%;
   object-fit: cover;
 }
-.farm-name{
-  font-family: "Playfair";
-  font-size: 90px;
-  color:rgba(0,0,0,.015);
-  padding:0;
+@media screen and (max-width:768px){
+  .image-bottom-section{
+    display:none;
+  }
+  .image-top-section{
+    grid-column-start: 1;
+  }
+  .image-left-section{
+    grid-row-start: 2;
+    grid-column-end: 3;
+  }
 }
-#clarke-name{
-  position:absolute;
-  top:-12%;
-  right:14%;
+@media screen and (max-width:576px) {
+  .image-left-section{
+    display: none;
+  }
+  .images-right{
+    margin:20px auto;
+  }
 }
 </style>
