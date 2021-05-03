@@ -1,18 +1,23 @@
 <template>
-  <div class="container">
-    <div class="nav-container">
-    <ul>
-      <li><router-link to="/">Home</router-link></li>
-      <li><a href="">Visit Us</a></li>
-      <li><a href="">Buy Coffee</a></li>
-      <li><a href="">Training Programs</a></li>
-      <li>
-        <span class="phone-icon"><fa icon="phone"/></span>
-        <span id="telephone">+256 (0) 392 201 400</span>
-      </li>
-    </ul>
-  </div>
-  <router-view />
+  <div class="page-container">
+    <div class="header">
+      <div class="nav-container">
+        <ul>
+          <li><router-link to="/">Home</router-link></li>
+          <li><a href="">Visit Us</a></li>
+          <li><a href="">Buy Coffee</a></li>
+          <li><a href="">Training Programs</a></li>
+        </ul>
+        <span id="telephone">
+          <fa icon="phone" class="phone-icon"/>
+          &nbsp;&nbsp;&nbsp;+256 (0) 392 201 400
+        </span>
+      </div>
+      <span class="hamburger-menu">
+        <fa icon="bars"/>
+      </span>
+    </div>
+    <router-view />
   </div>
 </template>
 
@@ -43,42 +48,72 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin:0 auto;
   position:relative;
-  max-width: 1280px;
-  background-color:var(--smoky-white);
 }
-@media screen and (max-width:1280px) {
-  #app{
-    width:100%;
-  }
-}
-.container{
+</style>
+
+<style scoped>
+
+.page-container{
   padding-top:20px;
   min-height:100vh;
+  max-width: 1280px;
+  margin:0 auto;
+  background-color:var(--smoky-white);
+}
+.header{
+  display:flex;
+  flex-direction: row;
+  position:relative;
 }
 .nav-container{
-  width:65vw;
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
   height:30px;
   margin: 0px auto;
 }
 @media screen and (max-width:1280px){
+  .page-container{
+    width:100vw;
+  }
+}
+.hamburger-menu{
+  display: none;
+  align-items: center;
+}
+.hamburger-menu:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+}
+@media screen and (max-width: 768px){
+  .hamburger-menu{
+    display: flex;
+    position:absolute;
+    right:5%;
+  }
   .nav-container{
-    width:80vw;
+    display: none;
   }
 }
 .nav-container ul{
   display:flex;
-  justify-content: space-around;
   flex-direction: row;
+  width:90%;
   margin:0;
   padding:0;
+}
+@media screen and (max-width:1280px){
+  .header{
+    font-size: 14px;
+  }
 }
 .nav-container li{
   text-decoration: none;
   list-style-type: none;
   height: 30px;
-  min-width:140px;
+  width:22%;
+  margin-left: 2%;
   display: flex;
   align-items: center;
   text-align: center;
@@ -91,12 +126,14 @@ body {
   color:inherit;
 }
 .phone-icon{
-  margin-left: 10px;
   transform: rotate(90deg);
-  margin-right: 10px;
-  color:var(--dark-green)
 }
 #telephone{
-  color:var(--dark-green)
+  color:var(--dark-green);
+  display:flex;
+  align-items:center;
+  position:absolute;
+  right:5%;
+  top:20%;
 }
 </style>
