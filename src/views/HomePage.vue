@@ -1,5 +1,7 @@
 <template>
+  <div>
     <HeroLandingPage/>
+  </div>
 </template>
 
 <script>

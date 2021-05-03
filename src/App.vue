@@ -113,7 +113,7 @@ body {
   list-style-type: none;
   height: 30px;
   width:22%;
-  margin-left: 2%;
+  margin-left: 1%;
   display: flex;
   align-items: center;
   text-align: center;
