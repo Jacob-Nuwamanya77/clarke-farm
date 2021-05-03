@@ -8,7 +8,7 @@
       <li><a href="">Training Programs</a></li>
       <li>
         <span class="phone-icon"><fa icon="phone"/></span>
-        <span id="telephone">+256 (0) 392 201 400</span>
+        <span id="telephone">&nbsp;&nbsp;&nbsp;+256 (0) 392 201 400</span>
       </li>
     </ul>
   </div>
@@ -93,7 +93,6 @@ body {
 .phone-icon{
   margin-left: 10px;
   transform: rotate(90deg);
-  margin-right: 10px;
   color:var(--dark-green)
 }
 #telephone{
