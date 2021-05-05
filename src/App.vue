@@ -1,16 +1,21 @@
 <template>
-  <div class="container">
-    <div class="nav-container">
-    <ul>
-      <li><router-link to="/">Home</router-link></li>
-      <li><a href="">Visit Us</a></li>
-      <li><a href="">Buy Coffee</a></li>
-      <li><a href="">Training Programs</a></li>
-      <li>
-        <span class="phone-icon"><fa icon="phone"/></span>
-        <span id="telephone">&nbsp;&nbsp;&nbsp;+256 (0) 392 201 400</span>
-      </li>
-    </ul>
+  <div class="page-container">
+    <div class="header">
+      <div class="nav-container">
+        <ul>
+          <li><router-link to="/">Home</router-link></li>
+          <li><a href="">Visit Us</a></li>
+          <li><a href="">Buy Coffee</a></li>
+          <li><a href="">Training Programs</a></li>
+        </ul>
+        <div class="contact">
+          <span class="phone-icon"><fa icon="phone"/></span>
+          <span id="telephone">&nbsp;&nbsp;&nbsp;+256 (0) 392 201 400</span>
+        </div>
+      </div>
+      <span class="hamburger-menu">
+        <fa icon="bars"/>
+      </span>
   </div>
   <router-view />
   </div>
@@ -62,15 +67,22 @@ body {
   position:relative;
 }
 .nav-container{
-  width: 70vw;
+  width: 60vw;
   display: flex;
   flex-direction: row;
+  font-size:15px;
   height:30px;
-  margin: 0px auto;
+  margin-left: 15%;
 }
 @media screen and (max-width:1280px){
   .page-container{
     width:100vw;
+  }
+}
+@media screen and (max-width:880px){
+  .nav-container{
+    width:70vw;
+    margin-left: 5%;
   }
 }
 .hamburger-menu{
@@ -94,7 +106,7 @@ body {
 .nav-container ul{
   display:flex;
   flex-direction: row;
-  width:90%;
+  width:100%;
   margin:0;
   padding:0;
 }
@@ -107,7 +119,7 @@ body {
   text-decoration: none;
   list-style-type: none;
   height: 30px;
-  width:22%;
+  width:25%;
   margin-left: 1%;
   display: flex;
   align-items: center;
@@ -120,6 +132,13 @@ body {
   text-decoration: none;
   color:inherit;
 }
+.contact{
+  display: flex;
+  flex-direction: row;
+  position:absolute;
+  right:3%;
+  top:15%;
+}
 .phone-icon{
   transform: rotate(90deg);
   color:var(--dark-green)
@@ -128,8 +147,5 @@ body {
   color:var(--dark-green);
   display:flex;
   align-items:center;
-  position:absolute;
-  right:5%;
-  top:20%;
 }
 </style>
