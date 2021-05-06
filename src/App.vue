@@ -4,7 +4,7 @@
       <div class="nav-container">
         <ul>
           <li><router-link to="/">Home</router-link></li>
-          <li><a href="">Visit Us</a></li>
+          <li><router-link to="/visit">Visit</router-link></li>
           <li><a href="">Buy Coffee</a></li>
           <li><a href="">Training Programs</a></li>
         </ul>
@@ -73,6 +73,7 @@ body {
   font-size:15px;
   height:30px;
   margin-left: 15%;
+  z-index:1;
 }
 @media screen and (max-width:1280px){
   .page-container{

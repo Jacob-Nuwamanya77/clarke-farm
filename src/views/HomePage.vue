@@ -1,5 +1,5 @@
 <template>
-<div>
+  <div>
     <HeroLandingPage/>
     <AboutSection/>
   </div>
