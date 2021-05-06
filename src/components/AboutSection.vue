@@ -8,12 +8,13 @@
         <p class="desctext">
           Clarke Farm is a 1500 acre farm located in Kitabale, Kyenjojo District
           in Uganda.
-          </p>
+        </p>
         <p>
           Sitting on 300 acres, Robusta coffee is the primary crop on the farm
         </p>
-      </div>
       <div class="linedesign"></div>
+
+      </div>
     </div>
     <div class="div-with-bg-image">
       <div class="image-overlay">
@@ -48,61 +49,52 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .about {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  position: relative;
-  margin-top: 0px;
+  width: 90%;
+  margin-top: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .about-description {
-  width: 560px;
   height: 123px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  margin-top: 10px;
+ text-align: center;
+ }
 .linedesign {
-  position: absolute;
   width: 25%;
   height: 27px;
-  margin-top: 20px;
-  right: 0;
-  background-color: #068d68;
+  margin-top: -120px;
+  margin-left: 960px;
+  background:#068d68;
 }
 .about-image {
   height: 450px;
   width: 100%;
 }
-.div-with-bg-image{
-   position: relative;
-   background-image: url('../assets/home-images/farm.jpg');
+.div-with-bg-image {
+  position: relative;
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("../assets/home-images/farm.jpg");
   background-repeat: no-repeat;
-   background-position: center center;
-   background-size: cover;
-   padding-top: 20px;
-   margin-top: 60px;
+  background-position:bottom;
+  background-size: cover;
+  padding-top: 20px;
+  object-fit: cover;
+  margin-top: 20px;
+  height: 440px;
 }
-/* .image-container{
-  height: 430px;
-  width: 100%;
-  margin-top: 40px;
-}
-.image-container img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-} */
 .image-overlay {
-  width: 25%;
-  height: 300px;
-  margin-top: 60px;
+  width: 400px;
+  height: 235px;
+  margin-top: 100px;
   margin-left: 60px;
   padding-left: 20px;
   background-color: whitesmoke;
-  opacity: 0.6;
+  opacity: 0.7;
   border-top: 4px solid #068d68;
 }
 p {
@@ -110,6 +102,7 @@ p {
 }
 .about-span {
   color: #068d68;
+
 }
 #readmore {
   color: #068d68;
@@ -117,45 +110,42 @@ p {
 }
 
 @media screen and (max-width: 768px) {
- #readmore{
-  display: inline;
-  color:#068d68;}
-  .extradesc{
-    display:none;
+  #readmore {
+    display: inline;
+    color: #068d68;
+  }
+  .extradesc {
+    display: none;
   }
   .image-overlay {
-  width: 190px;
-  height: 200px;
-  margin-top: 10px;
-  margin-left: 10px;
-  background-color: whitesmoke;
-  opacity: 0.6;
-  border-top: 4px solid #068d68;
-}
-.linedesign {
-  position: absolute;
-  width: 25%;
-  height: 18px;
-  margin-top: 220px;
-  right: 0;
-  background-color: #068d68;
-}
-.about-description {
-  width: 235px;
-  height: 153px;
-  margin-top: 190px;
-}
-.div-with-bg-image{
-   position: relative;
-   background-image: url('../assets/home-images/farm.jpg');
-  background-repeat: no-repeat;
-   background-position: center center;
-   background-size: cover;
-   height: 250px;
-   padding-top: 20px;
-   margin-top: 80px;
-   display: flex;
-   justify-content: center;
-}
+    width: 220px;
+    height: 190px;
+    margin-top: 110px;
+    margin-left: 10px;
+    padding-top: 20px;
+    background-color: whitesmoke;
+    opacity: 0.7;
+    border-top: 4px solid #068d68;
   }
+  .linedesign {
+    position: absolute;
+    width: 25%;
+    height: 18px;
+    margin-top: -140px;
+    right: 0;
+    background-color: #068d68;
+  }
+  .about-description {
+    text-align: center;
+    height: 153px;
+    margin-top: 10px;
+  }
+  .div-with-bg-image {
+    height: 440px;
+    padding-top: 20px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+  }
+}
 </style>
