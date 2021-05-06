@@ -5,8 +5,8 @@
         <ul>
           <li><router-link to="/">Home</router-link></li>
           <li><router-link to="/visit">Visit</router-link></li>
-          <li><a href="">Buy Coffee</a></li>
-          <li><a href="">Training Programs</a></li>
+          <li><router-link to="/coffee">Buy Coffee</router-link></li>
+          <li><router-link to="/training-programs">Training Programs</router-link></li>
         </ul>
         <div class="contact">
           <span class="phone-icon"><fa icon="phone"/></span>
