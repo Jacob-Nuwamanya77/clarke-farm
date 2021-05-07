@@ -149,7 +149,7 @@ body {
 }
 @media screen and (min-width:1280px){
   .contact{
-    right:50px;
+    right:100px;
   }
 }
 .phone-icon{
