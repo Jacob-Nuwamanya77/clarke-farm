@@ -13,7 +13,6 @@
           Sitting on 300 acres, Robusta coffee is the primary crop on the farm
         </p>
       <div class="linedesign"></div>
-
       </div>
     </div>
     <div class="div-with-bg-image">
@@ -54,12 +53,13 @@ export default {
 }
 @media screen and (max-width:768px){
   .about{
-    font-size:14px;
+    margin-top:0;
   }
 }
 .about-description h1{
   text-align: center;
   margin-top: 0;
+  font-size:1.7em;
   margin-bottom: 20px;
   font-family: Playfair;
   font-weight: lighter;
@@ -78,6 +78,7 @@ export default {
 .linedesign {
   width: 25%;
   height: 25px;
+  position:absolute;
   top:5px;
   right: 0;
   background-color: #068d68;
