@@ -61,11 +61,7 @@ export default {
     margin-top:45px;
   }
 }
-@media screen and (min-width:992px){
-  .about{
-    margin-top:100px;
-  }
-}
+
 .about-description h1{
   text-align: center;
   margin-top: 0;
