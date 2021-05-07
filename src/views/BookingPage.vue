@@ -1,5 +1,7 @@
 <template>
-    <BookingPage/>
+    <div>
+      <BookingPage/>
+    </div>
 </template>
 
 <script>
