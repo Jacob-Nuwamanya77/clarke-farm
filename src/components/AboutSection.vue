@@ -10,7 +10,7 @@
           in Uganda.
         </p>
         <p>
-          Sitting on 300 acres, Robusta coffee is the primary crop on the farm
+          Robusta coffee is the primary crop grown on the farm.
         </p>
       <div class="linedesign"></div>
       </div>
@@ -49,11 +49,21 @@ export default {
 .about {
   width: 100%;
   position: relative;
-  margin-top: 100px;
+  margin-top: 80px;
 }
-@media screen and (max-width:768px){
+@media screen and (max-width: 576px){
   .about{
     margin-top:20px;
+  }
+}
+@media screen and (min-width:576px){
+  .about{
+    margin-top:45px;
+  }
+}
+@media screen and (min-width:992px){
+  .about{
+    margin-top:100px;
   }
 }
 .about-description h1{
@@ -114,18 +124,18 @@ export default {
   left:5%;
   top:15%;
   padding-left:18px;
+  padding-top: 10px;
 }
 
 @media screen and (max-width: 992px) {
   .image-overlay{
-    width:50%;
+    width:70%;
     padding-left:10px;
     top:5%;
   }
 }
-@media screen and (max-width:560px){
+@media screen and (max-width:576px){
   .image-overlay{
-    width:70%;
     top:8%;
   }
 }
