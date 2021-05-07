@@ -49,11 +49,11 @@ export default {
 .about {
   width: 100%;
   position: relative;
-  margin-top: 20px;
+  margin-top: 100px;
 }
 @media screen and (max-width:768px){
   .about{
-    margin-top:0;
+    margin-top:20px;
   }
 }
 .about-description h1{
