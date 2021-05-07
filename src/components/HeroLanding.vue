@@ -17,8 +17,12 @@
         <p>It is coffee, laughter and games.</p>
       </div>
       <div class="call-to-action">
-        <a href="" id="book-trip">Book A Trip</a>
-         <a href="" id="buy-coffee">Buy Coffee</a>
+        <div id="book-trip">
+          <a href="">Book A Trip</a>
+        </div>
+        <div id="buy-coffee">
+          <a href="">Buy Coffee</a>
+        </div>
         </div>
     </div>
     <div class="right-container">
@@ -44,12 +48,18 @@
 .hero-section{
   display:flex;
   flex-direction: row;
-  min-height: 90vh;
+  max-height: 550px;
+  margin-top:10px;
 }
 @media screen and (max-width:768px){
   .hero-section{
     margin-top: 4%;
-    font-size: 14px;
+  }
+}
+@media screen and (max-width:576px){
+  .hero-section{
+    flex-direction: column;
+    max-height: 100%;
   }
 }
 
@@ -60,11 +70,21 @@
 }
 .left-container{
   width:55%;
-  padding-left: 4%;
+  position:relative;
 }
-@media screen and (min-width: 992px){
+@media screen and (max-width: 992px){
   .left-container{
-    padding-left: 7%;
+    padding-left: 5%;
+  }
+}
+@media screen and (max-width:660px){
+  .left-container{
+    padding-left: 3%;
+  }
+}
+@media screen and (min-width:992px){
+  .left-container{
+    padding-left:7%;
   }
 }
 
@@ -79,12 +99,10 @@
   left:0px;
 }
 @media screen and (max-width:576px){
-  .hero-section{
-    flex-direction: column;
-  }
   .left-container{
-    width:100%;
-    padding-left: 4%;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
   }
   .right-container{
     width:100%;
@@ -94,7 +112,7 @@
 /* Left side content styles. */
 
 .hero-header{
-  margin-top: 10%;
+  margin-top: 5%;
   position:relative;
 }
 .hero-header p{
@@ -103,14 +121,14 @@
   margin:12px auto;
 }
 .hero-text{
-  margin-top:6%;
+  margin-top:4%;
 }
 @media screen and (max-width:768px){
   .hero-header{
     margin-top: 10%;
   }
   .hero-text{
-    margin-top: 10%;
+    margin-top: 8%;
   }
 }
 @media screen and (max-width:1280px){
@@ -121,69 +139,58 @@
 
 .image-biker{
   position:absolute;
-  top:14%;
-  left:36%;
   width:140px;
   height: 90px;
+  display:none;
 }
 .image-biker img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
-@media screen and (max-width: 768px){
+@media screen and (min-width: 880px){
   .image-biker{
-    left:42%;
-    top:10%;
-  }
-}
-@media screen and (max-width: 660px){
-  .image-biker{
-    left:38%;
-    top:5%;
-  }
-}
-@media screen and (max-width: 576px){
-  .image-biker{
+    display:block;
     left:70%;
-    top:3%;
-    width: 60px;
-    height:120px;
+    top:6%;
   }
 }
-@media screen and (max-width: 390px){
+@media screen and (min-width: 1280px){
   .image-biker{
-    display: none;
+    left:487px;
+    top:50px;
   }
 }
 .call-to-action{
-  margin-top:10%;
+  display:flex;
+  flex-direction: row;
+  margin-top: 10%;
+}
+.call-to-action div{
+  height:35px;
+  width:40%;
+  max-width: 180px;
+  border-radius: 3px;
+}
+.call-to-action div:hover{
+  transform: scale(0.95);
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.7);
 }
 .call-to-action a{
   text-decoration: none;
-  display:inline-block;
-  height:35px;
-  width: 40%;
-  max-width:157px;
-  text-align: center;
-  padding-top:8px;
-  border-radius: 2px;
   color:white;
-}
-@media screen and (max-width:768px){
-  .call-to-action a{
-    font-size: 14px;
-  }
-  .call-to-action{
-    margin-top: 15%;
-  }
+  height:100%;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #book-trip{
   background-color: var(--dark-green);
 }
 #buy-coffee{
   background-color:#828282;
-  margin-left:12%;
+  margin-left: 15%;
 }
 
 /* Right side content styles. */
@@ -218,7 +225,7 @@
   height:100%;
   object-fit: cover;
 }
-@media screen and (max-width:768px){
+@media screen and (max-width:880px){
   .image-bottom-section{
     display:none;
   }
