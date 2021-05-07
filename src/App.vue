@@ -89,6 +89,8 @@ body {
 .hamburger-menu{
   display: none;
   align-items: center;
+  z-index:1;
+  font-size: 110%;
 }
 .hamburger-menu:hover{
   cursor: pointer;

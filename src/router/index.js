@@ -4,7 +4,7 @@ import VisitPage from '@/views/VisitPage.vue';
 import CoffeePage from '@/views/CoffeePage.vue';
 import TrainingPrograms from '@/views/TrainingPrograms.vue';
 import CoffeeForm from '@/views/CoffeeForm.vue';
-import TouristForm from '@/views/TouristForm.vue';
+import BookPage from '@/views/BookingPage.vue';
 
 const routes = [
   {
@@ -33,9 +33,9 @@ const routes = [
     component: TrainingPrograms,
   },
   {
-    path: '/book-trip',
-    name: 'TouristForm',
-    component: TouristForm,
+    path: '/book',
+    name: 'BookingPage',
+    component: BookPage,
   },
 ];
 
