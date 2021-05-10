@@ -9,7 +9,6 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 library.add(faPhone, faBars);
-
 createApp(App)
   .component('fa', FontAwesomeIcon)
   .use(store)

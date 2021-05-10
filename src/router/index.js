@@ -1,10 +1,12 @@
+/* eslint-disable import/no-unresolved */
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
 import VisitPage from '@/views/VisitPage.vue';
 import CoffeePage from '@/views/CoffeePage.vue';
 import TrainingPrograms from '@/views/TrainingPrograms.vue';
 import CoffeeForm from '@/views/CoffeeForm.vue';
-import BookPage from '@/views/BookingPage.vue';
+// eslint-disable-next-line import/no-unresolved
+import BookingPage from '@/views/BookingPage.vue';
 
 const routes = [
   {
@@ -35,7 +37,7 @@ const routes = [
   {
     path: '/book',
     name: 'BookingPage',
-    component: BookPage,
+    component: BookingPage,
   },
 ];
 
