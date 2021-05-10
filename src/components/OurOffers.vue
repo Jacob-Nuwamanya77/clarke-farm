@@ -15,8 +15,7 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="content-offers img-fluid">
-                    <div class="content-offers-nav">
+                <div class="content-offers">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav mx-auto">
@@ -26,8 +25,7 @@
                                 </div>
                             </div>
                         </nav>
-                    </div>
-                </div>
+                 </div>
             </div>
         </div>
     </div>
