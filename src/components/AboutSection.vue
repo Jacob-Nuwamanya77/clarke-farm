@@ -4,7 +4,7 @@
   <div>
     <div class="about">
       <div class="about-description">
-        <h1>Who we are</h1>
+        <p class="section-title">Who we are</p>
         <p>
           Clarke Farm is a 1500 acre farm located in Kitabale, Kyenjojo District
           in Uganda.
@@ -38,9 +38,6 @@
 <script>
 export default {
   name: 'AboutSection.vue',
-  props: {
-    msg: String,
-  },
 };
 </script>
 
@@ -49,49 +46,51 @@ export default {
 .about {
   width: 100%;
   position: relative;
-  margin-top: 80px;
+  margin-top: 55px;
 }
 @media screen and (max-width: 576px){
   .about{
     margin-top:20px;
-  }
-}
-@media screen and (min-width:576px){
-  .about{
-    margin-top:45px;
+    font-size: 14px;
   }
 }
 
 .about-description h1{
   text-align: center;
   margin-top: 0;
-  font-size:1.7em;
+  font-size:1.5em;
   margin-bottom: 20px;
   font-family: Playfair;
   font-weight: lighter;
+}
+.section-title{
+  font-weight: bold;
+  font-size: 25px;
+  margin:12px auto;
+  font-family: Playfair;
+}
+
+@media screen and (max-width:1280px){
+  .section-title{
+    font-size: 20px;
+  }
 }
 .about-description p{
   text-align: center;
   margin-top:15px;
 }
-@media screen and (max-width:768px){
-  .about-description p{
-    width:95%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+
 .linedesign {
-  width: 25%;
+  width: 30%;
   height: 25px;
   position:absolute;
-  top:5px;
+  top:0;
   right: 0;
   background-color: #068d68;
 }
 .div-with-bg-image{
   position: relative;
-  height:440px;
+  height:540px;
   background-image: url('../assets/home-images/farm.jpg');
   background-repeat: no-repeat;
   background-position: 100% 100%;
@@ -106,11 +105,7 @@ export default {
   top:0;
   left:0;
 }
-@media screen and (max-width:560px){
-  .div-with-bg-image{
-    height:380px;
-  }
-}
+
 .image-overlay {
   width:35%;
   height: 300px;
@@ -125,7 +120,8 @@ export default {
 
 @media screen and (max-width: 992px) {
   .image-overlay{
-    width:70%;
+    width:75%;
+    height:70%;
     padding-left:10px;
     top:5%;
   }

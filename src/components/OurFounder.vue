@@ -2,8 +2,7 @@
   <!-- eslint-disable max-len -->
   <div class="our-founder">
     <div class="our-founder-heading">
-      <h1>Our Founder</h1>
-      <p>Dr. Ian Clarke's story and vision for clarke farm</p>
+      <p class="section-title">Our Founder</p>
       <div class="linedesign"></div>
     </div>
     <div class="container-founder-description">
@@ -48,12 +47,6 @@
             voluptatibus ipsum! Molestias provident ea quidem eaque!
             Illo quos dolore provident ullam minima?
          </p>
-         <p>
-           Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Unde alias accusamus suscipit neque dolorum, deserunt quisquam vitae
-            fuga nisi expedita pariatur, officiis, incidunt velit ullam dignissimos
-            ipsa nostrum commodi aperiam.
-         </p>
       </div>
     </div>
   </div>
@@ -69,8 +62,6 @@ export default {
 <style scoped>
 .our-founder {
   width: 100%;
-  min-height: 600px;
-  max-height: 700px;
   padding-top:10px;
   position: relative;
   margin-top: 80px;
@@ -90,17 +81,9 @@ export default {
     margin-top:45px;
   }
 }
-.our-founder-heading h1{
-  text-align: center;
-  margin-top: 0;
-  font-size:1.7em;
-  margin-bottom: 20px;
-  font-family: Playfair;
-  font-weight: lighter;
-}
+
 .our-founder-heading p{
   text-align: center;
-  margin-top:15px;
 }
 @media screen and (max-width:768px){
   .our-founder-heading p{
@@ -110,7 +93,7 @@ export default {
   }
 }
 .container-founder-description{
-  margin-top:20px;
+  margin-top:40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -120,7 +103,7 @@ export default {
 }
 .container-right{
   width:60%;
-  padding-left:28px;
+  padding-left:50px;
 }
 @media screen and (max-width:880px){
   .container-founder-description{
@@ -138,17 +121,30 @@ export default {
     padding-left:inherit;
   }
 }
+.section-title{
+  font-weight: bold;
+  font-size: 25px;
+  font-family: Playfair;
+  margin-top: 0;
+  padding: 0;
+}
+
+@media screen and (max-width:1280px){
+  .section-title{
+    font-size: 20px;
+  }
+}
+
 .linedesign {
   width: 15%;
   height: 25px;
   position:absolute;
-  top:5px;
+  top:18px;
   left: 0;
   background-color: #068d68;
 }
 
 iframe{
- /* margin-left:20px; */
  height:380px;
  width:100%;
 }
