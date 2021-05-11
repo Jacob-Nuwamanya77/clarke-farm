@@ -8,7 +8,7 @@
 import BuyCoffee from '@/components/BuyCoffee.vue';
 
 export default {
-  name: 'BuyCoffee',
+  name: 'CoffeePage',
   components: {
     BuyCoffee,
   },
