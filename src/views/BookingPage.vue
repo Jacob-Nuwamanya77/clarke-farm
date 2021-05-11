@@ -1,11 +1,11 @@
 <template>
-  <div>
-    <BookingPage/>
-  </div>
+    <div>
+      <BookingPage/>
+    </div>
 </template>
 
 <script>
-import BookingPage from '@/components/BookTrip.vue';
+import BookingPage from '@/components/BookingForm.vue';
 
 export default {
   name: 'BookingPage',
