@@ -6,7 +6,7 @@
           <li><router-link to="/">Home</router-link></li>
           <li><router-link to="/visit">Visit</router-link></li>
           <li><router-link to="/coffee">Buy Coffee</router-link></li>
-          <li><router-link to="/training-programs">Training Programs</router-link></li>
+          <li><router-link to="/training-programs">Trainings</router-link></li>
         </ul>
         <div class="contact">
           <span class="phone-icon"><fa icon="phone"/></span>
@@ -20,7 +20,7 @@
   <router-view />
   <footer>
     <div class="top-row">
-      <div class="sub-container" id="contact">
+      <div class="sub-container">
         <h5>CONTACT</h5>
         <div class="content">
           <p>+256 (0) 392 201 400</p>
@@ -28,29 +28,37 @@
           <p>Kampala, Uganda</p>
         </div>
       </div>
-      <div class="sub-container" id="sitemap">
+      <div class="sub-container">
         <h5>SITEMAP</h5>
         <div class="content">
-          <p><a href="">Home</a></p>
-          <p><a href="">Visit Us</a></p>
-          <p><a href="">Buy Coffee</a></p>
-          <p><a href="">Training Programs</a></p>
+          <p><a href="/">Home</a></p>
+          <p><a href="/visit">Visit Us</a></p>
+          <p><a href="/buy-coffee">Buy Coffee</a></p>
+          <p><a href="/training-programs">Training Programs</a></p>
         </div>
       </div>
-      <div class="sub-container" id="location">
+      <div class="sub-container">
         <h5>LOCATION</h5>
         <div class="content">
           <p>Katambale, Kyenjojo</p>
           <p>Uganda</p>
         </div>
-        <p>Book A Trip</p>
+        <p id="footer-book">
+          <a href="">Book A Trip</a>
+        </p>
       </div>
     </div>
     <div class="container-icons">
       <div class="icons">
-        <span id="facebook"></span>
-        <span id="instagram"></span>
-        <span id="twitter"></span>
+        <span id="facebook">
+          <fa :icon="['fab','facebook-f']" title="visit our facebook page"/>
+        </span>
+        <span id="twitter">
+          <fa :icon="['fab','twitter']" title="visit our twitter page"/>
+        </span>
+        <span id="instagram">
+          <fa :icon="['fab','instagram']" title="visit our instagram page"/>
+        </span>
       </div>
     </div>
   </footer>
@@ -86,6 +94,7 @@ body {
   color: #2c3e50;
   position:relative;
 }
+
 </style>
 
 <style scoped>
@@ -108,25 +117,15 @@ body {
   position:relative;
 }
 .nav-container{
-  width: 58vw;
+  width:480px;
   display: flex;
   flex-direction: row;
-  font-size:15px;
+  margin-left: auto;
+  margin-right: auto;
   height:30px;
-  margin-left:10%;
   z-index:1;
 }
-@media screen and (max-width:880px){
-  .nav-container{
-    width:64vw;
-    margin-left: 5%;
-  }
-}
-@media screen and (min-width:1280px){
-  .nav-container{
-    width:768px;
-  }
-}
+
 .hamburger-menu{
   display: none;
   align-items: center;
@@ -154,38 +153,46 @@ body {
   margin:0;
   padding:0;
 }
-@media screen and (max-width:1280px){
-  .header{
-    font-size: 14px;
-  }
-}
 .nav-container li{
   text-decoration: none;
   list-style-type: none;
   height: 30px;
-  width:25%;
-  margin-left: 1%;
+  width:120px;
   display: flex;
   align-items: center;
   text-align: center;
+  margin-left:1%;
 }
 /* The router link vue tag evaluates to an anchor so the styles apply */
 .nav-container a{
-  display:block;
+  display:flex;
   width:100%;
+  height:100%;
   text-decoration: none;
   color:inherit;
+  align-items: center;
+  justify-content: center;
 }
+.nav-container a:hover{
+  background-color: rgba(0,0,0,0.6);
+  color:white;
+}
+
+/* Active link styles. */
+.router-link-active{
+  border-bottom: 2px solid var(--dark-green);
+}
+
 .contact{
   display: flex;
+  height:100%;
   flex-direction: row;
   position:absolute;
-  right:8%;
-  top:15%;
+  right:65px;
 }
-@media screen and (min-width:1280px){
+@media screen and (max-width:880px){
   .contact{
-    right:100px;
+    display:none;
   }
 }
 .phone-icon{
@@ -199,7 +206,7 @@ body {
 }
 footer{
   margin-top: 70px;
-  min-height:250px;
+  min-height:280px;
   background-color: var(--dark-green);
   color:white;
 }
@@ -207,26 +214,39 @@ footer{
   display:flex;
   flex-direction: row;
   flex-wrap:wrap;
+  justify-content: space-around;
   padding-top: 10px;
-  width:90%;
-  margin-left: auto;
-  margin-right: auto;
 }
 .content{
   margin-top: 20px;
 }
 .sub-container{
-  width:25%;
-  margin-top: 10px;
-  /* border:1px solid white; */
-}
-#sitemap{
-  margin-left: 15%;
-}
-#location{
-  margin-left: 10%;
+  width:350px;
+  margin-top: 20px;
+  padding-left: 80px;
 }
 .container-icons{
   border-top:2px solid white;
+}
+#footer-book{
+  font-size: 20px;
+  /* font-weight: bold; */
+  margin-top:20px;
+}
+footer a{
+  color:white;
+}
+.icons{
+  width:150px;
+  padding-top: 10px;
+  margin-left: 40%;
+}
+.icons span{
+  margin-left: 20%;
+  color:white;
+  font-size:20px;
+}
+.icons span:hover{
+  cursor:pointer;
 }
 </style>

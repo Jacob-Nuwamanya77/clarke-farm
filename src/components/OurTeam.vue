@@ -48,20 +48,10 @@ export default {
 
 <style scoped>
 .our-team {
-  width: 100%;
   position: relative;
-  margin-top: 80px;
+  margin-top: 45px;
 }
-@media screen and (max-width: 576px){
-  .our-team{
-    margin-top:20px;
-  }
-}
-@media screen and (min-width:576px){
-  .our-team{
-    margin-top:45px;
-  }
-}
+
 .our-team-heading h1{
   text-align: center;
   margin-top: 0;
@@ -82,7 +72,7 @@ export default {
   }
 }
 .linedesign {
-  width: 25%;
+  width: 30%;
   height: 25px;
   position:absolute;
   top:5px;
@@ -93,10 +83,10 @@ export default {
   display:flex;
   flex-direction:row;
   justify-content: space-around;
-  margin-top: 40px;
+  margin-top: 70px;
   flex-wrap: wrap;
   min-height: 300px;
-  width: 95%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -111,6 +101,7 @@ img{
   width:98%;
   height:98%;
   object-fit: cover;
+  object-position: 0px -20px;
   border-radius: 50%;
   display: block;
   margin-left: auto;
@@ -131,5 +122,10 @@ button{
   border:none;
   background-color: var(--dark-green);
   color:white;
+}
+button:hover{
+  transform: scale(0.95);
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.7);
+  background-color: var(--mono-dark-green);
 }
 </style>
