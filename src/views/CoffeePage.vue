@@ -1,9 +1,16 @@
 <template>
-    <div>Insert Coffee Page component here</div>
+  <div>
+    <BuyCoffee/>
+  </div>
 </template>
 
 <script>
+import BuyCoffee from '@/components/BuyCoffee.vue';
+
 export default {
   name: 'BuyCoffee',
+  components: {
+    BuyCoffee,
+  },
 };
 </script>
