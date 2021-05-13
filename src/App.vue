@@ -43,22 +43,18 @@
           <p>Katambale, Kyenjojo</p>
           <p>Uganda</p>
         </div>
-        <p id="footer-book">
-          <a href="">Book A Trip</a>
-        </p>
-      </div>
-    </div>
-    <div class="container-icons">
-      <div class="icons">
-        <span id="facebook">
-          <fa :icon="['fab','facebook-f']" title="visit our facebook page"/>
-        </span>
-        <span id="twitter">
-          <fa :icon="['fab','twitter']" title="visit our twitter page"/>
-        </span>
-        <span id="instagram">
-          <fa :icon="['fab','instagram']" title="visit our instagram page"/>
-        </span>
+        <div class="icons">
+          <p><small>Connect with us</small></p>
+          <span id="facebook">
+            <fa :icon="['fab','facebook-f']" title="visit our facebook page"/>
+          </span>
+          <span id="twitter">
+            <fa :icon="['fab','twitter']" title="visit our twitter page"/>
+          </span>
+          <span id="instagram">
+            <fa :icon="['fab','instagram']" title="visit our instagram page"/>
+          </span>
+        </div>
       </div>
     </div>
   </footer>
@@ -72,6 +68,7 @@
   --smoky-white: #f5f5f5;
   --black90: rgba(20,20,20,0.9);
   --black60: rgba(0,0,0,0.6);
+  --blue-ink:#2c3e50;
 }
 * {
   box-sizing: border-box;
@@ -91,7 +88,7 @@ body {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: var(--blue-ink);
   position:relative;
 }
 
@@ -174,7 +171,7 @@ body {
   justify-content: center;
 }
 .nav-container a:hover{
-  background-color: rgba(0,0,0,0.6);
+  background-color: var(--dark-green);
   color:white;
 }
 
@@ -206,7 +203,7 @@ body {
 }
 footer{
   margin-top: 70px;
-  min-height:280px;
+  min-height:250px;
   background-color: var(--dark-green);
   color:white;
 }
@@ -228,23 +225,13 @@ footer{
 .container-icons{
   border-top:2px solid white;
 }
-#footer-book{
-  font-size: 20px;
-  /* font-weight: bold; */
-  margin-top:20px;
-}
+
 footer a{
   color:white;
 }
-.icons{
-  width:150px;
-  padding-top: 10px;
-  margin-left: 40%;
-}
+
 .icons span{
-  margin-left: 20%;
-  color:white;
-  font-size:20px;
+  margin-right: 15px;
 }
 .icons span:hover{
   cursor:pointer;

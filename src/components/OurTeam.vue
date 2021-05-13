@@ -7,28 +7,28 @@
     <div class="our-team-images">
       <div class="team-member-details">
         <div class="circle-container-image">
-          <img src="@/assets/home-images/sylvester.jpg" alt="sylvester kyendy">
+          <img src="@/assets/images/sylvester.jpg" alt="sylvester kyendy">
         </div>
         <p>Sylvester Kyendy</p>
         <p>Farm Manager</p>
       </div>
       <div class="team-member-details">
         <div class="circle-container-image">
-          <img src="@/assets/home-images/robert.jpg" alt="robert kimuli">
+          <img src="@/assets/images/robert.jpg" alt="robert kimuli">
         </div>
         <p>Robert Kimuli</p>
         <p>Audit &amp; Administration</p>
       </div>
       <div class="team-member-details">
         <div class="circle-container-image">
-          <img src="@/assets/home-images/charles.jpg" alt="charles mabeeri">
+          <img src="@/assets/images/charles.jpg" alt="charles mabeeri">
         </div>
         <p>Charles Mabeeri</p>
         <p>Supervisor General Duties</p>
       </div>
       <div class="team-member-details">
         <div class="circle-container-image">
-          <img src="@/assets/home-images/sulaiman.jpg" alt="sulaiman mulekwa">
+          <img src="@/assets/images/sulaiman.jpg" alt="sulaiman mulekwa">
         </div>
         <p>Sulaiman Mulekwa</p>
         <p>Head Transportation</p>
