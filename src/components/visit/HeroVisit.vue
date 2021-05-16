@@ -41,6 +41,7 @@ export default {
 }
 .left-container{
   min-height: 600px;
+  max-height: 600px;
   width:15%;
   background-color: var(--mono-dark-green);
   position:absolute;

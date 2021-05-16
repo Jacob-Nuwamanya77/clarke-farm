@@ -41,7 +41,7 @@
       </div>
       <div class="card">
         <div class="card-image-container">
-          <img src="@/assets/images/coffeetesting1.jpg" alt="coffee testing" aria-hidden="true">
+          <img src="@/assets/images/coffeetasting1.jpg" alt="coffee testing" aria-hidden="true">
         </div>
         <div class="card-content">
           <p class="card-title">Coffee Tasting</p>

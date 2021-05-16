@@ -45,7 +45,7 @@
           class="mt-5 text-center"
           style="font-size: 18px; color: rgba(0, 0, 0, 0.6)"
         >
-          Features & AddOns
+          Features &amp; AddOns
         </h3>
         <p class="text-center mt-3" style="font-size: 14px">
           We do host corporate events and team building exercises

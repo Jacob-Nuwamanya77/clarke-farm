@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import HeroVisit from '@/components/HeroVisit.vue';
-import PopularActivities from '@/components/PopularActivities.vue';
-import OurOffers from '@/components/OurOffers.vue';
-import OurPackages from '@/components/OurPackages.vue';
+import HeroVisit from '@/components/visit/HeroVisit.vue';
+import PopularActivities from '@/components/visit/PopularActivities.vue';
+import OurOffers from '@/components/visit/OurOffers.vue';
+import OurPackages from '@/components/visit/OurPackages.vue';
 
 export default {
   name: 'Visit',
