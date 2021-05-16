@@ -1,7 +1,7 @@
 <!-- eslint-disable max-len -->
 <template>
-  <div style="background-color: whitesmoke" class="container">
-        <div class="row mt-5">
+  <div class="container">
+    <div class="row mt-5">
       <div class="col-md-9">
         <h3
           class="text-center mt-3"
@@ -34,10 +34,7 @@
               Full Board price
             </p>
           </div>
-          <div
-            class="col-md-4 ml-3"
-            style="background-color: rgba(0, 0, 0, 0.05)"
-          >
+          <div class="col-md-4 ml-3 card3">
             <h6 class="mt-3 text-center mr-5">Container House</h6>
             <p class="ml-5 mt-3 font-weight-bold text-secondary">300$</p>
             <p class="ml-5 mt-0">per person</p>
@@ -146,3 +143,11 @@
     </div>
   </div>
 </template>
+
+<style scoped>
+.container{
+  background-color: whitesmoke;
+}
+.card3
+{background-color:rgba(0, 0, 0, 0.05)}
+</style>
