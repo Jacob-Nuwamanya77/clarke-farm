@@ -110,6 +110,11 @@ img{
   top:30px;
   left:18%;
 }
+@media screen and (max-width:700px){
+  .right-container{
+    max-height:100%;
+  }
+}
 @media screen and (max-width:910px){
   .text-container{
     position:static;

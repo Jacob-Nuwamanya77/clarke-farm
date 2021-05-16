@@ -1,19 +1,22 @@
 <template>
   <div>
     <HeroCoffee />
-    <!-- <BuyCoffee/> -->
+    <CoffeeProcess />
+    <OurCertificates />
   </div>
 </template>
 
 <script>
 import HeroCoffee from '@/components/HeroCoffee.vue';
-// import BuyCoffee from '@/components/BuyCoffee.vue';
+import CoffeeProcess from '@/components/CoffeeProcess.vue';
+import OurCertificates from '@/components/OurCertificates.vue';
 
 export default {
   name: 'CoffeePage',
   components: {
     HeroCoffee,
-    // BuyCoffee,
+    CoffeeProcess,
+    OurCertificates,
   },
 };
 </script>
