@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import HeroLandingPage from '@/components/HeroLanding.vue';
-import AboutSection from '@/components/AboutSection.vue';
-import OurFounder from '@/components/OurFounder.vue';
-import OurTeam from '@/components/OurTeam.vue';
+import HeroLandingPage from '@/components/home/HeroLanding.vue';
+import AboutSection from '@/components/home/AboutSection.vue';
+import OurFounder from '@/components/home/OurFounder.vue';
+import OurTeam from '@/components/home/OurTeam.vue';
 
 export default {
   name: 'HomePage',

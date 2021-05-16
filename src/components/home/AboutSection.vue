@@ -91,7 +91,7 @@ export default {
 .div-with-bg-image{
   position: relative;
   height:540px;
-  background-image: url('../assets/images/farm.jpg');
+  background-image: url('../../assets/images/farm.jpg');
   background-repeat: no-repeat;
   background-position: 100% 100%;
   background-size: cover;

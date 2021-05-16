@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "SideNavigation",
+  name: 'SideNavigation',
 };
 </script>
 
