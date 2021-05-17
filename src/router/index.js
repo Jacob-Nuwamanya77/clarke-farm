@@ -7,6 +7,7 @@ import TrainingPrograms from '@/views/TrainingPrograms.vue';
 import CoffeeForm from '@/views/CoffeeForm.vue';
 // eslint-disable-next-line import/no-unresolved
 import BookingPage from '@/views/BookingPage.vue';
+import Dashboard from '@/views/Dashboard.vue';
 
 const routes = [
   {
@@ -38,6 +39,11 @@ const routes = [
     path: '/book',
     name: 'BookingPage',
     component: BookingPage,
+  },
+  {
+    path: '/admin',
+    name: 'Dashboard',
+    component: Dashboard,
   },
 ];
 
