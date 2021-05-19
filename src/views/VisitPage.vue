@@ -4,6 +4,7 @@
     <PopularActivities />
     <OurOffers/>
     <OurPackages />
+
   </div>
 </template>
 
