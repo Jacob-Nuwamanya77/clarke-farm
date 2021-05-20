@@ -9,7 +9,14 @@
             <hr>
             <p class="card-text">{{rewiewee1.reviewMsg}}</p>
             <hr>
-            <p class="review-date text-righ fixed-bottomt">{{rewiewee1.date}}</p>
+            <div class="rating">
+             <span><fa icon="star"/> </span>
+              <span ><fa icon="star"/></span>
+              <span><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+            </div>
+             <p class="review-date text-right position-absolute bottom-0 end-0">{{rewiewee1.date}}</p>
         </div>
       </div>
     </div>
@@ -21,7 +28,14 @@
             <hr>
             <p class="card-text">{{rewiewee1.reviewMsg}}</p>
             <hr>
-            <p class="review-date text-righ fixed-bottomt">{{rewiewee1.date}}</p>
+            <div class="rating">
+             <span><fa icon="star"/> </span>
+              <span ><fa icon="star"/></span>
+              <span><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+            </div>
+            <p class="review-date  position-absolute bottom-0 end-0">{{rewiewee1.date}}</p>
         </div>
       </div>
     </div>
@@ -33,7 +47,14 @@
             <hr>
             <p class="card-text">{{rewiewee1.reviewMsg}}</p>
             <hr>
-            <p class="review-date text-righ fixed-bottomt">{{rewiewee1.date}}</p>
+            <div class="rating">
+             <span><fa icon="star"/> </span>
+              <span ><fa icon="star"/></span>
+              <span><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+            </div>
+            <p class="review-date text-right position-absolute bottom-0 end-0">{{rewiewee1.date}}</p>
         </div>
       </div>
     </div>
@@ -47,7 +68,14 @@
             <hr>
             <p class="card-text">{{rewiewee1.reviewMsg}}</p>
             <hr>
-            <p class="review-date text-righ fixed-bottomt">{{rewiewee1.date}}</p>
+            <div class="rating">
+             <span><fa icon="star"/> </span>
+              <span ><fa icon="star"/></span>
+              <span><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+            </div>
+            <p class="review-date position-absolute bottom-0 end-0">{{rewiewee1.date}}</p>
         </div>
       </div>
     </div>
@@ -59,7 +87,14 @@
             <hr>
             <p class="card-text">{{rewiewee1.reviewMsg}}</p>
             <hr>
-            <p class="review-date text-righ fixed-bottomt">{{rewiewee1.date}}</p>
+            <div class="rating">
+             <span><fa icon="star"/> </span>
+              <span ><fa icon="star"/></span>
+              <span><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+            </div>
+            <p class="review-date position-absolute bottom-0 end-0">{{rewiewee1.date}}</p>
         </div>
       </div>
     </div>
@@ -71,7 +106,14 @@
             <hr>
             <p class="card-text">{{rewiewee1.reviewMsg}}</p>
             <hr>
-            <p class="review-date text-righ fixed-bottomt">{{rewiewee1.date}}</p>
+            <div class="rating">
+             <span><fa icon="star"/> </span>
+              <span ><fa icon="star"/></span>
+              <span><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+              <span ><fa icon="star"/></span>
+            </div>
+            <p class="review-date text-right position-absolute bottom-0 end-0">{{rewiewee1.date}}</p>
         </div>
       </div>
     </div>
@@ -112,6 +154,7 @@ export default {
 .review-date{
     text-align: right;
     font-size: 12px;
+    margin-right:5%;
 }
 .btn {
   width: 157px;
@@ -132,7 +175,19 @@ export default {
   justify-content: center;
   padding:25px;
 }
+.rating {
+    display: flex;
+    max-width: 40%;
+    flex-direction: row-reverse;
+    justify-content: right;
+    margin-right:40%;
+    font-size: 12px;
+}
 /* div{
   border:1px solid green;
 } */
+
+span{
+  color:green;
+}
 </style>

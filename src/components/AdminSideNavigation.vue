@@ -5,16 +5,19 @@
     </div>
     <ul>
       <li>
-        <router-link to="/customer"><span> <fa icon="home"/></span> &ensp;Home</router-link>
+        <router-link to=""><span> <fa icon="home"/></span> &ensp;Home</router-link>
       </li>
        <li>
         <router-link to=""> <span><fa icon="book"/></span>  &ensp;Booking</router-link>
       </li>
        <li>
-        <router-link to="">User Review</router-link>
+        <router-link to=""><fa icon="comments"/>&ensp;User Review</router-link>
       </li>
        <li>
-        <router-link to=""><fa icon="cog"/> &ensp;Setting</router-link>
+        <router-link to=""><fa icon="cog"/> &ensp;Settings</router-link>
+      </li>
+      <li>
+        <router-link to="" class="logout"><fa icon="sign-out"/> &ensp;Logout</router-link>
       </li>
     </ul>
   </div>
@@ -22,7 +25,7 @@
 
 <script>
 export default {
-  name: 'SideNavigation',
+  name: 'AdminSideNavigation',
 };
 </script>
 
@@ -45,7 +48,7 @@ export default {
 
 }
 a {
-  color: white;
+  color: #2c3e50;;
   padding-left: 30px;
   text-decoration: none;
   height: 14px;
@@ -53,19 +56,25 @@ a {
   align-items: center;
   padding:20px;
 }
+a:active{
+  background-color: #f5f5f5;
+  color: #068d68;
+}
 a:hover {
   transform: scale(0.95);
 }
 .router-link-active {
 background-color:#ffffff;
-  /* background-color: rgb(220, 220, 220); */
-  color: #2c3e50;
-  /* border-left: 5px solid #068d68; */
+  color: rgba(0, 0, 0, 0.5);
+
 }
-.router-link-inactive {
-  background-color:#ffffff;
-  /* color: #2c3e50; */
-  /* border-left: 5px solid #068d68; */
+.router-link-active:focus {
+background-color:#f5f5f5;
+  color: #068d68;
+}
+.router-link-active:hover {
+background-color:#f5f5f5;
+  color: #068d68;
 }
 .logo{
   width: 100%;
@@ -73,13 +82,16 @@ background-color:#ffffff;
   color: #2c3e50;
   font-size: 25px;
   font-family: 'Playfair Display';
+  margin:10%;
+  padding:2%;
 }
 router-link{
     background-color:#ffffff;
     color: #2c3e50;
 
 }
-fa{
-  padding-left:5px;
+.logout{
+   margin-top: 50vh;
 }
+
 </style>
