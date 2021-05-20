@@ -84,7 +84,13 @@ export default {
 <style scoped>
 #train-with-us{
   position:relative;
-  margin-top:180px;
+  margin-top:70px;
+}
+@media screen and (max-width:700px){
+  #train-with-us{
+    width:100%;
+    padding-left:20px;
+  }
 }
 .section-title{
   font-weight: bold;
@@ -110,6 +116,11 @@ export default {
   right: 0;
   background-color: #068d68;
 }
+@media screen and (max-width:700px){
+  .linedesign{
+    width:25%;
+  }
+}
 .sub-text{
   width:60%;
   text-align: center;
@@ -119,13 +130,12 @@ export default {
 }
 @media screen and (max-width:990px){
   .sub-text{
-    width:95%;
+    width:100%;
   }
 }
 @media screen and (max-width:480px){
   .sub-text{
     text-align: left;
-    padding-left: 5px;
     padding-right: 5px;
   }
 }
@@ -142,7 +152,7 @@ export default {
 }
 @media screen and (max-width:480px){
   .stat-container{
-    width:80%;
+    width:100%;
   }
 }
 .stat{
@@ -182,10 +192,9 @@ export default {
 .info-display::-webkit-scrollbar{
   width:0px;
 }
-@media screen and (max-width:600px){
+@media screen and (max-width:900px){
   .info-display{
     justify-content: start;
-    padding-left: 10px;
   }
 }
 .card{
