@@ -4,16 +4,16 @@
     <h4 style="margin-left: 13px" class="text-muted">CLARKE FARM</h4>
     <div class="sidebar col-md-3">
       <a href="#"
-        ><span><img src="../assets/icons/home.svg" />Home</span></a
+        ><span><img src="../../assets/icons/home.svg" />Home</span></a
       >
       <a href="#"
-        ><span><img src="../assets/icons/reservation.svg" /> </span>Booking</a
+        ><span><img src="../../assets/icons/reservation.svg" /> </span>Booking</a
       >
       <a href="#" class="active"
-        ><span><img src="../assets/icons/rating.svg" /></span>User Reviews</a
+        ><span><img src="../../assets/icons/rating.svg" /></span>User Reviews</a
       >
       <a href="#"
-        ><span><img src="../assets/icons/settings.svg" /> </span>Settings</a
+        ><span><img src="../../assets/icons/settings.svg" /> </span>Settings</a
       >
     </div>
     <div class="col-md-9">

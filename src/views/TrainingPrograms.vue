@@ -1,19 +1,11 @@
 <template>
-<div>
-  <dashboard/>
-  <reviews/>
+<div>Insert the training programs content here
 </div>
 </template>
 
 <script>
-import dashboard from '@/components/AdminBooking.vue';
-import reviews from '@/components/UserReviews.vue';
 
 export default {
   name: 'TrainingPrograms',
-  components: {
-    dashboard,
-    reviews,
-  },
 };
 </script>
