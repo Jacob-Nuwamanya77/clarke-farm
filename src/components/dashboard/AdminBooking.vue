@@ -2,19 +2,18 @@
   <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <div class="row">
     <div class="header bg-primary">
-      <h4 style="margin-left: 33px; margin-top:18px; width:250px;" class="text-white">
+      <h4 class="text-white">
         CLARKE FARM</h4>
-      <span class="hamburger-menu profile">
+      <!-- <span class="hamburger-menu profile">
         <fa icon="bars"/>
-      </span>
+      </span> -->
       <span class="profile"> Profile</span><fa :icon="['fab', 'PowerOff']"/>
     </div>
     <div class="sidebar col-md-3">
-      <a href="#" id="home"
-        ><span><img src="../../assets/icons/home.svg" />Home</span></a
+      <a href="#" id="home"><span><img src="../../assets/icons/home.svg" />Home</span></a
       >
-      <a href="#" class="active"
-        ><span><img src="../../assets/icons/reservation.svg" /> </span
+      <a href="#" class="active">
+        <span><img src="../../assets/icons/reservation.svg" /> </span
         >Booking</a
       >
       <a href="#"
@@ -122,8 +121,17 @@
 .header{
   margin-top: -20px;;
 }
-.hamburger-menu{
-
+.header h4{
+  margin-left: 33px;
+  margin-top:18px;
+  width:250px;
+  font-family:'Roboto';
+}
+.profile {
+  color: white;
+  margin-top: -37px;
+  float: right;
+  margin-right: 30px;
 }
 /* sidebar */
 .sidebar {
@@ -193,12 +201,7 @@
 .content {
   margin-left: 30px;
 }
-.profile {
-  color: white;
-  margin-top: -37px;
-  float: right;
-  margin-right: 30px;
-}
+
 .datepicker {
   border: 1px solid#068d68;
   margin: 5px;

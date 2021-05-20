@@ -8,8 +8,8 @@ import CoffeeForm from '@/views/CoffeeForm.vue';
 // eslint-disable-next-line import/no-unresolved
 import AdminBooking from '@/views/AdminBooking.vue';
 import LoginPage from '@/views/LoginPage.vue';
-import BookingPage from '@/views/BookingPage.vue';
 import Dashboard from '@/views/Dashboard.vue';
+import Reviews from '@/views/AdminReviews.vue';
 
 const routes = [
   {
@@ -38,19 +38,24 @@ const routes = [
     component: TrainingPrograms,
   },
   {
-    path: '/admin/booking',
-    name: 'AdminBooking',
-    component: AdminBooking,
-  },
-  {
     path: '/admin',
     name: 'LoginPage',
     component: LoginPage,
   },
   {
-    path: '/admin',
+    path: '/admin/dashboard',
     name: 'Dashboard',
     component: Dashboard,
+  },
+  {
+    path: '/admin/booking',
+    name: 'AdminBooking',
+    component: AdminBooking,
+  },
+  {
+    path: '/admin/reviews',
+    name: 'Reviews',
+    component: Reviews,
   },
 ];
 

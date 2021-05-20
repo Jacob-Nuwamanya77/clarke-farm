@@ -1,10 +1,18 @@
 <template>
   <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <div class="row">
-    <h4 style="margin-left: 13px" class="text-muted">CLARKE FARM</h4>
+     <div class="header">
+      <h4>
+        CLARKE FARM</h4>
+      <!-- <span class="hamburger-menu profile">
+        <fa icon="bars"/>
+      </span> -->
+      <span class="profile"> Profile</span><fa :icon="['fab', 'PowerOff']"/>
+    </div>
     <div class="sidebar col-md-3">
-      <a href="#"
-        ><span><img src="../../assets/icons/home.svg" />Home</span></a
+      <a href="#"><span>
+      <img src="../../assets/icons/home.svg" />Home</span>
+     </a
       >
       <a href="#"
         ><span><img src="../../assets/icons/reservation.svg" /> </span>Booking</a
@@ -16,27 +24,51 @@
         ><span><img src="../../assets/icons/settings.svg" /> </span>Settings</a
       >
     </div>
-    <div class="col-md-9">
-      <h4 style="color: #068d68; margin-top: -37px">User Reviews</h4>
-      <span class="profile">
-        Profile</span
-      ><fa :icon="['fab', 'PowerOff']" />
-      <button class="btn btn-block bg-danger"/>
+    <div class="col-md-9 content">
+      <a class="btn btn-block btn-danger delete-btn">DELETE ALL</a>
+     <div class="review">
+       <fa icon="square"/>
+       <h6>MERCY WAMANGA</h6>
+       <p class="text-muted">January 2021</p>
+       <fa icon="star"/><br>
+       <strong>Bouldering and hilltop views were awesome</strong>
+       <p>The highlight of my stay at the farm was the jeep rides
+The highlight of my stay at the farm was the jeep rides
+The highlight of my stay at the farm was the jeep rides</p>
+     </div>
 
     </div>
   </div>
 </template>
 <style scoped>
+.header{
+  margin-top: -20px;;
+}
+.header h4{
+  margin-left: 33px;
+  margin-top:18px;
+  width:250px;
+  color: #068d68;
+  font-family:'Roboto';
+}
+.profile {
+  color: #068d68;
+  margin-top: -37px;
+  float: right;
+  margin-right: 100px;
+}
 /* sidebar */
 .sidebar {
-  margin: 0;
-  margin-top: 25px;
+  margin-top: 0px;
   padding: 0;
+  margin-left: 20px;
   width: 200px;
   background: whitesmoke;
-  height: 100%;
+  height: 490px;
   overflow: auto;
+  border-bottom-left-radius: 35px;
 }
+
 /* sidebar links */
 .sidebar a {
   display: block;
@@ -56,7 +88,7 @@
   color: whitesmoke;
 }
 .sidebar img {
-  width: 25px;
+  width: 20px;
   height: 30px;
   padding-right: 5px;
   padding-bottom: 5px;
@@ -80,10 +112,20 @@
     float: none;
   }
 }
-.profile{
-color: #068d68;
-margin-top: -37px;
-float: right;
+.review-text{
+  color: #068d68;
+  margin-top: -37px;
+}
+.content{
+  background: #726c6c25;
+  margin-top: 15px;
+}
+.delete-btn{
+  float:right;
+  margin: 10px;
+}
+.review{
+  margin-top: 60px;
 }
 
 </style>

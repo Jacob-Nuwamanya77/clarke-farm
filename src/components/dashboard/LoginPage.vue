@@ -1,19 +1,16 @@
 <template>
   <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <div class="main-container">
-<div class="img-container bg-primary">
-coommeeee
-</div>
 <div class="auth-container">
-<h4 style="margin-bottom:20px;">Sign In</h4>
+<h4 class="text-center">Sign In</h4>
 <form>
 <div class="form-group">
 <label class="mb-1"><strong>Email</strong></label>
-<input type="email" class="form-control" placeholder="hello@example.com" name="email">
+<input type="email" class="form-control" placeholder="hello@example.com" name="email" required>
 </div>
 <div class="form-group">
 <label class="mb-1"><strong>Password</strong></label>
-<input type="password" class="form-control" name="password">
+<input type="password" class="form-control" name="password" required>
 </div>
 <div class="form-row d-flex justify-content-between mt-4 mb-2">
 <div class="form-group">
@@ -23,7 +20,7 @@ coommeeee
 </div>
 </div>
 <div class="form-group">
-<a style="color:#068d68;">Forgot Password?</a>
+<a>Forgot Password?</a>
 </div>
 </div>
 <div>
@@ -37,18 +34,24 @@ coommeeee
 <style scoped>
 .main-container{
 margin-top:150px;
-background-color: tomato;
-}
-.img-container{
-width:50%;
-height:100%;
-float: left;
+display: flex;
+justify-content: center;
 }
 .auth-container{
 width:50%;
+border: 1px solid #068d68;
+border-radius: 10px;
 height:100%;
-float: right;
+align-items: center;
 padding:20px 60px;
+}
+h4{
+  margin-bottom:20px;
+  font-weight: bold;
+  color:#2c3e50;
+}
+.auth-container .form-group a{
+color:#068d68;
 }
 </style>
 <script>

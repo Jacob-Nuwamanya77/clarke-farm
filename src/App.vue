@@ -1,63 +1,6 @@
 <template>
   <div class="page-container">
-    <!-- <div class="header">
-      <div class="nav-container">
-        <ul>
-          <li><router-link to="/">Home</router-link></li>
-          <li><router-link to="/visit">Visit</router-link></li>
-          <li><router-link to="/coffee">Buy Coffee</router-link></li>
-          <li><router-link to="/training-programs">Trainings</router-link></li>
-        </ul>
-        <div class="contact">
-          <span class="phone-icon"><fa icon="phone"/></span>
-          <span id="telephone">&nbsp;&nbsp;&nbsp;+256 (0) 392 201 400</span>
-        </div>
-      </div>
-      <span class="hamburger-menu">
-        <fa icon="bars"/>
-      </span>
-  </div> -->
   <router-view />
-  <!-- <footer>
-    <div class="top-row">
-      <div class="sub-container">
-        <h5>CONTACT</h5>
-        <div class="content">
-          <p>+256 (0) 392 201 400</p>
-          <p>Plot 8244, Bukasa - Muyenga</p>
-          <p>Kampala, Uganda</p>
-        </div>
-      </div>
-      <div class="sub-container">
-        <h5>SITEMAP</h5>
-        <div class="content">
-          <p><a href="/">Home</a></p>
-          <p><a href="/visit">Visit Us</a></p>
-          <p><a href="/coffee">Buy Coffee</a></p>
-          <p><a href="/training-programs">Training Programs</a></p>
-        </div>
-      </div>
-      <div class="sub-container">
-        <h5>LOCATION</h5>
-        <div class="content">
-          <p>Katambale, Kyenjojo</p>
-          <p>Uganda</p>
-        </div>
-        <div class="icons">
-          <p><small>Connect with us</small></p>
-          <span id="facebook">
-            <fa :icon="['fab','facebook-f']" title="visit our facebook page"/>
-          </span>
-          <span id="twitter">
-            <fa :icon="['fab','twitter']" title="visit our twitter page"/>
-          </span>
-          <span id="instagram">
-            <fa :icon="['fab','instagram']" title="visit our instagram page"/>
-          </span>
-        </div>
-      </div>
-    </div>
-  </footer> -->
   </div>
 </template>
 
