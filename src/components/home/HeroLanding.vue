@@ -1,24 +1,17 @@
 <template>
   <div class="hero-section">
     <div class="left-container">
-      <div class="hero-header">
-        <p class="hero-lg-text">A farm for the active adventurous traveler</p>
-        <p class="hero-lg-text">And source of high quality Coffee</p>
-      </div>
+      <p class="hero-text-lg">A farm  for the active adventurous traveler</p>
+      <p class="hero-text-lg">and source of high quality coffee</p>
       <div class="image-biker">
         <img src="@/assets/images/bike-bg-grey.png" alt="biker" aria-hidden="true">
       </div>
-      <div class="hero-text">
-        <p>
-          We are an eco-friendly farm with amazing hilltop views,
-          rivers and surrounded by a natural forest.
-        </p>
-        <p>
-          Clarke farm is about 1,500 acres of land and predominately
-          grows coffee.
-        </p>
-        <p>It is coffee, laughter and games.</p>
-      </div>
+      <p class="hero-sub-text">
+        We are an eco-friendly farm with amazing hilltop views,
+        rivers and surrounded by a natural forest.
+        Clarke farm is about 1,500 acres of land and predominately
+        grows coffee.
+      </p>
       <div class="call-to-action">
         <div id="book-trip">
           <a href="">Book A Trip</a>
@@ -51,88 +44,65 @@
 .hero-section{
   display:flex;
   flex-direction: row;
-  max-height: 550px;
-  min-height: 500px;
   margin-top:25px;
   width:90%;
+  min-height: 500px;
   margin-left: auto;
   margin-right: auto;
 }
-@media screen and (max-width:768px){
+@media screen and (min-width:900px){
   .hero-section{
-    margin-top: 4%;
+    max-height: 550px;
   }
 }
-@media screen and (max-width:576px){
+@media screen and (max-width:700px){
   .hero-section{
-    flex-direction: column;
-    max-height: 100%;
+    display:block;
+    width:100%;
+    padding-left:20px;
   }
 }
 
 /* Content containers. Left and Right hero section */
-.right-container{
-  width:45%;
-  position:relative;
-}
 .left-container{
   width:55%;
   position:relative;
 }
-
-.left-container::before{
-  content:"";
-  width:450px;
-  height:450px;
-  border-radius: 50%;
-  background-image:linear-gradient(to left, rgba(4,228,116,.1) 58%, white 40%);
-  position:absolute;
-  top:-250px;
-  left:-250px;
+@media screen and (min-width:900px){
+  .left-container{
+    padding-top:30px;
+  }
 }
-@media screen and (max-width:576px){
+.right-container{
+  width:45%;
+  position:relative;
+}
+
+@media screen and (max-width:700px){
   .left-container{
     width:100%;
-    margin-left: auto;
-    margin-right: auto;
   }
   .right-container{
     width:100%;
   }
-  .left-container::before{
-    left:-250px;
-  }
 }
 
 /* Left side content styles. */
-.hero-header{
-  position:relative;
-  margin-top:5%;
-}
-.hero-lg-text{
-  font-weight: bold;
+.hero-text-lg{
   font-size: 28px;
-  margin:12px auto;
+  font-weight: bold;
+  margin-bottom:12px;
 }
-@media screen and (max-width:768px){
-  .hero-header{
-    margin-top: 10%;
+.hero-sub-text{
+  width:80%;
+  margin-top:5%;
+  line-height: 2;
+}
+@media screen and (max-width:990px){
+  .hero-sub-text{
+    width:95%;
   }
 }
-@media screen and (max-width:1280px){
-  .hero-lg-text{
-    font-size: 20px;
-  }
-}
-.hero-text{
-  margin-top:7%;
-}
-@media screen and (min-width: 1280px){
-  .hero-text p{
-    width:80%;
-  }
-}
-
 .image-biker{
   position:absolute;
   width:140px;
@@ -147,8 +117,8 @@
 @media screen and (min-width: 1280px){
   .image-biker{
     display:block;
-    left:440px;
-    top:75px;
+    left:480px;
+    top:80px;
   }
 }
 .call-to-action{
