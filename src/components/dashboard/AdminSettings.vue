@@ -5,11 +5,12 @@
     </div>
     <div class="container-right">
       <div class="top-row">
-        <AdminHeadingHome heading="Home"/>
+        <AdminHeadingSettings heading="Settings"/>
       </div>
       <div class="after-toprow">
-       <HomeContent/>
+       <SettingsContent/>
       </div>
+      <pignation/>
 
     </div>
   </div>
@@ -17,8 +18,9 @@
 
 <script>
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
-import AdminHeadingHome from '@/components/dashboard/AdminHeadingHome.vue';
-import HomeContent from '@/components/dashboard/HomeContent.vue';
+import AdminHeadingSettings from '@/components/dashboard/AdminHeadingSettings.vue';
+import SettingsContent from '@/components/dashboard/SettingsContent.vue';
+import pignation from '@/components/pignation.vue';
 
 export default {
   name: 'Admin',
@@ -29,8 +31,9 @@ export default {
 
   components: {
     AdminSideNavigation,
-    AdminHeadingHome,
-    HomeContent,
+    AdminHeadingSettings,
+    SettingsContent,
+    pignation,
   },
 };
 </script>

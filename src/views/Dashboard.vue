@@ -4,12 +4,15 @@
       <AdminSideNavigation />
     </div>
     <div class="container-right">
+      <!-- <AdminHome/> -->
+       <AdminSettings/>
     </div>
   </div>
 </template>
 
 <script>
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
+import AdminSettings from '@/components/dashboard/AdminSettings.vue';
 
 export default {
   name: 'Admin',
@@ -20,6 +23,7 @@ export default {
 
   components: {
     AdminSideNavigation,
+    AdminSettings,
   },
 };
 </script>
@@ -81,7 +85,7 @@ input[type="text"]:focus {
   margin-left: 3px;
 }
 .container-right {
-  margin-left: 16vw;
+  margin-left: 0vw;
   width: 80vw;
 }
 </style>
