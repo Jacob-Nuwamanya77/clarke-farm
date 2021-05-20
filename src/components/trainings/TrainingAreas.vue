@@ -3,7 +3,7 @@
     <div class="description">
       <p class="section-title">Why train with us</p>
       <p class="sub-text">
-        Wisdow is a product of knowledge and experience. Over the years, we have
+        Wisdom is a product of knowledge and experience. Over the years, we have
         acquired both through testing and trials. We will teach you how to manage a large
         workforce, increase production and revenue. Below are our seasonal harvests.
       </p>
