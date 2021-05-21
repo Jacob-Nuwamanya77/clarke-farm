@@ -10,22 +10,22 @@
       <span class="profile"> Profile</span><fa :icon="['fab', 'PowerOff']"/>
     </div>
     <div class="sidebar col-md-3">
-      <a href="#" id="home"><span><img src="../../assets/icons/home.svg" />Home</span></a
+      <router-link to="/admin/dashboard" id="home"><span><fa icon="home"
+      style="margin-right:10px; color:#068d68;"/>Home</span></router-link
       >
-      <a href="#" class="active">
-        <span><img src="../../assets/icons/reservation.svg" /> </span
-        >Booking</a
+      <router-link to="/admin/booking" class="active pl-3">
+        <span><fa icon="book" style="margin-right:10px;"/></span>Booking</router-link
       >
-      <a href="#"
-        ><span><img src="../../assets/icons/rating.svg" /></span>User Reviews</a
+      <router-link to="/admin/reviews"
+        ><span><img src="../../assets/icons/rating.svg" /></span>User Reviews</router-link
       >
-      <a href="#"
-        ><span><img src="../../assets/icons/settings.svg" /> </span>Settings</a
+      <router-link to="/admin/settings"><span><fa icon="cog"
+       style="margin-right:10px; color:#068d68;"/> </span>Settings</router-link
       >
-<div class="card h-25  bg-primary" style="margin-top:110px; margin-left:25px; margin-right:25px;">
-</div>
+        <router-link to="/admin" style="margin-top:220px; color:red"><span>
+          <img src="../../assets/icons/logout.svg" /></span> &ensp;Logout</router-link>
     </div>
-    <div class="col-md-9 content card">
+    <div class="col-md-9 content">
       <h4 style="color: #068d68; margin-top: 10px">Bookings</h4>
       <p class="mt-3">Filter Results</p>
       <div class="filter-row1 mt-1">
@@ -67,6 +67,8 @@
               <td>5</td>
               <td>+256 705976941</td>
               <td>mariatndagire28@gmail.com</td>
+              <td><span style="color:#068d68">view</span>
+              <fa icon="trash" style="margin-left:10px; color:red;"/></td>
             </tr>
             <tr>
               <td>1/01/21</td>
@@ -74,6 +76,8 @@
               <td>5</td>
               <td>+256 705976941</td>
               <td>mariatndagire28@gmail.com</td>
+              <td><span style="color:#068d68">view</span>
+              <fa icon="trash" style="margin-left:10px; color:red;"/></td>
             </tr>
             <tr>
               <td>1/01/21</td>
@@ -81,6 +85,8 @@
               <td>5</td>
               <td>+256 705976941</td>
               <td>mariatndagire28@gmail.com</td>
+              <td><span style="color:#068d68">view</span>
+              <fa icon="trash" style="margin-left:10px; color:red;"/></td>
             </tr>
             <tr>
               <td>1/01/21</td>
@@ -88,6 +94,8 @@
               <td>5</td>
               <td>+256 705976941</td>
               <td>mariatndagire28@gmail.com</td>
+              <td><span style="color:#068d68">view</span>
+              <fa icon="trash" style="margin-left:10px; color:red;"/></td>
             </tr>
             <tr>
               <td>1/01/21</td>
@@ -95,6 +103,8 @@
               <td>5</td>
               <td>+256 705976941</td>
               <td>mariatndagire28@gmail.com</td>
+              <td><span style="color:#068d68">view</span>
+              <fa icon="trash" style="margin-left:10px; color:red;"/></td>
             </tr>
             <tr>
               <td>1/01/21</td>
@@ -102,6 +112,8 @@
               <td>5</td>
               <td>+256 705976941</td>
               <td>mariatndagire28@gmail.com</td>
+              <td><span style="color:#068d68">view</span>
+              <fa icon="trash" style="margin-left:10px; color:red;"/></td>
             </tr>
             <tr>
               <td>1/01/21</td>
@@ -109,6 +121,8 @@
               <td>5</td>
               <td>+256 705976941</td>
               <td>mariatndagire28@gmail.com</td>
+              <td><span style="color:#068d68">view</span>
+              <fa icon="trash" style="margin-left:10px; color:red;"/></td>
             </tr>
           </tbody>
         </table>
@@ -172,9 +186,6 @@
   padding-right: 5px;
   padding-bottom: 5px;
 }
-.sidebar img:hover {
-  color: whitesmoke;
-}
 @media screen and (max-width: 700px) {
   .sidebar {
     width: 100%;
@@ -196,10 +207,11 @@
 }
 .card{
   border-radius: 8px;
-  margin-top: 20px;
 }
 .content {
   margin-left: 30px;
+  margin-top: 20px;
+
 }
 
 .datepicker {
@@ -221,6 +233,9 @@
 td {
   font-family: sans-serif;
   cursor: pointer;
+}
+router-link .logout{
+  margin-top: 140px;
 }
 </style>
 

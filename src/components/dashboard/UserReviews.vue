@@ -1,8 +1,8 @@
 <template>
   <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <div class="row">
-     <div class="header">
-      <h4>
+  <div class="header bg-primary">
+      <h4 class="text-white">
         CLARKE FARM</h4>
       <!-- <span class="hamburger-menu profile">
         <fa icon="bars"/>
@@ -10,24 +10,25 @@
       <span class="profile"> Profile</span><fa :icon="['fab', 'PowerOff']"/>
     </div>
     <div class="sidebar col-md-3">
-      <a href="#"><span>
-      <img src="../../assets/icons/home.svg" />Home</span>
-     </a
+      <router-link to="/admin/dashboard" id="home"><span><fa icon="home"
+      style="margin-right:10px; color:#068d68;"/>Home</span></router-link
       >
-      <a href="#"
-        ><span><img src="../../assets/icons/reservation.svg" /> </span>Booking</a
+      <router-link to="/admin/booking">
+        <span><fa icon="book" style="margin-right:10px;"/></span>Booking</router-link
       >
-      <a href="#" class="active"
-        ><span><img src="../../assets/icons/rating.svg" /></span>User Reviews</a
+      <router-link to="/admin/reviews" class="active pl-3"
+        ><span><img src="../../assets/icons/rating.svg" /></span>User Reviews</router-link
       >
-      <a href="#"
-        ><span><img src="../../assets/icons/settings.svg" /> </span>Settings</a
+      <router-link to="/admin/settings"><span><fa icon="cog"
+       style="margin-right:10px; color:#068d68;"/> </span>Settings</router-link
       >
+        <router-link to="/admin" style="margin-top:220px; color:red"><span>
+          <img src="../../assets/icons/logout.svg" /></span> &ensp;Logout</router-link>
     </div>
     <div class="col-md-9 content">
       <a class="btn btn-block btn-danger delete-btn">DELETE ALL</a>
      <div class="review">
-       <fa icon="square"/>
+       <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
        <h6>MERCY WAMANGA</h6>
        <p class="text-muted">January 2021</p>
        <fa icon="star"/><br>
@@ -48,34 +49,36 @@ The highlight of my stay at the farm was the jeep rides</p>
   margin-left: 33px;
   margin-top:18px;
   width:250px;
-  color: #068d68;
   font-family:'Roboto';
 }
 .profile {
-  color: #068d68;
+  color: white;
   margin-top: -37px;
   float: right;
-  margin-right: 100px;
+  margin-right: 30px;
 }
 /* sidebar */
 .sidebar {
+  margin: 0;
   margin-top: 0px;
-  padding: 0;
   margin-left: 20px;
+  padding: 0;
   width: 200px;
-  background: whitesmoke;
-  height: 490px;
+  background: white;
+  height: 558px;
   overflow: auto;
-  border-bottom-left-radius: 35px;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
 }
-
-/* sidebar links */
 .sidebar a {
   display: block;
   color: rgba(0, 0, 0, 0.603);
   padding: 8px;
+  margin-top: 10px;
+  width: 180px;
+  margin-left: 10px;
   padding-left: 20px;
-  /* text-align: center; */
+  border-radius: 8px;
   text-decoration: none;
 }
 /* active sidebar link */
@@ -117,8 +120,9 @@ The highlight of my stay at the farm was the jeep rides</p>
   margin-top: -37px;
 }
 .content{
-  background: #726c6c25;
+  /* background: #726c6c25; */
   margin-top: 15px;
+  margin-left: 30px;
 }
 .delete-btn{
   float:right;

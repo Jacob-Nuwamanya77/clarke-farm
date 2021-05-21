@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div style="margin-left:-40px;">
       <div class="row">
         <div class="navigation">
        <ul>
@@ -165,6 +165,7 @@ a.active-nav{
  table{
   width:1150px;
   padding:5px;
+  margin-left: -40px;;
 }
 th{
     padding:10px;
