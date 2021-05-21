@@ -1,19 +1,19 @@
 <template>
   <div class="row">
     <div class="col-md-3">
-      <AdminSideNavigation />
+      <!-- <AdminSideNavigation /> -->
     </div>
     <div class="col-md-9">
-      <AdminHome/>
-       <!-- <AdminSettings/> -->
+      <!-- <AdminHome/> -->
+       <AdminSettings/>
     </div>
   </div>
 </template>
 
 <script>
-import AdminSideNavigation from '@/components/dashboard/SideNav.vue';
-// import AdminSettings from '@/components/dashboard/AdminSettings.vue';
-import AdminHome from '@/components/dashboard/AdminHome.vue';
+// import AdminSideNavigation from '@/components/dashboard/SideNav.vue';
+import AdminSettings from '@/components/dashboard/AdminSettings.vue';
+// import AdminHome from '@/components/dashboard/AdminHome.vue';
 
 export default {
   name: 'Admin',
@@ -23,9 +23,9 @@ export default {
   },
 
   components: {
-    AdminSideNavigation,
-    // AdminSettings,
-    AdminHome,
+    // AdminSideNavigation,
+    AdminSettings,
+    // AdminHome,
   },
 };
 </script>

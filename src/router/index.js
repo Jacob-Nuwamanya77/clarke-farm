@@ -10,6 +10,7 @@ import AdminBooking from '@/views/AdminBooking.vue';
 import LoginPage from '@/views/LoginPage.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import Reviews from '@/views/AdminReviews.vue';
+import Settings from '@/views/AdminSettings.vue';
 
 const routes = [
   {
@@ -56,6 +57,11 @@ const routes = [
     path: '/admin/reviews',
     name: 'Reviews',
     component: Reviews,
+  },
+  {
+    path: '/admin/settings',
+    name: 'Settings',
+    component: Settings,
   },
 ];
 

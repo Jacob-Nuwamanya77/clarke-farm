@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="container-left">
+    <!-- <div class="container-left">
       <AdminSideNavigation />
-    </div>
+    </div> -->
     <div class="container-right">
       <div class="top-row">
         <AdminHeadingHome heading="Home"/>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
+// import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
 import AdminHeadingHome from '@/components/dashboard/AdminHeadingHome.vue';
 import HomeContent from '@/components/dashboard/HomeContent.vue';
 
@@ -28,7 +28,7 @@ export default {
   },
 
   components: {
-    AdminSideNavigation,
+    // AdminSideNavigation,
     AdminHeadingHome,
     HomeContent,
   },
@@ -48,6 +48,9 @@ export default {
 .top-row {
   position: relative;
   padding-top: 5px;
+  margin-top: 40px;
+  margin-left: -90px;
+  margin-right: 50px;
 }
 .container-page-options {
   position: relative;
@@ -89,11 +92,10 @@ input[type="text"]:focus {
   left: 0;
   background-color: #ffffff;
   color: white;
-  margin-left: 3px;
+  /* margin-left: px; */
 }
 .container-right {
   margin-left: 5vw;
-  width: 80vw;
-}
+  width: 80vw;}
 
 </style>
