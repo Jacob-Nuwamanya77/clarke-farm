@@ -156,8 +156,5 @@ hr{
   margin-right: 10%;
   width:1150px;
 }
-/* div{
-  border:1px solid #068d68;
-} */
 
 </style>

@@ -4,15 +4,15 @@
       <AdminSideNavigation />
     </div>
     <div class="container-right">
-      <!-- <AdminHome/> -->
-       <AdminSettings/>
+      <AdminHome/>
+
     </div>
   </div>
 </template>
 
 <script>
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
-import AdminSettings from '@/components/dashboard/AdminSettings.vue';
+import AdminHome from '@/components/dashboard/AdminHome.vue';
 
 export default {
   name: 'Admin',
@@ -23,7 +23,7 @@ export default {
 
   components: {
     AdminSideNavigation,
-    AdminSettings,
+    AdminHome,
   },
 };
 </script>

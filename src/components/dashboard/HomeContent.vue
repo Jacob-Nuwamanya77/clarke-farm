@@ -144,10 +144,11 @@ export default {
   height:30px;
   margin-right: 0px;
   /* background-color: rgba(0, 0, 0, 0.3); */
-  border: 1px solid #ffffff;
+  border: 1px solid #f4f4f4f4;
 }
 .navigation a:hover{
-  background-color: #068d68;;
+  background-color: #068d68;
+  color:#ffffff;
 }
 .navigation a{
   display: flex;

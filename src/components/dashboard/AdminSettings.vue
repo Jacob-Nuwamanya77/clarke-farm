@@ -20,7 +20,6 @@
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
 import AdminHeadingSettings from '@/components/dashboard/AdminHeadingSettings.vue';
 import SettingsContent from '@/components/dashboard/SettingsContent.vue';
-import pignation from '@/components/pignation.vue';
 
 export default {
   name: 'Admin',
@@ -33,7 +32,6 @@ export default {
     AdminSideNavigation,
     AdminHeadingSettings,
     SettingsContent,
-    pignation,
   },
 };
 </script>
