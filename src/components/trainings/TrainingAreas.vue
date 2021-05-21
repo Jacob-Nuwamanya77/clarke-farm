@@ -140,7 +140,7 @@ export default {
   }
 }
 #capacity{
-  margin-top: 40px;
+  margin-top: 20px;
 }
 .stat-container{
   display: flex;
@@ -185,7 +185,7 @@ export default {
 .info-display{
   display:flex;
   justify-content: center;
-  margin-top:50px;
+  margin-top:30px;
   overflow-x: auto;
   overflow-y: hidden;
 }
@@ -221,11 +221,5 @@ export default {
 }
 .card-text{
   font-size: 14px;
-}
-.activity-price{
-  width:80px;
-  background-color: var(--dark-green);
-  color:white;
-  text-align: center;
 }
 </style>
