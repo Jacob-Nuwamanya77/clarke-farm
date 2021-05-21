@@ -50,7 +50,7 @@ export default {
 <style scoped>
 .outgrowers-container{
   position:relative;
-  margin-top:100px;
+  margin-top:80px;
 }
 .section-title{
   font-weight: bold;
@@ -92,6 +92,7 @@ export default {
 @media screen and (max-width:700px){
   #scheme-details{
     display: block;
+    width:90%;
   }
 }
 #scheme-left{
@@ -104,7 +105,7 @@ export default {
 }
 @media screen and (max-width:700px){
   #scheme-left{
-    width:95%;
+    width:100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -123,9 +124,16 @@ export default {
   left:-100px;
   bottom:-50px;
 }
+@media screen and (max-width:700px){
+  #quote{
+    left:clamp(-20px,50%,-100px);
+  }
+}
 #scheme-right img{
   width:100%;
   height:100%;
+  max-width:376px;
+  max-height:400px;
   object-fit: cover;
 }
 .section-sub-title{

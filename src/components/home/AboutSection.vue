@@ -5,12 +5,9 @@
     <div class="about">
       <div class="about-description">
         <p class="section-title">Who we are</p>
-        <p>
+        <p class="sub-text">
           Clarke Farm is a 1500 acre farm located in Kitabale, Kyenjojo District
-          in Uganda.
-        </p>
-        <p>
-          Robusta coffee is the primary crop grown on the farm.
+          in Uganda. Robusta coffee is the primary crop grown on the farm.
         </p>
       <div class="linedesign"></div>
       </div>
@@ -87,6 +84,24 @@ export default {
   top:0;
   right: 0;
   background-color: #068d68;
+}
+.sub-text{
+  width:60%;
+  text-align: center;
+  line-height: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (max-width:990px){
+  .sub-text{
+    width:100%;
+  }
+}
+@media screen and (max-width:480px){
+  .sub-text{
+    text-align: left;
+    padding-right: 5px;
+  }
 }
 .div-with-bg-image{
   position: relative;

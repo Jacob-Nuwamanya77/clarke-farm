@@ -1,6 +1,7 @@
 <template>
   <div id="hero-training">
-    <div id="left-container">
+    <div id="hero-content-top">
+      <div id="left-container">
       <p class="hero-text-lg">
         Improve your skills, learn better
       </p>
@@ -19,6 +20,7 @@
     </div>
     <div id="right-container">
       <img src="@/assets/images/training.jpg" alt="training" aria-hidden="true">
+    </div>
     </div>
     <div class="benefits">
       <div class="card" >
@@ -68,23 +70,35 @@ export default {
   margin-left: auto;
   margin-right: auto;
   margin-top: 25px;
-  min-height: 500px;
-  max-height: 550px;
+}
+#hero-content-top{
   display: flex;
 }
-#left-container{
-  width:55%;
-  padding-top: 30px;
-  position:relative;
-}
-
-#right-container{
-  width:45%;
+@media screen and (min-width:900px){
+  #hero-content-top{
+    max-height:550px;
+  }
 }
 @media screen and (max-width:700px){
   #hero-training{
     display:block;
+    width:100%;
+    padding-left:20px;
   }
+}
+#left-container{
+  width:55%;
+  position:relative;
+}
+@media screen and (min-width:900px){
+  #left-container{
+    padding-top:30px;
+  }
+}
+#right-container{
+  width:45%;
+}
+@media screen and (max-width:700px){
   #left-container{
     width:100%;
   }
@@ -141,8 +155,6 @@ export default {
   justify-content: center;
 }
 .benefits{
-  position:absolute;
-  top:500px;
   z-index: 1;
   display: flex;
   overflow-x: auto;
@@ -151,9 +163,13 @@ export default {
 .benefits::-webkit-scrollbar{
   width:0px;
 }
-@media screen and (max-width:700px){
+@media screen and (min-width:900px){
   .benefits{
-    position: static;
+    margin-top:-10%;
+  }
+}
+@media screen and (max-width:800px){
+  .benefits{
     z-index: 0;
     margin-top: 30px;
   }

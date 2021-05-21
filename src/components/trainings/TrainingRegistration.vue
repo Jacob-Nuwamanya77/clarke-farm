@@ -104,6 +104,11 @@ export default {
   right: 0;
   background-color: #068d68;
 }
+@media screen and (max-width:700px){
+  .linedesign{
+    width:25%;
+  }
+}
 .registration-container {
   width: 70%;
   margin-left: auto;
