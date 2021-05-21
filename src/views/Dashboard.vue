@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import AdminSideNavigation from '@/components/dashboard/SideNav.vue';
+import AdminSideNavigation from '@/components/dashboard/Sidenav.vue';
 // import AdminSettings from '@/components/dashboard/AdminSettings.vue';
 import AdminHome from '@/components/dashboard/AdminHome.vue';
 
