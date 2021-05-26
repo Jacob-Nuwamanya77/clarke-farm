@@ -2,7 +2,6 @@
   <div class="top-row">
     <div class="col-8">
       <h3>{{ heading }}</h3>
-      <h6>Welcome {{user}},</h6>
     </div>
    <div class="col-4">
      <ul>
@@ -14,14 +13,12 @@
       </li>
     </ul>
    </div>
-   <br>
-   <h5>Notifications</h5>
    <hr>
   </div>
 </template>
 <script>
 export default {
-  name: 'AdminHeading',
+  name: 'AdminHeadingSettings',
   props: {
     heading: {
       type: String,
@@ -37,18 +34,12 @@ export default {
 </script>
 
 <style scoped>
-.top-row{
-  margin-top: 10vw;
-}
 div {
   text-align: left;
 }
 h3{
   color:#045C44;
-   margin-left: 23%;
-}
-h6{
-   margin-left: 23%;
+  margin-left:19%;
 }
 
 ul{
@@ -71,14 +62,17 @@ li{
 }
 h5{
   color:#045C44;
-   margin-left: 15.5%;
 }
 span{
    color:#045C44;
 }
 hr{
-  margin-left: 13%;
- width:1050px;
+  margin-left: 12%;
+  width:980px;
+}
+
+.div{
+  border:1px solid green;
 }
 
 /* .heading-icons{

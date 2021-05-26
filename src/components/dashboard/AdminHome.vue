@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <!-- <div class="container-left">
+    <div class="container-left">
       <AdminSideNavigation />
-    </div> -->
+    </div>
     <div class="container-right">
       <div class="top-row">
         <AdminHeadingHome heading="Home"/>
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-// import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
+import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
 import AdminHeadingHome from '@/components/dashboard/AdminHeadingHome.vue';
 import HomeContent from '@/components/dashboard/HomeContent.vue';
 
@@ -28,7 +28,7 @@ export default {
   },
 
   components: {
-    // AdminSideNavigation,
+    AdminSideNavigation,
     AdminHeadingHome,
     HomeContent,
   },
@@ -39,6 +39,7 @@ export default {
 .container {
   width: 98vw;
   margin-top: 0;
+  margin-bottom:10vw;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -48,41 +49,9 @@ export default {
 .top-row {
   position: relative;
   padding-top: 5px;
-  margin-top: 40px;
-  margin-left: -90px;
-  margin-right: 50px;
-}
-.container-page-options {
-  position: relative;
-}
-.container-delete-search {
-  margin-top: 40px;
-  margin-bottom: 10px;
-  padding-left: 20px;
-  text-align: left;
-}
-
-input[type="text"] {
-  width: 300px;
-  height: 30px;
-  border: none;
-  border-radius: 15px;
-  margin-left: 35px;
-  padding-left: 20px;
-  background-color: rgb(220, 220, 220);
-}
-
-input[type="text"]:focus {
-  background-color: white;
-  z-index: 1;
-  box-shadow: 4px 4px 5px rgb(80, 80, 80);
-  outline: none;
-}
-.no-records {
-  position: absolute;
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
+  margin-top: 0px;
+  margin-left: -5%;
+  margin-right: 0%;
 }
 .container-left {
   width: 13vw;
@@ -92,10 +61,17 @@ input[type="text"]:focus {
   left: 0;
   background-color: #ffffff;
   color: white;
-  /* margin-left: px; */
+  margin-left: 8.9%;
 }
-.container-right {
-  margin-left: 5vw;
-  width: 80vw;}
+
+  .after-toprow{
+    margin-right:0px;
+    margin-left:-5px;
+  }
+
+  .container-right {
+  margin-left: 10vw;
+  width: 80vw;
+}
 
 </style>

@@ -50,38 +50,6 @@ export default {
   position: relative;
   padding-top: 5px;
 }
-.container-page-options {
-  position: relative;
-}
-.container-delete-search {
-  margin-top: 40px;
-  margin-bottom: 10px;
-  padding-left: 20px;
-  text-align: left;
-}
-
-input[type="text"] {
-  width: 300px;
-  height: 30px;
-  border: none;
-  border-radius: 15px;
-  margin-left: 35px;
-  padding-left: 20px;
-  background-color: rgb(220, 220, 220);
-}
-
-input[type="text"]:focus {
-  background-color: white;
-  z-index: 1;
-  box-shadow: 4px 4px 5px rgb(80, 80, 80);
-  outline: none;
-}
-.no-records {
-  position: absolute;
-  width: 100%;
-  margin-top: 20px;
-  text-align: center;
-}
 .container-left {
   width: 13vw;
   height: 100vh;
@@ -90,10 +58,10 @@ input[type="text"]:focus {
   left: 0;
   background-color: #ffffff;
   color: white;
-  margin-left: 3px;
+  margin-left:  8.9%;
 }
 .container-right {
-  margin-left: 5vw;
+  margin-left: -16vw;
   width: 80vw;
 }
 

@@ -1,5 +1,4 @@
 <template>
-    <div style="margin-left:-40px;">
       <div class="row">
         <div class="navigation">
        <ul>
@@ -9,7 +8,6 @@
       </ul>
     </div>
       </div>
-    </div>
     <br>
      <table class="table table-striped align-middle">
         <thead class="align-middle ">
@@ -136,7 +134,7 @@ export default {
   }
   .navigation{
        justify-content: center;
-       margin-left:20%;
+       margin-left:30%;
   }
 .navigation li{
   list-style-type: none;
@@ -164,9 +162,9 @@ a.active-nav{
   color:white;
 }
  table{
-  width:1150px;
+  width:1000px;
   padding:5px;
-  margin-left: -40px;;
+  margin-left: 5%;
 }
 th{
     padding:10px;
