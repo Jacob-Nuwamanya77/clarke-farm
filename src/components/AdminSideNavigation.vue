@@ -1,23 +1,24 @@
 <template>
+<!-- eslint-disable max-len -->
   <div class="nav-container">
     <div class="logo">
       <h4>Clarke Farm</h4>
     </div>
     <ul>
       <li>
-        <router-link to=""><span> <fa icon="home"/></span> &ensp;Home</router-link>
+        <router-link to="/admin/dashboard"><span> <fa icon="home"/></span> &ensp;Home</router-link>
       </li>
        <li>
-        <router-link to=""> <span><fa icon="book"/></span>  &ensp;Booking</router-link>
+        <router-link to="/admin/booking"> <span><fa icon="book"/></span>  &ensp;Booking</router-link>
       </li>
        <li>
-        <router-link to=""><fa icon="comments"/>&ensp;User Review</router-link>
+        <router-link to="/admin/reviews"><fa icon="comments"/>&ensp;User Review</router-link>
       </li>
        <li>
-        <router-link to=""><fa icon="cog"/> &ensp;Settings</router-link>
+        <router-link to="/admin/settings"><fa icon="cog"/> &ensp;Settings</router-link>
       </li>
       <li>
-        <router-link to="" class="logout"><fa icon="sign-out"/> &ensp;Logout</router-link>
+        <router-link to="/admin" class="logout"><fa icon="sign-out"/> &ensp;Logout</router-link>
       </li>
     </ul>
   </div>
@@ -34,6 +35,7 @@ export default {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
+  margin:auto;
 }
 .nav-container ul {
   padding-left: 0;

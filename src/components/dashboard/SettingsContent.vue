@@ -80,7 +80,7 @@ export default {
   }
   .navigation{
        justify-content: center;
-       margin-left:20%;
+       margin-left:25%;
   }
  .navigation li{
   list-style-type: none;
@@ -96,8 +96,9 @@ export default {
 .action ul{
   list-style-type: none;
   position: absolute;
-  color: #068d68;
+ color: rgba(0, 0, 0, 0.5);
   border: none;
+  margin-left:8%;
 
 }
 
@@ -119,9 +120,10 @@ a.active-nav{
   color:white;
 }
  table{
-  width:1150px;
+  width:1000px;
   padding:5px;
   margin-top:3%;
+  margin-left:10%;
 }
 th{
     padding:10px;
@@ -146,15 +148,18 @@ img{
   margin-bottom: 3%;
 }
 span{
-  color:#045C44;
+ color: rgba(0, 0, 0, 0.5);
    font-size:17px;
 }
-.del span{
+span:hover{
+  color: #068d68;
+}
+.del span:hover{
   color:red;
 }
 hr{
-  margin-right: 10%;
-  width:1150px;
+   margin-left: 9%;
+  width:1050px;
 }
 
 </style>
