@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 <template>
   <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <div>
@@ -31,46 +30,54 @@
               <div class="stat-num">300</div>
               <div class="stat-text">Seasonal workers</div>
             </div>
-         </div>
+          </div>
         </div>
         <div id="our-projects">
           <p class="section-sub-heading">Projects</p>
-          <div class="info-display">
-            <div class="card">
-              <div class="card-image-container">
-                <img src="@/assets/images/mother-garden.jpg" alt="coffee" aria-hidden="true">
+          <div id="project-container">
+            <!-- <div id="scroll-left" class="angle-scroll">
+              <fa icon="angle-left" class="angle-icon"/>
+            </div> -->
+            <div class="info-display">
+              <div class="card">
+                <div class="card-image-container">
+                  <img src="@/assets/images/mother-garden.jpg" alt="coffee" aria-hidden="true">
+                </div>
+                <div class="card-content">
+                  <p class="card-title">Coffee</p>
+                  <p class="card-text">
+                    300+ acres of robusta coffee and currently harvesting
+                    700,000 kilograms annually.
+                  </p>
+                </div>
               </div>
-              <div class="card-content">
-                <p class="card-title">Coffee</p>
-                <p class="card-text">
-                  300+ acres of robusta coffee and currently harvesting
-                  700,000 kilograms annually.
-                </p>
+              <div class="card">
+                <div class="card-image-container">
+                  <img src="@/assets/images/motocross1.jpg" alt="tourism" aria-hidden="true">
+                </div>
+                <div class="card-content">
+                  <p class="card-title">Tourism</p>
+                  <p class="card-text">
+                    Enjoy jeep rides, bouldering, riverwalks among many other
+                    activities. Check out our visit page for more details.
+                  </p>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-image-container">
+                  <img src="@/assets/images/river-walks.jpg" alt="eucalyptus" aria-hidden="true">
+                </div>
+                <div class="card-content">
+                  <p class="card-title">Eucalyptus</p>
+                  <p class="card-text">
+                    Over 200+ ha of conservation projects.
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-image-container">
-                <img src="@/assets/images/motocross1.jpg" alt="tourism" aria-hidden="true">
-              </div>
-              <div class="card-content">
-                <p class="card-title">Tourism</p>
-                <p class="card-text">
-                  Enjoy jeep rides, bouldering, riverwalks among many other
-                  activities. Check out our visit page for more details.
-                </p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-image-container">
-                <img src="@/assets/images/river-walks.jpg" alt="eucalyptus" aria-hidden="true">
-              </div>
-              <div class="card-content">
-                <p class="card-title">Eucalyptus</p>
-                <p class="card-text">
-                  Over 200+ ha for conservation projects.
-                </p>
-              </div>
-            </div>
+            <!-- <div id="scroll-right" class="angle-scroll">
+              <fa icon="angle-right" class="angle-icon"/>
+            </div> -->
           </div>
         </div>
         <div class="linedesign"></div>
@@ -116,10 +123,9 @@ export default {
   position: relative;
   margin-top: 55px;
 }
-@media screen and (max-width: 576px){
+@media screen and (max-width:700px){
   .about{
-    margin-top:20px;
-    font-size: 14px;
+    padding-left: 20px;
   }
 }
 .section-title{
@@ -143,8 +149,13 @@ export default {
   right: 0;
   background-color: #068d68;
 }
+@media screen and (max-width:700px){
+  .linedesign{
+    width:25%;
+  }
+}
 .sub-text{
-  width:60%;
+  width:70%;
   text-align: center;
   line-height: 2;
   margin-left: auto;
@@ -166,15 +177,23 @@ export default {
 }
 .stat-container{
   display: flex;
-  flex-wrap: wrap;
-  width:70%;
-  justify-content:space-between;
-  margin-left: auto;
-  margin-right: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
-@media screen and (max-width:480px){
+.stat-container::-webkit-scrollbar{
+  width:0px;
+}
+@media screen and (min-width:768px){
   .stat-container{
-    width:100%;
+    width:85%;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width:900px){
+  .stat-container{
+    width:70%;
   }
 }
 .stat{
@@ -182,10 +201,9 @@ export default {
   min-width: 100px;
   text-align: center;
 }
-
-@media screen and (max-width:480px){
+@media screen and (max-width:900px){
   .stat{
-    text-align:left;
+    margin-right: 25px;
   }
 }
 .stat-num{
@@ -203,21 +221,25 @@ export default {
   font-family: Playfair;
   font-weight: bold;
 }
-
-.info-display{
-  display:flex;
+#project-container{
+  display: flex;
+  position:relative;
   justify-content: center;
   margin-top:30px;
   overflow-x: auto;
   overflow-y: hidden;
 }
-.info-display::-webkit-scrollbar{
+#project-container::-webkit-scrollbar{
   width:0px;
 }
 @media screen and (max-width:900px){
-  .info-display{
+  #project-container{
     justify-content: start;
   }
+}
+
+.info-display{
+  display:flex;
 }
 .card{
   max-width:250px;
@@ -226,6 +248,7 @@ export default {
   margin-right: 20px;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
+
 .card-image-container{
   height:60%;
 }
@@ -238,6 +261,7 @@ export default {
   margin-top: 5px;
   padding-left: 10px;
 }
+
 .card-title{
   font-weight: bold;
 }
@@ -249,7 +273,7 @@ export default {
   color: #068d68;
 }
 .about-farm{
-  margin:90px auto;
+  margin:70px auto;
 }
 #scheme-details{
   display: flex;
@@ -332,5 +356,30 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.angle-scroll{
+  width:40px;
+  height:40px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+#scroll-right{
+  margin-left:12px;
+}
+#scroll-left{
+  margin-right: 35px;
+}
+.angle-icon{
+  font-size:20px;
+  color:rgb(200,200,200);
+  display:block;
+  width:100%;
+  height:100%;
+}
+.angle-icon:hover{
+  color: rgba(0,0,0,0.7);
+  cursor: pointer;
 }
 </style>

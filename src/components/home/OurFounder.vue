@@ -41,12 +41,6 @@
             jeep rides, river walks and so much more. Navigate
             through our platform and when you can, come visit for an unforgetable experience.
          </p>
-         <p>
-           Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Molestiae eligendi accusantium voluptate rerum minima iusto pariatur corporis
-            voluptatibus ipsum! Molestias provident ea quidem eaque!
-            Illo quos dolore provident ullam minima?
-         </p>
       </div>
     </div>
   </div>
@@ -66,59 +60,38 @@ export default {
   position: relative;
   margin-top: 80px;
 }
-@media screen and (max-width:880px){
+@media screen and (max-width:700px){
   .our-founder{
-    max-height: 100%;
+    padding-left: 20px;
   }
 }
-@media screen and (max-width: 576px){
-  .our-founder{
-    margin-top:20px;
-  }
-}
-@media screen and (min-width:576px){
-  .our-founder{
-    margin-top:45px;
-  }
-}
-
 .our-founder-heading p{
   text-align: center;
 }
-@media screen and (max-width:768px){
-  .our-founder-heading p{
-    width:95%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
 .container-founder-description{
   margin-top:40px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
 }
 .container-left{
-  width:35%;
+  width:95%;
 }
-.container-right{
-  width:60%;
-  padding-left:50px;
-}
-@media screen and (max-width:880px){
+@media screen and (min-width:700px){
   .container-founder-description{
-    display: block;
+    display: flex;
+    width:85%;
+    margin-left: auto;
+    margin-right: auto;
   }
   .container-left{
-    width:90%;
-    margin-left: auto;
-    margin-right: auto;
+    width:40%;
   }
   .container-right{
-    width:90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left:inherit;
+    width:60%;
+    padding-left: 20px;
+  }
+}
+@media screen and (min-width:1024px){
+  .container-founder-description{
+    width:70%;
   }
 }
 .section-title{
