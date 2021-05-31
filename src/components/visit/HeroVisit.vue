@@ -120,6 +120,12 @@ img{
     width:100%;
   }
 }
+@media screen and (max-width:480px){
+  .text-container{
+    text-align: left;
+    padding-left: 10px;
+  }
+}
 .text-container p{
   font-size: 28px;
   font-weight: bold;
@@ -138,6 +144,11 @@ img{
     margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+@media screen and (max-width:480px){
+  .book-btn-container{
+    margin-left:0px;
   }
 }
 .book-btn-container:hover{

@@ -2,9 +2,9 @@
   <div class="our-offers">
     <div class="description">
       <p class="section-title">What We Offer</p>
-      <p>
+      <p class="sub-text">
         See all the activities you can enjoy, the accommodations to
-        choose from<br>and what our guests say about us.
+        choose from and what our guests have to say about us.
       </p>
       <div class="linedesign"></div>
     </div>
@@ -35,7 +35,7 @@
         <div class="card-content">
           <p class="card-title">Bouldering</p>
           <p class="card-text">
-            Walk to the top of our boulders and enjoy beautiful sunsets.
+             Walk to the top of our boulders and enjoy beautiful sunsets.
           </p>
         </div>
       </div>
@@ -74,6 +74,7 @@ export default {
   font-size: 25px;
   margin-bottom:20px;
   font-family: Playfair;
+  text-align: center;
 }
 
 @media screen and (max-width:1280px){
@@ -81,10 +82,7 @@ export default {
     font-size: 20px;
   }
 }
-.description p{
-  text-align: center;
-  margin-top:15px;
-}
+
 .linedesign {
   width: 15%;
   height: 25px;
@@ -92,6 +90,24 @@ export default {
   top:0;
   left: 0;
   background-color: #068d68;
+}
+.sub-text{
+  width:70%;
+  text-align: center;
+  line-height: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (max-width:990px){
+  .sub-text{
+    width:100%;
+  }
+}
+@media screen and (max-width:480px){
+  .sub-text{
+    text-align: left;
+    padding-left: 10px;
+  }
 }
 .navigation{
   margin-left: auto;
@@ -204,7 +220,4 @@ a.active-nav{
   background-color: var(--dark-green);
   color:white;
 }
-/* div{
-  border:1px solid green;
-} */
 </style>

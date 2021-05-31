@@ -3,14 +3,11 @@
     <div class="popular-activities-container">
       <div class="description">
         <p class="section-title">Popular Activities</p>
-        <p>
+        <p class="sub-text">
           Clarke Farm is a 1500 acre farm mixed farm with rivers,
           natural and eucalyptus forests.
-        </p>
-        <p>
-          There is plenty to do and see at the farm and these are
-        </p>
-        <p>The most popular activities</p>
+          There is plenty to do and see at the farm and these are The most popular activities
+          </p>
         <div class="linedesign"></div>
       </div>
       <div class="popular-stat">
@@ -65,6 +62,7 @@ export default {
   font-size: 25px;
   margin-bottom:30px;
   font-family: Playfair;
+  text-align: center;
 }
 
 @media screen and (max-width:1280px){
@@ -72,11 +70,6 @@ export default {
     font-size: 20px;
   }
 }
-.description p{
-  text-align: center;
-  margin-top:15px;
-}
-
 .linedesign {
   width: 30%;
   height: 25px;
@@ -84,6 +77,24 @@ export default {
   top:0;
   right: 0;
   background-color: #068d68;
+}
+.sub-text{
+  width:70%;
+  text-align: center;
+  line-height: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (max-width:990px){
+  .sub-text{
+    width:100%;
+  }
+}
+@media screen and (max-width:480px){
+  .sub-text{
+    text-align: left;
+    padding-left: 10px;
+  }
 }
 .popular-stat{
   width:50%;
@@ -163,7 +174,7 @@ export default {
   justify-content: space-around;
   margin-top: 70px;
   flex-wrap: wrap;
-  width: 60%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
 }

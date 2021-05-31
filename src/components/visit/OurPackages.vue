@@ -2,9 +2,9 @@
   <div class="our-packages">
     <div class="description">
       <p class="section-title">Our Packages</p>
-      <p>
-        We offer team building exercise venues for corporate events,<br>
-        tourists looking for adventure and training programs in <br>
+      <p class="sub-text">
+        We offer team building exercise venues for corporate events,
+        tourists looking for adventure and training programs in
         best agricultural practises.
       </p>
       <div class="linedesign"></div>
@@ -77,6 +77,7 @@ export default {
   font-size: 25px;
   margin-bottom:20px;
   font-family: Playfair;
+  text-align: center;
 }
 
 @media screen and (max-width:1280px){
@@ -84,10 +85,7 @@ export default {
     font-size: 20px;
   }
 }
-.description p{
-  text-align: center;
-  margin-top:15px;
-}
+
 .linedesign {
   width: 30%;
   height: 25px;
@@ -95,6 +93,24 @@ export default {
   top:0;
   right: 0;
   background-color: #068d68;
+}
+.sub-text{
+  width:70%;
+  text-align: center;
+  line-height: 2;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (max-width:990px){
+  .sub-text{
+    width:100%;
+  }
+}
+@media screen and (max-width:480px){
+  .sub-text{
+    text-align: left;
+    padding-left: 10px;
+  }
 }
 .packages-container{
   display:flex;
