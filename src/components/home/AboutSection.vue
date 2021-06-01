@@ -5,8 +5,9 @@
       <div class="about-description">
         <p class="section-title">Who we are</p>
         <p class="sub-text">
-          Clarke Farm is a 1500 acre farm located in Kitabale, Kyenjojo District
-          in Uganda. Robusta coffee is the primary crop grown on the farm.
+          Clarke Farm is a 1,500 acre farm located in Katambale, Kyarusozi Kyenjojo
+          district in Uganda. Approximately half the farm is planted in Robusta coffee.
+          Other crops include Eucalyptus, Macadamia, Irish potatoes, Maize, Mangoes and Oranges.
         </p>
         <div id="capacity">
           <div class="stat-container">
@@ -16,7 +17,7 @@
             </div>
             <div class="stat">
               <div class="stat-num">08</div>
-              <div class="stat-text">Projects total</div>
+              <div class="stat-text">Agricultural projects</div>
             </div>
             <div class="stat">
               <div class="stat-num">02</div>
@@ -46,7 +47,7 @@
                 <div class="card-content">
                   <p class="card-title">Coffee</p>
                   <p class="card-text">
-                    300+ acres of robusta coffee and currently harvesting
+                    750 acres of robusta coffee and currently harvesting
                     700,000 kilograms annually.
                   </p>
                 </div>
@@ -70,7 +71,7 @@
                 <div class="card-content">
                   <p class="card-title">Eucalyptus</p>
                   <p class="card-text">
-                    Over 200+ ha of conservation projects.
+                    500 acres of conservation projects.
                   </p>
                 </div>
               </div>
@@ -87,16 +88,17 @@
       <div id="scheme-details">
         <div id="scheme-left">
           <p class="section-sub-title">
-            Clarke farm is a serene coffee farm
+            Clarke farm and coffee estate
           </p>
           <p id="scheme-text">
             We have recently invested in <span class="about-span">TOURISM </span>
-            encouraged by the serene location of the farm, surrounded by natural
-            forests with rivers , monkeys birds and so much more.
-            There are other projects on the farm for conservation and educational
-            purposes which include bamboo, oranges, eucalyptus, mangoes etc.
-            We also have an outgrower program under our social development
-            program.
+            encouraged by the location and hilly topography of the farm which
+            provides amazing views. The farm has several natural waterways and
+            lies adjacent to a natural forest with rivers, monkeys and birds.
+            There are also projects for conservation and educational
+            purposes such as planting bamboo, and reforestation. An outgrower program
+            is underway with the goal of training in production of Robusta coffee for
+            2,000 smallholders, with Clarke farm providing an end market.
           </p>
           <div class="contact-btn-container">
             <a href="">Visit Us</a>
@@ -173,7 +175,7 @@ export default {
   }
 }
 #capacity{
-  margin-top: 10px;
+  margin-top: 30px;
 }
 .stat-container{
   display: flex;
@@ -328,7 +330,7 @@ export default {
 }
 #scheme-text{
   line-height: 2;
-  margin-top:25px;
+  margin-top:18px;
 }
 .contact-btn-container{
   height:35px;

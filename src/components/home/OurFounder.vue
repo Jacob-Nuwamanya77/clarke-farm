@@ -19,28 +19,26 @@
         </figure>
       </div>
       <div class="container-right">
-         <p>
-            Clarke farm represents a 30 year journey focused on quality and community development.
-         </p>
-         <p>
-           A journey of investing in people and the communities.
-            It started in Luweero shortly after the 1986 war where I built a community hospital
-            that still stands to this day.
-         </p>
-         <p>
-           It was extremely difficult to access good quality health care
-            in the war torn region or even equipment and often times,
-            I had to drive to Kenya to acquire the tools.
-         </p>
-         <p>
-           I am proud of my experiences and the continued unwavering
-            focus on quality. This is what Clarke Coffee is all about, quality.
-         </p>
-         <p>
-           There is more to the story, 2000 outgrower farmers,
-            jeep rides, river walks and so much more. Navigate
-            through our platform and when you can, come visit for an unforgetable experience.
-         </p>
+        <p class="sub-text">
+          Dr. Ian Clarke came to Uganda 33 years ago
+          with his wife Robbie and their three children, Sean, Michael and Lauren.
+        </p>
+        <p class="sub-text">
+          Since then he has been on a journey of investing in people and communities
+          in Uganda, first in Luweero shortly after the civil war (1982 – 1986) where
+          he founded a church hospital, Kiwoko Hospital, which still stands to this day
+          providing community and curative services at very low cost. It has one of the best
+          neonatal intensive care units in Uganda.
+        </p>
+        <p class="sub-text">
+          Later Ian and Robbie moved to Kampala where he set up International Hospital
+          and International Medical Centres. Subsequently he founded Clarke International
+          University, while his son Sean founded Clarke Junior School. These projects were
+          for development in the health and education sector. More recently he invested in
+          agriculture in Clarke Farm. The agricultural sector in Uganda supports 80% of the
+          population, so if one can bring improvements in this sector it has a significant effect
+          on household incomes of a large segment of the population.
+        </p>
       </div>
     </div>
   </div>
@@ -116,7 +114,9 @@ export default {
   left: 0;
   background-color: #068d68;
 }
-
+.sub-text{
+  line-height: 1.6;
+}
 iframe{
  height:380px;
  width:100%;

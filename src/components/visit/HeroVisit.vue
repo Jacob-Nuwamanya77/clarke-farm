@@ -7,7 +7,7 @@
     </div>
     <div class="right-container">
       <div class="text-container">
-        <p>Open Yourself To New Experiences</p>
+        <p>Enjoy the unique experiences of</p>
         <p>And Live A Life</p>
         <p>You Will Remember</p>
         <div class="book-btn-container">
