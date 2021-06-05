@@ -7,7 +7,6 @@
         tourists looking for adventure and training programs in
         best agricultural practises.
       </p>
-      <div class="linedesign"></div>
     </div>
     <div class="packages-container">
       <div class="card corporate-package">
@@ -86,14 +85,6 @@ export default {
   }
 }
 
-.linedesign {
-  width: 30%;
-  height: 25px;
-  position:absolute;
-  top:0;
-  right: 0;
-  background-color: #068d68;
-}
 .sub-text{
   width:70%;
   text-align: center;

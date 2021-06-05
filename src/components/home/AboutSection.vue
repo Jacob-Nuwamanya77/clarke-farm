@@ -105,7 +105,7 @@
           </div>
         </div>
         <div id="scheme-right">
-          <img src="@/assets/images/farm.jpg" alt="farm">
+          <img src="@/assets/images/clarke-farm.jpg" alt="farm">
         </div>
       </div>
     </div>
