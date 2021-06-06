@@ -7,7 +7,6 @@
         tourists looking for adventure and training programs in
         best agricultural practises.
       </p>
-      <div class="linedesign"></div>
     </div>
     <div class="packages-container">
       <div class="card corporate-package">
@@ -22,7 +21,7 @@
             <li>Special requests</li>
           </ul>
           <div class="button-container">
-            <a href="">Contact Us</a>
+            <a href="#visit-registration-form">Contact Us</a>
           </div>
         </div>
       </div>
@@ -37,7 +36,7 @@
             <li>All Non-priced activities</li>
           </ul>
           <div class="button-container">
-            <a href="">Book A Trip</a>
+            <a href="#visit-registration-form">Book A Trip</a>
           </div>
         </div>
       </div>
@@ -53,7 +52,7 @@
             <li>Chickens</li>
           </ul>
           <div class="button-container">
-            <a href="">For More Information</a>
+            <a href="/training-programs">For More Information</a>
           </div>
         </div>
       </div>
@@ -86,14 +85,6 @@ export default {
   }
 }
 
-.linedesign {
-  width: 30%;
-  height: 25px;
-  position:absolute;
-  top:0;
-  right: 0;
-  background-color: #068d68;
-}
 .sub-text{
   width:70%;
   text-align: center;
