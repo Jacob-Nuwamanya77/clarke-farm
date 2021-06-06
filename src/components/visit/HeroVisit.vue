@@ -13,7 +13,7 @@
         the culture while enjoying freshly roasted coffee from the farm.
       </p>
       <div class="contact-btn-container">
-        <a href="">Book A Trip</a>
+        <a href="#visit-registration-form">Book A Trip</a>
       </div>
       <div id="rating">
         <div id="icon">
