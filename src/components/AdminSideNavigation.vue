@@ -4,7 +4,8 @@
     <div class="logo">
       <h4>Clarke Farm</h4>
     </div>
-    <ul>
+    <div class="sidenav">
+        <ul>
       <li>
         <router-link to="/admin/dashboard"><span> <fa icon="home"/></span> &ensp;Home</router-link>
       </li>
@@ -17,10 +18,11 @@
        <li>
         <router-link to="/admin/settings"><fa icon="cog"/> &ensp;Settings</router-link>
       </li>
-      <li>
+      <!-- <li>
         <router-link to="/admin" class="logout"><fa icon="sign-out"/> &ensp;Logout</router-link>
-      </li>
+      </li> -->
     </ul>
+    </div>
   </div>
 </template>
 
@@ -31,7 +33,11 @@ export default {
 </script>
 
 <style scoped>
-.nav-container {
+.sidenav{
+  margin-top: 10px;
+  margin-left: 10px;
+}
+/* .nav-container {
   width: 100%;
   height: 100%;
   background-color: #ffffff;
@@ -49,14 +55,10 @@ export default {
   text-align: left;
 
 }
-a {
-  color: #2c3e50;;
-  padding-left: 30px;
-  text-decoration: none;
-  height: 14px;
-  display: flex;
-  align-items: center;
-  padding:20px;
+*/
+a{
+   background-color: #f5f5f5;
+  color: #068d68;
 }
 a:active{
   background-color: #f5f5f5;

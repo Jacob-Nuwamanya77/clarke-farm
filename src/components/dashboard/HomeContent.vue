@@ -9,7 +9,7 @@
     </div>
       </div>
     <br>
-     <table class="table table-striped align-middle">
+     <table class="table table-striped table-responsive">
         <thead class="align-middle ">
           <th>Date</th>
           <th>Name</th>
@@ -162,9 +162,8 @@ a.active-nav{
   color:white;
 }
  table{
-  width:1000px;
   padding:5px;
-  margin-left: 5%;
+  margin-left:10px;
 }
 th{
     padding:10px;

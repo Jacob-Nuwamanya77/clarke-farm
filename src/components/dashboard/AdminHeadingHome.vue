@@ -3,6 +3,7 @@
     <div class="col-8">
       <h3>{{ heading }}</h3>
       <h6>Welcome {{user}},</h6>
+      <hr>
     </div>
    <div class="col-4">
      <ul>
@@ -15,8 +16,7 @@
     </ul>
    </div>
    <br>
-   <h5>Notifications</h5>
-   <hr>
+   <!-- <h5>Notifications</h5> -->
   </div>
 </template>
 <script>
@@ -38,47 +38,27 @@ export default {
 
 <style scoped>
 .top-row{
-  margin-top: 10vw;
-}
-div {
-  text-align: left;
-}
-h3{
-  color:#045C44;
-   margin-left: 23%;
-}
-h6{
-   margin-left: 23%;
+  margin-top:130px;
+  margin-left: 5px;
 }
 
-ul{
-  list-style-type: none;
-   text-decoration: none;
-   display: flex;
-  align-items: right;
-  position: absolute;
-  top: 5px;
-  right: 100px;
-  color: #068d68;
-  border: none;
-  font-size: 25px;
+h3{
+  color:#045C44;
 }
+
 li{
    list-style-type: none;
    text-decoration: none;
-   display: flex;
+   float: right;
+   padding: 20px;
 
 }
-h5{
-  color:#045C44;
-   margin-left: 15.5%;
-}
+
 span{
    color:#045C44;
 }
 hr{
-  margin-left: 13%;
- width:1050px;
+  width: 1000px;
 }
 
 /* .heading-icons{

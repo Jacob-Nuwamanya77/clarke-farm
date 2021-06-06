@@ -1,8 +1,9 @@
 <template>
      <div class="row">
        <div class="col-md-12 content">
-      <p class="mt-3">Filter Results</p>
+      <h3>Bookings</h3>
       <table  class="filter">
+      <p class="mt-5">Filter Results</p>
         <tr>
           <td>From:</td><td><input type="date" class="datepicker form-control" /></td>
           <td class="label">Category:</td><td><select class="category form-control">
@@ -150,13 +151,20 @@ export default {
 }
 
 .content {
-  margin-left: 12%;
+  margin-left: 150px;
   margin-top: 20px;
 
 }
 .filter{
   width:700px;
-  padding:5px;
+  margin-left: -80px;
+  /* padding:5px; */
+}
+h3{
+  margin-top: 30px;
+}
+p,h3{
+  margin-left: -60px;
 }
 .filter tr{
   padding:5px;
@@ -197,23 +205,18 @@ text-align: right;
   margin-left: 40px;
 }
 
-.row .table-row{
-  display: inline-block;
-}
-
 hr{
-  margin-left: 12%;
-  width:980px;
+margin-left: 100px;
 }
 router-link .logout{
   margin-top: 140px;
 }
 
 #client-table{
- width:1000px;
   padding:5px;
-  margin-left: 12%;
+  margin-left:-80px;
   margin-top: 2%;
+  margin-left: 100px;
 }
 #client-table th{
     padding:10px;

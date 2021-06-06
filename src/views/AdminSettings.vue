@@ -1,19 +1,15 @@
 <template>
   <div class="row">
     <div class="col-md-3">
-      <!-- <AdminSideNavigation /> -->
     </div>
     <div class="col-md-9">
-      <!-- <AdminHome/> -->
        <AdminSettings/>
     </div>
   </div>
 </template>
 
 <script>
-// import AdminSideNavigation from '@/components/dashboard/SideNav.vue';
 import AdminSettings from '@/components/dashboard/AdminSettings.vue';
-// import AdminHome from '@/components/dashboard/AdminHome.vue';
 
 export default {
   name: 'Admin',

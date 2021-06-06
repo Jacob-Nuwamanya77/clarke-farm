@@ -13,7 +13,6 @@
       </li>
     </ul>
    </div>
-   <hr>
   </div>
 </template>
 <script>
@@ -42,24 +41,6 @@ h3{
   margin-left:19%;
 }
 
-ul{
-  list-style-type: none;
-   text-decoration: none;
-   display: flex;
-  align-items: right;
-  position: absolute;
-  top: 5px;
-  right: 100px;
-  color: #068d68;
-  border: none;
-  font-size: 25px;
-}
-li{
-   list-style-type: none;
-   text-decoration: none;
-   display: flex;
-
-}
 h5{
   color:#045C44;
 }
