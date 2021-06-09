@@ -59,8 +59,7 @@
        <hr>
     <div class="table-settings">
          <table class="table table-striped">
-        <thead class="align-left ">
-          <th></th>
+        <thead class="align-left bg-secondary text-light ">
           <th>Activity Name</th>
           <th>Image</th>
           <th>Activity Description</th>
@@ -126,20 +125,20 @@ table{
   width:1000px;
   padding:0px;
   margin-top:0%;
-  margin-left:5%;
+  margin-left:10%;
 }
 th{
     padding:5px;
     vertical-align:left;
      text-align: left;
-      border:1px solid blue;
+      /* border:1px solid blue; */
 }
 td{
     text-align: center;
     font-family: 'Roboto';
     font-size:14px;
     padding:0px;
-     border:1px solid blue;
+     /* border:1px solid blue; */
 }
 table,td,th{
      font-family: 'Roboto';
@@ -162,7 +161,7 @@ img{
   margin-left: 7%;
   width:1060px;
 }
-div{
+/* div{
   border:1px solid blue;
-}
+} */
 </style>
