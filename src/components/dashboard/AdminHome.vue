@@ -9,8 +9,11 @@
       </div>
       <div class="after-toprow">
        <HomeContent/>
+        <IncomingGuests/>
+       <div class="pagination">
+        <Pagination />
       </div>
-
+      </div>
     </div>
   </div>
 </template>
@@ -19,6 +22,8 @@
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
 import AdminHeadingHome from '@/components/dashboard/AdminHeadingHome.vue';
 import HomeContent from '@/components/dashboard/HomeContent.vue';
+import IncomingGuests from '@/components/dashboard/HomeTableIncoming.vue';
+import Pagination from '@/components/pagination.vue';
 
 export default {
   name: 'Admin',
@@ -31,6 +36,8 @@ export default {
     AdminSideNavigation,
     AdminHeadingHome,
     HomeContent,
+    IncomingGuests,
+    Pagination,
   },
 };
 </script>
@@ -52,6 +59,7 @@ export default {
   margin-top: 0px;
   margin-left: -5%;
   margin-right: 0%;
+
 }
 .container-left {
   width: 13vw;
@@ -72,6 +80,11 @@ export default {
   .container-right {
   margin-left: 10vw;
   width: 80vw;
+}
+.pagination {
+  width:auto;
+   margin-top:3%;
+   margin-left:5%;
 }
 
 </style>
