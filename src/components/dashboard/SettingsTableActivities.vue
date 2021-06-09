@@ -1,18 +1,13 @@
 <template>
-  <!-- eslint-disable max-len -->
-  <div class="container">
-     <div class="action">
-          <a
-          href="#"
-          class="btn btn-outline-success"
-          type="button"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModal"
-          >Add
-        </a>
-     </div>
-    <hr>
-     <!-- Modal -->
+<!-- eslint-disable max-len -->
+    <div class="action">
+          <ul>
+            <li><a href="#" class="btn-sm" role="button" data-bs-toggle="modal"
+          data-bs-target="#exampleModal"><span> <fa icon="plus"/></span></a></li>
+            <li><a href="#" class="btn-sm" role="button"><span> <fa icon="edit"/></span></a></li>
+            <li><a href="#" class="btn-sm del" role="button"><span> <fa icon="trash"/></span></a></li>
+          </ul>
+               <!-- Modal -->
     <div class="modal fade" tabindex="-1"  id="exampleModal">
    <div class="modal-dialog">
     <div class="modal-content">
@@ -21,65 +16,119 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="">
-        <div class="input-group mb-3">
-         <input type="text" class="form-control" placeholder="Activity Name" aria-label="activity_name" aria-describedby="basic-addon1">
-      </div>
-       <div class="input-group mb-3">
-          <input type="file" class="form-control" id="customFile" />
-      </div>
-       <div class="input-group mb-3">
-           <textarea class="form-control"  placeholder="Activity Description" rows="3"></textarea>
-      </div>
-      <div class="input-group mb-3">
-         <input type="text" class="form-control" placeholder="Fee" aria-label="activity_name" aria-describedby="basic-addon1">
+        <form @submit.prevent="onSubmit" enctype="multipart/form-data">
+        <input type="file" ref="file" @change="onSelect" />
+        <h6>{{ message }}</h6>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Activity Name"
+            v-model="activity.activityname"
+          />
+        </div>
+          <br>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="description"
+            v-model="activity.description"
+            required
+          />
+        </div>
+         <br>
+         <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="fee"
+            v-model="activity.fee"
+          />
+        </div>
+         <br>
+
+         <div class="modal-footer">
+        <button  class="btn btn-success">Save changes</button>
       </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success">Save changes</button>
-      </div>
     </div>
+     </div>
   </div>
-</div>
-   <div class="table-settings">
-    <table class="table table-striped align-middle">
-      <thead class="align-middle">
-        <th></th>
-        <th>Activity Name</th>
-        <th>Image</th>
-        <th>Activity Description</th>
-        <th>Price</th>
-      </thead>
-      <tbody>
-      </tbody>
-      </table>
       </div>
-  </div>
+       <hr>
+    <div class="table-settings">
+         <table class="table table-striped align-middle">
+        <thead class="align-middle ">
+          <th></th>
+          <th>Activity Name</th>
+          <th>Image</th>
+          <th>Activity Description</th>
+          <th>Price</th>
+        </thead>
+        <tbody>
+        </tbody>
+     </table>
+    </div>
 </template>
 <script>
+import axios from 'axios';
+
+const api = 'http://localhost:3000';
 export default {
+  name: 'SettingsTableActivities',
   data() {
     return {
+      activity: {
+        activityname: '',
+        description: '',
+        fee: '',
+      },
     };
+  },
+  methods: {
+    onSelect() {
+      const file = this.$refs.file.files[0];
+      this.file = file;
+    },
+    async onSubmit() {
+      const formData = new FormData();
+      formData.append('file', this.file);
+      // Form1
+      const endpoint1 = '/uploads';
+      try {
+        await axios.post(api + endpoint1, formData);
+        this.message = 'uploaded file successfully';
+      } catch {
+        this.message = 'file not uploaded';
+      }
+      // Form2
+      const endpoint2 = '/activities/add';
+      axios
+        .post(api + endpoint2, this.activity)
+        .then(() => {
+          // this.$router.push('/list-activities');
+          this.activity = {
+            activityname: '',
+            description: '',
+            fee: '',
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
 <style scoped>
-.table-settings{
-
-  width:1000px;
-  justify-content: center;
-  padding:10px;
-   margin-left:10%;
-   align-items: center;
-}
 table{
-  width:auto;
+  width:1000px;
   padding:5px;
   margin-top:0%;
-  margin-left:00%;
+  margin-left:10%;
 }
 th{
     padding:10px;
@@ -100,13 +149,37 @@ img{
   width:150px;
    height:100px;
 }
-.action{
-  float:right;
-  display:flex
+ ul{
+    display: flex;
+  }
+.action li{
+   min-width:40px;
+  height:30px;
+}
+.action ul{
+  list-style-type: none;
+ color: rgba(0, 0, 0, 0.5);
+  border: none;
+  margin-left:8%;
 
 }
-hr{
-  margin-left: 12%;
-  width:980px;
+.action{
+  margin-bottom: 0%;
+}
+span{
+ color: rgba(0, 0, 0, 0.5);
+   font-size:17px;
+}
+span:hover{
+  color: #068d68;
+}
+.del span:hover{
+  color:red;
+}
+ hr{
+     margin-left: 9%;
+  width:900px;
+  margin-top: 0px;
+   bottom:0px;
 }
 </style>
