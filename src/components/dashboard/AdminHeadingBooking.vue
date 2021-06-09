@@ -13,6 +13,7 @@
       </li>
     </ul>
    </div>
+   <hr>
   </div>
 </template>
 <script>
@@ -33,12 +34,28 @@ export default {
 </script>
 
 <style scoped>
-div {
-  text-align: left;
+.top-row{
+  width: 100%;
+  margin-left: 60px;
+  padding: 10px;
 }
 h3{
   color:#045C44;
-  margin-left:19%;
+  margin-left:0px;
+
+}
+
+ul{
+  list-style-type: none;
+ float: right;
+  color: #068d68;
+  font-size: 20px;
+  display:flex;
+  text-align: end;
+}
+li{
+align-items: flex-end;
+margin-left: 20px;
 }
 
 h5{
@@ -48,15 +65,6 @@ span{
    color:#045C44;
 }
 hr{
-  margin-left: 12%;
-  width:980px;
+  width: 100%;
 }
-
-.div{
-  border:1px solid green;
-}
-
-/* .heading-icons{
-  margin-right:500%;
-} */
 </style>

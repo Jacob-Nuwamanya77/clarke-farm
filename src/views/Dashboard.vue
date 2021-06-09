@@ -34,14 +34,14 @@ export default {
   position: relative;
 }
 .container-left {
-  width: 13vw;
-  height: 100vh;
+ width:15%;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #068d68;
+  background-color: #ffffff;
   color: white;
-  margin-left: 8.9%;
+  margin-left: 20px;
 }
 
 </style>

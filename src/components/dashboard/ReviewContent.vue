@@ -1,7 +1,7 @@
 <template>
 <!-- eslint-disable max-len -->
-   <div class="row">
-     <div class="review">
+   <div class="row ">
+     <div class="review ">
        <table class="table">
          <tr>
            <td><input type="checkbox" class="custom-checkbox custom-control-input"></td>
@@ -14,6 +14,7 @@
             The highlight of my stay at <br> the farm was the jeep rides
             The highlight of my stay at the farm was the jeep rides</p>
            </td>
+             <a class="btn btn-danger bg-danger btn-sm light mt-5">DELETE</a>
          </tr>
           <tr>
            <td><input type="checkbox" class="custom-checkbox custom-control-input"></td>
@@ -26,6 +27,7 @@
             The highlight of my stay at <br> the farm was the jeep rides
             The highlight of my stay at the farm was the jeep rides</p>
            </td>
+             <a class="btn btn-danger bg-danger btn-sm light mt-5">DELETE</a>
          </tr>
           <tr>
            <td><input type="checkbox" class="custom-checkbox custom-control-input"></td>
@@ -38,6 +40,7 @@
             The highlight of my stay at <br> the farm was the jeep rides
             The highlight of my stay at the farm was the jeep rides</p>
            </td>
+             <a class="btn btn-danger bg-danger btn-sm light mt-5">DELETE</a>
          </tr>
        </table>
      </div>
@@ -54,12 +57,6 @@ export default {
 };
 </script>
 <style scoped>
-table{
-  margin-left: 5%;
-  width:1050px;
-
-  /* border:1px solid green; */
-}
 
 td{
    /* border:1px solid green; */

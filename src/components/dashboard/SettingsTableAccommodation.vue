@@ -1,7 +1,7 @@
 <template>
 <!-- eslint-disable max-len -->
     <div class="table-settings">
-         <table class="table table-striped align-middle">
+         <table class="table table-striped table-responsive align-middle">
         <thead class="align-middle ">
           <th></th>
           <th>Accommodation Type</th>

@@ -12,14 +12,14 @@
         <router-link to="/admin/booking"> <span><fa icon="book"/></span>  &ensp;Booking</router-link>
       </li>
        <li>
-        <router-link to="/admin/reviews"><fa icon="comments"/>&ensp;User Review</router-link>
+        <router-link to="/admin/reviews"><fa icon="comments"/>&ensp;User Reviews</router-link>
       </li>
        <li>
         <router-link to="/admin/settings/activities"><fa icon="cog"/> &ensp;Settings</router-link>
       </li>
-      <!-- <li>
+      <li>
         <router-link to="/admin" class="logout"><fa icon="sign-out"/> &ensp;Logout</router-link>
-      </li> -->
+      </li>
     </ul>
     </div>
 
@@ -40,13 +40,13 @@ export default {
 }
 .sidebar ul {
   padding-left: 0;
-  margin-top: 0vh;
+  margin-top:10px;
   height: 50vh;
 
 }
 .sidebar li {
 list-style-type: none;
-  margin-top: 5px;
+  margin-top: 25px;
   text-align: left;
 }
 
@@ -83,7 +83,9 @@ router-link{
 
 }
 .logout{
-   margin-top: 50vh;
+  color: red;
+  margin-top: 160px;
+  margin-left: 10px;
 }
 /*
 div{

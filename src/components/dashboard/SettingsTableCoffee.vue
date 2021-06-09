@@ -1,15 +1,13 @@
 <template>
 <!-- eslint-disable max-len -->
     <div class="table-settings">
-         <table class="table table-striped align-middle">
-        <thead class="align-middle ">
+         <table class="table table-striped table-bordered table-responsive">
           <th></th>
           <th> Coffee Process</th>
           <th>Image</th>
           <th> Description</th>
-        </thead>
         <tbody>
-            <tr class="table-hover">
+            <tr class="table-hover ">
                 <td><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input"></div></td>
                 <td>{{coffeeprocess1.name}}</td>
                 <td> <img src="@/assets/images/mother-garden.jpg" alt="biking" aria-hidden="true"></td>
@@ -69,10 +67,7 @@ export default {
 </script>
 <style scoped>
 table{
-  width:1000px;
   padding:5px;
-  margin-top:0%;
-  margin-left:10%;
 }
 th{
     padding:10px;

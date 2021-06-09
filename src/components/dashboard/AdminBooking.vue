@@ -2,12 +2,11 @@
   <div class="container">
     <div class="container-left">
       <AdminSideNavigation />
-      <SideNavigation/>
     </div>
     <div class="container-right">
-      <!-- <div class="top-row">
+      <div class="top-row">
         <AdminHeadingBooking heading='Bookings'/>
-      </div> -->
+      </div>
       <div class="after-toprow">
         <BookingContent/>
       </div>
@@ -19,9 +18,8 @@
 
 <script>
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
-// import AdminHeadingBooking from '@/components/dashboard/AdminHeadingBooking.vue';
+import AdminHeadingBooking from '@/components/dashboard/AdminHeadingBooking.vue';
 import BookingContent from '@/components/dashboard/BookingContent.vue';
-import SideNavigation from '@/components/dashboard/Sidenav.vue';
 
 export default {
   name: 'Admin',
@@ -32,8 +30,7 @@ export default {
 
   components: {
     AdminSideNavigation,
-    SideNavigation,
-    // AdminHeadingBooking,
+    AdminHeadingBooking,
     BookingContent,
 
   },

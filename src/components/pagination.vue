@@ -30,7 +30,7 @@ export default {
      font-size:13px;
 }
 .nav-button{
-  margin-right:15%;
+  margin-right:0px;
   padding:5px;
 }
 

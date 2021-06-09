@@ -57,10 +57,10 @@ export default {
 </script>
 <style scoped>
 table{
-  width:1000px;
+  /* width:1000px; */
   padding:5px;
   margin-top:0%;
-  margin-left:10%;
+  margin-left:70px;
 }
 th{
     padding:10px;
