@@ -10,7 +10,9 @@
       <div class="after-toprow">
        <SettingsContent/>
       </div>
-      <pignation/>
+      <div class="content-table">
+        <SettingsTable/>
+      </div>
 
     </div>
   </div>
@@ -20,6 +22,7 @@
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
 import AdminHeadingSettings from '@/components/dashboard/AdminHeadingSettings.vue';
 import SettingsContent from '@/components/dashboard/SettingsContent.vue';
+import SettingsTable from '@/components/dashboard/SettingsTableActivities.vue';
 
 export default {
   name: 'Admin',
@@ -32,6 +35,7 @@ export default {
     AdminSideNavigation,
     AdminHeadingSettings,
     SettingsContent,
+    SettingsTable,
   },
 };
 </script>
@@ -48,7 +52,8 @@ export default {
 }
 .top-row {
   position: relative;
-  padding-top: 5px;
+  padding-top: 0px;
+  margin-right:0%;
 }
 .container-left {
   width: 13vw;
@@ -56,13 +61,18 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: #068d68;
   color: white;
   margin-left:  8.9%;
 }
 .container-right {
   margin-left: -16vw;
   width: 80vw;
+}
+.pagination {
+  width:500px;
+   margin-top:3%;
+   margin-left:5%;
 }
 
 </style>

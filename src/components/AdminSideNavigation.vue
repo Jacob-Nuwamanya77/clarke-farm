@@ -1,11 +1,10 @@
 <template>
 <!-- eslint-disable max-len -->
-  <div class="nav-container">
-    <div class="logo">
-      <h4>Clarke Farm</h4>
-    </div>
-    <div class="sidenav">
-        <ul>
+  <div class="sidebar">
+     <div class="logo">
+        <h4>Clarke Farm</h4>
+     </div>
+    <ul>
       <li>
         <router-link to="/admin/dashboard"><span> <fa icon="home"/></span> &ensp;Home</router-link>
       </li>
@@ -16,7 +15,7 @@
         <router-link to="/admin/reviews"><fa icon="comments"/>&ensp;User Review</router-link>
       </li>
        <li>
-        <router-link to="/admin/settings"><fa icon="cog"/> &ensp;Settings</router-link>
+        <router-link to="/admin/settings/activities"><fa icon="cog"/> &ensp;Settings</router-link>
       </li>
       <!-- <li>
         <router-link to="/admin" class="logout"><fa icon="sign-out"/> &ensp;Logout</router-link>
@@ -33,69 +32,61 @@ export default {
 </script>
 
 <style scoped>
-.sidenav{
-  margin-top: 10px;
-  margin-left: 10px;
-}
-/* .nav-container {
+.sidebar {
   width: 100%;
   height: 100%;
-  background-color: #ffffff;
+  background-color: #068d68;
   margin:auto;
 }
-.nav-container ul {
+.sidebar ul {
   padding-left: 0;
   margin-top: 0vh;
   height: 50vh;
 
 }
-.nav-container li {
-  list-style-type: none;
+.sidebar li {
+list-style-type: none;
   margin-top: 5px;
   text-align: left;
+}
 
-}
-*/
-a{
-   background-color: #f5f5f5;
-  color: #068d68;
-}
-a:active{
-  background-color: #f5f5f5;
-  color: #068d68;
-}
-a:hover {
-  transform: scale(0.95);
+a {
+  color: #ffffff;
+  padding-left: 30px;
+  text-decoration: none;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  padding:20px;
 }
 .router-link-active {
-background-color:#ffffff;
-  color: rgba(0, 0, 0, 0.5);
+ color: #068d68;
+ background-color:#f5f5f5;
 
 }
-.router-link-active:focus {
-background-color:#f5f5f5;
-  color: #068d68;
-}
-.router-link-active:hover {
-background-color:#f5f5f5;
-  color: #068d68;
+.router-link-active:hover{
+   color: #068d68;
+    background-color:#f5f5f5;
+     transform: scale(1);
 }
 .logo{
   width: 100%;
   height: 6%;
-  color: #2c3e50;
+  color: #ffffff;
   font-size: 25px;
   font-family: 'Playfair Display';
   margin:10%;
   padding:2%;
 }
 router-link{
-    background-color:#ffffff;
-    color: #2c3e50;
+    color: #ffffff;
 
 }
 .logout{
    margin-top: 50vh;
 }
-
+/*
+div{
+  border:1px solid blue;
+} */
 </style>

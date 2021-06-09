@@ -1,18 +1,5 @@
 <template>
-<!-- eslint-disable max-len -->
-      <div class="row">
-        <div class="navigation">
-       <ul>
-         <!-- /admin/dashboard/incoming-guests -->
-        <li class=""><router-link to="/admin/dashboard/incoming-guests">Incoming Guests</router-link></li>
-        <li><router-link to="/admin/dashboard/reviews">Reviews</router-link></li>
-        <li><router-link to="/admin/dashboard/coffee-requests">Coffee Requests</router-link></li>
-      </ul>
-    </div>
-      </div>
-    <br>
-<<<<<<< HEAD
-     <table class="table table-striped table-responsive">
+     <table class="table table-striped align-middle">
         <thead class="align-middle ">
           <th>Date</th>
           <th>Name</th>
@@ -79,16 +66,56 @@
             </tr>
         </tbody>
      </table>
-=======
->>>>>>> ca3b1ed6b22cdbe8a29b5e10ea3e3e2728260cae
 </template>
 <script>
-
 export default {
-  components: {
+  data() {
+    return {
 
+      guest1: {
+        date: '25/12/2020',
+        name: 'Jane Cooper',
+        NumberOfGuests: 4,
+        PhoneNumber: '+247793078450',
+        email: 'cjane@gmail.com',
+      },
+      guest2: {
+        date: '25/12/2020',
+        name: 'Didi Cooper',
+        NumberOfGuests: 4,
+        PhoneNumber: '+247793078450',
+        email: 'djane@gmail.com',
+      },
+      guest3: {
+        date: '25/12/2020',
+        name: 'Jane Cooper',
+        NumberOfGuests: 4,
+        PhoneNumber: '+247793078450',
+        email: 'cjane@gmail.com',
+      },
+      guest4: {
+        date: '25/12/2020',
+        name: 'Jane Cooper',
+        NumberOfGuests: 4,
+        PhoneNumber: '+247793078450',
+        email: 'cjane@gmail.com',
+      },
+      guest5: {
+        date: '25/12/2020',
+        name: 'Jane Cooper',
+        NumberOfGuests: 4,
+        PhoneNumber: '+247793078450',
+        email: 'cjane@gmail.com',
+      },
+      guest6: {
+        date: '25/12/2020',
+        name: 'Jane Cooper',
+        NumberOfGuests: 4,
+        PhoneNumber: '+247793078450',
+        email: 'cjane@gmail.com',
+      },
+    };
   },
-
 };
 </script>
 <style scoped>
@@ -124,19 +151,10 @@ a.active-nav{
   background-color: #068d68;;
   color:white;
 }
- a.router-link-active{
-  background-color: #068d68;;
-  color:white;
-}
-
-.router-link-active{
-   background-color: #068d68;
-  color:white;
-  cursor: pointer;
-}
  table{
+  width:1000px;
   padding:5px;
-  margin-left:10px;
+  margin-left: 5%;
 }
 th{
     padding:10px;

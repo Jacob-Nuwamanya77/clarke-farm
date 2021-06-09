@@ -1,12 +1,14 @@
 <template>
   <div class="container">
-    <AdminHome/>
+   <div class="container-left">
+     <sidebar/>
+   </div>
   </div>
 </template>
 
 <script>
 
-import AdminHome from '@/components/dashboard/AdminHome.vue';
+import sidebar from '@/components/AdminSideNavigation.vue';
 
 export default {
   name: 'Admin',
@@ -16,7 +18,7 @@ export default {
   },
 
   components: {
-    AdminHome,
+    sidebar,
   },
 };
 </script>
@@ -30,6 +32,16 @@ export default {
   display: flex;
   flex-direction: row;
   position: relative;
+}
+.container-left {
+  width: 13vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #068d68;
+  color: white;
+  margin-left: 8.9%;
 }
 
 </style>

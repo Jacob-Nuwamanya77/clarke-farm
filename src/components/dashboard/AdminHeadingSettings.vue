@@ -41,7 +41,7 @@ div {
 }
 h3{
   color:#045C44;
-  margin-left:18%;
+  margin-left:10%;
 
 }
 
@@ -70,8 +70,8 @@ span{
    color:#045C44;
 }
 hr{
-  margin-left: 10%;
-  width:1050px;
+  margin-left: 0%;
+  width:1060px;
 }
 
 /* .heading-icons{
