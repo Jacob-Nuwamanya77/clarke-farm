@@ -25,7 +25,7 @@ export default {
   }
   .navigation{
        justify-content: center;
-       margin-left:25%;
+       margin-left:40%;
   }
  .navigation li{
   list-style-type: none;

@@ -15,7 +15,7 @@
         <router-link to="/admin/reviews"><fa icon="comments"/>&ensp;User Review</router-link>
       </li>
        <li>
-        <router-link to="/admin/settings"><fa icon="cog"/> &ensp;Settings</router-link>
+        <router-link to="/admin/settings/activities"><fa icon="cog"/> &ensp;Settings</router-link>
       </li>
       <li>
         <router-link to="/admin" class="logout"><fa icon="sign-out"/> &ensp;Logout</router-link>

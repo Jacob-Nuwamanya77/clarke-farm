@@ -65,7 +65,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #ffffff;
+ background-color: #068d68;
   color: white;
   margin-left:  8.9%;
 }

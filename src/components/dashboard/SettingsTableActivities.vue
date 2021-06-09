@@ -1,12 +1,10 @@
 <template>
 <!-- eslint-disable max-len -->
     <div class="action">
-          <ul>
-            <li><a href="#" class="btn-sm" role="button" data-bs-toggle="modal"
-          data-bs-target="#exampleModal"><span> <fa icon="plus"/></span></a></li>
-            <li><a href="#" class="btn-sm" role="button"><span> <fa icon="edit"/></span></a></li>
-            <li><a href="#" class="btn-sm del" role="button"><span> <fa icon="trash"/></span></a></li>
-          </ul>
+
+            <a href="#" class="btn btn-success btn-sm" type="button" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Add Activity</a>
+
                <!-- Modal -->
     <div class="modal fade" tabindex="-1"  id="exampleModal">
    <div class="modal-dialog">
@@ -60,8 +58,8 @@
       </div>
        <hr>
     <div class="table-settings">
-         <table class="table table-striped align-middle">
-        <thead class="align-middle ">
+         <table class="table table-striped">
+        <thead class="align-left ">
           <th></th>
           <th>Activity Name</th>
           <th>Image</th>
@@ -126,21 +124,22 @@ export default {
 <style scoped>
 table{
   width:1000px;
-  padding:5px;
+  padding:0px;
   margin-top:0%;
-  margin-left:10%;
+  margin-left:5%;
 }
 th{
-    padding:10px;
-    vertical-align: middle;
-     text-align: center;
+    padding:5px;
+    vertical-align:left;
+     text-align: left;
+      border:1px solid blue;
 }
 td{
     text-align: center;
     font-family: 'Roboto';
     font-size:14px;
-    padding:10px;
-    word-wrap: break-word;
+    padding:0px;
+     border:1px solid blue;
 }
 table,td,th{
      font-family: 'Roboto';
@@ -152,34 +151,18 @@ img{
  ul{
     display: flex;
   }
-.action li{
+.action{
    min-width:40px;
   height:30px;
+   margin-left: 80%;
+  /* float:right; */
 }
-.action ul{
-  list-style-type: none;
- color: rgba(0, 0, 0, 0.5);
-  border: none;
-  margin-left:8%;
 
+  hr{
+  margin-left: 7%;
+  width:1060px;
 }
-.action{
-  margin-bottom: 0%;
-}
-span{
- color: rgba(0, 0, 0, 0.5);
-   font-size:17px;
-}
-span:hover{
-  color: #068d68;
-}
-.del span:hover{
-  color:red;
-}
- hr{
-     margin-left: 9%;
-  width:900px;
-  margin-top: 0px;
-   bottom:0px;
+div{
+  border:1px solid blue;
 }
 </style>
