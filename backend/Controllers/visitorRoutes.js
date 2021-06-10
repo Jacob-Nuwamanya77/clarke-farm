@@ -15,7 +15,19 @@ const router = express.Router();
 router.post('/visitors/add', async (req, res) => {
   try {
     const newVisitor = new Visitor(req.body);
-    console.log(req.body)
+    console.log(req.body);
+    await newVisitor.save()
+      .then(() => res.json('Visitor Added'));
+  } catch (error) {
+    console.error(error);
+    res.json('Unsuccessful! Please Try Again');
+  }
+});
+// add training visitor
+router.post('/trainingvisit/add', async (req, res) => {
+  try {
+    const newVisitor = new Visitor(req.body);
+    console.log(req.body);
     await newVisitor.save()
       .then(() => res.json('Visitor Added'));
   } catch (error) {

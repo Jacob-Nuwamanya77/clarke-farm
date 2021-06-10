@@ -3,49 +3,84 @@
     <div class="description">
       <p class="section-title">Register</p>
       <p class="sub-text">
-        For corporate and tourist packages, register using this form. For training
-        programs, find out more <a href="/training-programs">here</a>.
+        For corporate and tourist packages, register using this form. For
+        training programs, find out more <a href="/training-programs">here</a>.
       </p>
     </div>
     <div class="registration-container">
       <div id="registration-image">
-        <img src="@/assets/images/forestwalk.jpg" alt="welcome" aria-hidden="true">
+        <img
+          src="@/assets/images/forestwalk.jpg"
+          alt="welcome"
+          aria-hidden="true"
+        />
       </div>
       <div id="form-container">
-        <p id="description">
-          We promise to contact you within 24 hours.
-        </p>
+        <p id="description">We promise to contact you within 24 hours.</p>
         <form @submit.prevent="handleSubmitForm" action="/visitors/add">
           <div class="input-container">
-            <input type="text" name="name" placeholder="Name"  v-model="visitor.name"
-              required>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              v-model="visitor.name"
+              required
+            />
           </div>
           <div class="input-container">
-            <input type="email" placeholder="Email Address" name="email" v-model="visitor.email"
-              required>
+            <input
+              type="email"
+              placeholder="Email Address"
+              name="email"
+              v-model="visitor.email"
+              required
+            />
           </div>
           <div class="input-container">
-            <input type="text" placeholder="Telephone" name="phone"  v-model="visitor.phone"
-              required>
+            <input
+              type="text"
+              placeholder="Telephone"
+              name="phone"
+              v-model="visitor.phone"
+              required
+            />
           </div>
           <div class="input-container">
             <div id="checkin-container">
               <div id="checkin">
-                <input type="text" name="checkin" placeholder="Check-in"
-                v-model="visitor.checkin"
-                onfocus='(this.type="date")'>
+                <input
+                  type="text"
+                  name="checkin"
+                  placeholder="Check-in"
+                  v-model="visitor.checkin"
+                  onfocus='(this.type="date")'
+                />
               </div>
               <div id="checkout">
-                <input type="text" name="checkout" placeholder="Check-out"
-                v-model="visitor.checkout"
-                onfocus='(this.type="date")'>
+                <input
+                  type="text"
+                  name="checkout"
+                  placeholder="Check-out"
+                  v-model="visitor.checkout"
+                  onfocus='(this.type="date")'
+                />
               </div>
             </div>
           </div>
           <div class="input-container">
-            <input type="text" name="guestNumber" placeholder="Number of travelers"
-            v-model="visitor.guestNumber"
-              required>
+            <input
+              type="text"
+              name="guestNumber"
+              placeholder="Number of travelers"
+              v-model="visitor.guestNumber"
+              required
+            />
+             <input
+              type="text"
+              name="bookingtype"
+              v-model="visitor.bookingtype"
+              hidden
+            />
           </div>
           <div class="input-container">
             <fieldset name="topics">
@@ -53,39 +88,70 @@
               <div class="checkbox-list">
                 <div class="checkbox-pair">
                   <span>
-                    <input type="radio" name="accomodation" value="none" checked
-                    v-model="visitor.accomodation"> None
+                    <input
+                      type="radio"
+                      name="accomodation"
+                      value="none"
+                      checked
+                      v-model="visitor.accomodation"
+                    />
+                    None
                   </span>
                   <span>
-                    <input type="radio" name="accomodation" value="tent"
-                    v-model="visitor.accomodation"> Camp Tent
+                    <input
+                      type="radio"
+                      name="accomodation"
+                      value="tent"
+                      v-model="visitor.accomodation"
+                    />
+                    Camp Tent
                   </span>
                 </div>
                 <div class="checkbox-pair">
                   <span>
-                    <input type="radio" name="accomodation" value="cottage"
-                    v-model="visitor.accomodation"> Cottage
+                    <input
+                      type="radio"
+                      name="accomodation"
+                      value="cottage"
+                      v-model="visitor.accomodation"
+                    />
+                    Cottage
                   </span>
                   <span>
-                    <input type="radio" name="accomodation" value="container"
-                    v-model="visitor.accomodation"> Cliff House
+                    <input
+                      type="radio"
+                      name="accomodation"
+                      value="container"
+                      v-model="visitor.accomodation"
+                    />
+                    Cliff House
                   </span>
                 </div>
                 <div class="checkbox-pair">
                   <span>
-                    <input type="radio" name="accomodation" value="hilltop"
-                    v-model="visitor.accomodation"> Hilltop House
+                    <input
+                      type="radio"
+                      name="accomodation"
+                      value="hilltop"
+                      v-model="visitor.accomodation"
+                    />
+                    Hilltop House
                   </span>
                 </div>
               </div>
             </fieldset>
           </div>
           <div class="input-container">
-            <textarea placeholder="Questions or special requests" name="requests"
-            v-model="visitor.requests"></textarea>
+            <textarea
+              placeholder="Questions or special requests"
+              name="requests"
+              v-model="visitor.requests"
+            ></textarea>
           </div>
           <div class="submit-container">
-            <button class="submit" type="submit" @click="showAlert">Submit</button>
+            <button class="submit" type="submit" @click="showAlert">
+              Submit
+            </button>
           </div>
         </form>
       </div>
@@ -105,6 +171,12 @@ export default {
         name: '',
         email: '',
         phone: '',
+        checkin: '',
+        checkout: '',
+        guestNumber: '',
+        accomodation: '',
+        requests: '',
+        bookingtype: 'Tour',
       },
     };
   },
@@ -118,61 +190,57 @@ export default {
           name: '',
           email: '',
           phone: '',
-          checkin:'',
-          checkout:'',
-          guestNumber:'',
-          accomodation:'',
-          requests:'',
-
+          checkin: '',
+          checkout: '',
+          guestNumber: '',
+          accomodation: '',
+          requests: '',
         };
-         
-// Use sweetalert2
-      this.$swal({
-        showCloseButton: true,
-      })
-      this.$swal('Received','Your booking has been received.!!!','success')    
+        // Use sweetalert2
+        this.$swal({
+          showCloseButton: true,
+        });
+        this.$swal('Received', 'Your booking has been received.!!!', 'success');
       } catch {
         this.message = 'failed to submit; please, try again!';
       }
     },
- 
   },
-
 };
 </script>
 
 <style scoped>
-#visit-registration-form{
-  position:relative;
-  margin-top:120px;
+#visit-registration-form {
+  position: relative;
+  margin-top: 120px;
 }
-.section-title{
+.section-title {
   font-weight: bold;
   font-size: 25px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
   font-family: Playfair;
   text-align: center;
 }
 
-@media screen and (max-width:1280px){
-  .section-title{
+@media screen and (max-width: 1280px) {
+  .section-title {
     font-size: 20px;
   }
 }
-.sub-text{
-  width:70%;
+.sub-text {
+  width: 70%;
   text-align: center;
   line-height: 2;
   margin-left: auto;
   margin-right: auto;
 }
-@media screen and (max-width:990px){
-  .sub-text{
-    width:100%;
+@media screen and (max-width: 990px) {
+  .sub-text {
+    width: 100%;
   }
 }
-@media screen and (max-width:480px){
-  .sub-text{
+@media screen and (max-width: 480px) {
+  .sub-text {
     text-align: left;
     padding-left: 10px;
   }
@@ -190,16 +258,16 @@ export default {
 @media (max-width: 960px) {
   .registration-container {
     width: 95%;
-    margin-left:auto;
+    margin-left: auto;
     margin-right: auto;
   }
 }
 #registration-image {
   width: 40%;
 }
-@media screen and (max-width:700px){
-  #registration-image{
-    display:none;
+@media screen and (max-width: 700px) {
+  #registration-image {
+    display: none;
   }
 }
 #registration-image img {
@@ -211,14 +279,14 @@ export default {
   width: 60%;
   padding-top: 20px;
 }
-@media screen and (max-width:700px){
-  #form-container{
-    min-width:80%;
+@media screen and (max-width: 700px) {
+  #form-container {
+    min-width: 80%;
     margin-left: auto;
     margin-right: auto;
   }
 }
-#description{
+#description {
   font-size: 18px;
   font-weight: bold;
   text-align: center;
@@ -230,20 +298,20 @@ export default {
   margin-top: 20px;
 }
 
-@media screen and (max-width:700px){
-  .input-container{
-    width:100%;
+@media screen and (max-width: 700px) {
+  .input-container {
+    width: 100%;
   }
 }
-#checkin-container{
-  display:flex;
+#checkin-container {
+  display: flex;
   justify-content: space-between;
 }
-#checkin{
-  width:45%;
+#checkin {
+  width: 45%;
 }
-#checkout{
-  width:45%;
+#checkout {
+  width: 45%;
 }
 
 input[type="text"],
@@ -292,23 +360,23 @@ textarea:focus {
 fieldset {
   border: none;
 }
-legend{
-  font-size:16px;
+legend {
+  font-size: 16px;
   margin-bottom: 15px;
 }
-.checkbox-list{
-  display:flex;
+.checkbox-list {
+  display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.checkbox-pair span{
-  display:block;
+.checkbox-pair span {
+  display: block;
   margin-bottom: 15px;
 }
 .submit-container {
   margin-top: 25px;
-  margin-bottom:50px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
