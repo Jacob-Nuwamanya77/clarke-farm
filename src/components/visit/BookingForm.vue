@@ -15,30 +15,37 @@
         <p id="description">
           We promise to contact you within 24 hours.
         </p>
-        <form action="">
+        <form @submit.prevent="handleSubmitForm">
           <div class="input-container">
-            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="name" placeholder="Name"  v-model="visitor.name"
+              required>
           </div>
           <div class="input-container">
-            <input type="email" placeholder="Email Address" name="email">
+            <input type="email" placeholder="Email Address" name="email" v-model="visitor.email"
+              required>
           </div>
           <div class="input-container">
-            <input type="text" placeholder="Telephone" name="telephone">
+            <input type="text" placeholder="Telephone" name="phone"  v-model="visitor.phone"
+              required>
           </div>
           <div class="input-container">
             <div id="checkin-container">
               <div id="checkin">
                 <input type="text" name="checkin" placeholder="Check-in"
+                v-model="visitor.checkin"
                 onfocus='(this.type="date")'>
               </div>
               <div id="checkout">
                 <input type="text" name="checkout" placeholder="Check-out"
+                v-model="visitor.checkout"
                 onfocus='(this.type="date")'>
               </div>
             </div>
           </div>
           <div class="input-container">
-            <input type="text" name="guestNumber" placeholder="Number of travelers">
+            <input type="text" name="guestNumber" placeholder="Number of travelers"
+            v-model="visitor.guestNumber"
+              required>
           </div>
           <div class="input-container">
             <fieldset name="topics">
@@ -46,33 +53,39 @@
               <div class="checkbox-list">
                 <div class="checkbox-pair">
                   <span>
-                    <input type="radio" name="accomodation" value="none" checked> None
+                    <input type="radio" name="accomodation" value="none" checked
+                    v-model="visitor.accomodation"> None
                   </span>
                   <span>
-                    <input type="radio" name="accomodation" value="tent"> Camp Tent
-                  </span>
-                </div>
-                <div class="checkbox-pair">
-                  <span>
-                    <input type="radio" name="accomodation" value="cottage"> Cottage
-                  </span>
-                  <span>
-                    <input type="radio" name="accomodation" value="container"> Cliff House
+                    <input type="radio" name="accomodation" value="tent"
+                    v-model="visitor.accomodation"> Camp Tent
                   </span>
                 </div>
                 <div class="checkbox-pair">
                   <span>
-                    <input type="radio" name="accomodation" value="hilltop"> Hilltop House
+                    <input type="radio" name="accomodation" value="cottage"
+                    v-model="visitor.accomodation"> Cottage
+                  </span>
+                  <span>
+                    <input type="radio" name="accomodation" value="container"
+                    v-model="visitor.accomodation"> Cliff House
+                  </span>
+                </div>
+                <div class="checkbox-pair">
+                  <span>
+                    <input type="radio" name="accomodation" value="hilltop"
+                    v-model="visitor.accomodation"> Hilltop House
                   </span>
                 </div>
               </div>
             </fieldset>
           </div>
           <div class="input-container">
-            <textarea placeholder="Questions or special requests" name="requests"></textarea>
+            <textarea placeholder="Questions or special requests" name="requests"
+            v-model="visitor.requests"></textarea>
           </div>
           <div class="submit-container">
-            <button class="submit">Submit</button>
+            <button class="submit" type="submit">Submit</button>
           </div>
         </form>
       </div>
@@ -81,8 +94,38 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+const api = 'http://localhost:3000';
 export default {
   name: 'BookingForm',
+  data() {
+    return {
+      visitor: {
+        name: '',
+        email: '',
+        phone: '',
+      },
+    };
+  },
+  methods: {
+    async handleSubmitForm() {
+      const endpoint = '/visitors/add';
+      try {
+        await axios.post(api + endpoint, this.visitor);
+        // this.$router.push('/admin');
+        this.visitor = {
+          name: '',
+          email: '',
+          phone: '',
+        };
+        this.message = 'submitted successfully';
+      } catch {
+        this.message = 'failed to submit; please, try again!';
+      }
+    },
+  },
+
 };
 </script>
 

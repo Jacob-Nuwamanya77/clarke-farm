@@ -41,8 +41,10 @@ app.post('/uploads', (req, res) => {
 
 // APP ROUTES
 const activityRouter = require('./Routes/ActivityRoutes');
+const visitorRoute = require('./Controllers/visitorRoutes');
 
 app.use(activityRouter);
+app.use(visitorRoute);
 
 // ESTABLISHING DATABASE CONNECTION
 mongoose.connect(process.env.DATABASE, {
@@ -59,10 +61,10 @@ mongoose.connection
     console.log(`Connection error: ${error.message}`);
   });
 
-// HANDLING NON-EXISTING ROUTES
-app.get('*', (req, res) => {
-  res.send('Error! Did not find that resource!');
-});
+// // HANDLING NON-EXISTING ROUTES
+// app.get('*', (req, res) => {
+//   res.send('Error! Did not find that resource!');
+// });
 
 app.get('/test', (req, res) => {
   res.send('Hello!');
