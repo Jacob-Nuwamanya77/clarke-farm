@@ -5,13 +5,13 @@
     </div>
     <div class="container-right">
       <div class="top-row">
-        <AdminHeadingReviews heading="Reviews"/>
+        <AdminHeadingSettings heading="Settings"/>
       </div>
       <div class="after-toprow">
-       <ReviewContent/>
+       <SettingsContent/>
       </div>
-      <div class="pagination">
-        <Pagination />
+      <div class="content-table">
+        <SettingsTable/>
       </div>
 
     </div>
@@ -20,13 +20,12 @@
 
 <script>
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
-import AdminHeadingReviews from '@/components/dashboard/AdminHeadingReviews.vue';
-// eslint-disable-next-line import/no-unresolved
-import ReviewContent from '@/components/dashboard/ReviewContent.vue';
-import Pagination from '@/components/pagination.vue';
+import AdminHeadingSettings from '@/components/dashboard/AdminHeadingSettings.vue';
+import SettingsContent from '@/components/dashboard/SettingsContent.vue';
+import SettingsTable from '@/components/dashboard/SettingsTableAccommodation.vue';
 
 export default {
-  name: 'Admin',
+  name: 'Accommodation',
   data() {
     return {
     };
@@ -34,9 +33,9 @@ export default {
 
   components: {
     AdminSideNavigation,
-    AdminHeadingReviews,
-    ReviewContent,
-    Pagination,
+    AdminHeadingSettings,
+    SettingsContent,
+    SettingsTable,
   },
 };
 </script>
@@ -45,43 +44,34 @@ export default {
 .container {
   width: 98vw;
   margin-top: 0;
-  margin-bottom:10vw;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-direction: row;
   position: relative;
 }
+.top-row {
+  position: relative;
+  padding-top: 5px;
+}
 .container-left {
- width:15%;
+  width:15%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color: #068d68;
   color: white;
   margin-left: 20px;
 }
-.top-row {
-  position: relative;
-  padding-top: 5px;
-  margin-top: 0px;
-  margin-right: 0%;
-}
-  .after-toprow{
-    margin-right:0px;
-    margin-left:-5px;
-  }
-
-  .container-right {
-  margin-left: 10vw;
-  width: 100%;
-  height: 100%;
+.container-right {
+  margin-left: 6vw;
+  width: 80vw;
 }
 .pagination {
-  width:auto;
+  width:500px;
    margin-top:3%;
-   margin-left:5%;
+   margin-left:7%;
 }
 
 </style>

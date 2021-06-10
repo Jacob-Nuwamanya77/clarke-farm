@@ -1,8 +1,8 @@
 <template>
-     <div class="row">
-       <div class="col-md-12 content">
-      <p class="mt-3">Filter Results</p>
+  <div>
+       <div class="content">
       <table  class="filter">
+      <p class="mt-3">Filter Results</p>
         <tr>
           <td>From:</td><td><input type="date" class="datepicker form-control" /></td>
           <td class="label">Category:</td><td><select class="category form-control">
@@ -18,13 +18,8 @@
         </select></td>
         </tr>
       </table>
-     </div>
-    </div>
-    <hr>
-    <div class="row table-row">
-      <div class="col-md-12">
-         <table
-          class="table table-striped table-hover table-responsive-sm"
+       <table
+          class="table table-striped table-hover table-bordered mt-5 table-responsive"
           id="client-table"
         >
           <thead>
@@ -103,8 +98,9 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
+     </div>
+    <hr>
+  </div>
 </template>
 <script>
 export default {
@@ -112,22 +108,6 @@ export default {
 };
 </script>
 <style scoped>
-.header{
-  margin-top: -20px;;
-}
-.header h4{
-  margin-left: 33px;
-  margin-top:18px;
-  width:250px;
-  font-family:'Roboto';
-}
-.profile {
-  color: white;
-  margin-top: -37px;
-  float: right;
-  margin-right: 30px;
-}
-
 /* active sidebar link */
 @media screen and (max-width: 700px) {
   .sidebar {
@@ -150,13 +130,19 @@ export default {
 }
 
 .content {
-  margin-left: 12%;
-  margin-top: 20px;
+  margin-left: 150px;
+  margin-top: 0px;
 
 }
 .filter{
-  width:700px;
-  padding:5px;
+  width:100%;
+  margin-left: -100px;
+}
+h3{
+  margin-top: 30px;
+}
+p,h3{
+  margin-left: -80px;
 }
 .filter tr{
   padding:5px;
@@ -166,9 +152,7 @@ export default {
 /* border: 1px solid green; */
 text-align: right;
 }
-.filter td input[type=".datepicker"]{
-  width:800px;
- }
+
  .datepicker {
   border: 1px solid rgba(0, 0, 0, 0.1);
   margin: 0px;
@@ -197,31 +181,19 @@ text-align: right;
   margin-left: 40px;
 }
 
-.row .table-row{
-  display: inline-block;
-}
-
 hr{
-  margin-left: 12%;
-  width:980px;
+margin-left: 60px;
 }
 router-link .logout{
   margin-top: 140px;
 }
-
 #client-table{
- width:1000px;
-  padding:5px;
-  margin-left: 12%;
-  margin-top: 2%;
-}
-#client-table th{
-    padding:10px;
-    vertical-align: middle;
-     text-align: center;
+  margin-left: -80px;
+  max-width: 100%;
 }
  #client-table td{
     text-align: center;
+  padding: 20px;
     font-family: 'Roboto';
     font-size:14px;
     color: rgba(0, 0, 0, 0.8);

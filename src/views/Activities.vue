@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="container-left">
-      <!-- <AdminSideNavigation /> -->
+      <AdminSideNavigation />
     </div>
     <div class="container-right">
       <div class="top-row">
@@ -19,23 +19,62 @@
 </template>
 
 <script>
-// import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
+import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
 import AdminHeadingSettings from '@/components/dashboard/AdminHeadingSettings.vue';
 import SettingsContent from '@/components/dashboard/SettingsContent.vue';
 import SettingsTable from '@/components/dashboard/SettingsTableActivities.vue';
 
 export default {
-  name: 'Admin',
+  name: 'Activities',
   data() {
     return {
     };
   },
 
   components: {
-    // AdminSideNavigation,
+    AdminSideNavigation,
     AdminHeadingSettings,
     SettingsContent,
     SettingsTable,
   },
 };
 </script>
+
+<style scoped>
+.container {
+  width: 98vw;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.top-row {
+  position: relative;
+  padding-top: 5px;
+}
+.container-left {
+ width:15%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #068d68;
+  color: white;
+  margin-left: 20px;
+}
+.container-right {
+  margin-left: 6vw;
+  width: 80vw;
+}
+.pagination {
+  width:500px;
+   margin-top:3%;
+   margin-left:7%;
+}
+body{
+  background: #f5f5f5;
+}
+
+</style>
