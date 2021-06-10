@@ -15,6 +15,7 @@ const router = express.Router();
 router.post('/visitors/add', async (req, res) => {
   try {
     const newVisitor = new Visitor(req.body);
+    console.log(req.body)
     await newVisitor.save()
       .then(() => res.json('Visitor Added'));
   } catch (error) {

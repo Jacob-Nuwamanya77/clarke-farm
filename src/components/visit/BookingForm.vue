@@ -15,7 +15,7 @@
         <p id="description">
           We promise to contact you within 24 hours.
         </p>
-        <form @submit.prevent="handleSubmitForm">
+        <form @submit.prevent="handleSubmitForm" action="/visitors/add">
           <div class="input-container">
             <input type="text" name="name" placeholder="Name"  v-model="visitor.name"
               required>
@@ -85,7 +85,7 @@
             v-model="visitor.requests"></textarea>
           </div>
           <div class="submit-container">
-            <button class="submit" type="submit">Submit</button>
+            <button class="submit" type="submit" @click="showAlert">Submit</button>
           </div>
         </form>
       </div>
@@ -118,12 +118,24 @@ export default {
           name: '',
           email: '',
           phone: '',
+          checkin:'',
+          checkout:'',
+          guestNumber:'',
+          accomodation:'',
+          requests:'',
+
         };
-        this.message = 'submitted successfully';
+         
+// Use sweetalert2
+      this.$swal({
+        showCloseButton: true,
+      })
+      this.$swal('Received','Your booking has been received.!!!','success')    
       } catch {
         this.message = 'failed to submit; please, try again!';
       }
     },
+ 
   },
 
 };
