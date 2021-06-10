@@ -31,6 +31,7 @@ const upload = multer({ storage }).single('file');
 
 // UPLOAD FILE
 app.post('/uploads', (req, res) => {
+  // eslint-disable-next-line consistent-return
   upload(req, res, (err) => {
     if (err) {
       return res.end('file not uploaded');
@@ -40,10 +41,17 @@ app.post('/uploads', (req, res) => {
 });
 
 // APP ROUTES
-const activityRouter = require('./Routes/ActivityRoutes');
 const visitorRoute = require('./Controllers/visitorRoutes');
+const activityRouter = require('./Controllers/ActivityRoutes');
+const accomodationRouter = require('./Controllers/AccommodationRoutes');
+const coffeeprocessRouter = require('./Controllers/coffeeprocessRoutes');
+// eslint-disable-next-line import/no-unresolved
+const trainingRouter = require('./Controllers/trainingRoutes');
 
 app.use(activityRouter);
+app.use(accomodationRouter);
+app.use(coffeeprocessRouter);
+app.use(trainingRouter);
 app.use(visitorRoute);
 
 // ESTABLISHING DATABASE CONNECTION

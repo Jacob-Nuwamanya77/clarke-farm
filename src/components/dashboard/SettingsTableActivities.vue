@@ -60,7 +60,6 @@
     <div class="table-settings">
          <table class="table table-striped table-bordered">
         <thead class="align-left ">
-          <th></th>
           <th>Activity Name</th>
           <th>Image</th>
           <th>Activity Description</th>
