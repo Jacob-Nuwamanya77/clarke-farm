@@ -53,20 +53,19 @@ export default {
   position: relative;
 }
 .container-left {
-  width: 13vw;
-  height: 100vh;
+ width:15%;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   background-color: #ffffff;
   color: white;
-  margin-left: 9.2%;
+  margin-left: 20px;
 }
 .top-row {
   position: relative;
   padding-top: 5px;
   margin-top: 0px;
-  margin-left: -3%;
   margin-right: 0%;
 }
   .after-toprow{
@@ -76,7 +75,8 @@ export default {
 
   .container-right {
   margin-left: 10vw;
-  width: 80vw;
+  width: 100%;
+  height: 100%;
 }
 .pagination {
   width:auto;

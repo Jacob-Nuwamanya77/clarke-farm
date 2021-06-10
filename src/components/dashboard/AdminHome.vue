@@ -4,10 +4,7 @@
       <AdminSideNavigation />
     </div>
     <div class="container-right">
-      <div class="top-row">
-        <AdminHeadingHome heading="Home"/>
-      </div>
-      <div class="after-toprow">
+      <AdminHeadingHome heading="Home"/>
        <HomeContent/>
         <IncomingGuests/>
        <div class="pagination">
@@ -15,7 +12,6 @@
       </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -41,50 +37,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.container {
-  width: 98vw;
-  margin-top: 0;
-  margin-bottom:10vw;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-.top-row {
-  position: relative;
-  padding-top: 5px;
-  margin-top: 0px;
-  margin-left: -5%;
-  margin-right: 0%;
-
-}
-.container-left {
-  width: 13vw;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #ffffff;
-  color: white;
-  margin-left: 8.9%;
-}
-
-  .after-toprow{
-    margin-right:0px;
-    margin-left:-5px;
-  }
-
-  .container-right {
-  margin-left: 10vw;
-  width: 80vw;
-}
-.pagination {
-  width:auto;
-   margin-top:3%;
-   margin-left:5%;
-}
-
-</style>

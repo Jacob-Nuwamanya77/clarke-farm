@@ -1,8 +1,11 @@
+const express = require('express');
 const Activity = require('../Models/activityModel');
 
-// ADD ACTIVITY TO ACTIVITIES TABLE.
+// Creating a Router
+const router = express.Router();
 
-exports.addActivity = async (req, res) => {
+// ADD ACTIVITY TO ACTIVITIES TABLE.
+router.post('/activities/add', async (req, res) => {
   try {
     const newActivity = new Activity(req.body);
     await newActivity.save()
@@ -11,4 +14,6 @@ exports.addActivity = async (req, res) => {
     console.error(error);
     res.json('Unsuccessful! Please Try Again');
   }
-};
+});
+
+module.exports = router;

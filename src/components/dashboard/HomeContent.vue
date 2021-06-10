@@ -10,7 +10,6 @@
       </ul>
     </div>
       </div>
-    <br>
 </template>
 <script>
 
@@ -65,9 +64,8 @@ a.active-nav{
   cursor: pointer;
 }
  table{
-  width:1000px;
   padding:5px;
-  margin-left: 5%;
+  margin-left:10px;
 }
 th{
     padding:10px;

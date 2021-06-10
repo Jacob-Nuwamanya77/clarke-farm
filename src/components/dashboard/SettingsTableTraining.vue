@@ -1,78 +1,141 @@
 <template>
 <!-- eslint-disable max-len -->
+<div>
+   <div class="action">
+         <a href="#" class="btn btn-sm text-white " type="button" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Add Training Program</a>
+               <!-- Modal -->
+    <div class="modal fade" tabindex="-1"  id="exampleModal">
+   <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Coffee Process Step</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form @submit.prevent="onSubmit" enctype="multipart/form-data">
+        <input type="file" ref="file" @change="onSelect" />
+        <h6>{{ message }}</h6>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="training program title"
+            v-model="training.programtitle"
+          />
+        </div>
+          <br>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="description"
+            v-model="training.description"
+            required
+          />
+        </div>
+         <br>
+         <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="fee"
+            v-model="training.fee"
+            required
+          />
+        </div>
+         <br>
+
+         <div class="modal-footer">
+        <button  class="btn btn-success">Save changes</button>
+      </div>
+        </form>
+      </div>
+    </div>
+     </div>
+  </div>
+      </div>
     <div class="table-settings">
-         <table class="table table-striped align-middle">
-        <thead class="align-middle ">
-          <th></th>
-          <th>Activity Name</th>
+         <table class="table table-striped table-bordered">
+        <thead class="align-left">
+          <th>Program Name</th>
           <th>Image</th>
-          <th>Activity Description</th>
+          <th>Description</th>
+          <th>Price</th>
         </thead>
         <tbody>
-            <tr class="table-hover">
-                <td><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input"></div></td>
-                <td>{{activity1.name}}</td>
-                <td> <img src="@/assets/images/motocross1.jpg" alt="biking" aria-hidden="true"></td>
-                <td>{{activity1.description}}</td>
-            </tr>
-            <tr class="table-hover">
-                <td><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input"></div></td>
-                <td>{{activity2.name}}</td>
-                <td> <img src="@/assets/images/bouldering3.jpg" alt="biking" aria-hidden="true"></td>
-                <td>{{activity2.description}}</td>
-            </tr>
-            <tr class="table-hover">
-                <td><div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input"></div></td>
-                <td>{{activity3.name}}</td>
-                <td> <img src="@/assets/images/coffeetasting1.jpg" alt="biking" aria-hidden="true"></td>
-                <td>{{activity3.description}}</td>
-            </tr>
         </tbody>
      </table>
     </div>
+</div>
 </template>
 <script>
+import axios from 'axios';
+
+const api = 'http://localhost:3000';
 export default {
+  name: 'SettingsTableTraining',
   data() {
     return {
-
-      activity1: {
-        name: 'Biking',
-        image: '@/assets/images/motocross1.jpg',
-        description: 'Rent a bicycle and challenge yourself on smooth and rough terrain.',
-      },
-      activity2: {
-        name: 'Bouldering',
-        image: '@/assets/images/bouldering3.jpg',
-        description: 'Walk to the top of our boulders and enjoy beautiful sunsets..',
-      },
-      activity3: {
-        name: 'Coffee Tasting',
-        image: '@/assets/images/coffeetasting1.jpg',
-        description: 'Fresh roasted robusta coffee. It\'s our pride and joy..',
+      training: {
+        programtitle: '',
+        description: '',
+        fee: '',
       },
     };
+  },
+  methods: {
+    onSelect() {
+      const file = this.$refs.file.files[0];
+      this.file = file;
+    },
+    async onSubmit() {
+      const formData = new FormData();
+      formData.append('file', this.file);
+      // Form1
+      const endpoint1 = '/uploads';
+      try {
+        await axios.post(api + endpoint1, formData);
+        this.message = 'uploaded file successfully';
+      } catch {
+        this.message = 'file not uploaded';
+      }
+      // Form2
+      const endpoint2 = '/trainings/add';
+      axios
+        .post(api + endpoint2, this.training)
+        .then(() => {
+          // this.$router.push('/list-activities');
+          this.training = {
+            programtitle: '',
+            description: '',
+            fee: '',
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };
 </script>
 <style scoped>
 table{
-  width:1000px;
-  padding:5px;
-  margin-top:0%;
-  margin-left:10%;
+  padding:0px;
+  margin-top:30px;
+  margin-left:70px;
 }
 th{
-    padding:10px;
-    vertical-align: middle;
-     text-align: center;
+    padding:5px;
+    vertical-align:left;
+     text-align: left;
 }
 td{
     text-align: center;
     font-family: 'Roboto';
     font-size:14px;
-    padding:10px;
-    word-wrap: break-word;
+    padding:0px;
 }
 table,td,th{
      font-family: 'Roboto';
@@ -80,5 +143,16 @@ table,td,th{
 img{
   width:150px;
    height:100px;
+}
+ ul{
+    display: flex;
+  }
+.action{
+   min-width:40px;
+  height:30px;
+  float:right;
+  background-color: #068d68;
+  margin-bottom: 10px;
+  margin-right: 0px;
 }
 </style>

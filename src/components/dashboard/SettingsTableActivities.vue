@@ -1,8 +1,9 @@
 <template>
 <!-- eslint-disable max-len -->
-    <div class="action">
+  <div>
+      <div class="action">
 
-            <a href="#" class="btn btn-success btn-sm" type="button" data-bs-toggle="modal"
+            <a href="#" class="btn btn-sm text-white " type="button" data-bs-toggle="modal"
           data-bs-target="#exampleModal">Add Activity</a>
 
                <!-- Modal -->
@@ -56,10 +57,9 @@
      </div>
   </div>
       </div>
-       <hr>
     <div class="table-settings">
-         <table class="table table-striped">
-        <thead class="align-left bg-secondary text-light ">
+         <table class="table table-striped table-bordered">
+        <thead class="align-left ">
           <th>Activity Name</th>
           <th>Image</th>
           <th>Activity Description</th>
@@ -69,6 +69,7 @@
         </tbody>
      </table>
     </div>
+  </div>
 </template>
 <script>
 import axios from 'axios';
@@ -122,23 +123,20 @@ export default {
 </script>
 <style scoped>
 table{
-  width:1000px;
   padding:0px;
-  margin-top:0%;
-  margin-left:10%;
+  margin-top:30px;
+  margin-left:70px;
 }
 th{
     padding:5px;
     vertical-align:left;
      text-align: left;
-      /* border:1px solid blue; */
 }
 td{
     text-align: center;
     font-family: 'Roboto';
     font-size:14px;
     padding:0px;
-     /* border:1px solid blue; */
 }
 table,td,th{
      font-family: 'Roboto';
@@ -153,15 +151,10 @@ img{
 .action{
    min-width:40px;
   height:30px;
-   margin-left: 80%;
-  /* float:right; */
+  float:right;
+  background-color: #068d68;
+  margin-bottom: 10px;
+  margin-right: 0px;
 }
 
-  hr{
-  margin-left: 7%;
-  width:1060px;
-}
-/* div{
-  border:1px solid blue;
-} */
 </style>

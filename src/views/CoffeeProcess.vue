@@ -60,14 +60,14 @@ export default {
   padding-top: 5px;
 }
 .container-left {
-  width: 13vw;
-  height: 100vh;
+  width:15%;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #ffffff;
+  background-color:#068d68;
   color: white;
-  margin-left:  8.9%;
+  margin-left: 20px;
 }
 .container-right {
   margin-left: 6vw;
