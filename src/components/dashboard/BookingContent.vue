@@ -48,7 +48,7 @@
           <tr v-for="visitor in visitorList" :key="visitor._id">
             <td>{{ visitor.createdAt }}</td>
             <td>{{ visitor.name }}</td>
-            <td>{{ visitor.guestNumber }}</td>
+            <td>{{ visitor.bookingtype }}</td>
             <td>{{ visitor.phone }}</td>
             <td>{{ visitor.email }}</td>
             <td>

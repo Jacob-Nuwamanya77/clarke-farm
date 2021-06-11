@@ -32,6 +32,9 @@ const visitorSchema = new Schema({
   requests: {
     type: String,
   },
+  topics:{
+    type: Array,
+  }
 },
 { timestamps: true },
 {

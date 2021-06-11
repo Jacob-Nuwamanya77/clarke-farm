@@ -54,7 +54,7 @@ export default {
 
     };
   },
-  methods:{
+  methods: {
     confirmDialog(){
         this.$swal({
           title: 'Are you sure?',

@@ -10,56 +10,63 @@
       </div>
       <div id="form-container">
         <p id="description">Register with us</p>
-        <form action="">
+        <form @submit.prevent="handleSubmitForm" action="/visitors/add">
           <div class="input-container">
-            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="name" placeholder="Name" v-model="visitor.name" required>
           </div>
           <div class="input-container">
-            <input type="email" placeholder="Email Address" name="email">
+            <input type="email" placeholder="Email Address" name="email" v-model="visitor.email" required>
           </div>
           <div class="input-container">
-            <input type="text" placeholder="Telephone" name="telephone">
+            <input type="text" placeholder="Telephone" name="telephone" v-model="visitor.phone" required>
           </div>
           <div class="input-container">
-            <input type="text" name="guestNumber" placeholder="Group size">
+            <input type="text" name="guestNumber" placeholder="Group size" v-model="visitor.guestNumber" required>
           </div>
           <div class="input-container">
-            <input type="text" name="date" placeholder="Visitation date"
+            <input type="text" name="date" placeholder="Visitation date" v-model="visitor.date" required
             onfocus='(this.type="date")'>
+             <input
+              type="text"
+              name="bookingtype"
+              v-model="visitor.bookingtype"
+              hidden
+            />
           </div>
           <div class="input-container">
-            <fieldset name="topics">
+            <fieldset>
               <legend>Select topics of interest</legend>
               <div class="checkbox-list">
                 <div class="checkbox-pair">
                   <span>
-                    <input type="checkbox" name="topics" value="coffee"> Coffee
+                    <input type="checkbox" name="topics" value="coffee" v-model="topics"> Coffee
                   </span>
                   <span>
-                    <input type="checkbox" name="topics" value="matooke"> Matooke
+                    <input type="checkbox" name="topics" value="matooke" v-model="topics"> Matooke
                   </span>
                 </div>
                 <div class="checkbox-pair">
                   <span>
-                    <input type="checkbox" name="topics" value="chicken"> Chicken
+                    <input type="checkbox" name="topics" value="chicken" v-model="topics"> Chicken
                   </span>
                   <span>
-                    <input type="checkbox" name="topics" value="others"> Others
+                    <input type="checkbox" name="topics" value="others" v-model="topics" > Others
                   </span>
                 </div>
                 <div class="checkbox-pair">
                   <span>
-                    <input type="checkbox" name="topics" value="irish"> Irish
+                    <input type="checkbox" name="topics" value="irish" v-model="topics"> Irish
                   </span>
                 </div>
                 <div class="checkbox-pair">
                   <span>
-                    <input type="checkbox" name="topics" value="maize"> Maize
+                    <input type="checkbox" name="topics" value="maize" v-model="topics"> Maize
                   </span>
                 </div>
+                 <span>Checked names: {{ topics }}</span>
               </div>
             </fieldset>
-          </div>
+</div>
           <div class="submit-container">
             <button class="submit">Submit</button>
           </div>
@@ -70,8 +77,49 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+const api = 'http://localhost:3000';
 export default {
   name: 'TrainingRegistration',
+  data() {
+    return {
+      visitor: {
+        name: '',
+        email: '',
+        phone: '',
+        guestNumber: '',
+        date: '',
+        topics:[],
+        bookingtype: 'Training',
+      },
+    };
+  },
+  methods: {
+    async handleSubmitForm() {
+      const endpoint = '/visitors/add';
+      try {
+        await axios.post(api + endpoint, this.visitor);
+        // this.$router.push('/admin');
+        this.visitor = {
+          name: '',
+          email: '',
+          phone: '',
+          guestNumber: '',
+          date: '',
+          topics:[],
+        bookingtype: 'Training',
+        };
+        // Use sweetalert2
+        this.$swal({
+          showCloseButton: true,
+        });
+        this.$swal('Received', 'Check your email address for confirmation.!!!', 'success');
+      } catch {
+        this.message = 'failed to submit; please, try again!';
+      }
+    },
+  },
 };
 </script>
 
