@@ -72,20 +72,20 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios';
 
-const api = "http://localhost:3000";
+const api = 'http://localhost:3000';
 export default {
-  name: "BookingContent",
+  name: 'BookingContent',
   data() {
     return {
       visitorList: [],
     };
   },
   created() {
-    const endpoint = "/visitors";
+    const endpoint = '/visitors';
     axios
-      .get("http://localhost:3000/visitors")
+      .get('http://localhost:3000/visitors')
       .then((res) => {
         this.visitorList = res.data;
       })
@@ -98,12 +98,12 @@ export default {
       // eslint-disable-next-line no-underscore-dangle
       const indexOfArrayItem = this.visitorList.findIndex((i) => i._id === id);
       this.$swal({
-        title: "Are you sure?",
+        title: 'Are you sure?',
         text: "You can't revert this action",
-        type: "warning",
+        type: 'warning',
         showCancelButton: true,
-        confirmButtonText: "Yes Delete it!",
-        cancelButtonText: "No, Keep it!",
+        confirmButtonText: 'Yes Delete it!',
+        cancelButtonText: 'No, Keep it!',
         showCloseButton: true,
         showLoaderOnConfirm: true,
       }).then((result) => {
@@ -118,12 +118,12 @@ export default {
               console.log(error);
             });
           this.$swal(
-            "Deleted",
-            "visitor has been Permanently deleted",
-            "success"
+            'Deleted',
+            'visitor has been Permanently deleted',
+            'success',
           );
         } else {
-          this.$swal("Cancelled", "Your file is still intact", "info");
+          this.$swal('Cancelled', 'Your file is still intact', 'info');
         }
       });
     },
