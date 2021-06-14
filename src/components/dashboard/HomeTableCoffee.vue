@@ -1,14 +1,4 @@
 <template>
-      <div class="row">
-        <div class="navigation">
-       <ul>
-        <li><a href="" class="active-nav">Incoming guests</a></li>
-        <li><a href="">Reviews</a></li>
-        <li><a href="">Coffee Request</a></li>
-      </ul>
-    </div>
-      </div>
-    <br>
      <table class="table table-striped align-middle">
         <thead class="align-middle ">
           <th>Date</th>

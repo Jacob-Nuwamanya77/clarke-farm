@@ -14,9 +14,8 @@
       </li>
     </ul>
    </div>
-   <br>
-   <h5>Notifications</h5>
    <hr>
+   <!-- <h5>Notifications</h5> -->
   </div>
 </template>
 <script>
@@ -38,50 +37,37 @@ export default {
 
 <style scoped>
 .top-row{
-  margin-top: 10vw;
-}
-div {
-  text-align: left;
+  width: 100%;
+  margin-left: 10px;
+  padding: 10px;
 }
 h3{
   color:#045C44;
-   margin-left: 23%;
-}
-h6{
-   margin-left: 23%;
+  margin-left:0px;
+
 }
 
 ul{
   list-style-type: none;
-   text-decoration: none;
-   display: flex;
-  align-items: right;
-  position: absolute;
-  top: 5px;
-  right: 100px;
+ float: right;
   color: #068d68;
-  border: none;
-  font-size: 25px;
+  font-size: 20px;
+  display:flex;
+  text-align: end;
 }
 li{
-   list-style-type: none;
-   text-decoration: none;
-   display: flex;
-
+align-items: flex-end;
+margin-left: 20px;
 }
+
 h5{
   color:#045C44;
-   margin-left: 15.5%;
 }
 span{
    color:#045C44;
 }
 hr{
-  margin-left: 13%;
- width:1050px;
+  width: 100%;
 }
-
-/* .heading-icons{
-  margin-right:500%;
-} */
 </style>
+

@@ -10,7 +10,6 @@
       <div class="after-toprow">
         <BookingContent/>
       </div>
-      <pignation/>
 
     </div>
   </div>
@@ -38,42 +37,22 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  width: 98vw;
-  margin-top: 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-.top-row {
-  position: relative;
-  padding-top: 5px;
-}
-.container-page-options {
-  position: relative;
-}
-.container-delete-search {
-  margin-top: 40px;
-  margin-bottom: 10px;
-  padding-left: 20px;
-  text-align: left;
-}
 
 .container-left {
-  width: 13vw;
-  height: 100vh;
+  width:15%;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   background-color: #ffffff;
   color: white;
-   margin-left: 8.9%;
+  margin-left: 20px;
 }
 .container-right {
-  margin-left: 5vw;
-  width: 80vw;
+  margin-left:80px;
+  width: 85%;
+  margin-top:0px;
+  overflow-x: hidden;
 }
 
 </style>
