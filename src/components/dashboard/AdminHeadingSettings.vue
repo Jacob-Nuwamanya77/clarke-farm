@@ -1,6 +1,6 @@
 <template>
-  <div class="top-row ">
-    <div class="col-8 profile">
+  <div class="top-row">
+    <div class="col-8">
       <h3>{{ heading }}</h3>
     </div>
    <div class="col-4">
@@ -36,7 +36,7 @@ export default {
 <style scoped>
 .top-row{
   width: 100%;
-  margin-left: 80px;
+  margin-left: 10px;
   padding: 10px;
 }
 h3{

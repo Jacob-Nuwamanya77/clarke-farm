@@ -10,7 +10,6 @@
       <div class="after-toprow">
         <BookingContent/>
       </div>
-      <pignation/>
 
     </div>
   </div>

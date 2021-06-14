@@ -63,7 +63,6 @@
                     <input type="checkbox" name="topics" value="maize" v-model="topics"> Maize
                   </span>
                 </div>
-                 <span>Checked names: {{ topics }}</span>
               </div>
             </fieldset>
 </div>

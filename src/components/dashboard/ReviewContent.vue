@@ -3,19 +3,6 @@
    <div class="row ">
      <div class="review ">
        <table class="table">
-         <tr>
-           <td><input type="checkbox" class="custom-checkbox custom-control-input"></td>
-           <td>
-             <span>MERCY WAMANGA</span><br>
-                  <span class="text-muted">January 2021</span><br>
-                  <span class="icon"><fa icon="star"/> <fa icon="star"/> <fa icon="star"/>  <fa icon="star"/> <fa icon="star"/></span><br>
-                  <strong>Bouldering and hilltop views were awesome</strong>
-                  <p>The highlight of my stay at the farm was the jeep rides
-            The highlight of my stay at <br> the farm was the jeep rides
-            The highlight of my stay at the farm was the jeep rides</p>
-           </td>
-             <a class="btn btn-danger bg-danger btn-sm light mt-5">DELETE</a>
-         </tr>
           <tr>
            <td><input type="checkbox" class="custom-checkbox custom-control-input"></td>
            <td>
@@ -28,19 +15,6 @@
             The highlight of my stay at the farm was the jeep rides</p>
            </td>
              <a class="btn btn-danger bg-danger btn-sm light mt-5" @click="confirmDialog">DELETE</a>
-         </tr>
-          <tr>
-           <td><input type="checkbox" class="custom-checkbox custom-control-input"></td>
-           <td>
-            <span>MERCY WAMANGA</span><br>
-                  <span class="text-muted">January 2021</span><br>
-                  <span class="icon"><fa icon="star"/> <fa icon="star"/> <fa icon="star"/>  <fa icon="star"/> <fa icon="star"/></span><br>
-                  <strong>Bouldering and hilltop views were awesome</strong>
-                  <p>The highlight of my stay at the farm was the jeep rides
-            The highlight of my stay at <br> the farm was the jeep rides
-            The highlight of my stay at the farm was the jeep rides</p>
-           </td>
-             <a class="btn btn-danger bg-danger btn-sm light mt-5">DELETE</a>
          </tr>
        </table>
      </div>

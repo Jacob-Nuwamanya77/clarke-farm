@@ -10,9 +10,6 @@
       <div class="after-toprow">
        <ReviewContent/>
       </div>
-      <div class="pagination">
-        <Pagination />
-      </div>
 
     </div>
   </div>
@@ -62,21 +59,17 @@ export default {
   color: white;
   margin-left: 20px;
 }
-.top-row {
-  position: relative;
-  padding-top: 5px;
-  margin-top: 0px;
-  margin-right: 0%;
-}
+
   .after-toprow{
     margin-right:0px;
     margin-left:-5px;
   }
 
   .container-right {
-  margin-left: 10vw;
-  width: 100%;
-  height: 100%;
+  margin-left:80px;
+  width: 85%;
+  margin-top:0px;
+  overflow-x: hidden;
 }
 .pagination {
   width:auto;
