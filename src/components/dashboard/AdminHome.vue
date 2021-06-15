@@ -7,9 +7,6 @@
       <AdminHeadingHome heading="Home"/>
        <HomeContent/>
         <IncomingGuests/>
-       <div class="pagination">
-        <Pagination />
-      </div>
       </div>
     </div>
 </template>
@@ -17,7 +14,7 @@
 <script>
 import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
 import AdminHeadingHome from '@/components/dashboard/AdminHeadingHome.vue';
-import HomeContent from '@/components/dashboard/HomeContent.vue';
+import HomeContent from '@/components/dashboard/HomeTopNav.vue';
 import IncomingGuests from '@/components/dashboard/HomeTableIncoming.vue';
 import Pagination from '@/components/pagination.vue';
 
@@ -37,3 +34,42 @@ export default {
   },
 };
 </script>
+<style scoped>
+.container {
+  width: 98vw;
+  margin-top: 0;
+  margin-bottom:10vw;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.container-left {
+ width:15%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  color: white;
+  margin-left: 20px;
+}
+
+  .after-toprow{
+    margin-right:0px;
+    margin-left:-5px;
+  }
+
+  .container-right {
+  margin-left:80px;
+  width: 85%;
+  margin-top:0px;
+}
+.pagination {
+  width:auto;
+   margin-top:3%;
+   margin-left:5%;
+}
+
+</style>

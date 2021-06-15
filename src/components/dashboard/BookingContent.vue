@@ -38,7 +38,7 @@
           <tr>
             <th>Date</th>
             <th>Client Name</th>
-            <th>No of Guests</th>
+            <th>Booking Type</th>
             <th>Phone Contact</th>
             <th>Email Address</th>
             <th>Action</th>
@@ -48,7 +48,7 @@
           <tr v-for="visitor in visitorList" :key="visitor._id">
             <td>{{ visitor.createdAt }}</td>
             <td>{{ visitor.name }}</td>
-            <td>{{ visitor.guestNumber }}</td>
+            <td>{{ visitor.bookingtype }}</td>
             <td>{{ visitor.phone }}</td>
             <td>{{ visitor.email }}</td>
             <td>
@@ -83,7 +83,6 @@ export default {
     };
   },
   created() {
-    const endpoint = '/visitors';
     axios
       .get('http://localhost:3000/visitors')
       .then((res) => {

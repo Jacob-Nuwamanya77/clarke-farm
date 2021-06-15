@@ -23,6 +23,18 @@ router.post('/visitors/add', async (req, res) => {
     res.json('Unsuccessful! Please Try Again');
   }
 });
+// add training visitor
+router.post('/trainingvisit/add', async (req, res) => {
+  try {
+    const newVisitor = new Visitor(req.body);
+    console.log(req.body);
+    await newVisitor.save()
+      .then(() => res.json('Visitor Added'));
+  } catch (error) {
+    console.error(error);
+    res.json('Unsuccessful! Please Try Again');
+  }
+});
 
 // FIND ALL VISITORS
 router.get('/visitors', async (req, res) => {

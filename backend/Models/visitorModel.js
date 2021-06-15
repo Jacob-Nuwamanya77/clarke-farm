@@ -26,9 +26,15 @@ const visitorSchema = new Schema({
   accomodation: {
     type: String,
   },
+  bookingtype: {
+    type: String,
+  },
   requests: {
     type: String,
   },
+  topics:{
+    type: Array,
+  }
 },
 { timestamps: true },
 {
