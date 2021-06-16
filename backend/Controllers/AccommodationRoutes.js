@@ -17,4 +17,14 @@ router.post('/accomodations/add', async (req, res) => {
     res.json('Unsuccessful! Please Try Again');
   }
 });
+
+// FIND ALL ACCOMODATIONS
+router.get('/accommodations', async (req, res) => {
+  try {
+    const accomodations = await Accomodation.find();
+    res.json(accomodations);
+  } catch (error) {
+    res.status(400).send('Unable to find records');
+  }
+});
 module.exports = router;

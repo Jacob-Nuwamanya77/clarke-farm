@@ -1,12 +1,10 @@
 <template>
 <!-- eslint-disable max-len -->
-  <div>
-      <div class="action">
+  <div class="mt-5">
+    <a href="#" class="btn btn-sm text-white add mb-3" type="button" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">Add Activity</a>
 
-            <a href="#" class="btn btn-sm text-white " type="button" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">Add Activity</a>
-
-               <!-- Modal -->
+  <!-- Modal -->
     <div class="modal fade" tabindex="-1"  id="exampleModal">
    <div class="modal-dialog">
     <div class="modal-content">
@@ -19,6 +17,13 @@
         <input type="file" ref="file" @change="onSelect" />
         <h6>{{ message }}</h6>
 
+          <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="filename"
+            v-model="activity.filename"
+          /></div> <br>
         <div class="form-group">
           <input
             type="text"
@@ -49,26 +54,69 @@
          <br>
 
          <div class="modal-footer">
-        <button  class="btn btn-success">Save changes</button>
+        <button  class="btn add text-white">Save changes</button>
       </div>
         </form>
       </div>
     </div>
      </div>
   </div>
-      </div>
-    <div class="table-settings">
+
          <table class="table table-striped table-bordered">
-        <thead class="align-left ">
+        <thead>
           <th>Activity Name</th>
           <th>Image</th>
           <th>Activity Description</th>
           <th>Price</th>
+          <th>Action</th>
         </thead>
+           <tbody>
+          <tr v-for="visitor in visitorList" :key="visitor._id">
+            <td>{{ visitor.createdAt }}</td>
+            <td>{{ visitor.name }}</td>
+            <td>{{ visitor.bookingtype }}</td>
+            <td>{{ visitor.phone }}</td>
+            <td>{{ visitor.email }}</td>
+            <td>
+              <a style="color: #068d68"><fa icon="eye" /></a>
+              <a href="" @click.prevent="deleteVisitor(visitor._id)"
+                ><fa
+                  icon="trash"
+                  style="
+                    float: right;
+                    margin-left: 35px;
+                    margin-top: -20px;
+                    color: red;
+                  "
+              /></a>
+            </td>
+          </tr>
+        </tbody>
         <tbody>
+           <tr v-for="activity in activityList" :key="activity._id">
+            <td>{{ activity.activityname }}</td>
+             <td>
+              <img
+              :src="require('../../../backend/uploads/' + activity.filename + '.jpg')" alt="activity"/>
+              </td>
+            <td id="td-description">{{ activity.description}}</td>
+            <td>{{activity.fee}}</td>
+            <td>
+              <a style="color: #068d68"><fa icon="edit" /></a>
+              <a href=""
+                ><fa
+                  icon="trash"
+                  style="
+                    float: right;
+                    margin-left: 35px;
+                    margin-top: -20px;
+                    color: red;
+                  "
+              /></a>
+            </td>
+          </tr>
         </tbody>
      </table>
-    </div>
   </div>
 </template>
 <script>
@@ -79,12 +127,25 @@ export default {
   name: 'SettingsTableActivities',
   data() {
     return {
+      activityList: [],
       activity: {
+        filename: '',
         activityname: '',
         description: '',
         fee: '',
       },
     };
+  },
+  created() {
+    // const endpoint = '/activities';
+    axios
+      .get('http://localhost:3000/activities')
+      .then((res) => {
+        this.activityList = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   methods: {
     onSelect() {
@@ -109,6 +170,7 @@ export default {
         .then(() => {
           // this.$router.push('/list-activities');
           this.activity = {
+            filename: '',
             activityname: '',
             description: '',
             fee: '',
@@ -122,10 +184,12 @@ export default {
 };
 </script>
 <style scoped>
+
 table{
   padding:0px;
   margin-top:30px;
   margin-left:70px;
+  table-layout: auto ;
 }
 th{
     padding:5px;
@@ -133,28 +197,26 @@ th{
      text-align: left;
 }
 td{
-    text-align: center;
+    text-align: left;
     font-family: 'Roboto';
     font-size:14px;
     padding:0px;
+    word-wrap: break-word;
 }
 table,td,th{
      font-family: 'Roboto';
 }
 img{
   width:150px;
-   height:100px;
+  height:100px;
 }
  ul{
     display: flex;
   }
-.action{
-   min-width:40px;
-  height:30px;
-  float:right;
+.add{
+  float: right;
   background-color: #068d68;
-  margin-bottom: 10px;
-  margin-right: 0px;
-}
+  margin-right: 10px;
 
+}
 </style>

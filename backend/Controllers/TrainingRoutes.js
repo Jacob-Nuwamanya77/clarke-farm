@@ -16,4 +16,14 @@ router.post('/trainings/add', async (req, res) => {
     res.json('Unsuccessful! Please Try Again');
   }
 });
+
+// FIND ALL TRAININGS
+router.get('/trainings', async (req, res) => {
+  try {
+    const trainings = await Training.find();
+    res.json(trainings);
+  } catch (error) {
+    res.status(400).send('Unable to find records');
+  }
+});
 module.exports = router;

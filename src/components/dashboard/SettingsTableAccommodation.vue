@@ -1,8 +1,7 @@
 <template>
 <!-- eslint-disable max-len -->
-<div>
-  <div class="action">
-           <a href="#" class="btn btn-sm text-white " type="button" data-bs-toggle="modal"
+<div class="pt-3">
+           <a href="#" class="btn btn-sm text-white mb-3 add " type="button" data-bs-toggle="modal"
           data-bs-target="#exampleModal">Add Accommodation</a>
                <!-- Modal -->
     <div class="modal fade" tabindex="-1"  id="exampleModal">
@@ -16,6 +15,14 @@
         <form @submit.prevent="onSubmit" enctype="multipart/form-data">
         <input type="file" ref="file" @change="onSelect" />
         <h6>{{ message }}</h6>
+
+         <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="filename"
+            v-model="accommodation.filename"
+          /></div> <br>
 
         <div class="form-group">
           <input
@@ -54,20 +61,41 @@
     </div>
      </div>
   </div>
-      </div>
-    <div class="table-settings">
+
          <table class="table table-striped table-bordered">
-        <thead class="align-middle ">
+        <thead>
           <th>Accommodation Type</th>
           <th>Image</th>
           <th>Description</th>
           <th>Price</th>
+          <th>Action</th>
         </thead>
         <tbody>
+           <tr v-for="accommodation in accommodationList" :key="accommodation._id">
+            <td>{{accommodation.accommodationtype }}</td>
+             <td>
+              <img
+              :src="require('../../../backend/uploads/' + accommodation.filename + '.jpg')" alt="activity"/>
+              </td>
+            <td id="td-description">{{ accommodation.description}}</td>
+            <td>{{accommodation.fee}}</td>
+            <td>
+              <a style="color: #068d68"><fa icon="edit" /></a>
+              <a href=""
+                ><fa
+                  icon="trash"
+                  style="
+                    float: right;
+                    margin-left: 35px;
+                    margin-top: -20px;
+                    color: red;
+                  "
+              /></a>
+            </td>
+          </tr>
         </tbody>
      </table>
     </div>
-</div>
 </template>
 <script>
 import axios from 'axios';
@@ -77,13 +105,26 @@ export default {
   name: 'SettingsTableAccommodation',
   data() {
     return {
+      accommodationList: [],
       accommodation: {
+        filename: '',
         accommodationtype: '',
         description: '',
         fee: '',
       },
 
     };
+  },
+  created() {
+    // const endpoint = '/activities';
+    axios
+      .get('http://localhost:3000/accommodations')
+      .then((res) => {
+        this.accommodationList = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   methods: {
     onSelect() {
@@ -108,6 +149,7 @@ export default {
         .then(() => {
           // this.$router.push('/list-activities');
           this.accommodation = {
+            filename: '',
             accommodationtype: '',
             description: '',
             fee: '',
@@ -122,44 +164,25 @@ export default {
 </script>
 <style scoped>
 table{
-  margin-top : 30px;
+  padding:0px;
+  margin-top:30px;
   margin-left:70px;
 }
 
-th{
-    padding:5px;
-    vertical-align:left;
-     text-align: left;
-      /* border:1px solid blue; */
-}
-td{
-    text-align: center;
-    font-family: 'Roboto';
-    font-size:14px;
-    padding:0px;
-     /* border:1px solid blue; */
-}
 table,td,th{
      font-family: 'Roboto';
+      font-size:14px;
+      padding:5px;
+
 }
 img{
   width:150px;
    height:100px;
 }
- ul{
-    display: flex;
-  }
-.action{
-   min-width:40px;
-  height:30px;
-  float:right;
+.add{
+  float: right;
   background-color: #068d68;
-  margin-bottom: 10px;
-  margin-right: 0px;
-}
+  margin-right: 10px;
 
-  hr{
-  margin-left: 7%;
-  width:1060px;
 }
 </style>
