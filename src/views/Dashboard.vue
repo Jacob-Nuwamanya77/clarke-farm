@@ -6,8 +6,8 @@
 
 <script>
 
-import sidebar from '@/components/AdminSideNavigation.vue';
-import home from '@/components/dashboard/AdminHome.vue'
+// import sidebar from '@/components/AdminSideNavigation.vue';
+import home from '@/components/dashboard/AdminHome.vue';
 
 export default {
   name: 'Admin',
@@ -17,9 +17,8 @@ export default {
   },
 
   components: {
-    sidebar,
+    // sidebar,
     home,
   },
 };
 </script>
-
