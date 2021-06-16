@@ -16,4 +16,14 @@ router.post('/activities/add', async (req, res) => {
   }
 });
 
+// FIND ALL ACTIVITIES
+router.get('/activities', async (req, res) => {
+  try {
+    const activities = await Activity.find();
+    res.json(activities);
+  } catch (error) {
+    res.status(400).send('Unable to find records');
+  }
+});
+
 module.exports = router;

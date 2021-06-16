@@ -16,4 +16,14 @@ router.post('/coffee-processes/add', async (req, res) => {
   }
 });
 
+// FIND ALL COFFEE PROCESS
+router.get('/coffee-processes', async (req, res) => {
+  try {
+    const coffeeProcesses = await CoffeeProcess.find();
+    res.json(coffeeProcesses);
+  } catch (error) {
+    res.status(400).send('Unable to find records');
+  }
+});
+
 module.exports = router;

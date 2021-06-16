@@ -17,6 +17,13 @@
         <input type="file" ref="file" @change="onSelect" />
         <h6>{{ message }}</h6>
 
+          <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="filename"
+            v-model="activity.filename"
+          /></div> <br>
         <div class="form-group">
           <input
             type="text"
@@ -61,6 +68,7 @@
           <th>Image</th>
           <th>Activity Description</th>
           <th>Price</th>
+          <th>Action</th>
         </thead>
            <tbody>
           <tr v-for="visitor in visitorList" :key="visitor._id">
@@ -85,6 +93,28 @@
           </tr>
         </tbody>
         <tbody>
+           <tr v-for="activity in activityList" :key="activity._id">
+            <td>{{ activity.activityname }}</td>
+             <td>
+              <img
+              :src="require('../../../backend/uploads/' + activity.filename + '.jpg')" alt="activity"/>
+              </td>
+            <td id="td-description">{{ activity.description}}</td>
+            <td>{{activity.fee}}</td>
+            <td>
+              <a style="color: #068d68"><fa icon="edit" /></a>
+              <a href=""
+                ><fa
+                  icon="trash"
+                  style="
+                    float: right;
+                    margin-left: 35px;
+                    margin-top: -20px;
+                    color: red;
+                  "
+              /></a>
+            </td>
+          </tr>
         </tbody>
      </table>
   </div>
@@ -97,12 +127,25 @@ export default {
   name: 'SettingsTableActivities',
   data() {
     return {
+      activityList: [],
       activity: {
+        filename: '',
         activityname: '',
         description: '',
         fee: '',
       },
     };
+  },
+  created() {
+    // const endpoint = '/activities';
+    axios
+      .get('http://localhost:3000/activities')
+      .then((res) => {
+        this.activityList = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   methods: {
     onSelect() {
@@ -127,6 +170,7 @@ export default {
         .then(() => {
           // this.$router.push('/list-activities');
           this.activity = {
+            filename: '',
             activityname: '',
             description: '',
             fee: '',
@@ -145,6 +189,7 @@ table{
   padding:0px;
   margin-top:30px;
   margin-left:70px;
+  table-layout: auto ;
 }
 th{
     padding:5px;
@@ -152,17 +197,18 @@ th{
      text-align: left;
 }
 td{
-    text-align: center;
+    text-align: left;
     font-family: 'Roboto';
     font-size:14px;
     padding:0px;
+    word-wrap: break-word;
 }
 table,td,th{
      font-family: 'Roboto';
 }
 img{
   width:150px;
-   height:100px;
+  height:100px;
 }
  ul{
     display: flex;
