@@ -36,6 +36,11 @@ export default {
 #our-partners{
   margin-top:60px;
 }
+@media screen and (max-width:764px){
+  #our-partners{
+    margin-top:30px;
+  }
+}
 .section-title{
   font-weight: bold;
   font-size: 25px;
@@ -53,14 +58,30 @@ export default {
   display:flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 10px;
-  padding-right:10px;
+  width:95%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow-y:hidden;
+  overflow-x:auto;
+}
+#partner-container::-webkit-scrollbar{
+  width:0px;
+}
+@media screen and (max-width:1280px){
+  #our-partner{
+    min-width:100%;
+  }
 }
 .partner{
-  width:200px;
+  min-width:200px;
   height:100px;
   display:flex;
   align-items: center;
+}
+@media screen and (max-width:480px){
+  .partner{
+    min-width:150px;
+  }
 }
 img{
   max-width:100%;

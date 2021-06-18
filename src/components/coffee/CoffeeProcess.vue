@@ -183,9 +183,9 @@ export default {
   position:relative;
   margin-top:70px;
 }
-@media screen and (min-width:700px) and (max-width:910px) {
+@media screen and (max-width:764px) {
   .coffee-process{
-    margin-top:0px;
+    margin-top:50px;
   }
 }
 .section-title{
