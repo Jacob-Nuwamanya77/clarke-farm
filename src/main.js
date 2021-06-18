@@ -21,7 +21,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 library.add(faPhone, faBars, faEye, faFacebookF, faTwitter, faCogs, faTrashAlt, faUserCog, faStarAndCrescent, faHome, faBookOpen,
   faInstagram, faTrash, faCog, faHome, faBook, faStar, faSignOutAlt,
   faComments, faBell, faUser, faPlus, faEdit, faAngleLeft, faAngleRight, faRunning,
-  faHamburger, faStarHalfAlt);
+  faHamburger, faStarHalfAlt, faCheckCircle);
 
 // sweetalert buttons
 const options = {
