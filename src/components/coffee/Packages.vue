@@ -4,79 +4,83 @@
     <div class="card-container" id="benefits-list">
       <div class="card-item">
         <div class="rating">
-          <div class="icon">
-            <fa icon="running" />
+          <div class="icon" id="shopping-icon">
+            <fa icon="shopping-bag" />
           </div>
-          <div class="category-title">Activities</div>
+          <div class="category-title">Consumers/Wholesalers</div>
         </div>
         <div class="item-content">
-          <div class="item-rating">
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star-half-alt"/>
+          <div class="line-item">
+            <span class="line-item-icon box-icon">
+              <fa icon="box-open"/>
+            </span>
+            <span class="line-item-bold line-item-title">Package:</span>
+            <span>Paper Bag</span>
           </div>
-          <ul>
-            <li>Bouldering</li>
-            <li>Jeep rides</li>
-            <li>River walks</li>
-            <li>Bird watching</li>
-            <li>Coffee tasting</li>
-          </ul>
+          <div class="line-item">
+            <span class="line-item-icon scale-icon">
+              <fa icon="balance-scale"/>
+            </span>
+            <span class="line-item-bold line-item-title">Weight:</span>
+            <span>1 Kg</span>
+          </div>
+          <div class="line-item">
+            <span class="line-item-icon product-icon">
+              <fa icon="bullseye"/>
+            </span>
+            <span class="line-item-bold line-item-title">Product:</span>
+            <span>Roasted Beans</span>
+          </div>
+          <div class="line-item">
+            <span class="line-item-icon min-order-icon">
+              <fa icon="minus-circle"/>
+            </span>
+            <span class="line-item-bold line-item-title">Min.order:</span>
+            <span>50 Bags</span>
+          </div>
           <div class="link-container">
-            <a href="#offers" class="learn-more">Learn more &rarr;</a>
+            <a href="#offers" class="learn-more">Contact us &rarr;</a>
           </div>
         </div>
       </div>
       <div class="card-item">
         <div class="rating">
           <div class="icon">
-            <fa icon="home" />
+            <fa icon="truck" />
           </div>
-          <div class="category-title">Accomodation</div>
+          <div class="category-title">Exporters/Processors</div>
         </div>
         <div class="item-content">
-          <div class="item-rating">
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star"/>
+          <div class="line-item">
+            <span class="line-item-icon box-icon">
+              <fa icon="box-open"/>
+            </span>
+            <span class="line-item-bold line-item-title">Package:</span>
+            <span>Sack</span>
           </div>
-          <ul>
-            <li>Hilltop cottages</li>
-            <li>Camping tents</li>
-            <li>Cliff container house</li>
-          </ul>
+          <div class="line-item">
+            <span class="line-item-icon scale-icon">
+              <fa icon="balance-scale"/>
+            </span>
+            <span class="line-item-bold line-item-title">Weight:</span>
+            <span>60 Kg</span>
+          </div>
+          <div class="line-item">
+            <span class="line-item-icon product-icon">
+              <fa icon="bullseye"/>
+            </span>
+            <span class="line-item-bold line-item-title">Product:</span>
+            <span>Dried Beans</span>
+          </div>
+          <div class="line-item">
+            <span class="line-item-icon min-order-icon">
+              <fa icon="minus-circle"/>
+            </span>
+            <span class="line-item-bold line-item-title">Min.order:</span>
+            <span>50 Sacks</span>
+          </div>
           <div class="link-container">
-            <a href="#offers" class="learn-more">Learn more &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-item">
-        <div class="rating">
-          <div class="icon">
-            <fa icon="hamburger" />
-          </div>
-          <div class="category-title">Food</div>
-        </div>
-        <div class="item-content">
-          <div class="item-rating">
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star"/>
-            <fa icon="star"/>
-          </div>
-          <ul>
-            <li>Luwombo</li>
-            <li>Steammed matooke</li>
-            <li>Katogo</li>
-            <li>Boo</li>
-          </ul>
-          <div class="link-container">
-            <a href="#offers" class="learn-more">Learn more &rarr;</a>
+            <a href="#offers" class="learn-more">Contact us &rarr;</a>
           </div>
         </div>
       </div>
@@ -99,7 +103,6 @@ export default {
     margin-top:60px;
   }
 }
-
 .section-title{
   font-weight: bold;
   font-size: 25px;
@@ -107,11 +110,13 @@ export default {
   font-family: Playfair;
   text-align: center;
 }
-
 .card-container{
-  margin-top: 40px;
+  margin-top: 30px;
   display:flex;
-  justify-content:center;
+  justify-content:space-around;
+  width:70%;
+  margin-left: auto;
+  margin-right: auto;
 }
 #benefits-list{
   overflow-x: auto;
@@ -126,14 +131,12 @@ export default {
   }
 }
 .card-item{
-  min-width:280px;
-  max-width: 280px;
+  min-width:300px;
+  max-width: 300px;
   min-height: 280px;
-  max-height: 280px;
-  margin-left: 15px;
+  position:relative;
   background-color:white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  position:relative;
 }
 .rating{
   display: flex;
@@ -153,22 +156,46 @@ export default {
   align-items: center;
   justify-content: center;
 }
+#shopping-icon{
+  background-color:var(--blue-ink);
+}
 .category-title{
   color:rgba(0,0,0,0.7);
   font-weight: bold;
-  margin-left: 20px;
+  margin-left: 15px;
 }
 .item-content{
-  padding-left: 15px;
+  padding-left: 25px;
   padding-right: 15px;
-  padding-top:10px;
+  padding-top:20px;
   height:220px;
 }
-.item-rating{
+.line-item{
+  margin-bottom: 8px;
+}
+.line-item-icon{
+  margin-right:15px;
+  display:inline-block;
+  min-width:30px;
+}
+.line-item-bold{
   font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 10px;
-  color:orange;
+}
+.line-item-title{
+  display:inline-block;
+  min-width:80px;
+}
+.box-icon{
+  color:#FCA705;
+}
+.scale-icon{
+  color:#5C2C94;
+}
+.product-icon{
+  color:#1CACF4;
+}
+.min-order-icon{
+  color:#FC646C;
 }
 .link-container{
   position:absolute;

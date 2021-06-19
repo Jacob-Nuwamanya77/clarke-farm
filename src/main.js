@@ -4,7 +4,8 @@ import {
   faPhone, faEye, faBars, faTrash, faCog, faHome, faBook, faUserCog,
   faTrashAlt, faBookOpen, faStar, faSignOutAlt, faRunning, faComments, faBell, faUser,
   faPlus, faEdit, faAngleLeft, faCogs, faStarAndCrescent, faAngleRight, faHamburger,
-  faStarHalfAlt, faCheckCircle,
+  faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen, faBalanceScale,
+  faMinusCircle, faBullseye,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -22,7 +23,8 @@ library.add(faPhone, faBars, faEye, faFacebookF, faTwitter, faCogs, faTrashAlt,
   faUserCog, faStarAndCrescent, faHome, faBookOpen,
   faInstagram, faTrash, faCog, faHome, faBook, faStar, faSignOutAlt,
   faComments, faBell, faUser, faPlus, faEdit, faAngleLeft, faAngleRight, faRunning,
-  faHamburger, faStarHalfAlt, faCheckCircle);
+  faHamburger, faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen,
+  faBalanceScale, faMinusCircle, faBullseye);
 
 // sweetalert buttons
 const options = {
