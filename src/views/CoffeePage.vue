@@ -3,6 +3,7 @@
     <NavBar/>
     <HeroCoffee />
     <OurPartners />
+    <Packaging />
     <CoffeeProcess />
     <OurCertificates />
     <Footer/>
@@ -15,6 +16,7 @@ import HeroCoffee from '@/components/coffee/HeroCoffee.vue';
 import CoffeeProcess from '@/components/coffee/CoffeeProcess.vue';
 import OurCertificates from '@/components/coffee/OurCertificates.vue';
 import OurPartners from '@/components/coffee/OurPartners.vue';
+import Packaging from '@/components/coffee/Packages.vue';
 import Footer from '@/components/MainFooter.vue';
 
 export default {
@@ -23,6 +25,7 @@ export default {
     NavBar,
     HeroCoffee,
     OurPartners,
+    Packaging,
     CoffeeProcess,
     OurCertificates,
     Footer,

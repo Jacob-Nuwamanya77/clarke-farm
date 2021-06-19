@@ -36,7 +36,7 @@
       </div>
     </div>
     <div id="right-container">
-      <img src="@/assets/images/forestwalk.jpg" alt="forest walk" aria-hidden="true">
+      <img src="@/assets/images/clarke-coffee.jpg" alt="clarke coffee" aria-hidden="true">
     </div>
   </div>
 </template>
@@ -53,14 +53,25 @@ export default {
   margin-left: auto;
   margin-right: auto;
   margin-top:25px;
+  min-height:500px;
 }
 #right-container{
   max-height:500px;
+}
+@media screen and (min-width:900px){
+  #right-container{
+    min-height:500px;
+  }
 }
 img{
   width:100%;
   max-height:500px;
   object-fit: cover;
+}
+@media screen and (min-width:900px){
+  img{
+    min-height:500px;
+  }
 }
 @media screen and (min-width:900px){
   #hero-coffee{

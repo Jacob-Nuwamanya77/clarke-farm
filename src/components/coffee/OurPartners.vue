@@ -49,11 +49,6 @@ export default {
   text-align: center;
 }
 
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
 #partners-container{
   display:flex;
   align-items: center;
@@ -64,7 +59,7 @@ export default {
   overflow-y:hidden;
   overflow-x:auto;
 }
-#partner-container::-webkit-scrollbar{
+#partners-container::-webkit-scrollbar{
   width:0px;
 }
 @media screen and (max-width:1280px){
@@ -77,11 +72,6 @@ export default {
   height:100px;
   display:flex;
   align-items: center;
-}
-@media screen and (max-width:480px){
-  .partner{
-    min-width:150px;
-  }
 }
 img{
   max-width:100%;
