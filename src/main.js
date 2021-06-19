@@ -6,7 +6,8 @@ import {
   faHouseUser, faUserFriends, faBell, faUser, faArrowRight,
   faPlus, faEdit, faAngleLeft, faCogs, faAngleDown,
   faStarAndCrescent, faAngleRight, faHamburger, faGraduationCap, faCampground,
-  faStarHalfAlt, faCheckCircle,
+  faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen, faBalanceScale,
+  faMinusCircle, faBullseye,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -22,10 +23,11 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 library.add(faPhone, faBars, faEye, faFacebookF, faTwitter, faCogs, faTrashAlt, faCampground,
   faGraduationCap, faHouseUser, faUserFriends,
-  faUserCog, faStarAndCrescent, faHome, faBookOpen, faAngleDown,
+  faUserCog, faStarAndCrescent, faHome, faBookOpen, faAngleDown, faArrowRight,
   faInstagram, faTrash, faCog, faHome, faBook, faStar, faSignOutAlt,
-  faComments, faBell, faUser, faPlus, faEdit, faAngleLeft, faAngleRight, faRunning, faArrowRight,
-  faHamburger, faStarHalfAlt, faCheckCircle);
+  faComments, faBell, faUser, faPlus, faEdit, faAngleLeft, faAngleRight, faRunning,
+  faHamburger, faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen,
+  faBalanceScale, faMinusCircle, faBullseye);
 
 // sweetalert buttons
 const options = {
