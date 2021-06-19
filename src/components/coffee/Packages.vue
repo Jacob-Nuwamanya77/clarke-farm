@@ -111,7 +111,7 @@ export default {
   text-align: center;
 }
 .card-container{
-  margin-top: 30px;
+  margin-top: 40px;
   display:flex;
   justify-content:space-around;
   width:70%;
