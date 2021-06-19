@@ -11,13 +11,18 @@
                        <span class="mt-0 heading-span">Bookings Made Today</span>
                         <!-- <img src="../assets/icons/trend.svg" width="60" height="60"/> -->
                        <h1>500 <span>guests</span></h1>
-                       <hr>
-                       <p> Above is the total number of bookings mage to the farm from all the three departments
+                       <div class="progress mb-3 mt-3">
+                    <div class="progress-bar progress-bar-striped "
+                    role="progressbar" style="width: 100%" aria-valuenow="100"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                       <p> Above is the total number of bookings made
+                            to the farm from all the three departments
                            i.e trainings, tours and coffee.
                        </p>
-                       <a href="#">View details</a><font-awesome-icon icon="arrow-right" class="arrow-left"/>
+                       <a href="#" class="mt-3">
+                           View details <fa icon="arrow-right" class="arrow-left"/></a>
                     </div>
-               
 
                     </div>
 
@@ -29,36 +34,36 @@
                        <span class="mt-3 heading-span">Trainings</span>
                        <h1>40</h1>
                        <div class="icon-div">
-                       <font-awesome-icon icon="graduation-cap" class="card-icons"/>
+                       <fa icon="graduation-cap" class="card-icons"/>
                        </div>
                         </div>
                         <div class="col small-card card right-card">
                             <span class="mt-3 heading-span">Tours</span>
                        <h1>40</h1>
                        <div>
-                       <font-awesome-icon icon="user-friends" class="card-icons"/>
+                       <fa icon="user-friends" class="card-icons"/>
                        </div>
                         </div>
-                        
+
                 </div>
                  <div class="row row2">
                         <div class="col small-card card">
                             <span class="mt-3 heading-span">Cottages</span>
                        <h1>40</h1>
                        <div>
-                       <font-awesome-icon icon="house-user" class="card-icons"/>
+                       <fa icon="house-user" class="card-icons"/>
                        </div>
                         </div>
                         <div class="col small-card card right-card">
                             <span class="mt-3 heading-span">Camping</span>
                        <h1>40</h1>
                        <div>
-                       <font-awesome-icon icon="campground" class="card-icons"/>
+                       <fa icon="campground" class="card-icons"/>
                        </div>
                         </div>
-                        
+
                 </div>
-                
+
             </div>
         </div>
         <div class="table-div">
@@ -98,7 +103,7 @@
 <style scoped>
 .big-card{
     color: #068d68;
-    height: 300px;
+    height: 280px;
     box-shadow: 5px,solid,white;
     /* background: linear-gradient(to right bottom, #75cfb7, #068d68); */
 }
@@ -130,6 +135,9 @@ font-size: 25px;
     height:20px;
     margin-top: 20px;
 }
+.progress-bar{
+    background-color: #068d68;
+}
 h5,h3{
     color:rgb(53, 53, 85)
 }
@@ -144,7 +152,7 @@ a:hover{
     color:rgb(53, 53, 85)
 }
 .arrow-left{
-    margin-left: 10px;
+    margin-left: 0px;
 }
 td{
     text-align: center;
@@ -158,6 +166,4 @@ td{
     color:rgb(53, 53, 85);
     margin-top:20px;
 }
-
-
 </style>

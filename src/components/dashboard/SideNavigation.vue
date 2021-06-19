@@ -1,23 +1,30 @@
 <template>
-
       <!-- side navigation -->
     <div
       class="col-md-3 sidenav"
-      id="sidebar"
-      @mouseover="togglesidebar"
-      @mouseout="togglesidebar"
     >
       <ul>
     <h3 class="logo" id="logo-text ">CLARKE FARM</h3>
     <router-link to="/admin/dashboard" id="home" class="active">
-      
           <li><fa icon="home" /><span>Home</span></li>
-    
     </router-link>
-    <router-link to="/admin/booking" class="  pl-3">
         <a href="#">
-          <li><fa icon="book-open" /><span>Bookings</span></li>
-        </a></router-link>
+          <li class="dropdown-btn" @click="dropdownToggle"
+         ><fa icon="book-open" /><span>Bookings
+          </span><fa icon="angle-down" class="caret"/>
+          </li>
+        </a>
+        <div class="dropdown-container d-none" id="dropdown-container"  >
+            <router-link to="/admin/booking" class="  pl-3">
+              <a href="#" class="item">Trainings</a>
+            </router-link>
+            <router-link to="/admin/farmtour" class="  pl-3">
+              <a href="#" class="item">Tours</a>
+            </router-link>
+            <router-link to="/admin/coffeetour" class="  pl-3">
+              <a href="#" class="item">Coffee Farm</a>
+            </router-link>
+        </div>
         <a href="#">
           <li>
             <fa icon="star-and-crescent" /><span
@@ -32,15 +39,19 @@
     </div>
 </template>
 <style scoped>
+.item{
+  margin-left: 25px;
+   color:rgb(53, 53, 85)
+}
 .sidenav {
   background-color: #068d68;
-  width: 170px;
+  width: 70px;
   white-space: nowrap;
   transition: 0.5s;
   overflow-x: hidden;
   height: 100vh;
   position: fixed;
-    background: linear-gradient(to  bottom, #068d68, #75cfb7);
+  background: linear-gradient(to  bottom, #068d68, #75cfb7);
 
 }
 .logo{
@@ -73,14 +84,19 @@ span {
   padding: 10px;
 }
 .right-container{
-	margin-left: 100px;
-	margin-top: 20px;
+  margin-left: 100px;
+  margin-top: 20px;
+}
+
+.caret{
+  margin-left: 40px;
+
 }
 
 .icon{
-	float: right;
-	font-size: 20px;
-	color: #068d68;
+  float: right;
+  font-size: 20px;
+  color: #068d68;
 }
 .signout{
   margin-right:20px;
@@ -95,29 +111,26 @@ h5{
 }
 </style>
 <script>
-let mini = true;
+let item = true;
 export default {
-    name:'SideNavigation',
-     methods: {
-    togglesidebar() {
-      if (mini) {
-        console.log(mini);
-        document.getElementById("sidebar").style.width = "250px";
-        document.getElementById("maincontent").style.marginLeft = "150px";
-        // document.getElementById("logo-text").style.display = 'block';
-
-
-        mini = false;
+  name: 'SideNavigation',
+  methods: {
+    dropdownToggle() {
+      const drop = document.getElementById('dropdown-container');
+      if (item) {
+        drop.classList.remove('d-none');
+        console.log('clicked');
+        item = false;
       } else {
-        console.log(mini);
-        document.getElementById("sidebar").style.width = "70px";
-        document.getElementById("maincontent").style.marginLeft = "0px";
-        // document.getElementById("logo-text").style.display = 'none';
-
-
-        mini = true;
+        drop.classList.add('d-none');
+        console.log('clicked');
+        item = true;
       }
     },
+    hideItems() {
+      document.getElementById('dropdown-container').classList.add('d-none');
+    },
   },
-}
+};
+
 </script>
