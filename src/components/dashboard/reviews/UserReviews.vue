@@ -7,8 +7,7 @@
       <!-- top nav bar -->
       <div class="topnav fixed">
         <fa icon="user-cog" class="icon" />
-        <router-link to="/admin"><a class="icon signout"><fa icon="sign-out-alt"  />
-        </a></router-link>
+        <fa icon="sign-out-alt" class="icon signout" />
       </div>
     <Content id="maincontent"/>
     </div>
@@ -16,12 +15,12 @@
 </template>
 
 <script>
-import Content from '@/components/dashboard/booking/Trainings.vue';
+import Content from '@/components/dashboard/reviews/ReviewContent.vue';
 import SideNav from '@/components/dashboard/SideNavigation.vue';
 
 let mini = true;
 export default {
-  name: 'Admin',
+  name: 'UserReviews',
   data() {
     return {
     };

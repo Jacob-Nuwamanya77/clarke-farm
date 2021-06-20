@@ -3,18 +3,28 @@
         <h5>Bookings</h5>
         <nav aria-label="breadcrumb" class="mt-3">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Bookings</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Training</li>
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Bookings</li>
             </ol>
         </nav>
         <hr>
         <div class="table-div">
-        <!-- <h5 class="col-md-6">Trainings</h5> -->
-        <form class="form-inline my-lg-0 ">
-            <input class="form-control mr-sm-2 mb-3"
-            type="search" placeholder="Search" aria-label="Search">
-        </form>
-        <table class="table table-striped table-bordered table-responsive table-hover">
+          <div class="row">
+            <div class="col-md-6 mt-3">
+              <label class=" mt-1">Sort By:</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>All Bookings</option>
+                <option value="1">Tours</option>
+                <option value="2">Trainings</option>
+                <option value="3">CoffeeFarm</option>
+              </select>
+            </div>
+            <form class="form-inline my-lg-0 col-md-6 ml-5 ">
+                <input class="form-control mr-sm-2 mt-3"
+                type="search" placeholder="Search" aria-label="Search">
+            </form>
+          </div>
+        <table class="table table-striped table-bordered table-responsive table-hover mt-5">
             <thead>
                 <tr>
                     <td></td>
@@ -61,9 +71,14 @@
     margin-right: 10px;
     color: #068d68;
 }
+ .form-select{
+width: 250px;
+margin-left: 70px;
+margin-top: -30px;
+}
 .form-inline{
-float: right;
-margin-left: 160px;
+  width: 310px;
+  margin-left: 100px;
 }
 
 h5,h3{
@@ -114,8 +129,7 @@ export default {
   },
   methods: {
     deleteVisitor(id) {
-      // eslint-disable-next-line no-underscore-dangle
-      const indexOfArrayItem = this.visitorList.findIndex((i) => i._id === id);
+      const indexOfArrayItem = this.visitorList.findIndex((i) => i.id === id);
       this.$swal({
         title: 'Are you sure?',
         text: "You can't revert this action",
