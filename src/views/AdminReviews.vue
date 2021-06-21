@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Reviews from '@/components/dashboard/UserReviews.vue';
+import Reviews from '@/components/dashboard/reviews/UserReviews.vue';
 
 export default {
   name: 'AdminReviews',

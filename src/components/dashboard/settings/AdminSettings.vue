@@ -10,13 +10,17 @@
         <router-link to="/admin"><a class="icon signout"><fa icon="sign-out-alt"  />
         </a></router-link>
       </div>
+      <div>
+        <SubNav/>
+      </div>
     <Content id="maincontent"/>
     </div>
   </div>
 </template>
 
 <script>
-import Content from '@/components/dashboard/booking/Trainings.vue';
+import Content from '@/components/dashboard/settings/SettingsTableActivities.vue';
+import SubNav from '@/components/dashboard/settings/SettingsContent.vue';
 import SideNav from '@/components/dashboard/SideNavigation.vue';
 
 let mini = true;
@@ -28,6 +32,7 @@ export default {
   },
   components: {
     SideNav,
+    SubNav,
     Content,
     // AdminHeadingHome,
     // HomeContent,

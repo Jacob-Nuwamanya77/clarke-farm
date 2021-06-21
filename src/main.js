@@ -18,8 +18,6 @@ import store from './store';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
-// import 'vue-material/dist/vue-material.min.css';
-// import 'vue-material/dist/theme/default.css';
 
 library.add(faPhone, faBars, faEye, faFacebookF, faTwitter, faCogs, faTrashAlt, faCampground,
   faGraduationCap, faHouseUser, faUserFriends,

@@ -8,13 +8,15 @@
     <router-link to="/admin/dashboard" id="home" class="active">
           <li><fa icon="home" /><span>Home</span></li>
     </router-link>
+    <router-link to="/admin/booking" class="  pl-3">
         <a href="#">
           <li class="dropdown-btn" @click="dropdownToggle"
          ><fa icon="book-open" /><span>Bookings
-          </span><fa icon="angle-down" class="caret"/>
+          </span><fa icon="angle-right" class="caret"/>
           </li>
         </a>
-        <div class="dropdown-container d-none" id="dropdown-container"  >
+    </router-link>
+        <!-- <div class="dropdown-container d-none" id="dropdown-container"  >
             <router-link to="/admin/booking" class="  pl-3">
               <a href="#" class="item">Trainings</a>
             </router-link>
@@ -24,7 +26,8 @@
             <router-link to="/admin/coffeetour" class="  pl-3">
               <a href="#" class="item">Coffee Farm</a>
             </router-link>
-        </div>
+        </div> -->
+        <router-link to='/admin/reviews'>
         <a href="#">
           <li>
             <fa icon="star-and-crescent" /><span
@@ -32,17 +35,17 @@
             >
           </li>
         </a>
+        </router-link>
+        <router-link to="/admin/settings/activities">
         <a href="#">
           <li><fa icon="cogs" /><span>Settings</span></li>
         </a>
+        </router-link>
       </ul>
     </div>
 </template>
 <style scoped>
-.item{
-  margin-left: 25px;
-   color:rgb(53, 53, 85)
-}
+
 .sidenav {
   background-color: #068d68;
   width: 70px;
@@ -51,7 +54,7 @@
   overflow-x: hidden;
   height: 100vh;
   position: fixed;
-  background: linear-gradient(to  bottom, #068d68, #75cfb7);
+  /* background: linear-gradient(to  bottom, #068d68, #75cfb7); */
 
 }
 .logo{
@@ -65,6 +68,10 @@
   font-family: "roboto";
   display: block;
   margin-top: 20px;
+}
+.item{
+  margin-left: 25px;
+   color:rgb(53, 53, 85)
 }
 ul{
   margin-top: 60px;

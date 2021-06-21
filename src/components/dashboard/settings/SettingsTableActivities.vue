@@ -1,15 +1,15 @@
 <template>
 <!-- eslint-disable max-len -->
-<div>
-   <div class="action">
-         <a href="#" class="btn btn-sm text-white " type="button" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">Add Training Program</a>
-               <!-- Modal -->
+  <div class="mt-3">
+    <a href="#" class="btn btn-sm text-white add mb-3" type="button" data-bs-toggle="modal"
+    data-bs-target="#exampleModal">Add Activity</a>
+
+  <!-- Modal -->
     <div class="modal fade" tabindex="-1"  id="exampleModal">
    <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Add Coffee Process Step</h5>
+        <h5 class="modal-title">Add Activity</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -17,20 +17,19 @@
         <input type="file" ref="file" @change="onSelect" />
         <h6>{{ message }}</h6>
 
-         <div class="form-group">
+          <div class="form-group">
           <input
             type="text"
             class="form-control"
             placeholder="filename"
-            v-model="training.filename"
+            v-model="activity.filename"
           /></div> <br>
-
         <div class="form-group">
           <input
             type="text"
             class="form-control"
-            placeholder="training program title"
-            v-model="training.programtitle"
+            placeholder="Activity Name"
+            v-model="activity.activityname"
           />
         </div>
           <br>
@@ -39,7 +38,7 @@
             type="text"
             class="form-control"
             placeholder="description"
-            v-model="training.description"
+            v-model="activity.description"
             required
           />
         </div>
@@ -49,39 +48,53 @@
             type="text"
             class="form-control"
             placeholder="fee"
-            v-model="training.fee"
-            required
+            v-model="activity.fee"
           />
         </div>
          <br>
 
          <div class="modal-footer">
-        <button  class="btn btn-success">Save changes</button>
+        <button  class="btn add text-white">Save changes</button>
       </div>
         </form>
       </div>
     </div>
      </div>
   </div>
-      </div>
-    <div class="table-settings">
-         <table class="table table-striped table-bordered">
-        <thead class="align-left">
-          <th>Program Name</th>
+
+         <table class="table table-striped table-hover table-bordered">
+        <thead>
+          <th>Activity Name</th>
           <th>Image</th>
-          <th>Description</th>
-          <th>Fee</th>
+          <th>Activity Description</th>
+          <th>Price</th>
           <th>Action</th>
         </thead>
+           <tbody>
+          <tr v-for="visitor in visitorList" :key="visitor._id">
+            <td>{{ visitor.createdAt }}</td>
+            <td>{{ visitor.name }}</td>
+            <td>{{ visitor.bookingtype }}</td>
+            <td>{{ visitor.phone }}</td>
+            <td>{{ visitor.email }}</td>
+            <td>
+              <a style="color: #068d68"><fa icon="eye" /></a>
+              <a href="" @click.prevent="deleteVisitor(visitor._id)"
+                ><fa
+                  icon="trash-alt" class="text-danger delete"
+              /></a>
+            </td>
+          </tr>
+        </tbody>
         <tbody>
-          <tr v-for="training in trainingsList" :key="training._id">
-            <td>{{training.programtitle }}</td>
+           <tr v-for="activity in activityList" :key="activity._id">
+            <td>{{ activity.activityname }}</td>
              <td>
               <img
-              :src="require('../../../backend/uploads/' + training.filename + '.jpg')" alt="activity"/>
+              :src="require('../../../../backend/uploads/' + activity.filename + '.jpg')" alt="activity"/>
               </td>
-            <td>{{ training.description}}</td>
-            <td>{{training.fee}}</td>
+            <td id="td-description">{{ activity.description}}</td>
+            <td>{{activity.fee}}</td>
             <td>
               <a style="color: #068d68"><fa icon="edit" /></a>
               <a href=""
@@ -98,21 +111,20 @@
           </tr>
         </tbody>
      </table>
-    </div>
-</div>
+  </div>
 </template>
 <script>
 import axios from 'axios';
 
 const api = 'http://localhost:3000';
 export default {
-  name: 'SettingsTableTraining',
+  name: 'SettingsTableActivities',
   data() {
     return {
-      trainingsList: [],
-      training: {
+      activityList: [],
+      activity: {
         filename: '',
-        programtitle: '',
+        activityname: '',
         description: '',
         fee: '',
       },
@@ -121,9 +133,9 @@ export default {
   created() {
     // const endpoint = '/activities';
     axios
-      .get('http://localhost:3000/trainings')
+      .get('http://localhost:3000/activities')
       .then((res) => {
-        this.trainingsList = res.data;
+        this.activityList = res.data;
       })
       .catch((error) => {
         console.log(error);
@@ -146,14 +158,14 @@ export default {
         this.message = 'file not uploaded';
       }
       // Form2
-      const endpoint2 = '/trainings/add';
+      const endpoint2 = '/activities/add';
       axios
-        .post(api + endpoint2, this.training)
+        .post(api + endpoint2, this.activity)
         .then(() => {
           // this.$router.push('/list-activities');
-          this.training = {
+          this.activity = {
             filename: '',
-            programtitle: '',
+            activityname: '',
             description: '',
             fee: '',
           };
@@ -166,38 +178,36 @@ export default {
 };
 </script>
 <style scoped>
+
 table{
   padding:0px;
   margin-top:30px;
-  margin-left:70px;
 }
 th{
     padding:5px;
-    vertical-align:left;
-     text-align: left;
+    text-align: left;
 }
 td{
-    text-align: center;
+    text-align: left;
     font-family: 'Roboto';
     font-size:14px;
-    padding:0px;
+    padding:10px;
+    word-wrap: break-word;
 }
 table,td,th{
      font-family: 'Roboto';
 }
 img{
   width:150px;
-   height:100px;
+  height:100px;
 }
  ul{
     display: flex;
   }
-.action{
-   min-width:40px;
-  height:30px;
-  float:right;
+.add{
+  float: right;
   background-color: #068d68;
-  margin-bottom: 10px;
-  margin-right: 0px;
+  margin-right: 10px;
+
 }
 </style>

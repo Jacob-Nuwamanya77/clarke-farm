@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="table-div">
-        <h3 class="mt-5">Incoming Guests</h3>
+        <h4 class="mt-5">Incoming Guests</h4>
         <table class="table mt-3 table-bordered table-responsive table-hover">
             <thead>
                 <tr>

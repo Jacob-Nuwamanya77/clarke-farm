@@ -1,28 +1,27 @@
 <template>
-  <div class="container">
-    <div class="container-left">
-      <AdminSideNavigation />
-    </div>
-    <div class="container-right">
-      <div class="top-row">
-        <AdminHeadingSettings heading="Settings"/>
+  <div class="row">
+      <!-- side navigation -->
+  <SideNav @mouseover="togglesidebar"
+      @mouseout="togglesidebar" id="sidebar"/>
+    <div class="col-md-9 right-container">
+      <!-- top nav bar -->
+      <div class="topnav fixed">
+        <fa icon="user-cog" class="icon" />
+        <router-link to="/admin"><a class="icon signout"><fa icon="sign-out-alt"  />
+        </a></router-link>
       </div>
-      <div class="after-toprow">
-       <SettingsContent/>
+      <div>
+        <SubNav/>
       </div>
-      <div class="content-table">
-        <SettingsTable/>
-      </div>
-
+    <Content id="maincontent"/>
     </div>
   </div>
 </template>
 
 <script>
-import AdminSideNavigation from '@/components/AdminSideNavigation.vue';
-import AdminHeadingSettings from '@/components/dashboard/AdminHeadingSettings.vue';
-import SettingsContent from '@/components/dashboard/SettingsContent.vue';
-import SettingsTable from '@/components/dashboard/SettingsTableAccommodation.vue';
+import SideNav from '@/components/dashboard/SideNavigation.vue';
+import SubNav from '@/components/dashboard/settings/SettingsContent.vue';
+import Content from '@/components/dashboard/settings/SettingsTableAccommodation.vue';
 
 export default {
   name: 'Accommodation',
@@ -32,46 +31,30 @@ export default {
   },
 
   components: {
-    AdminSideNavigation,
-    AdminHeadingSettings,
-    SettingsContent,
-    SettingsTable,
+    SideNav,
+    SubNav,
+    Content,
   },
 };
 </script>
 
 <style scoped>
-.container {
-  width: 98vw;
-  margin-top: 0;
-  margin-left: auto;
-  margin-right: auto;
-  display: flex;
-  flex-direction: row;
-  position: relative;
+.content{
+  margin-top: 50px;
+  transform: translate(2%,0);
+  transition:transform 1s linear;
 }
-.top-row {
-  position: relative;
-  padding-top: 5px;
+.right-container{
+  margin-left: 100px;
+  margin-top: 20px;
 }
-.container-left {
-  width:15%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #068d68;
-  color: white;
-  margin-left: 20px;
+.icon{
+  float: right;
+  font-size: 20px;
+  color: #068d68;
 }
-.container-right {
-  margin-left: 6vw;
-  width: 80vw;
-}
-.pagination {
-  width:500px;
-   margin-top:3%;
-   margin-left:7%;
+.signout{
+  margin-right:20px;
 }
 
 </style>

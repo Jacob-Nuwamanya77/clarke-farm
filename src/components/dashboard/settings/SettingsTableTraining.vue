@@ -1,10 +1,9 @@
 <template>
 <!-- eslint-disable max-len -->
-<div>
+<div class="mt-3">
    <div class="action">
-
-            <a href="#" class="btn btn-sm text-white " type="button" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">Add Coffee Process</a>
+         <a href="#" class="btn btn-sm text-white add mb-3" type="button" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">Add Training Program</a>
                <!-- Modal -->
     <div class="modal fade" tabindex="-1"  id="exampleModal">
    <div class="modal-dialog">
@@ -23,15 +22,15 @@
             type="text"
             class="form-control"
             placeholder="filename"
-            v-model="processcoffee.filename"
+            v-model="training.filename"
           /></div> <br>
 
         <div class="form-group">
           <input
             type="text"
             class="form-control"
-            placeholder="coffee process step"
-            v-model="processcoffee.step"
+            placeholder="training program title"
+            v-model="training.programtitle"
           />
         </div>
           <br>
@@ -40,7 +39,17 @@
             type="text"
             class="form-control"
             placeholder="description"
-            v-model="processcoffee.description"
+            v-model="training.description"
+            required
+          />
+        </div>
+         <br>
+         <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="fee"
+            v-model="training.fee"
             required
           />
         </div>
@@ -57,19 +66,22 @@
       </div>
     <div class="table-settings">
          <table class="table table-striped table-bordered">
-        <thead class="align-middle ">
-          <th>Step</th>
+        <thead class="align-left">
+          <th>Program Name</th>
           <th>Image</th>
           <th>Description</th>
+          <th>Fee</th>
+          <th>Action</th>
         </thead>
         <tbody>
-          <tr v-for="processcoffee in  coffeeprocessList" :key="processcoffee._id">
-            <td>{{processcoffee.step }}</td>
+          <tr v-for="training in trainingsList" :key="training._id">
+            <td>{{training.programtitle }}</td>
              <td>
               <img
-              :src="require('../../../backend/uploads/' + processcoffee.filename + '.jpg')" alt="activity"/>
+              :src="require('../../../../backend/uploads/' + training.filename + '.jpg')" alt="activity"/>
               </td>
-            <td id="td-description">{{processcoffee.description}}</td>
+            <td>{{ training.description}}</td>
+            <td>{{training.fee}}</td>
             <td>
               <a style="color: #068d68"><fa icon="edit" /></a>
               <a href=""
@@ -94,23 +106,24 @@ import axios from 'axios';
 
 const api = 'http://localhost:3000';
 export default {
-  name: 'SettingsTableActivities',
+  name: 'SettingsTableTraining',
   data() {
     return {
-      coffeeprocessList: [],
-      processcoffee: {
+      trainingsList: [],
+      training: {
         filename: '',
-        step: '',
+        programtitle: '',
         description: '',
+        fee: '',
       },
     };
   },
   created() {
     // const endpoint = '/activities';
     axios
-      .get('http://localhost:3000/coffee-processes')
+      .get('http://localhost:3000/trainings')
       .then((res) => {
-        this.coffeeprocessList = res.data;
+        this.trainingsList = res.data;
       })
       .catch((error) => {
         console.log(error);
@@ -133,15 +146,16 @@ export default {
         this.message = 'file not uploaded';
       }
       // Form2
-      const endpoint2 = '/coffee-processes/add';
+      const endpoint2 = '/trainings/add';
       axios
-        .post(api + endpoint2, this.processcoffee)
+        .post(api + endpoint2, this.training)
         .then(() => {
           // this.$router.push('/list-activities');
-          this.processcoffee = {
+          this.training = {
             filename: '',
-            step: '',
+            programtitle: '',
             description: '',
+            fee: '',
           };
         })
         .catch((error) => {
@@ -178,12 +192,10 @@ img{
  ul{
     display: flex;
   }
-.action{
-   min-width:40px;
-  height:30px;
-  float:right;
+  .add{
+  float: right;
   background-color: #068d68;
-  margin-bottom: 10px;
-  margin-right: 0px;
+  margin-right: 10px;
+
 }
 </style>

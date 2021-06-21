@@ -1,7 +1,15 @@
 <template>
 <!-- eslint-disable max-len -->
-    <div class="container">
-      <div class="row">
+    <div>
+        <h5>Settings</h5>
+        <nav aria-label="breadcrumb" class="mt-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Settings</li>
+            </ol>
+        </nav>
+      <div class="row mt-3 ">
+        <!-- <hr> -->
         <div class="navigation">
        <ul>
         <li> <router-link to="/admin/settings/activities">Activities</router-link></li>
@@ -24,15 +32,20 @@ export default {
     display: flex;
   }
   .navigation{
-       justify-content: center;
-       margin-left:40%;
+       /* justify-content: center; */
+       /* margin-left:40%; */
   }
  .navigation li{
   list-style-type: none;
-  min-width:150px;
+  /* min-width:fit-content; */
+  width: 150px;
   height:30px;
-  margin-right: 0px;
+  margin-right: 35px;
   border: 1px solid #f4f4f4;
+}
+a{
+    text-decoration: none;
+    color: #068d68;
 }
 
 .navigation a:hover{
