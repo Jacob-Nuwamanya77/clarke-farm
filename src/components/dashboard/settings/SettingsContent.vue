@@ -5,7 +5,7 @@
         <nav aria-label="breadcrumb" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Bookings</li>
+                <li class="breadcrumb-item active" aria-current="page">Settings</li>
             </ol>
         </nav>
       <div class="row mt-3 ">

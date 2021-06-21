@@ -62,7 +62,7 @@
      </div>
   </div>
 
-         <table class="table table-striped table-bordered">
+         <table class="table table-striped table-hover table-bordered">
         <thead>
           <th>Activity Name</th>
           <th>Image</th>
@@ -81,13 +81,7 @@
               <a style="color: #068d68"><fa icon="eye" /></a>
               <a href="" @click.prevent="deleteVisitor(visitor._id)"
                 ><fa
-                  icon="trash"
-                  style="
-                    float: right;
-                    margin-left: 35px;
-                    margin-top: -20px;
-                    color: red;
-                  "
+                  icon="trash-alt" class="text-danger delete"
               /></a>
             </td>
           </tr>
@@ -188,19 +182,16 @@ export default {
 table{
   padding:0px;
   margin-top:30px;
-  margin-left:70px;
-  table-layout: auto ;
 }
 th{
     padding:5px;
-    vertical-align:left;
-     text-align: left;
+    text-align: left;
 }
 td{
     text-align: left;
     font-family: 'Roboto';
     font-size:14px;
-    padding:0px;
+    padding:10px;
     word-wrap: break-word;
 }
 table,td,th{
