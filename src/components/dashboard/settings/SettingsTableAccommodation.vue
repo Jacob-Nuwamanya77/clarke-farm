@@ -1,6 +1,6 @@
 <template>
 <!-- eslint-disable max-len -->
-<div class="pt-3">
+<div class="mt-3">
            <a href="#" class="btn btn-sm text-white mb-3 add " type="button" data-bs-toggle="modal"
           data-bs-target="#exampleModal">Add Accommodation</a>
                <!-- Modal -->
@@ -75,7 +75,7 @@
             <td>{{accommodation.accommodationtype }}</td>
              <td>
               <img
-              :src="require('../../../backend/uploads/' + accommodation.filename + '.jpg')" alt="activity"/>
+              :src="require('../../../../backend/uploads/' + accommodation.filename + '.jpg')" alt="activity"/>
               </td>
             <td id="td-description">{{ accommodation.description}}</td>
             <td>{{accommodation.fee}}</td>

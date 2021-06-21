@@ -19,25 +19,47 @@
 </template>
 
 <script>
-import SideNav from '@/components/dashboard/SideNavigation.vue';
+import Content from '@/components/dashboard/settings/SettingsTableActivities.vue';
 import SubNav from '@/components/dashboard/settings/SettingsContent.vue';
-import Content from '@/components/dashboard/settings/SettingsTableAccommodation.vue';
+import SideNav from '@/components/dashboard/SideNavigation.vue';
 
+let mini = true;
 export default {
-  name: 'Accommodation',
+  name: 'Admin',
   data() {
     return {
     };
   },
-
   components: {
     SideNav,
     SubNav,
     Content,
+    // AdminHeadingHome,
+    // HomeContent,
+    // IncomingGuests,
+
+  },
+  methods: {
+    togglesidebar() {
+      if (mini) {
+        console.log(mini);
+        document.getElementById('sidebar').style.width = '250px';
+        document.getElementById('maincontent').style.marginLeft = '150px';
+        // document.getElementById("logo-text").style.display = 'block';
+
+        mini = false;
+      } else {
+        console.log(mini);
+        document.getElementById('sidebar').style.width = '70px';
+        document.getElementById('maincontent').style.marginLeft = '0px';
+        // document.getElementById("logo-text").style.display = 'none';
+
+        mini = true;
+      }
+    },
   },
 };
 </script>
-
 <style scoped>
 .content{
   margin-top: 50px;
@@ -56,5 +78,4 @@ export default {
 .signout{
   margin-right:20px;
 }
-
 </style>

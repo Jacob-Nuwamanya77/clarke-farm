@@ -1,6 +1,6 @@
 <template>
 <!-- eslint-disable max-len -->
-  <div class="mt-5">
+  <div class="mt-3">
     <a href="#" class="btn btn-sm text-white add mb-3" type="button" data-bs-toggle="modal"
     data-bs-target="#exampleModal">Add Activity</a>
 
@@ -97,7 +97,7 @@
             <td>{{ activity.activityname }}</td>
              <td>
               <img
-              :src="require('../../../backend/uploads/' + activity.filename + '.jpg')" alt="activity"/>
+              :src="require('../../../../backend/uploads/' + activity.filename + '.jpg')" alt="activity"/>
               </td>
             <td id="td-description">{{ activity.description}}</td>
             <td>{{activity.fee}}</td>

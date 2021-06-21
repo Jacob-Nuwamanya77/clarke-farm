@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AdminSettings from '@/components/dashboard/AdminSettings.vue';
+import AdminSettings from '@/components/dashboard/settings/AdminSettings.vue';
 
 export default {
   name: 'Admin',
