@@ -149,7 +149,7 @@ img{
   margin-left:5px;
 }
 .icon-text{
-  padding-left:10px;
+  padding-left:5px;
   font-weight: bold;
 }
 #smile-icon{
