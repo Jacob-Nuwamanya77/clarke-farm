@@ -176,8 +176,8 @@ a.active-nav{
   }
 }
 .card-item{
-  min-width:280px;
-  max-width: 280px;
+  min-width:290px;
+  max-width: 290px;
   max-height: 320px;
   background-color:white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
