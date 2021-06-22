@@ -40,47 +40,61 @@
 </template>
 
 <style scoped>
-
-/* Parent container element */
-
 .hero-section{
-  display:flex;
-  flex-direction: row;
-  margin-top:25px;
   width:90%;
-  min-height: 500px;
   margin-left: auto;
   margin-right: auto;
+  margin-top:25px;
+  min-height:500px;
+}
+@media screen and (max-width:480px){
+  .hero-section{
+    width:95%;
+  }
+}
+.right-container{
+  max-height:500px;
+}
+@media screen and (min-width:900px){
+  .right-container{
+    min-height:500px;
+  }
+}
+img{
+  width:100%;
+  max-height:500px;
+  object-fit: cover;
 }
 @media screen and (min-width:900px){
   .hero-section{
+    display:flex;
     max-height: 550px;
   }
+  .left-container{
+    width:55%;
+    position:relative;
+    padding-top:30px;
+  }
+  .right-container{
+    width:45%;
+    position:relative;
+  }
+}
+@media screen and (max-width:900px){
+  .right-container{
+    margin-top:30px;
+  }
+}
+.hero-text-lg{
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom:12px;
 }
 @media screen and (max-width:700px){
   .hero-section{
     display:block;
-    width:100%;
-    padding-left:20px;
+    width:95%;
   }
-}
-
-/* Content containers. Left and Right hero section */
-.left-container{
-  width:55%;
-  position:relative;
-}
-@media screen and (min-width:900px){
-  .left-container{
-    padding-top:20px;
-  }
-}
-.right-container{
-  width:45%;
-  position:relative;
-}
-
-@media screen and (max-width:700px){
   .left-container{
     width:100%;
   }
@@ -88,7 +102,11 @@
     width:100%;
   }
 }
-
+@media screen and (max-width:480px){
+  .inline-480{
+    display:inline-block;
+  }
+}
 /* Left side content styles. */
 .hero-text-lg{
   font-size: 28px;

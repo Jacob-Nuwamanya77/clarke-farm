@@ -2,92 +2,81 @@
   <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <div>
     <div class="about">
-      <div class="about-description">
-        <p class="section-title">Who we are</p>
-        <p class="sub-text">
-          Clarke Farm is a 1,500 acre farm located in Katambale, Kyarusozi Kyenjojo
-          district in Uganda. Approximately half the farm is planted in Robusta coffee.
-          Other crops include Eucalyptus, Macadamia, Irish potatoes, Maize, Mangoes and Oranges.
-        </p>
-        <div id="capacity">
-          <div class="stat-container">
-            <div class="stat">
-              <div class="stat-num">1500</div>
-              <div class="stat-text">Acres available</div>
+      <p class="section-title">Who we are</p>
+      <p class="sub-text">
+        Clarke Farm is a 1,500 acre farm located in Katambale, Kyarusozi Kyenjojo
+        district in Uganda. Approximately half the farm is planted in Robusta coffee.
+        Other crops include Eucalyptus, Macadamia, Irish potatoes, Maize, Mangoes and Oranges.
+      </p>
+      <div id="capacity">
+        <div class="stat-container">
+          <div class="stat">
+            <div class="stat-num">1500</div>
+            <div class="stat-text">Acres available</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">08</div>
+            <div class="stat-text">Agricultural projects</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">02</div>
+            <div class="stat-text">Conservation projects</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">50</div>
+            <div class="stat-text">Employees</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">300</div>
+            <div class="stat-text">Seasonal workers</div>
+          </div>
+        </div>
+      </div>
+      <div id="our-projects">
+        <p class="section-sub-heading center-text">Projects</p>
+        <div class="card-container">
+          <div class="card-item">
+            <div class="card-image-container">
+              <img src="@/assets/images/mother-garden.jpg" alt="coffee" aria-hidden="true">
             </div>
-            <div class="stat">
-              <div class="stat-num">08</div>
-              <div class="stat-text">Agricultural projects</div>
+            <div class="card-content">
+              <p class="card-title">Coffee</p>
+              <p class="card-text">
+                750 acres of robusta coffee and currently harvesting
+                700,000 kilograms annually.
+              </p>
             </div>
-            <div class="stat">
-              <div class="stat-num">02</div>
-              <div class="stat-text">Conservation projects</div>
+          </div>
+          <div class="card-item">
+            <div class="card-image-container">
+              <img src="@/assets/images/motocross1.jpg" alt="tourism" aria-hidden="true">
             </div>
-            <div class="stat">
-              <div class="stat-num">50</div>
-              <div class="stat-text">Employees</div>
+            <div class="card-content">
+              <p class="card-title">Tourism</p>
+              <p class="card-text">
+                Enjoy jeep rides, bouldering, riverwalks among many other
+                activities. Check out our visit page for more details.
+              </p>
             </div>
-            <div class="stat">
-              <div class="stat-num">300</div>
-              <div class="stat-text">Seasonal workers</div>
+          </div>
+          <div class="card-item">
+            <div class="card-image-container">
+              <img src="@/assets/images/river-walks.jpg" alt="eucalyptus" aria-hidden="true">
+            </div>
+            <div class="card-content">
+              <p class="card-title">Eucalyptus</p>
+              <p class="card-text">
+                500 acres of conservation projects.
+              </p>
             </div>
           </div>
         </div>
-        <div id="our-projects">
-          <p class="section-sub-heading">Projects</p>
-          <div id="project-container">
-            <!-- <div id="scroll-left" class="angle-scroll">
-              <fa icon="angle-left" class="angle-icon"/>
-            </div> -->
-            <div class="info-display">
-              <div class="card">
-                <div class="card-image-container">
-                  <img src="@/assets/images/mother-garden.jpg" alt="coffee" aria-hidden="true">
-                </div>
-                <div class="card-content">
-                  <p class="card-title">Coffee</p>
-                  <p class="card-text">
-                    750 acres of robusta coffee and currently harvesting
-                    700,000 kilograms annually.
-                  </p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image-container">
-                  <img src="@/assets/images/motocross1.jpg" alt="tourism" aria-hidden="true">
-                </div>
-                <div class="card-content">
-                  <p class="card-title">Tourism</p>
-                  <p class="card-text">
-                    Enjoy jeep rides, bouldering, riverwalks among many other
-                    activities. Check out our visit page for more details.
-                  </p>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-image-container">
-                  <img src="@/assets/images/river-walks.jpg" alt="eucalyptus" aria-hidden="true">
-                </div>
-                <div class="card-content">
-                  <p class="card-title">Eucalyptus</p>
-                  <p class="card-text">
-                    500 acres of conservation projects.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <!-- <div id="scroll-right" class="angle-scroll">
-              <fa icon="angle-right" class="angle-icon"/>
-            </div> -->
-          </div>
-        </div>
-        <div class="linedesign"></div>
       </div>
     </div>
-    <div class="about-farm">
+    <div class="about-farm-container">
       <div id="scheme-details">
         <div id="scheme-left">
-          <p class="section-sub-title">
+          <p class="section-sub-heading">
             Clarke farm and coffee estate
           </p>
           <p id="scheme-text">
@@ -118,42 +107,15 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .about {
-  width: 100%;
   position: relative;
   margin-top: 55px;
 }
-@media screen and (max-width:700px){
+@media screen and (max-width:480px){
   .about{
-    padding-left: 20px;
-  }
-}
-.section-title{
-  font-weight: bold;
-  font-size: 25px;
-  margin:15px auto;
-  font-family: Playfair;
-  text-align: center;
-}
-
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
-.linedesign {
-  width: 30%;
-  height: 25px;
-  position:absolute;
-  top:0;
-  right: 0;
-  background-color: #068d68;
-}
-@media screen and (max-width:700px){
-  .linedesign{
-    width:25%;
+    width:95%;
+    margin-top:40px;
   }
 }
 .sub-text{
@@ -162,16 +124,33 @@ export default {
   line-height: 2;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+}
+.section-title{
+  font-weight: bold;
+  font-size: 25px;
+  margin-bottom:20px;
+  font-family: Playfair;
+  text-align: center;
 }
 @media screen and (max-width:990px){
   .sub-text{
-    width:100%;
+    width:80%;
+  }
+}
+@media screen and (max-width:900px){
+  .sub-text{
+    width:90%;
+  }
+}
+@media screen and (max-width:730px){
+  .sub-text{
+    width:95%;
   }
 }
 @media screen and (max-width:480px){
   .sub-text{
     text-align: left;
-    padding-right: 5px;
   }
 }
 #capacity{
@@ -218,41 +197,54 @@ export default {
   margin-top:50px;
 }
 .section-sub-heading{
-  text-align: center;
   font-size: 20px;
   font-family: Playfair;
   font-weight: bold;
 }
-#project-container{
-  display: flex;
-  position:relative;
-  justify-content: center;
-  margin-top:30px;
-  overflow-x: auto;
-  overflow-y: hidden;
+.center-text{
+  text-align:center;
 }
-#project-container::-webkit-scrollbar{
+.card-container{
+  margin-top: 20px;
+  display:flex;
+  justify-content:center;
+  overflow-x: auto;
+  overflow-y:hidden;
+  width:95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width:1240px){
+  .card-container{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-between;
+  }
+}
+.card-container::-webkit-scrollbar{
   width:0px;
 }
 @media screen and (max-width:900px){
-  #project-container{
+  .card-container{
     justify-content: start;
   }
 }
-
-.info-display{
-  display:flex;
-}
-.card{
-  max-width:250px;
-  min-width: 250px;
-  max-height:320px;
-  margin-right: 20px;
+.card-item{
+  min-width:290px;
+  max-width: 290px;
+  min-height: 320px;
+  background-color:white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width:1240px){
+  .card-item{
+    margin-right:20px;
+  }
 }
 
 .card-image-container{
-  height:60%;
+  height:190px;
 }
 .card-image-container img{
   width:100%;
@@ -274,8 +266,15 @@ export default {
 .about-span {
   color: #068d68;
 }
-.about-farm{
+/* Start */
+.about-farm-container{
+  position:relative;
   margin:70px auto;
+}
+@media screen and (min-width:700px){
+  .about-farm-container{
+    margin-top:110px;
+  }
 }
 #scheme-details{
   display: flex;
@@ -293,50 +292,65 @@ export default {
 @media screen and (max-width:700px){
   #scheme-details{
     display: block;
-    width:90%;
+    width:95%;
   }
 }
 #scheme-left{
   width:55%;
+  position:relative;
 }
 #scheme-right{
   width:42%;
   position:relative;
-  max-height: 400px;
+  height: 350px;
+  min-height: 100%;
+  background-color:var(--dark-green);
+  display:flex;
+  justify-content: center;
 }
 @media screen and (max-width:700px){
   #scheme-left{
     width:100%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom:50px;
   }
   #scheme-right{
-    width:clamp(95%, 90%, 376px);
+    width:100%;
+    height: 300px;
     margin-left: auto;
     margin-right: auto;
-    margin-top:30px;
   }
 }
-#scheme-right img{
+#img-container{
+  z-index: 1;
+  height:500px;
+  min-height:100%;
+  width:95%;
+  margin-right: auto;
+  margin-left: auto;
+  position:absolute;
+  bottom:0px;
+}
+@media screen and (max-width:700px){
+  #img-container{
+    height:400px;
+  }
+}
+img{
   width:100%;
   height:100%;
-  max-width:376px;
-  max-height:400px;
   object-fit: cover;
-}
-.section-sub-title{
-  font-size: 20px;
-  font-weight: bold;
 }
 #scheme-text{
   line-height: 2;
-  margin-top:18px;
+  margin-top:15px;
 }
 .contact-btn-container{
   height:35px;
   width:40%;
-  margin-top:25px;
   max-width: 160px;
+  margin-top:10px;
   border-radius: 3px;
   background-color: var(--dark-green);
 }
@@ -358,30 +372,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.angle-scroll{
-  width:40px;
-  height:40px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 100px;
-}
-#scroll-right{
-  margin-left:12px;
-}
-#scroll-left{
-  margin-right: 35px;
-}
-.angle-icon{
-  font-size:20px;
-  color:rgb(200,200,200);
-  display:block;
-  width:100%;
-  height:100%;
-}
-.angle-icon:hover{
-  color: rgba(0,0,0,0.7);
-  cursor: pointer;
 }
 </style>
