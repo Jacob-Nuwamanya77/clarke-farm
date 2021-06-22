@@ -100,23 +100,23 @@
       <div class="stat-container">
         <div class="stat">
           <div class="stat-num">1500</div>
-          <div class="stat-text">Acres available</div>
+          <div>Acres available</div>
         </div>
         <div class="stat">
           <div class="stat-num">300+</div>
-          <div class="stat-text">Acres of coffee</div>
+          <div>Acres of coffee</div>
         </div>
         <div class="stat">
           <div class="stat-num">700K</div>
-          <div class="stat-text">Kilograms annually</div>
+          <div>Kilograms annually</div>
         </div>
         <div class="stat">
           <div class="stat-num">50</div>
-          <div class="stat-text">Employees</div>
+          <div>Employees</div>
         </div>
         <div class="stat">
           <div class="stat-num">300</div>
-          <div class="stat-text">Seasonal workers</div>
+          <div>Seasonal workers</div>
         </div>
       </div>
     </div>
@@ -262,7 +262,7 @@ export default {
 }
 .stat{
   margin-top: 20px;
-  min-width: 100px;
+  min-width: 130px;
   text-align: center;
 }
 @media screen and (max-width:900px){
