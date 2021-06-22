@@ -1,12 +1,10 @@
 <template>
-  <div class="our-offers" id="offers">
-    <div class="description">
-      <p class="section-title">What We Offer</p>
-      <p class="sub-text">
-        See all the activities you can enjoy, the accommodations to
-        choose from and what our guests have to say about us.
-      </p>
-    </div>
+  <div class="our-offers">
+    <p class="section-title">What We Offer</p>
+    <p class="sub-text">
+      See all the activities you can enjoy, the accommodations to
+      choose from and what our guests have to say about us.
+    </p>
     <div class="navigation">
       <ul>
         <li><a href="" class="active-nav">Activities</a></li>
@@ -15,8 +13,8 @@
         <li><a href="">Reviews</a></li>
       </ul>
     </div>
-    <div class="info-display">
-      <div class="card">
+    <div class="card-container">
+      <div class="card-item">
         <div class="card-image-container">
           <img src="@/assets/images/motocross1.jpg" alt="biking" aria-hidden="true">
         </div>
@@ -28,7 +26,7 @@
           <p class="activity-price">$ 30.00</p>
         </div>
       </div>
-      <div class="card">
+      <div class="card-item">
         <div class="card-image-container">
           <img src="@/assets/images/bouldering3.jpg" alt="bouldering" aria-hidden="true">
         </div>
@@ -40,7 +38,7 @@
           <p class="activity-price">$ 0.00</p>
         </div>
       </div>
-      <div class="card">
+      <div class="card-item">
         <div class="card-image-container">
           <img src="@/assets/images/coffeetasting1.jpg" alt="coffee testing" aria-hidden="true">
         </div>
@@ -78,28 +76,33 @@ export default {
   text-align: center;
 }
 
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
-
 .sub-text{
   width:70%;
   text-align: center;
   line-height: 2;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
+
 @media screen and (max-width:990px){
   .sub-text{
-    width:100%;
+    width:80%;
+  }
+}
+@media screen and (max-width:900px){
+  .sub-text{
+    width:90%;
+  }
+}
+@media screen and (max-width:730px){
+  .sub-text{
+    width:95%;
   }
 }
 @media screen and (max-width:480px){
   .sub-text{
     text-align: left;
-    padding-left: 10px;
   }
 }
 .navigation{
@@ -108,14 +111,13 @@ export default {
   max-height:30px;
   margin-top: 40px;
 }
-
 .navigation ul{
   padding: 0;
   display: flex;
   justify-content: center;
   overflow-x: auto;
 }
-@media screen and (max-width:500px){
+@media screen and (max-width:730px){
   .navigation ul{
     padding-left: 10px;
     justify-content: start;
@@ -147,36 +149,51 @@ a.active-nav{
   background-color: var(--dark-green);
   color:white;
 }
-.info-display{
+.card-container{
+  margin-top: 40px;
   display:flex;
-  justify-content: center;
-  margin-top:50px;
+  justify-content:center;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y:hidden;
+  width:95%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.info-display::-webkit-scrollbar{
-  width:0px;
-}
-@media screen and (max-width:600px){
-  .info-display{
-    justify-content: start;
-    padding-left: 10px;
+@media screen and (min-width:1240px){
+  .card-container{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-between;
   }
 }
-.card{
-  max-width:250px;
-  min-width: 250px;
-  max-height:320px;
-  margin-right: 20px;
+.card-container::-webkit-scrollbar{
+  width:0px;
+}
+@media screen and (max-width:900px){
+  .card-container{
+    justify-content: start;
+  }
+}
+.card-item{
+  min-width:280px;
+  max-width: 280px;
+  max-height: 320px;
+  background-color:white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   position:relative;
+}
+@media screen and (max-width:1240px){
+  .card-item{
+    margin-right:20px;
+  }
 }
 .card-image-container{
   height:190px;
 }
 .card-image-container img{
   width:100%;
-  height:190px;
+  height:180px;
   object-fit: cover;
 }
 .card-content{
@@ -196,7 +213,7 @@ a.active-nav{
   color:white;
   text-align: center;
   position:absolute;
-  bottom:-10px;
+  bottom:-5px;
 }
 .more-button-container{
   margin-top:50px;

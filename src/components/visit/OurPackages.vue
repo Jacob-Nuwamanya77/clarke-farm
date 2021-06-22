@@ -1,13 +1,11 @@
 <template>
   <div class="our-packages">
-    <div class="description">
-      <p class="section-title">Our Packages</p>
-      <p class="sub-text">
-        We offer team building exercise venues for corporate events,
-        tourists looking for adventure and training programs in
-        best agricultural practises.
-      </p>
-    </div>
+    <p class="section-title">Our Packages</p>
+    <p class="sub-text">
+      We offer team building exercise venues for corporate events,
+      tourists looking for adventure and training programs in
+      best agricultural practises.
+    </p>
     <div class="packages-container">
       <div class="card corporate-package">
         <div class="card-content">
@@ -78,29 +76,33 @@ export default {
   font-family: Playfair;
   text-align: center;
 }
-
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
-
 .sub-text{
   width:70%;
   text-align: center;
   line-height: 2;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
+
 @media screen and (max-width:990px){
   .sub-text{
-    width:100%;
+    width:80%;
+  }
+}
+@media screen and (max-width:900px){
+  .sub-text{
+    width:90%;
+  }
+}
+@media screen and (max-width:730px){
+  .sub-text{
+    width:95%;
   }
 }
 @media screen and (max-width:480px){
   .sub-text{
     text-align: left;
-    padding-left: 10px;
   }
 }
 .packages-container{

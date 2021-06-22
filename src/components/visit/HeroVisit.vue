@@ -48,6 +48,11 @@ export default {
   margin-right: auto;
   margin-top:25px;
 }
+@media screen and (max-width:480px){
+  #hero-visit{
+    width:95%;
+  }
+}
 #right-container{
   max-height:500px;
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="popular-activities-container">
-      <div class="card-container" id="benefits-list">
+      <div class="card-container">
         <div class="card-item">
           <div class="rating">
             <div class="icon">
@@ -99,7 +99,7 @@
           <p>Enjoyed These Activities The Most</p>
         </div>
       </div>
-      <div class="popular-activities-images">
+      <div class="card-container">
         <div class="activity-details">
           <div class="circle-container-image">
             <img src="@/assets/images/jeep.jpg" alt="jeep ride">
@@ -139,16 +139,25 @@ export default {
   margin-top: 40px;
   display:flex;
   justify-content:center;
-}
-#benefits-list{
   overflow-x: auto;
   overflow-y:hidden;
+  width:95%;
+  margin-left: auto;
+  margin-right: auto;
 }
-#benefits-list::-webkit-scrollbar{
+@media screen and (min-width:1240px){
+  .card-container{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-between;
+  }
+}
+.card-container::-webkit-scrollbar{
   width:0px;
 }
-@media screen and (max-width:700px){
-  #benefits-list{
+@media screen and (max-width:900px){
+  .card-container{
     justify-content: start;
   }
 }
@@ -157,10 +166,14 @@ export default {
   max-width: 280px;
   min-height: 280px;
   max-height: 280px;
-  margin-left: 15px;
   background-color:white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   position:relative;
+}
+@media screen and (max-width:1240px){
+  .card-item{
+    margin-right:20px;
+  }
 }
 .rating{
   display: flex;
@@ -218,28 +231,33 @@ export default {
   font-family: Playfair;
   text-align: center;
 }
-
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
 .sub-text{
   width:70%;
   text-align: center;
   line-height: 2;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
+
 @media screen and (max-width:990px){
   .sub-text{
-    width:100%;
+    width:80%;
+  }
+}
+@media screen and (max-width:900px){
+  .sub-text{
+    width:90%;
+  }
+}
+@media screen and (max-width:730px){
+  .sub-text{
+    width:95%;
   }
 }
 @media screen and (max-width:480px){
   .sub-text{
     text-align: left;
-    padding-left: 10px;
   }
 }
 .popular-stat{
@@ -314,45 +332,11 @@ export default {
     font-size: 20px;
   }
 }
-.popular-activities-images{
-  display:flex;
-  flex-direction:row;
-  justify-content: space-around;
-  margin-top: 70px;
-  flex-wrap: wrap;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-}
-@media screen and (max-width:1200px){
-  .popular-activities-images{
-    width:70%;
-  }
-}
-@media screen and (max-width:990px){
-  .popular-activities-images{
-    width:80%;
-  }
-}
-@media screen and (max-width:840px){
-  .popular-activities-images{
-    width:90%;
-  }
+.activity-details{
+  margin-top:20px;
 }
 /* Below 700px make horizontal scroll */
 @media screen and (max-width:701px){
-  .popular-activities-images{
-    width:auto;
-    max-height:300px;
-    margin-top: 50px;
-    padding-left: 10px;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    justify-content: start;
-  }
-  .popular-activities-images::-webkit-scrollbar{
-    width:0px;
-  }
   .activity-details{
     margin-right: 30px;
   }
