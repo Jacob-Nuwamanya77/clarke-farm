@@ -95,6 +95,8 @@ export default {
 #review-left{
   width:55%;
   position:relative;
+  height:300px;
+  min-height:100%;
 }
 #review-right{
   width:42%;
@@ -110,6 +112,7 @@ export default {
     width:100%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom:90px;
   }
   #review-right{
     width:clamp(95%, 90%, 376px);
@@ -124,6 +127,11 @@ export default {
   width:90%;
   position:absolute;
   bottom:0px;
+}
+@media screen and (max-width:700px){
+  #img-container{
+    width:80%;
+  }
 }
 img{
   width:100%;
@@ -159,7 +167,7 @@ img{
   color:#FC646C;
 }
 #highlight-1{
-  top:50px;
+  top:60px;
   left:20px;
 }
 #highlight-2{
@@ -185,7 +193,7 @@ img{
   background-color: var(--dark-green);
 }
 .forward-back-navigation{
-  min-width:16%;
+  width:80px;
   display:flex;
   justify-content: space-between;
 }

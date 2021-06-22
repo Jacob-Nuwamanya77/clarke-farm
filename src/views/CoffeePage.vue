@@ -7,7 +7,7 @@
     <ProcessBenefits />
     <CoffeeReviews />
     <CoffeeProcess />
-    <OurCertificates />
+    <BookingForm />
     <Footer/>
   </div>
 </template>
@@ -18,9 +18,9 @@ import HeroCoffee from '@/components/coffee/HeroCoffee.vue';
 import CoffeeProcess from '@/components/coffee/CoffeeProcess.vue';
 import ProcessBenefits from '@/components/coffee/ProcessBenefits.vue';
 import CoffeeReviews from '@/components/coffee/CoffeeReviews.vue';
-import OurCertificates from '@/components/coffee/OurCertificates.vue';
 import OurPartners from '@/components/coffee/OurPartners.vue';
 import Packaging from '@/components/coffee/Packages.vue';
+import BookingForm from '@/components/coffee/BookingForm.vue';
 import Footer from '@/components/MainFooter.vue';
 
 export default {
@@ -32,8 +32,8 @@ export default {
     CoffeeReviews,
     OurPartners,
     Packaging,
+    BookingForm,
     CoffeeProcess,
-    OurCertificates,
     Footer,
   },
 };
