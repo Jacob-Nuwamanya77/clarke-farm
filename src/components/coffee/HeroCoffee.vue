@@ -49,11 +49,16 @@ export default {
 
 <style scoped>
 #hero-coffee{
-  width:95%;
+  width:90%;
   margin-left: auto;
   margin-right: auto;
   margin-top:25px;
   min-height:500px;
+}
+@media screen and (max-width:480px){
+  #hero-coffee{
+    width:95%;
+  }
 }
 #right-container{
   max-height:500px;
