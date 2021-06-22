@@ -1,7 +1,7 @@
 <template>
   <div id="our-coffee-packages">
     <p class="section-title">Coffee packages</p>
-    <div class="card-container" id="benefits-list">
+    <div class="card-container">
       <div class="card-item">
         <div class="rating">
           <div class="icon" id="shopping-icon">
@@ -117,16 +117,29 @@ export default {
   width:70%;
   margin-left: auto;
   margin-right: auto;
-}
-#benefits-list{
   overflow-x: auto;
   overflow-y:hidden;
 }
-#benefits-list::-webkit-scrollbar{
+.card-container::-webkit-scrollbar{
   width:0px;
 }
-@media screen and (max-width:700px){
-  #benefits-list{
+@media screen and (max-width:990px) {
+  .card-container{
+    width:80%;
+  }
+}
+@media screen and (max-width:900px){
+  .card-container{
+    width:90%;
+  }
+}
+@media screen and (max-width:730px){
+  .card-container{
+    width:95%;
+  }
+}
+@media screen and (max-width:640px){
+  .card-container{
     justify-content: start;
   }
 }
@@ -137,6 +150,11 @@ export default {
   position:relative;
   background-color:white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width:640px){
+  .card-item{
+    margin-right: 30px;
+  }
 }
 .rating{
   display: flex;

@@ -62,6 +62,11 @@ export default {
 #partners-container::-webkit-scrollbar{
   width:0px;
 }
+@media screen and (max-width:630px){
+  #partners-container{
+    margin-top:40px;
+  }
+}
 @media screen and (max-width:1280px){
   #our-partner{
     min-width:100%;

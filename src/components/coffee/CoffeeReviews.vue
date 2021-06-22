@@ -9,6 +9,7 @@
           We are currently traversing the neighboring communities, registering
           farmers with land that can be utilized for coffee production, as well as
           any current coffee farmers that could benefit from our training programs.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
         </p>
         <div id="cta-container">
           <div class="contact-btn-container">
@@ -59,19 +60,17 @@ export default {
 <style scoped>
 .reviews-container{
   position:relative;
-  margin-top:110px;
+}
+@media screen and (min-width:700px){
+  .reviews-container{
+    margin-top:110px;
+  }
 }
 .section-title{
   font-weight: bold;
   font-size: 25px;
   margin-bottom:20px;
   font-family: Playfair;
-}
-
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
 }
 #review-details{
   display: flex;
@@ -89,19 +88,19 @@ export default {
 @media screen and (max-width:700px){
   #review-details{
     display: block;
-    width:90%;
+    width:95%;
   }
 }
 #review-left{
   width:55%;
   position:relative;
-  height:300px;
-  min-height:100%;
+  height:350px;
+  min-height: 100%;
 }
 #review-right{
   width:42%;
   position:relative;
-  height: 300px;
+  height: 350px;
   min-height: 100%;
   background-color:var(--dark-green);
   display:flex;
@@ -112,25 +111,28 @@ export default {
     width:100%;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom:90px;
+    margin-bottom:110px;
   }
   #review-right{
-    width:clamp(95%, 90%, 376px);
+    width:100%;
+    height: 300px;
     margin-left: auto;
     margin-right: auto;
   }
 }
 #img-container{
   z-index: 1;
-  height:400px;
+  height:500px;
   min-height:100%;
-  width:90%;
+  width:95%;
+  margin-right: auto;
+  margin-left: auto;
   position:absolute;
   bottom:0px;
 }
 @media screen and (max-width:700px){
   #img-container{
-    width:80%;
+    height:400px;
   }
 }
 img{
@@ -167,12 +169,12 @@ img{
   color:#FC646C;
 }
 #highlight-1{
-  top:60px;
-  left:20px;
+  top:14%;
+  left:5%;
 }
 #highlight-2{
-  bottom:50px;
-  right:10px;
+  bottom:14%;
+  right:5%;
 }
 #review-text{
   line-height: 2;

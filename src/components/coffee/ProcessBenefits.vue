@@ -11,7 +11,7 @@
     </div>
     <div class="benefits">
       <p class="section-sub-heading">Benefits of our process</p>
-      <div class="card-container" id="benefits-list">
+      <div class="card-container">
         <div class="card-item">
           <p class="benefit-num">01</p>
           <div class="item-content">
@@ -69,16 +69,7 @@ export default {
   font-size: 25px;
   margin-bottom:20px;
   font-family: Playfair;
-}
-
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
-.description p{
   text-align: center;
-  margin-top:15px;
 }
 .sub-text{
   width:70%;
@@ -86,16 +77,27 @@ export default {
   line-height: 2;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
+
 @media screen and (max-width:990px){
   .sub-text{
-    width:100%;
+    width:80%;
+  }
+}
+@media screen and (max-width:900px){
+  .sub-text{
+    width:90%;
+  }
+}
+@media screen and (max-width:730px){
+  .sub-text{
+    width:95%;
   }
 }
 @media screen and (max-width:480px){
   .sub-text{
     text-align: left;
-    padding-right: 5px;
   }
 }
 .benefits{
@@ -111,16 +113,25 @@ export default {
   margin-top: 40px;
   display:flex;
   justify-content:center;
-}
-#benefits-list{
   overflow-x: auto;
   overflow-y:hidden;
+  width:95%;
+  margin-left: auto;
+  margin-right: auto;
 }
-#benefits-list::-webkit-scrollbar{
+@media screen and (min-width:1240px){
+  .card-container{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-between;
+  }
+}
+.card-container::-webkit-scrollbar{
   width:0px;
 }
-@media screen and (max-width:700px){
-  #benefits-list{
+@media screen and (max-width:900px){
+  .card-container{
     justify-content: start;
   }
 }
@@ -129,9 +140,13 @@ export default {
   max-width: 280px;
   min-height: 280px;
   max-height: 280px;
-  margin-left: 15px;
   background-color:white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+@media screen and (max-width:1240px){
+  .card-item{
+    margin-right:20px;
+  }
 }
 .benefit-num{
   font-size: 70px;

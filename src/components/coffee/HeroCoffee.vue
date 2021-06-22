@@ -49,7 +49,7 @@ export default {
 
 <style scoped>
 #hero-coffee{
-  width:90%;
+  width:95%;
   margin-left: auto;
   margin-right: auto;
   margin-top:25px;
