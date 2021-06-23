@@ -3,7 +3,6 @@
   <div class="our-founder">
     <div class="our-founder-heading">
       <p class="section-title">Our Founder</p>
-      <div class="linedesign"></div>
     </div>
     <div class="container-founder-description">
       <div class="container-left">
@@ -56,7 +55,12 @@ export default {
   width: 100%;
   padding-top:10px;
   position: relative;
-  margin-top: 80px;
+  margin-top: 30px;
+}
+@media screen and (min-width:900px){
+  .our-founder{
+    margin-top:80px;
+  }
 }
 @media screen and (max-width:700px){
   .our-founder{
@@ -100,20 +104,6 @@ export default {
   padding: 0;
 }
 
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
-
-.linedesign {
-  width: 15%;
-  height: 25px;
-  position:absolute;
-  top:18px;
-  left: 0;
-  background-color: #068d68;
-}
 .sub-text{
   line-height: 1.6;
 }

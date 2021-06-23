@@ -2,7 +2,6 @@
   <div class="our-team">
     <div class="our-team-heading">
       <h1>Our Team</h1>
-      <div class="linedesign"></div>
     </div>
     <div class="our-team-images">
       <div class="team-member-details">
@@ -64,14 +63,6 @@ export default {
 .our-team-heading p{
   text-align: center;
   margin-top:15px;
-}
-.linedesign {
-  width: 30%;
-  height: 25px;
-  position:absolute;
-  top:5px;
-  right: 0;
-  background-color: #068d68;
 }
 @media screen and (max-width:700px){
   .linedesign{
