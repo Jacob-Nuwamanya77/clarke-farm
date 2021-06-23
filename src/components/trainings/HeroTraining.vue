@@ -9,10 +9,10 @@
         agronomic practises and increase production
       </p>
       <p class="hero-sub-text">
-        Start out like a pro, you don't have to try,
-        fail or learn the hard way. We are here to share with you what
-        we have learnt over the years to make agriculture an attractive
-        business venture.
+        We seek to improve farmers' skills in the area of coffee farming through improved
+        agronomic practises leading to increased production. Clarke Farm has an open policy
+        of sharing knowledge in order to create better farming practises &amp; make agriculture
+        an attractive business to go into.
       </p>
       <div class="contact-btn-container">
         <a href="">Contact Us</a>
@@ -29,8 +29,8 @@
             Increase your revenue
           </p>
           <p class="card-sub-text">
-            Better quality equals better prices.
-            Train your team and improve the quality of your produce.
+            Improved quality translates into higher prices. Train your team &amp; improve
+            the quality of your produce.
           </p>
         </div>
       </div>
@@ -38,8 +38,8 @@
         <div class="card-content">
           <p class="card-title">Increase your production</p>
           <p class="card-sub-text">
-            Learn tested and tried good agronomic practises,
-            for improved production.
+            Learn agronomic practises which improve production: from selection of root stock to
+            application of fertilizer, control of pests.
           </p>
         </div>
       </div>
@@ -50,7 +50,7 @@
           </p>
           <p class="card-sub-text">
             With over 300+ workers, we have learned how to manage teams,
-            and are sharing our knowledge.
+            and are happy to share our experience.
           </p>
         </div>
       </div>
@@ -197,6 +197,6 @@ export default {
 .card-sub-text{
   line-height: 2;
   font-size: 15px;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 </style>

@@ -12,7 +12,7 @@
         <div class="stat-container">
           <div class="stat">
             <div class="stat-num">1500</div>
-            <div class="stat-text">Acres available</div>
+            <div class="stat-text">Acres - Farm size</div>
           </div>
           <div class="stat">
             <div class="stat-num">08</div>
@@ -27,7 +27,7 @@
             <div class="stat-text">Employees</div>
           </div>
           <div class="stat">
-            <div class="stat-num">300</div>
+            <div class="stat-num">500</div>
             <div class="stat-text">Seasonal workers</div>
           </div>
         </div>

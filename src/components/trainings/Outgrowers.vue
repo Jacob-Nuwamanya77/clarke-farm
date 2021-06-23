@@ -4,13 +4,13 @@
     <div id="scheme-details">
       <div id="scheme-left">
         <p class="section-sub-title">
-          Improving the lives of farmers in our community through
-          our outgrower scheme.
+          Improving the lives of farmers in our community.
         </p>
         <p id="scheme-text">
-          We are currently traversing the neighboring communities, registering
-          farmers with land that can be utilized for coffee production, as well as
-          any current coffee farmers that could benefit from our training programs.
+          The outgrower scheme is recruiting 2,000 farmers. The enrolled farmers can then gain
+          the benefit of training in coffee agronomy, supply of seedlings and inputs, availability
+          of micro-finance &amp; access to markets at optimal prices for quality cherry through
+          Clarke Farm.
         </p>
         <div id="scheme-stats">
           <div class="stat">
@@ -30,8 +30,8 @@
         <img src="@/assets/images/boss.jpg" alt="Boss">
         <p id="quote">
           <span class="quote-mark">&ldquo;</span>
-          Taking small steps in contribution to the social-economic
-          development of neighboring farming communities.
+          Sharing best agronomy &amp; providing the market increases yields &amp; household income
+          allowing the smallholder to rise up the development ladder.
         </p>
       </div>
     </div>

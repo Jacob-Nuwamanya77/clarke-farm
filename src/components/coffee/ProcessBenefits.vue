@@ -3,10 +3,13 @@
     <div class="description">
       <p class="section-title">Coffee Process</p>
       <p class="sub-text">
-        Our coffee is processed using a method known as wet processing. This
-        removes the coffee's fruity material &amp; leaves the coffee cherry moist.
-        It is passed through a pulping machine, fermented and dried using
-        forced air drying to achieve a moisture content of about 10.5%.
+        Our coffee is processed using a method known as wet processing which removes
+        the pulp (the coffee's fruity material) from the red cherries, leaving behind the coffee
+        bean covered with a parchment coat. The parchment is left behind overnight in water causing
+        light fermentation which improves the taste of coffee. The parchment is then sun dried &amp;
+        the drying process finished in an echo-dryer. Coffee can be stored at 12% moisture content
+        in its parchment form for several months until a buyer is found, when it is then hulled
+        (parchment coat removed) cleaned, graded &amp; sorted for export to the roasters.
       </p>
     </div>
     <div class="benefits">
@@ -17,8 +20,8 @@
           <div class="item-content">
             <p class="item-title">A clean taste</p>
             <p>
-              Our process guarantees a cleaner and more
-              consistent flavor than other methods.
+              Fermentation brings out the flavors in the coffee and the entire process
+              guarantees a cleaner and more consistent flavor.
             </p>
           </div>
         </div>
@@ -27,8 +30,8 @@
           <div class="item-content">
             <p class="item-title">Selective picking</p>
             <p>
-              Only the ripest green cherries are picked for processing.
-              This guarantees a higher acidity and gives a better taste.
+              Washed Robusta coffee selects out only the ripe red cherries, rejecting unripe green
+              cherries, thus giving the highest quality.
             </p>
           </div>
         </div>
@@ -37,9 +40,8 @@
           <div class="item-content">
             <p class="item-title">Quality control</p>
             <p>
-              It guarantees a great deal of quality control through
-              selective picking and allows for a much more consistent
-              flavor.
+              Clarke Farm Coffee is single origin &amp; Rainforest certified the quality of coffee
+              is consistent from year to year.
             </p>
           </div>
         </div>
