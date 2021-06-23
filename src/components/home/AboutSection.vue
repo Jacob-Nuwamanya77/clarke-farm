@@ -269,7 +269,6 @@ export default {
 /* Start */
 .about-farm-container{
   position:relative;
-  margin:70px auto;
 }
 @media screen and (min-width:700px){
   .about-farm-container{

@@ -53,14 +53,7 @@ export default {
 <style scoped>
 .our-founder {
   width: 100%;
-  padding-top:10px;
   position: relative;
-  margin-top: 30px;
-}
-@media screen and (min-width:900px){
-  .our-founder{
-    margin-top:80px;
-  }
 }
 @media screen and (max-width:700px){
   .our-founder{

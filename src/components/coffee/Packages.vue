@@ -178,7 +178,6 @@ export default {
   background-color:var(--blue-ink);
 }
 .category-title{
-  color:rgba(0,0,0,0.7);
   font-weight: bold;
   margin-left: 15px;
 }
