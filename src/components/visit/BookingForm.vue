@@ -212,7 +212,12 @@ export default {
 <style scoped>
 #visit-registration-form {
   position: relative;
-  margin-top: 120px;
+  margin-top: 40px;
+}
+@media screen and (min-width:900px){
+  #visit-registration-form{
+    margin-top:70px;
+  }
 }
 .section-title {
   font-weight: bold;

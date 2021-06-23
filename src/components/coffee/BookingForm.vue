@@ -96,7 +96,12 @@ export default {
 <style scoped>
 #coffee-registration-form {
   position: relative;
-  margin-top: 70px;
+  margin-top:10px;
+}
+@media screen and (min-width:900px){
+  #coffee-registration-form{
+    margin-top:70px;
+  }
 }
 .section-title {
   font-weight: bold;

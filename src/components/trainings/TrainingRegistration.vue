@@ -1,8 +1,6 @@
 <template>
   <div id="training-registration-form">
-    <div class="description">
-      <p class="section-title">Register</p>
-    </div>
+    <p class="section-title">Register</p>
     <div class="registration-container">
       <div id="registration-image">
         <img src="@/assets/images/registration.jpg" alt="welcome" aria-hidden="true">
@@ -128,7 +126,12 @@ export default {
 <style scoped>
 #training-registration-form{
   position:relative;
-  margin-top:120px;
+  margin-top:40px;
+}
+@media screen and (min-width:900px){
+  #training-registration-form{
+    margin-top:70px;
+  }
 }
 .section-title{
   font-weight: bold;
@@ -142,9 +145,6 @@ export default {
   .section-title{
     font-size: 20px;
   }
-}
-.description p{
-  margin-top:15px;
 }
 .registration-container {
   width: 70%;
