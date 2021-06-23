@@ -35,7 +35,7 @@
           </span>
         </div>
         <div class="item-content">
-          To value, respect &amp; serve our customers to the best of our abilities.
+          To value, respect &amp; deligently serve our customers.
         </div>
       </div>
     </div>
