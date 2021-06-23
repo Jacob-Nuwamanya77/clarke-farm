@@ -1,14 +1,11 @@
 <template>
   <div id="train-with-us">
-    <div class="description">
-      <p class="section-title">Why train with us</p>
-      <p class="sub-text">
-        Wisdom is a product of knowledge and experience. Over the years, we have
-        acquired both through testing and trials. We will teach you how to manage a large
-        workforce, increase production and revenue. Below are our seasonal harvests.
-      </p>
-      <div class="linedesign"></div>
-    </div>
+    <p class="section-title">Why train with us</p>
+    <p class="sub-text">
+      Wisdom is a product of knowledge and experience. Over the years, we have
+      acquired both through testing and trials. We will teach you how to manage a large
+      workforce, increase production and revenue. Below are our seasonal harvests.
+    </p>
     <div id="capacity">
       <div class="stat-container">
         <div class="stat">
@@ -35,8 +32,8 @@
     </div>
     <div id="training-programs">
       <p class="section-sub-heading">Categories</p>
-      <div class="info-display">
-        <div class="card">
+      <div class="card-container">
+        <div class="card-item">
           <div class="card-image-container">
             <img src="@/assets/images/mother-garden.jpg" alt="coffee" aria-hidden="true">
           </div>
@@ -47,7 +44,7 @@
             </p>
           </div>
         </div>
-        <div class="card">
+        <div class="card-item">
           <div class="card-image-container">
             <img src="@/assets/images/chickens.jpg" alt="chickens" aria-hidden="true">
           </div>
@@ -59,7 +56,7 @@
             </p>
           </div>
         </div>
-        <div class="card">
+        <div class="card-item">
           <div class="card-image-container">
             <img src="@/assets/images/irish.jpg" alt="irish" aria-hidden="true">
           </div>
@@ -86,12 +83,6 @@ export default {
   position:relative;
   margin-top:70px;
 }
-@media screen and (max-width:700px){
-  #train-with-us{
-    width:100%;
-    padding-left:20px;
-  }
-}
 .section-title{
   font-weight: bold;
   font-size: 25px;
@@ -99,44 +90,33 @@ export default {
   font-family: Playfair;
   text-align: center;
 }
-
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
-.description p{
-  margin-top:15px;
-}
-.linedesign {
-  width: 30%;
-  height: 25px;
-  position:absolute;
-  top:0;
-  right: 0;
-  background-color: #068d68;
-}
-@media screen and (max-width:700px){
-  .linedesign{
-    width:25%;
-  }
-}
 .sub-text{
   width:70%;
   text-align: center;
   line-height: 2;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
+
 @media screen and (max-width:990px){
   .sub-text{
-    width:100%;
+    width:80%;
+  }
+}
+@media screen and (max-width:900px){
+  .sub-text{
+    width:90%;
+  }
+}
+@media screen and (max-width:730px){
+  .sub-text{
+    width:95%;
   }
 }
 @media screen and (max-width:480px){
   .sub-text{
     text-align: left;
-    padding-right: 5px;
   }
 }
 #capacity{
@@ -144,26 +124,33 @@ export default {
 }
 .stat-container{
   display: flex;
-  flex-wrap: wrap;
-  width:70%;
-  justify-content:space-between;
-  margin-left: auto;
-  margin-right: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
-@media screen and (max-width:480px){
+.stat-container::-webkit-scrollbar{
+  width:0px;
+}
+@media screen and (min-width:768px){
   .stat-container{
-    width:100%;
+    width:85%;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media screen and (min-width:900px){
+  .stat-container{
+    width:70%;
   }
 }
 .stat{
   margin-top: 20px;
-  min-width: 100px;
+  min-width: 130px;
   text-align: center;
 }
-
-@media screen and (max-width:480px){
+@media screen and (max-width:900px){
   .stat{
-    text-align:left;
+    margin-right: 25px;
   }
 }
 .stat-num{
@@ -172,8 +159,10 @@ export default {
   color:rgb(100, 100, 100);
   font-family: 'Times New Roman', Times, serif;
 }
-#training-programs{
-  margin-top:50px;
+@media screen and (min-width:900px){
+  #training-programs{
+    margin-top:50px;
+  }
 }
 .section-sub-heading{
   text-align: center;
@@ -181,40 +170,58 @@ export default {
   font-family: Playfair;
   font-weight: bold;
 }
-
-.info-display{
+/* Start */
+.card-container{
+  margin-top: 40px;
   display:flex;
-  justify-content: center;
-  margin-top:30px;
+  justify-content:center;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y:hidden;
+  width:95%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.info-display::-webkit-scrollbar{
+@media screen and (min-width:1240px){
+  .card-container{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-between;
+  }
+}
+.card-container::-webkit-scrollbar{
   width:0px;
 }
 @media screen and (max-width:900px){
-  .info-display{
+  .card-container{
     justify-content: start;
   }
 }
-.card{
-  max-width:250px;
-  min-width: 250px;
-  max-height:320px;
-  margin-right: 20px;
+.card-item{
+  min-width:290px;
+  max-width: 290px;
+  max-height: 320px;
+  background-color:white;
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  position:relative;
+}
+@media screen and (max-width:1240px){
+  .card-item{
+    margin-right:20px;
+  }
 }
 .card-image-container{
-  height:60%;
+  height:190px;
 }
 .card-image-container img{
   width:100%;
-  height:100%;
+  height:180px;
   object-fit: cover;
 }
 .card-content{
   margin-top: 5px;
   padding-left: 10px;
+  height:130px;
 }
 .card-title{
   font-weight: bold;
@@ -222,4 +229,6 @@ export default {
 .card-text{
   font-size: 14px;
 }
+
+/* End */
 </style>

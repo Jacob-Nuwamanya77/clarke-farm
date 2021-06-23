@@ -1,9 +1,6 @@
 <template>
   <div class="outgrowers-container">
-    <div class="description">
-      <p class="section-title">Outgrower Scheme</p>
-      <div class="linedesign"></div>
-    </div>
+    <p class="section-title">Outgrower Scheme</p>
     <div id="scheme-details">
       <div id="scheme-left">
         <p class="section-sub-title">
@@ -50,31 +47,14 @@ export default {
 <style scoped>
 .outgrowers-container{
   position:relative;
-  margin-top:80px;
+  margin-top:50px;
 }
 .section-title{
   font-weight: bold;
   font-size: 25px;
   margin-bottom:20px;
   font-family: Playfair;
-}
-
-@media screen and (max-width:1280px){
-  .section-title{
-    font-size: 20px;
-  }
-}
-.description p{
   text-align: center;
-  margin-top:15px;
-}
-.linedesign {
-  width: 15%;
-  height: 25px;
-  position:absolute;
-  top:0;
-  left: 0;
-  background-color: #068d68;
 }
 #scheme-details{
   display: flex;
@@ -92,7 +72,7 @@ export default {
 @media screen and (max-width:700px){
   #scheme-details{
     display: block;
-    width:90%;
+    width:95%;
   }
 }
 #scheme-left{

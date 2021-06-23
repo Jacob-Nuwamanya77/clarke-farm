@@ -71,19 +71,17 @@ export default {
   margin-right: auto;
   margin-top: 25px;
 }
+@media screen and (max-width:480px){
+  #hero-training{
+    width:95%;
+  }
+}
 #hero-content-top{
   display: flex;
 }
 @media screen and (min-width:900px){
   #hero-content-top{
     max-height:550px;
-  }
-}
-@media screen and (max-width:700px){
-  #hero-training{
-    display:block;
-    width:100%;
-    padding-left:20px;
   }
 }
 #left-container{

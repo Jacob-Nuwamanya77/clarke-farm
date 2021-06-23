@@ -2,7 +2,6 @@
   <div id="training-registration-form">
     <div class="description">
       <p class="section-title">Register</p>
-      <div class="linedesign"></div>
     </div>
     <div class="registration-container">
       <div id="registration-image">
@@ -146,19 +145,6 @@ export default {
 }
 .description p{
   margin-top:15px;
-}
-.linedesign {
-  width: 30%;
-  height: 25px;
-  position:absolute;
-  top:0;
-  right: 0;
-  background-color: #068d68;
-}
-@media screen and (max-width:700px){
-  .linedesign{
-    width:25%;
-  }
 }
 .registration-container {
   width: 70%;
