@@ -172,6 +172,7 @@ export default {
   },
 
   methods: {
+    // Delete an activity
     deleteActivity(id) {
     // eslint-disable-next-line no-underscore-dangle
       const indexOfArrayItem = this.activityList.findIndex((i) => i._id === id);
@@ -206,10 +207,13 @@ export default {
       });
     },
 
+    // Select an image in activity section
     onSelect() {
       const file = this.$refs.file.files[0];
       this.file = file;
     },
+
+    // Submit activity details to from form to database
     async onSubmit() {
       const formData = new FormData();
       formData.append('file', this.file);
@@ -242,7 +246,6 @@ export default {
       }
     },
 
-    // validation methods
   },
 };
 </script>
