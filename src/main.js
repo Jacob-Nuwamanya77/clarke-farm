@@ -11,6 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import Toaster from '@meforma/vue-toaster';
 import VueSweetalert2 from 'vue-sweetalert2';
 import App from './App.vue';
 import router from './router';
@@ -34,6 +35,7 @@ const options = {
 };
 createApp(App)
   .component('fa', FontAwesomeIcon).use(VueSweetalert2, options)
+  .use(Toaster)
   .use(store)
   .use(router)
   .mount('#app');
