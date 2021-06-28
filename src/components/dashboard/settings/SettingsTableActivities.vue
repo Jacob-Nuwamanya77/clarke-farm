@@ -24,47 +24,53 @@
             ></button>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="onSubmit" enctype="multipart/form-data" class="requires-validation"  >
-            <div class="form-group input-group was-validated ">
-              <input type="file" ref="file" @change="onSelect" required />
-            </div>
-                <br />
-              <div class="form-group input-group was-validated ">
+            <form
+              @submit.prevent="onSubmit"
+              enctype="multipart/form-data"
+              class="requires-validation"
+            >
+              <div class="form-group input-group was-validated">
+                <input type="file" ref="file" @change="onSelect" required />
+              </div>
+              <br />
+              <div class="form-group input-group was-validated">
                 <input
-                  class="form-control "
+                  class="form-control"
                   type="text"
                   placeholder="Filename"
                   id="validationCustom01"
-                   aria-describedby="inputGroupPrepend"
-                  v-model="activity.filename"  required />
+                  aria-describedby="inputGroupPrepend"
+                  v-model="activity.filename"
+                  required
+                />
               </div>
               <br />
-             <div class="form-group input-group was-validated ">
+              <div class="form-group input-group was-validated">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Activity Name"
                   v-model="activity.activityname"
                   id="validationCustom02"
-                   aria-describedby="inputGroupPrepend"
-                   required
+                  aria-describedby="inputGroupPrepend"
+                  required
                 />
-                </div>
-                   <br />
-                   <div class="form-group input-group was-validated ">
+              </div>
+              <br />
+              <div class="form-group input-group was-validated">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="description"
                   v-model="activity.description"
                   id="description"
-                    aria-describedby="inputGroupPrepend"
-                   required
+                  aria-describedby="inputGroupPrepend"
+                  required
                 />
               </div>
-               <br />
+              <br />
 
-             <div class="form-group input-group was-validated ">
+              <div class="form-group input-group was-validated">
                 <input
                   type="text"
                   class="form-control"
@@ -72,7 +78,7 @@
                   v-model="activity.fee"
                   id="fee"
                   aria-describedby="inputGroupPrepend"
-                   required
+                  required
                 />
               </div>
               <br />
@@ -99,16 +105,26 @@
         <th>Action</th>
       </thead>
       <tbody>
-         <tr v-for="activity in activityList" :key="activity._id">
+        <tr v-for="activity in activityList" :key="activity._id">
           <td>{{ activity.activityname }}</td>
           <td>
-        <img
-              :src="require('../../../../backend/uploads/' + activity.filename + '.jpg')" alt="activity"/>
+            <img
+              :src="
+                require('../../../../backend/uploads/' +
+                  activity.filename +
+                  '.jpg')
+              "
+              alt="activity"
+            />
           </td>
           <td id="td-description">{{ activity.description }}</td>
           <td>{{ activity.fee }}</td>
           <td>
-            <a style="color: #068d68"><fa icon="edit" /></a>
+            <a
+              href=""
+              style="color: #068d68"
+              ><fa icon="edit"
+            /></a>
             <a href="" @click.prevent="deleteActivity(activity._id)"
               ><fa
                 icon="trash"
@@ -121,7 +137,6 @@
             /></a>
           </td>
         </tr>
-
       </tbody>
     </table>
   </div>
@@ -132,17 +147,20 @@ import axios from 'axios';
 const forms = document.querySelectorAll('.needs-validation');
 
 // Loop over them and prevent submission
-Array.prototype.slice.call(forms)
-  .forEach((form) => {
-    form.addEventListener('submit', (event) => {
+Array.prototype.slice.call(forms).forEach((form) => {
+  form.addEventListener(
+    'submit',
+    (event) => {
       if (!form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
       }
 
       form.classList.add('was-validated');
-    }, false);
-  });
+    },
+    false,
+  );
+});
 
 const api = 'http://localhost:3000';
 export default {
@@ -160,7 +178,6 @@ export default {
     };
   },
   created() {
-    // const endpoint = '/activities';
     axios
       .get('http://localhost:3000/activities')
       .then((res) => {
@@ -174,7 +191,7 @@ export default {
   methods: {
     // Delete an activity
     deleteActivity(id) {
-    // eslint-disable-next-line no-underscore-dangle
+      // eslint-disable-next-line no-underscore-dangle
       const indexOfArrayItem = this.activityList.findIndex((i) => i._id === id);
       this.$swal({
         title: 'Are you sure?',
@@ -218,11 +235,14 @@ export default {
       const formData = new FormData();
       formData.append('file', this.file);
       // Form1
+      // Form1
       const endpoint1 = '/uploads';
       try {
         await axios.post(api + endpoint1, formData);
-        // eslint-disable-next-line no-empty
-      } catch {}
+        this.message = 'uploaded file successfully';
+      } catch {
+        this.message = 'file not uploaded';
+      }
       // Form2
       const endpoint2 = '/activities/add';
       axios.post(api + endpoint2, this.activity);
@@ -245,7 +265,6 @@ export default {
         });
       }
     },
-
   },
 };
 </script>
@@ -291,17 +310,16 @@ img {
 }
 
 .forms-inputs input {
-    height: 50px;
-    border: 2px solid #eee
+  height: 50px;
+  border: 2px solid #eee;
 }
 
 .forms-inputs input:focus {
-    box-shadow: none;
-    outline: none;
-    border: 2px solid #000
+  box-shadow: none;
+  outline: none;
+  border: 2px solid #000;
 }
 input:valid(:placeholder-shown) {
   border-color: hsl(120, 76%, 50%);
 }
-
 </style>

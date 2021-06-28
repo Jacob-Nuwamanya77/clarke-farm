@@ -36,4 +36,26 @@ router.get('/delete-activity/:id', async (req, res) => {
   }
 });
 
+router.put('/update-activity/:id', async (req, res) => {
+  try {
+    await Activity.findOneAndUpdate({ _id: req.params.id }, req.body,
+      (err) => {
+        if (err) res.send(err);
+        res.json('Activity Updated');
+      });
+  } catch (error) {
+    res.status(400).send('Unable to update the record from the database');
+  }
+});
+
+// FIND ACTIVITY BY ID
+router.get('/activities/:id', async (req, res) => {
+  try {
+    const activity = await Activity.findOne({ _id: req.params.id }, req.body);
+    res.json(activity);
+  } catch (error) {
+    res.status(400).send('Unable to find the record in the list');
+  }
+});
+
 module.exports = router;

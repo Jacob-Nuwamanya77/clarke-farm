@@ -27,7 +27,6 @@ library.add(faPhone, faBars, faEye, faFacebookF, faTwitter, faCogs, faTrashAlt, 
   faComments, faBell, faUser, faPlus, faEdit, faAngleLeft, faAngleRight, faRunning,
   faHamburger, faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen,
   faBalanceScale, faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake);
-
 // sweetalert buttons
 const options = {
   confirmButtonColor: '#068d68',
