@@ -1,0 +1,34 @@
+{
+  "activities":[
+    {
+      "title":"Biking",
+      "img":{
+        "src":"@/assets/images/motocross1.jpg",
+        "alt":"biking"
+      },
+      "text":"Rent a bicycle and challenge yourself on smooth and rough terrain.",
+      "currency":"$",
+      "price":"30.00"
+    },
+    {
+      "title":"Bouldering",
+      "img":{
+        "src":"@/assets/images/bouldering3.jpg",
+        "alt":"bouldering"
+      },
+      "text":" Walk to the top of our boulders and enjoy beautiful sunsets.",
+      "currency":"$",
+      "price":"0.00"
+    },
+    {
+      "title":"Coffee Tasting",
+      "img":{
+        "src":"@/assets/images/coffeetasting1.jpg",
+        "alt":"coffee tasting"
+      },
+      "text":"Fresh roasted robusta coffee. It's our pride and joy.",
+      "currency":"$",
+      "price":"5.00"
+    }
+  ]
+}
