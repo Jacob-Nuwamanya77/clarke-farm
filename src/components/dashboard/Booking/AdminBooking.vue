@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import Content from '@/components/dashboard/booking/Trainings.vue';
 import SideNav from '@/components/dashboard/SideNavigation.vue';
+import Content from './Trainings.vue';
 
 let mini = true;
 export default {

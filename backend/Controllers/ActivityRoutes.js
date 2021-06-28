@@ -26,4 +26,14 @@ router.get('/activities', async (req, res) => {
   }
 });
 
+// DELETE ACTIVITY
+router.get('/delete-activity/:id', async (req, res) => {
+  try {
+    await Activity.deleteOne({ _id: req.params.id });
+    res.json('Activity Deleted');
+  } catch (error) {
+    res.status(400).send('Unable to delete the record from the database');
+  }
+});
+
 module.exports = router;
