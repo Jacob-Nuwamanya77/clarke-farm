@@ -3,7 +3,7 @@
     {
       "title":"Biking",
       "img":{
-        "src":"@/assets/images/motocross1.jpg",
+        "src":"/assets/images/motocross1.jpg",
         "alt":"biking"
       },
       "text":"Rent a bicycle and challenge yourself on smooth and rough terrain.",

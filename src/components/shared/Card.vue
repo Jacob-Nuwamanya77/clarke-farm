@@ -1,7 +1,7 @@
 <template>
   <div class="card-item">
     <div class="card-image-container">
-      <img :src="item.img" :alt="item.alt? item.alt: ''" aria-hidden="true">
+      <img :src="item.img.src" :alt="item.img.alt? item.img.alt: ''" aria-hidden="true">
     </div>
     <div class="card-content">
       <p class="card-title">{{ item.title }}</p>
