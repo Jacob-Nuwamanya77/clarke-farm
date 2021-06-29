@@ -5,51 +5,9 @@
       See all the activities you can enjoy, the accommodations to
       choose from and what our guests have to say about us.
     </p>
-    <div class="navigation">
-      <ul>
-        <li><a href="" class="active-nav">Activities</a></li>
-        <li><a href="">Accommodation</a></li>
-        <li><a href="">Food</a></li>
-        <li><a href="">Reviews</a></li>
-      </ul>
-    </div>
+    <TabMenu :tabsList="tabs" />
     <div class="card-container">
-      <div class="card-item">
-        <div class="card-image-container">
-          <img src="@/assets/images/motocross1.jpg" alt="biking" aria-hidden="true">
-        </div>
-        <div class="card-content">
-          <p class="card-title">Biking</p>
-          <p class="card-text">
-            Rent a bicycle and challenge yourself on smooth and rough terrain.
-          </p>
-          <p class="activity-price">$ 30.00</p>
-        </div>
-      </div>
-      <div class="card-item">
-        <div class="card-image-container">
-          <img src="@/assets/images/bouldering3.jpg" alt="bouldering" aria-hidden="true">
-        </div>
-        <div class="card-content">
-          <p class="card-title">Bouldering</p>
-          <p class="card-text">
-             Walk to the top of our boulders and enjoy beautiful sunsets.
-          </p>
-          <p class="activity-price">$ 0.00</p>
-        </div>
-      </div>
-      <div class="card-item">
-        <div class="card-image-container">
-          <img src="@/assets/images/coffeetasting1.jpg" alt="coffee testing" aria-hidden="true">
-        </div>
-        <div class="card-content">
-          <p class="card-title">Coffee Tasting</p>
-          <p class="card-text">
-            Fresh roasted robusta coffee. It's our pride and joy.
-          </p>
-          <p class="activity-price">$ 5.00</p>
-        </div>
-      </div>
+      <Card v-for="activity in activities" :key="activity" :item="activity"/>
     </div>
     <div class="more-button-container">
       <button>Show All</button>
@@ -58,8 +16,27 @@
 </template>
 
 <script>
+import TabMenu from '@/components/shared/TabMenu.vue';
+import Card from '@/components/shared/Card.vue';
+import { mapState } from 'vuex';
+
 export default {
   name: 'OurOffers',
+  created() {
+    this.$store.dispatch('getActivities');
+  },
+  data() {
+    return {
+      tabs: ['Activities', 'Accomodation', 'Food', 'Reviews'],
+    };
+  },
+  components: {
+    TabMenu,
+    Card,
+  },
+  computed: {
+    ...mapState(['activities']),
+  },
 };
 </script>
 
@@ -110,44 +87,37 @@ export default {
   margin-right: auto;
   max-height:30px;
   margin-top: 40px;
-}
-.navigation ul{
-  padding: 0;
   display: flex;
   justify-content: center;
   overflow-x: auto;
+  padding:0;
 }
 @media screen and (max-width:730px){
-  .navigation ul{
+  .navigation {
     padding-left: 10px;
     justify-content: start;
   }
-  .navigation ul::-webkit-scrollbar{
+  .navigation ::-webkit-scrollbar{
     width:0px;
   }
 }
-.navigation li{
-  list-style-type: none;
+.tab{
   min-width:150px;
   height:30px;
   margin-right: 20px;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.navigation a:hover{
-  background-color: var(--dark-green);
-}
-.navigation a{
-  display: flex;
+  display:flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
-  width:100%;
-  height:100%;
   color:white;
 }
-a.active-nav{
+.tab:hover{
   background-color: var(--dark-green);
-  color:white;
+}
+.active-nav{
+  background-color: var(--dark-green);
+}
+.inactive-nav{
+  background-color: rgba(0, 0, 0, 0.3);
 }
 .card-container{
   margin-top: 40px;
@@ -174,46 +144,6 @@ a.active-nav{
   .card-container{
     justify-content: start;
   }
-}
-.card-item{
-  min-width:290px;
-  max-width: 290px;
-  max-height: 320px;
-  background-color:white;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  position:relative;
-}
-@media screen and (max-width:1240px){
-  .card-item{
-    margin-right:20px;
-  }
-}
-.card-image-container{
-  height:190px;
-}
-.card-image-container img{
-  width:100%;
-  height:180px;
-  object-fit: cover;
-}
-.card-content{
-  margin-top: 5px;
-  padding-left: 10px;
-  height:130px;
-}
-.card-title{
-  font-weight: bold;
-}
-.card-text{
-  font-size: 14px;
-}
-.activity-price{
-  width:80px;
-  background-color: var(--dark-green);
-  color:white;
-  text-align: center;
-  position:absolute;
-  bottom:-5px;
 }
 .more-button-container{
   margin-top:50px;

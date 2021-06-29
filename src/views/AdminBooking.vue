@@ -6,8 +6,7 @@
 </template>
 
 <script>
-// eslint-disable-next-line import/no-unresolved
-import dashboard from '../components/dashboard/Booking/AdminBooking.vue';
+import dashboard from '../components/dashboard/booking/AdminBooking.vue';
 
 export default {
   name: 'AdminBooking',
