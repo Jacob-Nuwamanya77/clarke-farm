@@ -120,8 +120,8 @@ export default {
   color:#FC646C;
 }
 .navigation-title{
-  color:#545454;
-  font-weight: bold;
+  color: var(--blue-ink);
+  /* font-weight: bold; */
   font-size: 14px;
   min-height: 100%;
   display: flex;

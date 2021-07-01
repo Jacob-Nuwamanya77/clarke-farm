@@ -39,6 +39,7 @@ export default {
   display:flex;
   flex-direction: row;
   position:relative;
+  padding-top:20px;
 }
 .nav-container{
   width:480px;
