@@ -7,7 +7,7 @@
     </p>
     <TabMenu :tabsList="tabs" />
     <div class="card-container">
-      <Card v-for="activity in activities" :key="activity" :item="activity"/>
+      <Card v-for="(activity, index) in activities" :key="index" :item="activity"/>
     </div>
     <div class="more-button-container">
       <button>Show All</button>
@@ -35,7 +35,9 @@ export default {
     Card,
   },
   computed: {
-    ...mapState(['activities']),
+    ...mapState({
+      activities: (state) => state.activities.activities,
+    }),
   },
 };
 </script>
