@@ -35,7 +35,6 @@ body {
   position:relative;
 }
 .page-container{
-  padding-top:20px;
   min-height:100vh;
   max-width: 1280px;
   margin:0 auto;

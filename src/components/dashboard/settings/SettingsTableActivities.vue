@@ -102,8 +102,7 @@
          <tr v-for="activity in activityList" :key="activity._id">
           <td>{{ activity.activityname }}</td>
           <td>
-        <img
-              :src="require('../../../../backend/uploads/' + activity.filename + '.jpg')" alt="activity"/>
+        <img src="" alt="activity"/>
           </td>
           <td id="td-description">{{ activity.description }}</td>
           <td>{{ activity.fee }}</td>
