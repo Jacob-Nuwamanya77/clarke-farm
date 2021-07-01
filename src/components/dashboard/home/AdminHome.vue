@@ -1,17 +1,14 @@
 <template>
-  <div class="row">
+  <div class="dashboard-container">
     <SideNav @mouseover="togglesidebar" @mouseout="togglesidebar"/>
-    <div>
-      <Content/>
-    </div>
+    <Content/>
   </div>
 </template>
 
 <script>
-import Content from '@/components/dashboard/home//DashboardContent.vue';
+import Content from '@/components/dashboard/home/DashboardContent.vue';
 import SideNav from '@/components/dashboard/SideNavigation.vue';
 
-let mini = true;
 export default {
   name: 'Admin',
   data() {
@@ -24,3 +21,13 @@ export default {
   },
 };
 </script>
+
+<style>
+.dashboard-container{
+  display: flex;
+}
+</style>
+
+<style scoped>
+
+</style>

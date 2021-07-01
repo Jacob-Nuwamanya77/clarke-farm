@@ -74,8 +74,7 @@
            <tr v-for="accommodation in accommodationList" :key="accommodation._id">
             <td>{{accommodation.accommodationtype }}</td>
              <td>
-              <img
-              :src="require('../../../../backend/uploads/' + accommodation.filename + '.jpg')" alt="activity"/>
+              <img src="" alt="activity"/>
               </td>
             <td id="td-description">{{ accommodation.description}}</td>
             <td>{{accommodation.fee}}</td>

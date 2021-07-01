@@ -1,143 +1,150 @@
 <template>
-      <!-- side navigation -->
-    <div
-      class="col-md-3 sidenav"
-    >
-      <ul>
-    <h3 class="logo" id="logo-text ">CLARKE FARM</h3>
-    <router-link to="/admin/dashboard" id="home" class="active">
-          <li><fa icon="home" /><span>Home</span></li>
-    </router-link>
-    <router-link to="/admin/booking" class="  pl-3">
-        <a href="#">
-          <li class="dropdown-btn" @click="dropdownToggle"
-         ><fa icon="book-open" /><span>Bookings
-          </span><fa icon="angle-right" class="caret"/>
-          </li>
-        </a>
-    </router-link>
-        <!-- <div class="dropdown-container d-none" id="dropdown-container"  >
-            <router-link to="/admin/booking" class="  pl-3">
-              <a href="#" class="item">Trainings</a>
-            </router-link>
-            <router-link to="/admin/farmtour" class="  pl-3">
-              <a href="#" class="item">Tours</a>
-            </router-link>
-            <router-link to="/admin/coffeetour" class="  pl-3">
-              <a href="#" class="item">Coffee Farm</a>
-            </router-link>
-        </div> -->
-        <router-link to='/admin/reviews'>
-        <a href="#">
-          <li>
-            <fa icon="star-and-crescent" /><span
-              >User Reviews</span
-            >
-          </li>
-        </a>
+  <div class="side-navigation">
+    <div class="white-container">
+      <div class="company-details">
+        <div class="company-logo">
+          <fa icon="mug-hot" />
+        </div>
+        <div class="company-name">
+          Clarke Farm
+        </div>
+      </div>
+      <div class="navigation-container">
+        <router-link :to="{ name: 'Dashboard' }" class="navigation-item">
+          <span class="item-icon" id="home-icon">
+            <fa icon="home" />
+          </span>
+          <span class="navigation-title">
+            Home
+          </span>
         </router-link>
-        <router-link to="/admin/settings/activities">
-        <a href="#">
-          <li><fa icon="cogs" /><span>Settings</span></li>
-        </a>
+        <router-link :to="{ name: 'AdminBooking' }" class="navigation-item">
+          <span class="item-icon" id="booking-icon">
+            <fa icon="bell" />
+          </span>
+          <span class="navigation-title">
+            Booking
+          </span>
         </router-link>
-      </ul>
+        <router-link :to="{ name: 'Reviews' }" class="navigation-item">
+          <span class="item-icon" id="reviews-icon">
+            <fa icon="comments" />
+          </span>
+          <span class="navigation-title">
+            User reviews
+          </span>
+        </router-link>
+        <router-link :to="{ name: 'Settings' }" class="navigation-item">
+          <span class="item-icon" id="settings-icon">
+            <fa icon="cogs" />
+          </span>
+          <span class="navigation-title">
+            Settings
+          </span>
+        </router-link>
+      </div>
     </div>
+  </div>
 </template>
-<style scoped>
 
-.sidenav {
-  background-color: #068d68;
-  width: 70px;
-  white-space: nowrap;
-  transition: 0.5s;
-  overflow-x: hidden;
-  height: 100vh;
-  position: fixed;
-  /* background: linear-gradient(to  bottom, #068d68, #75cfb7); */
-
-}
-.logo{
-  margin-left: 0px;
-  margin-top: -20px;
-  color: white;
-}
-.sidenav a {
-  text-decoration: none;
-  font-size: 15px;
-  font-family: "roboto";
-  display: block;
-  margin-top: 20px;
-}
-.item{
-  margin-left: 25px;
-   color:rgb(53, 53, 85)
-}
-ul{
-  margin-top: 60px;
-}
-li {
-  list-style-type: none;
-  padding: 10px;
-  padding-left: 0px;
-  color: white;
-}
-li:hover {
-  background-color: white;
-  color: #068d68;
-  padding-left: 5px;
-}
-span {
-  padding: 10px;
-}
-.right-container{
-  margin-left: 100px;
-  margin-top: 20px;
-}
-
-.caret{
-  margin-left: 40px;
-
-}
-
-.icon{
-  float: right;
-  font-size: 20px;
-  color: #068d68;
-}
-.signout{
-  margin-right:20px;
-}
-.content{
-  margin-top: 50px;
-  transform: translate(2%,0);
-  transition:transform 1s linear;
-}
-h5{
-  margin-left: 20px;
-}
-</style>
 <script>
-let item = true;
 export default {
   name: 'SideNavigation',
-  methods: {
-    dropdownToggle() {
-      const drop = document.getElementById('dropdown-container');
-      if (item) {
-        drop.classList.remove('d-none');
-        console.log('clicked');
-        item = false;
-      } else {
-        drop.classList.add('d-none');
-        console.log('clicked');
-        item = true;
-      }
-    },
-    hideItems() {
-      document.getElementById('dropdown-container').classList.add('d-none');
-    },
-  },
 };
-
 </script>
+
+<style scoped>
+.side-navigation{
+  max-width:250px;
+  min-width: 250px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.white-container{
+  background-color: white;
+  min-width: 90%;
+  min-height: 98%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+}
+.company-details{
+  margin-top:10px;
+}
+.company-logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+.company-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.navigation-container{
+  min-height:60vh;
+  margin-top:10%;
+}
+.navigation-item{
+  width:85%;
+  height: 38px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.item-icon{
+  min-height: 100%;
+  margin-left: 15px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+#home-icon{
+  color:#2BAEAA;
+}
+#booking-icon{
+  color:#04548C;
+}
+#reviews-icon{
+  color:#FCA705
+}
+#settings-icon{
+  color:#FC646C;
+}
+.navigation-title{
+  color:#545454;
+  font-weight: bold;
+  font-size: 14px;
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
+.router-link-active{
+  border:none;
+  background-color: var(--dark-green);
+  border-radius: 5px;
+}
+.router-link-active > #home-icon{
+  color:white;
+}
+.router-link-active > #booking-icon{
+  color:white;
+}
+.router-link-active > #reviews-icon{
+  color:white;
+}
+.router-link-active > #settings-icon{
+  color:white;
+}
+.router-link-active > .navigation-title{
+  color:white;
+}
+</style>

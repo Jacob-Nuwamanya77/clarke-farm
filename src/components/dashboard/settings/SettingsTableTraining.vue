@@ -77,8 +77,7 @@
           <tr v-for="training in trainingsList" :key="training._id">
             <td>{{training.programtitle }}</td>
              <td>
-              <img
-              :src="require('../../../../backend/uploads/' + training.filename + '.jpg')" alt="activity"/>
+              <img src="" alt="activity"/>
               </td>
             <td>{{ training.description}}</td>
             <td>{{training.fee}}</td>
