@@ -5,12 +5,19 @@
       See all the activities you can enjoy, the accommodations to
       choose from and what our guests have to say about us.
     </p>
-    <TabMenu :tabsList="tabs" />
+    <TabMenu :tabsList="tabs" @selected = "setSelectedTab"/>
     <div class="card-container">
-      <Card v-for="(activity, index) in activities" :key="index" :item="activity"/>
+      <Card v-for="(activity, index) in filterDisplayData" :key="index" :item="activity"/>
     </div>
-    <div class="more-button-container">
-      <button>Show All</button>
+    <div class="arrow-navigation">
+      <div class="forward-back-navigation">
+        <span class="nav-button" @click="prevPage" v-if="page !== 1">
+          <fa icon="angle-left" />
+        </span>
+        <span class="nav-button" @click="nextPage" v-if="!lastPage">
+          <fa icon="angle-right" />
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -22,22 +29,64 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'OurOffers',
-  created() {
-    this.$store.dispatch('getActivities');
-  },
+  // created() {
+  //   this.$store.dispatch('fetchAll');
+  // },
   data() {
     return {
-      tabs: ['Activities', 'Accomodation', 'Food', 'Reviews'],
+      tabs: ['Activities', 'Accomodation', 'Food'],
+      page: 1,
+      limit: 3,
+      selectedTab: 'activities',
     };
   },
   components: {
     TabMenu,
     Card,
   },
+  methods: {
+    nextPage() {
+      this.page += 1;
+    },
+    prevPage() {
+      this.page -= 1;
+    },
+    setSelectedTab(selected) {
+      this.selectedTab = selected.toLowerCase();
+      this.page = 1;
+    },
+  },
   computed: {
     ...mapState({
       activities: (state) => state.activities.activities,
+      accomodations: (state) => state.accomodations.accomodations,
+      foods: (state) => state.foods.foods,
     }),
+    filterDisplayData() {
+      const filtered = [];
+      let incomingData;
+      if (this.selectedTab === 'activities') {
+        incomingData = [...this.activities];
+      } else if (this.selectedTab === 'accomodation') {
+        incomingData = [...this.accomodations];
+      } else {
+        incomingData = [...this.foods];
+      }
+      const start = (this.page - 1) * this.limit;
+      const end = (this.page * this.limit > incomingData.length)
+        ? incomingData.length : this.page * this.limit;
+
+      for (let index = start; index < end; index += 1) {
+        filtered.push(incomingData[index]);
+      }
+      return filtered;
+    },
+    lastPage() {
+      if (this.page * this.limit > this.activities.length) {
+        return true;
+      }
+      return false;
+    },
   },
 };
 </script>
@@ -147,23 +196,44 @@ export default {
     justify-content: start;
   }
 }
-.more-button-container{
-  margin-top:50px;
-  display: flex;
-  justify-content: center;
+
+.arrow-navigation{
+  width:95%;
+  height: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
 }
-.more-button-container button{
-  border:1px solid rgba(0, 0, 0, 0.3);
-  width:180px;
-  height:30px;
-  border-radius: 3px;
-  background-color: var(--smoky-white);
-  color:var(--dark-green);
+@media screen and (min-width:1240px){
+  .arrow-navigation{
+    width:70%;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-between;
+  }
 }
-.more-button-container button:hover{
-  transform: scale(0.95);
-  box-shadow: 3px 3px 5px rgba(0,0,0,0.7);
-  background-color: var(--dark-green);
+.forward-back-navigation{
+  width:80px;
+  display:flex;
+  justify-content: space-between;
+}
+.nav-button{
+  width:32px;
+  height: 35px;
+  font-size: 20px;
   color:white;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mono-dark-green);
+}
+.nav-button:hover{
+  cursor:pointer;
+}
+.active{
+  background-color: var(--mono-dark-green);
+}
+.disabled{
+  background-color: rgba(200,200,200,0.7);
 }
 </style>

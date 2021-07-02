@@ -1,5 +1,5 @@
 const express = require('express');
-const CoffeeProcess = require('../Models/coffeeprocessModel');
+const CoffeeProcess = require('../models/coffeeprocessModel');
 
 // Creating a Router
 const router = express.Router();

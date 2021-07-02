@@ -10,6 +10,9 @@ const apiClient = axios.create({
 
 export default {
   getActivities() {
-    return apiClient.get('api/activities');
+    return apiClient.get('/api/activities');
+  },
+  postActivity(activity) {
+    return apiClient.post('/api/activities', activity);
   },
 };

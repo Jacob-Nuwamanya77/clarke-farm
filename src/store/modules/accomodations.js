@@ -1,44 +1,44 @@
 import ActivityService from '@/services/activity-service';
 
 export const state = {
-  activities: [
+  accomodations: [
     {
-      title: 'coffee tasting',
-      description: 'Enjoy the best coffee in the land',
+      title: 'hill top house',
+      description: 'Majestic views',
       priced: 'Yes',
       currency: '$',
-      cost: '5.00',
+      cost: '150.00',
       image: '@/assets/images/coffeetasting1.jpg',
     },
     {
-      title: 'bouldering',
-      description: 'Enjoy the best coffee in the land',
+      title: 'Container House',
+      description: 'Self contained home away from home',
       priced: 'Yes',
       currency: '$',
-      cost: '5.00',
+      cost: '150.00',
       image: '@/assets/images/coffeetasting1.jpg',
     },
     {
-      title: 'biking',
-      description: 'Enjoy the best coffee in the land',
+      title: 'Cottages',
+      description: 'Wooden cottages at the hilltop over looking the entire farm',
       priced: 'Yes',
       currency: '$',
-      cost: '5.00',
+      cost: '200.00',
       image: '@/assets/images/coffeetasting1.jpg',
     },
     {
-      title: 'forest walk',
-      description: 'Enjoy the best coffee in the land',
+      title: 'Tents',
+      description: 'Outdoor living at its best',
       priced: 'Yes',
       currency: '$',
-      cost: '5.00',
+      cost: '50.00',
       image: '@/assets/images/coffeetasting1.jpg',
     },
   ],
 };
 
 export const actions = {
-  saveActivity(context, payload) {
+  saveAccomodation(context, payload) {
     ActivityService.postActivity(payload);
   },
   async fetchAll({ commit }) {
@@ -48,6 +48,9 @@ export const actions = {
 };
 
 export const mutations = {
+  ADD_ACTIVITY(state, activity) {
+    state.activity = activity;
+  },
   ADD_ALL_ACTIVITIES(state, activities) {
     state.activities = activities;
   },

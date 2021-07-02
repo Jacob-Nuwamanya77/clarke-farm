@@ -1,22 +1,23 @@
 <template>
   <div class="card-item">
     <div class="card-image-container">
-      <img :src="item.img"
-        :alt="item.img.alt? item.img.alt: ''" aria-hidden="true">
+      <img :src="item.img" aria-hidden="true">
     </div>
     <div class="card-content">
-      <p class="card-title">{{ item.title }}</p>
+      <p class="card-title">{{ capitalizeEachWord(item.title) }}</p>
       <p class="card-text">
-       {{ item.text }}
+       {{ item.description }}
       </p>
-      <p v-if="item.price" class="activity-price">
-        {{ item.currency }} {{ item.price }}
+      <p v-if="item.cost" class="activity-price">
+        {{ item.currency }} {{ item.cost }}
       </p>
     </div>
   </div>
 </template>
 
 <script>
+import FormatText from '@/mixins/format-text';
+
 export default {
   name: 'Card',
   props: {
@@ -25,6 +26,7 @@ export default {
       required: true,
     },
   },
+  mixins: [FormatText],
 };
 </script>
 

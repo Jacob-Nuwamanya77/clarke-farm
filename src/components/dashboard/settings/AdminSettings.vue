@@ -1,10 +1,8 @@
 <template>
   <div class="dashboard-container">
-    <SideNav @mouseover="togglesidebar" @mouseout="togglesidebar" id="sidebar"/>
-    <div>
-      <SubNav/>
-    </div>
-    <Content id="maincontent"/>
+    <SideNav />
+    <SubNav />
+    <Content />
   </div>
 </template>
 

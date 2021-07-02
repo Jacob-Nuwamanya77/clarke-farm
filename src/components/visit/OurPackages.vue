@@ -1,5 +1,5 @@
 <template>
-  <div class="our-packages">
+  <div class="our-packages unselectable">
     <p class="section-title">Our Packages</p>
     <p class="sub-text">
       We offer team building exercise venues for corporate events,

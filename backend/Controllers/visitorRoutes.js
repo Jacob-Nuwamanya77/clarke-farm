@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 // by default, you need to set it to false.
 mongoose.set('useFindAndModify', false);
 
-const Visitor = require('../Models/visitorModel');
+const Visitor = require('../models/visitorModel');
 
 // Creating a Router
 const router = express.Router();

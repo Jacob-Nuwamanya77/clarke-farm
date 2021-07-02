@@ -1,9 +1,9 @@
 import ActivityService from '@/services/activity-service';
 
 export const state = {
-  activities: [
+  foods: [
     {
-      title: 'coffee tasting',
+      title: 'Steamed Matooke',
       description: 'Enjoy the best coffee in the land',
       priced: 'Yes',
       currency: '$',
@@ -11,7 +11,7 @@ export const state = {
       image: '@/assets/images/coffeetasting1.jpg',
     },
     {
-      title: 'bouldering',
+      title: 'Boo',
       description: 'Enjoy the best coffee in the land',
       priced: 'Yes',
       currency: '$',
@@ -19,7 +19,7 @@ export const state = {
       image: '@/assets/images/coffeetasting1.jpg',
     },
     {
-      title: 'biking',
+      title: 'Pilau Masala',
       description: 'Enjoy the best coffee in the land',
       priced: 'Yes',
       currency: '$',
@@ -27,7 +27,15 @@ export const state = {
       image: '@/assets/images/coffeetasting1.jpg',
     },
     {
-      title: 'forest walk',
+      title: 'Luwombo',
+      description: 'Enjoy the best coffee in the land',
+      priced: 'Yes',
+      currency: '$',
+      cost: '5.00',
+      image: '@/assets/images/coffeetasting1.jpg',
+    },
+    {
+      title: 'Katogo',
       description: 'Enjoy the best coffee in the land',
       priced: 'Yes',
       currency: '$',

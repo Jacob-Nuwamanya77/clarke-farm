@@ -4,7 +4,7 @@
       v-for="(tab,index) in tabsList"
       :key="index"
       :class="['tab', selectedTab==tab?'active':'inactive']"
-      @click="selectedTab=tab">{{ tab }}</span>
+      @click="onTabSelected">{{ tab }}</span>
   </div>
 </template>
 
@@ -21,6 +21,12 @@ export default {
     return {
       selectedTab: 'Activities',
     };
+  },
+  methods: {
+    onTabSelected(event) {
+      this.selectedTab = event.target.textContent;
+      this.$emit('selected', this.selectedTab);
+    },
   },
 };
 </script>
