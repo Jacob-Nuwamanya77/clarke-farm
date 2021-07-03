@@ -9,45 +9,49 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Add Activity</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="btn-close"
+            data-bs-dismiss="modal" aria-label="Close"/>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="submitActivityObject">
-              <div class="mt-5 mb-5">
+            <form @submit.prevent="submitActivityObject" class="form-group">
+              <div class="mt-1 mb-3 form-group">
                 <label for="title">Activity title</label>
-                <input type="text" name="title" id="title" v-model="title">
+                <input type="text" class="form-control" name="title" id="title" v-model="title">
               </div>
-              <div class="mt-5 mb-5">
+              <div class="mt-1 mb-3 form-group">
                 <label for="description">Describe the activity in brief</label>
-                <input type="text" name="description" id="description" v-model="description">
+                <input type="text" class="form-control" name="description"
+                id="description" v-model="description">
               </div>
-              <div class="mt-5 mb-5">
-                <label for="Priced">Is activity priced?</label>
-                <input type="radio" name="priced" value="Yes" v-model="priced"> Yes
-                <input type="radio" name="priced" value="No" checked v-model="priced"> No
+              <div class="mt-1 mb-3 form-group ">
+                <label for="Priced" class="form-check-label" >Is activity priced?</label><br>
+                <input type="radio" class="form-check-input"
+                name="priced" value="Yes" v-model="priced"> Yes
+                <input type="radio" class="form-check-input" name="priced" value="No"
+                 checked v-model="priced"> No
               </div>
-              <div class="mt-5 mb-5">
-                <span>
+              <div class="mt-1 mb-3 form-group">
+                <span class="mt-1 mb-5">
                   <label for="currency">Currency</label>
-                  <select name="currency" id="currency" v-model="currency">
+                  <select name="currency" class="form-select" id="currency" v-model="currency">
                     <option value="ugx">UGX</option>
                     <option value="$">USD</option>
                   </select>
-                </span>
-                <span v-if="priced=='Yes'">
+                </span><br>
+                <span class="mt-1 mb-3"  v-if="priced=='Yes'">
                   <label for="cost">Cost of activity</label>
-                  <input type="text" name="cost" id="cost" v-model="cost">
+                  <input type="text" class="form-control" name="cost" id="cost" v-model="cost">
                 </span>
               </div>
-              <div class="mt-5 mb-5">
-                <label for="image">Upload image</label>
-                <input type="file" name="image" id="image" ref="file" @change="onFileChange">
+              <div class="mt-1  mb-3 form-group">
+                 <label class="form-label"  for="image">Upload image</label>
+                <input type="file"  class="form-control form-control-md" name="image" id="image"
+                ref="file" @change="onFileChange">
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Submit Data</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary"
+                data-bs-dismiss="modal">Close</button>
               </div>
             </form>
           </div>

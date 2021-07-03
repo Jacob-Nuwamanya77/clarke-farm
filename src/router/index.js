@@ -15,7 +15,6 @@ import Activities from '@/views/Activities.vue';
 import Accommodation from '@/views/Accommodation.vue';
 import CoffeeProcess from '@/views/CoffeeProcess.vue';
 import TrainingProgram from '@/views/TrainingProgram.vue';
-import EditActivities from '@/views/EditActivities.vue';
 
 const routes = [
   {
@@ -89,11 +88,7 @@ const routes = [
     name: 'TrainingProgram',
     component: TrainingProgram,
   },
-  {
-    path: '/admin/settings/activities/edit-activities',
-    name: 'EditActivities',
-    component: EditActivities,
-  },
+
 ];
 
 const router = createRouter({
