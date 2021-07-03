@@ -1,6 +1,5 @@
 <template>
 <div>
-  <!-- <sideNav/> -->
   <dashboard/>
 </div>
 </template>

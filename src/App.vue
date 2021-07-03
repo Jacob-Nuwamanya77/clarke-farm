@@ -28,6 +28,12 @@
 body {
   margin: 0;
 }
+.unselectable{
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,7 +41,6 @@ body {
   position:relative;
 }
 .page-container{
-  padding-top:20px;
   min-height:100vh;
   max-width: 1280px;
   margin:0 auto;

@@ -1,9 +1,9 @@
 <template>
-  <div class="reviews-container">
+  <div class="reviews-container unselectable">
     <div id="review-details">
       <div id="review-left">
         <p class="section-title">
-          What people have to say about our coffee.
+          Our visitors describe their experiences.
         </p>
         <p id="review-text">
           We are currently traversing the neighboring communities, registering
@@ -43,7 +43,7 @@
             <fa icon="heart" />
           </span>
           <span class="icon-text">
-            Amazing Taste
+            Beautiful
           </span>
         </div>
       </div>

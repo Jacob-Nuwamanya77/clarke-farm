@@ -66,8 +66,7 @@
           <tr v-for="processcoffee in  coffeeprocessList" :key="processcoffee._id">
             <td>{{processcoffee.step }}</td>
              <td>
-              <img
-              :src="require('../../../../backend/uploads/' + processcoffee.filename + '.jpg')" alt="activity"/>
+              <img src="" alt="activity"/>
               </td>
             <td id="td-description">{{processcoffee.description}}</td>
             <td>

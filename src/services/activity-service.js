@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:3000',
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,6 +10,9 @@ const apiClient = axios.create({
 
 export default {
   getActivities() {
-    return apiClient.get('/activities');
+    return apiClient.get('/api/activities');
+  },
+  postActivity(activity) {
+    return apiClient.post('/api/activities', activity);
   },
 };

@@ -1,26 +1,12 @@
 import { createStore } from 'vuex';
-import ActivityServices from '@/services/activities-services';
+import * as activities from './modules/activities';
+import * as accomodations from './modules/accomodations';
+import * as foods from './modules/foods';
 
 export default createStore({
-  state: {
-    activities: [],
-  },
-  mutations: {
-    ADD_ACTIVITIES(state, activities) {
-      state.activities = activities;
-    },
-  },
-  actions: {
-    getActivities({ commit }) {
-      ActivityServices.getActivities()
-        .then((response) => {
-          commit('ADD_ACTIVITIES', response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
-  },
   modules: {
+    activities,
+    accomodations,
+    foods,
   },
 });

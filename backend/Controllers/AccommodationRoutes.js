@@ -1,7 +1,7 @@
 const express = require('express');
 
 // eslint-disable-next-line import/no-unresolved
-const Accomodation = require('../Models/accommodationModel');
+const Accomodation = require('../models/accommodationModel');
 
 // Creating a Router
 const router = express.Router();

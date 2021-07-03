@@ -1,14 +1,19 @@
 const express = require('express');
 
-const app = express();
+const fs = require('fs');
+
 const path = require('path');
 
-app.use(express.static(path.join(__dirname, '/src/assets/')));
-app.use(express.json());
+const app = express();
 
-app.get('/api', (req, res) => {
-  res.send('proxy is set up - Bauer');
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'src/assets')));
+
+app.get('/api/:type', (req, res) => {
+  fs.readFile(`./data/${req.params.type}.json`, (error, data) => {
+    const jsonData = JSON.parse(data);
+    res.json(jsonData);
+  });
 });
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
-});
+
+app.listen(3000, () => console.log('Listening on port 3000'));

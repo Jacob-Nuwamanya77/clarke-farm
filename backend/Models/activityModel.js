@@ -1,22 +1,24 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
-
-const activitySchema = new Schema({
-  filename: {
-    type: String,
-  },
-  activityname: {
+const activitySchema = mongoose.Schema({
+  title: {
+    required: true,
     type: String,
   },
   description: {
+    required: true,
     type: String,
   },
-  fee: {
+  priced: {
+    required: true,
     type: String,
   },
-}, {
-  collection: 'activities',
+  img: {
+    data: Buffer,
+    contentType: String,
+  },
+  currency: String,
+  cost: String,
 });
 
-module.exports = mongoose.model('Activity', activitySchema);
+module.exports = mongoose.model('activities', activitySchema);
