@@ -27,57 +27,52 @@
             <form
               @submit.prevent="onSubmit"
               enctype="multipart/form-data"
-              class="requires-validation"
             >
-              <div class="form-group input-group was-validated">
+              <div class="form-group input-group ">
                 <input type="file" ref="file" @change="onSelect" required />
               </div>
               <br />
-              <div class="form-group input-group was-validated">
+              <div class="form-group input-group ">
                 <input
                   class="form-control"
                   type="text"
                   placeholder="Filename"
                   id="validationCustom01"
-                  aria-describedby="inputGroupPrepend"
                   v-model="activity.filename"
                   required
                 />
               </div>
               <br />
-              <div class="form-group input-group was-validated">
+              <div class="form-group input-group ">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Activity Name"
                   v-model="activity.activityname"
                   id="validationCustom02"
-                  aria-describedby="inputGroupPrepend"
                   required
                 />
               </div>
               <br />
-              <div class="form-group input-group was-validated">
+              <div class="form-group input-group ">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="description"
                   v-model="activity.description"
                   id="description"
-                  aria-describedby="inputGroupPrepend"
                   required
                 />
               </div>
               <br />
 
-              <div class="form-group input-group was-validated">
+              <div class="form-group input-group ">
                 <input
                   type="text"
                   class="form-control"
                   placeholder="fee"
                   v-model="activity.fee"
                   id="fee"
-                  aria-describedby="inputGroupPrepend"
                   required
                 />
               </div>
@@ -143,28 +138,35 @@
 </template>
 <script>
 import axios from 'axios';
-
-const forms = document.querySelectorAll('.needs-validation');
-
-// Loop over them and prevent submission
-Array.prototype.slice.call(forms).forEach((form) => {
-  form.addEventListener(
-    'submit',
-    (event) => {
-      if (!form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
-      form.classList.add('was-validated');
-    },
-    false,
-  );
-});
+import { useForm, useField } from 'vee-validate';
+import * as yup from 'yup';
 
 const api = 'http://localhost:3000';
 export default {
   name: 'SettingsTableActivities',
+  setup() {
+    // Define a validation schema
+    const schema = yup.object({
+      email: yup.string().required().email(),
+      password: yup.string().required().min(8),
+    });
+
+    // Create a form context with the validation schema
+    useForm({
+      validationSchema: schema,
+    });
+
+    // No need to define rules for fields
+    const { value: email, errorMessage: emailError } = useField('email');
+    const { value: password, errorMessage: passwordError } = useField('password');
+
+    return {
+      email,
+      emailError,
+      password,
+      passwordError,
+    };
+  },
   data() {
     return {
       activityList: [],
@@ -189,6 +191,17 @@ export default {
   },
 
   methods: {
+    getActivity(id) {
+      const endpoint = `/activities/${id}`;
+      axios.get(api + endpoint)
+        .then((response) => {
+          this.activityList = response.data;
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
     // Delete an activity
     deleteActivity(id) {
       // eslint-disable-next-line no-underscore-dangle
