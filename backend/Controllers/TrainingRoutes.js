@@ -1,6 +1,6 @@
 const express = require('express');
 
-const Training = require('../models/trainingModel');
+const Training = require('../Models/trainingModel');
 
 // Creating a Router
 const router = express.Router();

@@ -11,11 +11,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // APP ROUTES
-const visitorRoute = require('./controllers/visitorRoutes');
-const activityRouter = require('./controllers/activityRoutes');
-const accomodationRouter = require('./controllers/accommodationRoutes');
-const coffeeprocessRouter = require('./controllers/coffeeprocessRoutes');
-const trainingRouter = require('./controllers/trainingRoutes');
+const visitorRoute = require('./Controllers/visitorRoutes');
+const activityRouter = require('./Controllers/activityRoutes');
+const accomodationRouter = require('./Controllers/accommodationRoutes');
+const coffeeprocessRouter = require('./Controllers/coffeeprocessRoutes');
+const trainingRouter = require('./Controllers/trainingRoutes');
 
 app.use('/api/activities', activityRouter);
 app.use(accomodationRouter);

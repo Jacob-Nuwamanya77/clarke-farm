@@ -1,5 +1,3 @@
-import ActivityService from '@/services/activity-service';
-
 export const state = {
   accomodations: [
     {
@@ -35,23 +33,4 @@ export const state = {
       image: '@/assets/images/coffeetasting1.jpg',
     },
   ],
-};
-
-export const actions = {
-  saveAccomodation(context, payload) {
-    ActivityService.postActivity(payload);
-  },
-  async fetchAll({ commit }) {
-    const activities = await ActivityService.getActivities();
-    commit('ADD_ALL_ACTIVITIES', activities.data);
-  },
-};
-
-export const mutations = {
-  ADD_ACTIVITY(state, activity) {
-    state.activity = activity;
-  },
-  ADD_ALL_ACTIVITIES(state, activities) {
-    state.activities = activities;
-  },
 };
