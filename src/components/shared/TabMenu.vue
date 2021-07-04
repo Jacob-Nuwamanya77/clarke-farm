@@ -11,6 +11,9 @@
 <script>
 export default {
   name: 'TabMenu',
+  created() {
+    this.$emit('selected', this.selectedTab);
+  },
   props: {
     tabsList: {
       type: Array,
@@ -19,7 +22,7 @@ export default {
   },
   data() {
     return {
-      selectedTab: 'Activities',
+      selectedTab: this.tabsList[0],
     };
   },
   methods: {

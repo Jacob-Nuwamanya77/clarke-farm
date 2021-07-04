@@ -9,22 +9,15 @@
     <div class="card-container">
       <Card v-for="(activity, index) in filterDisplayData" :key="index" :item="activity"/>
     </div>
-    <div class="arrow-navigation">
-      <div class="forward-back-navigation">
-        <span class="nav-button" @click="prevPage" v-if="page !== 1">
-          <fa icon="angle-left" />
-        </span>
-        <span class="nav-button" @click="nextPage" v-if="!lastPage">
-          <fa icon="angle-right" />
-        </span>
-      </div>
-    </div>
+     <ArrowNavigation @newPage ="setNewPage" :pageNumber="page" :isLastPage="checkIfLastPage" />
   </div>
 </template>
 
 <script>
 import TabMenu from '@/components/shared/TabMenu.vue';
 import Card from '@/components/shared/Card.vue';
+import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
+import SlideNavigation from '@/mixins/slide-navigation';
 import { mapState } from 'vuex';
 
 export default {
@@ -36,53 +29,33 @@ export default {
     return {
       tabs: ['Activities', 'Accomodation', 'Food'],
       page: 1,
-      limit: 3,
-      selectedTab: 'activities',
+      filterBy: 'activities',
     };
   },
+  mixins: [SlideNavigation],
   components: {
     TabMenu,
     Card,
+    ArrowNavigation,
   },
   methods: {
-    nextPage() {
-      this.page += 1;
-    },
-    prevPage() {
-      this.page -= 1;
-    },
-    setSelectedTab(selected) {
-      this.selectedTab = selected.toLowerCase();
-      this.page = 1;
+    setNewPage(page) {
+      this.page = page;
     },
   },
   computed: {
     ...mapState({
       activities: (state) => state.activities.activities,
-      accomodations: (state) => state.accomodations.accomodations,
-      foods: (state) => state.foods.foods,
+      accomodation: (state) => state.accomodations.accomodations,
+      food: (state) => state.foods.foods,
     }),
     filterDisplayData() {
-      const filtered = [];
-      let incomingData;
-      if (this.selectedTab === 'activities') {
-        incomingData = [...this.activities];
-      } else if (this.selectedTab === 'accomodation') {
-        incomingData = [...this.accomodations];
-      } else {
-        incomingData = [...this.foods];
-      }
-      const start = (this.page - 1) * this.limit;
-      const end = (this.page * this.limit > incomingData.length)
-        ? incomingData.length : this.page * this.limit;
-
-      for (let index = start; index < end; index += 1) {
-        filtered.push(incomingData[index]);
-      }
-      return filtered;
+      const data = [...this[this.filterBy]];
+      return this.filter(data);
     },
-    lastPage() {
-      if (this.page * this.limit > this.activities.length) {
+    checkIfLastPage() {
+      const data = [...this[this.filterBy]];
+      if (this.page * this.limit > data.length) {
         return true;
       }
       return false;
@@ -133,43 +106,6 @@ export default {
     text-align: left;
   }
 }
-.navigation{
-  margin-left: auto;
-  margin-right: auto;
-  max-height:30px;
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-  overflow-x: auto;
-  padding:0;
-}
-@media screen and (max-width:730px){
-  .navigation {
-    padding-left: 10px;
-    justify-content: start;
-  }
-  .navigation ::-webkit-scrollbar{
-    width:0px;
-  }
-}
-.tab{
-  min-width:150px;
-  height:30px;
-  margin-right: 20px;
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  color:white;
-}
-.tab:hover{
-  background-color: var(--dark-green);
-}
-.active-nav{
-  background-color: var(--dark-green);
-}
-.inactive-nav{
-  background-color: rgba(0, 0, 0, 0.3);
-}
 .card-container{
   margin-top: 40px;
   display:flex;
@@ -195,45 +131,5 @@ export default {
   .card-container{
     justify-content: start;
   }
-}
-
-.arrow-navigation{
-  width:95%;
-  height: 35px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-}
-@media screen and (min-width:1240px){
-  .arrow-navigation{
-    width:70%;
-    margin-right: auto;
-    margin-left: auto;
-    justify-content: space-between;
-  }
-}
-.forward-back-navigation{
-  width:80px;
-  display:flex;
-  justify-content: space-between;
-}
-.nav-button{
-  width:32px;
-  height: 35px;
-  font-size: 20px;
-  color:white;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--mono-dark-green);
-}
-.nav-button:hover{
-  cursor:pointer;
-}
-.active{
-  background-color: var(--mono-dark-green);
-}
-.disabled{
-  background-color: rgba(200,200,200,0.7);
 }
 </style>
