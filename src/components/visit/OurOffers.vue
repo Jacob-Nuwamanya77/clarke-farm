@@ -1,5 +1,5 @@
 <template>
-  <div class="our-offers">
+  <div id="our-offers">
     <p class="section-title">What We Offer</p>
     <p class="sub-text">
       See all the activities you can enjoy, the accommodations to
@@ -9,7 +9,9 @@
     <div class="card-container">
       <Card v-for="(activity, index) in filterDisplayData" :key="index" :item="activity"/>
     </div>
-     <ArrowNavigation @newPage ="setNewPage" :pageNumber="page" :isLastPage="checkIfLastPage" />
+    <div class="arr-nav-container">
+      <ArrowNavigation @newPage ="setNewPage" :pageNumber="page" :isLastPage="checkIfLastPage" />
+    </div>
   </div>
 </template>
 
@@ -65,7 +67,7 @@ export default {
 </script>
 
 <style scoped>
-.our-offers{
+#our-offers{
   position:relative;
   margin-top:60px;
 }
@@ -130,6 +132,19 @@ export default {
 @media screen and (max-width:900px){
   .card-container{
     justify-content: start;
+  }
+}
+.arr-nav-container{
+  margin-top:40px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media screen and (min-width: 1280px) {
+  .arr-nav-container{
+    width:70%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 </style>

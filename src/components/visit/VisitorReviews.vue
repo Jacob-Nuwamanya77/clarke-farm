@@ -6,23 +6,21 @@
           Our visitors describe their experiences.
         </p>
         <p id="review-text">
-          We are currently traversing the neighboring communities, registering
-          farmers with land that can be utilized for coffee production, as well as
-          any current coffee farmers that could benefit from our training programs.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          {{ filterDisplayData[0].review }}
         </p>
+        <div id="reviewee-details">
+          <span>
+            {{ capitalizeEachWord(filterDisplayData[0].name) }}
+          </span>
+          <span id="reviewee-period">
+            {{ capitalizeFirstLetter(filterDisplayData[0].period) }}
+          </span>
+        </div>
         <div id="cta-container">
-          <div class="contact-btn-container">
-            <a href="">Contact Us</a>
-          </div>
-          <div class="forward-back-navigation">
-            <span class="nav-button disabled">
-              <fa icon="angle-left" />
-            </span>
-            <span class="nav-button active">
-              <fa icon="angle-right" />
-            </span>
-          </div>
+          <ArrowNavigation
+            @newPage ="setNewPage"
+            :pageNumber="page"
+            :isLastPage="checkIfLastPage" />
         </div>
       </div>
       <div id="review-right">
@@ -52,8 +50,44 @@
 </template>
 
 <script>
+import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
+import SlideNavigation from '@/mixins/slide-navigation';
+import FormatText from '@/mixins/format-text';
+import { mapState } from 'vuex';
+
 export default {
   name: 'OurReviews',
+  data() {
+    return {
+      limit: 1,
+      page: 1,
+    };
+  },
+  components: {
+    ArrowNavigation,
+  },
+  mixins: [SlideNavigation, FormatText],
+  methods: {
+    setNewPage(page) {
+      this.page = page;
+    },
+  },
+  computed: {
+    ...mapState({
+      reviews: (state) => state.reviews.reviews,
+    }),
+    filterDisplayData() {
+      const data = [...this.reviews];
+      return this.filter(data);
+    },
+    checkIfLastPage() {
+      const data = [...this.reviews];
+      if (this.page * this.limit >= data.length) {
+        return true;
+      }
+      return false;
+    },
+  },
 };
 </script>
 
@@ -185,54 +219,13 @@ img{
   bottom:0px;
   min-width:98%;
   display:flex;
-  justify-content: space-between;
 }
-.contact-btn-container{
-  height:35px;
-  width:40%;
-  max-width: 160px;
-  border-radius: 3px;
-  background-color: var(--dark-green);
+#reviewee-details span{
+  display: block;
+  margin-bottom: 5px;
 }
-.forward-back-navigation{
-  width:80px;
-  display:flex;
-  justify-content: space-between;
-}
-.nav-button{
-  width:32px;
-  font-size: 20px;
-  color:white;
-  display:flex;
-  align-items: center;
-  justify-content: center;
-}
-.nav-button:hover{
-  cursor:pointer;
-}
-.active{
-  background-color: var(--mono-dark-green);
-}
-.disabled{
-  background-color: rgba(200,200,200,0.7);
-}
-@media screen and (max-width:700px){
-  .contact-btn-container{
-    width:160px;
-  }
-}
-.contact-btn-container:hover{
-  transform: scale(0.95);
-  box-shadow: 3px 3px 5px rgba(0,0,0,0.7);
-  background-color: var(--mono-dark-green);
-}
-.contact-btn-container a{
-  text-decoration: none;
-  color:white;
-  height:100%;
-  width:100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#reviewee-period{
+  color: #a9a9a9;
+  font-weight: bold;
 }
 </style>

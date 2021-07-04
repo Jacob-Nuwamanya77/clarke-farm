@@ -41,19 +41,7 @@ export default {
 
 <style scoped>
 .arrow-navigation{
-  width:95%;
   height: 35px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40px;
-}
-@media screen and (min-width:1240px){
-  .arrow-navigation{
-    width:70%;
-    margin-right: auto;
-    margin-left: auto;
-    justify-content: space-between;
-  }
 }
 .forward-back-navigation{
   width:80px;
