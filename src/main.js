@@ -12,6 +12,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Toaster from '@meforma/vue-toaster';
+// import VeeValidate from 'vee-validate';
 import VueSweetalert2 from 'vue-sweetalert2';
 import App from './App.vue';
 import router from './router';

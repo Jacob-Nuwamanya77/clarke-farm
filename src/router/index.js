@@ -82,6 +82,7 @@ const routes = [
     name: 'TrainingProgram',
     component: TrainingProgram,
   },
+
 ];
 
 const router = createRouter({
