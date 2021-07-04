@@ -62,7 +62,7 @@
             2,000 smallholders, with Clarke farm providing an end market.
           </p>
           <div class="contact-btn-container">
-            <router-link :to="{ name: 'VisitPage' }">Visit Us</router-link>
+            <a href="/visit">Contact Us</a>
           </div>
         </div>
         <div id="scheme-right">

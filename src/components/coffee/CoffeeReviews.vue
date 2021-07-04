@@ -6,22 +6,25 @@
           What people have to say about our coffee.
         </p>
         <p id="review-text">
-          We are currently traversing the neighboring communities, registering
-          farmers with land that can be utilized for coffee production, as well as
-          any current coffee farmers that could benefit from our training programs.
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+          {{ filterDisplayData[0].review }}
         </p>
+        <div id="reviewee-details">
+          <span>
+            {{ capitalizeEachWord(filterDisplayData[0].name) }}
+          </span>
+          <span id="reviewee-period">
+            {{ capitalizeFirstLetter(filterDisplayData[0].period) }}
+          </span>
+        </div>
         <div id="cta-container">
           <div class="contact-btn-container">
-            <a href="">Contact Us</a>
+            <a href="#coffee-registration-form">Contact Us</a>
           </div>
           <div class="forward-back-navigation">
-            <span class="nav-button disabled">
-              <fa icon="angle-left" />
-            </span>
-            <span class="nav-button active">
-              <fa icon="angle-right" />
-            </span>
+            <ArrowNavigation
+            @newPage ="setNewPage"
+            :pageNumber="page"
+            :isLastPage="checkIfLastPage" />
           </div>
         </div>
       </div>
@@ -52,8 +55,44 @@
 </template>
 
 <script>
+import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
+import SlideNavigation from '@/mixins/slide-navigation';
+import FormatText from '@/mixins/format-text';
+import { mapState } from 'vuex';
+
 export default {
   name: 'OurReviews',
+  data() {
+    return {
+      limit: 1,
+      page: 1,
+    };
+  },
+  components: {
+    ArrowNavigation,
+  },
+  mixins: [SlideNavigation, FormatText],
+  methods: {
+    setNewPage(page) {
+      this.page = page;
+    },
+  },
+  computed: {
+    ...mapState({
+      reviews: (state) => state.reviews.reviews,
+    }),
+    filterDisplayData() {
+      const data = [...this.reviews];
+      return this.filter(data);
+    },
+    checkIfLastPage() {
+      const data = [...this.reviews];
+      if (this.page * this.limit >= data.length) {
+        return true;
+      }
+      return false;
+    },
+  },
 };
 </script>
 
@@ -234,5 +273,13 @@ img{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+#reviewee-details span{
+  display: block;
+  margin-bottom: 5px;
+}
+#reviewee-period{
+  color: #a9a9a9;
+  font-weight: bold;
 }
 </style>
