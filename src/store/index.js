@@ -5,6 +5,7 @@ import * as foods from './modules/foods';
 import * as reviews from './modules/reviews';
 import * as projects from './modules/projects';
 import * as processing from './modules/coffee-processing';
+import * as bookings from './modules/bookings';
 
 export default createStore({
   modules: {
@@ -14,5 +15,6 @@ export default createStore({
     reviews,
     projects,
     processing,
+    bookings,
   },
 });
