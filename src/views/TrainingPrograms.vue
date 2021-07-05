@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import NavBar from '@/components/MainNav.vue';
+import NavBar from '@/components/shared/MainNav.vue';
 import HeroTraining from '@/components/trainings/HeroTraining.vue';
 import TrainingTopics from '@/components/trainings/TrainingAreas.vue';
 import OutgrowerScheme from '@/components/trainings/Outgrowers.vue';
 import TrainingRegistration from '@/components/trainings/TrainingRegistration.vue';
-import Footer from '@/components/MainFooter.vue';
+import Footer from '@/components/shared/MainFooter.vue';
 
 export default {
   name: 'TrainingPrograms',

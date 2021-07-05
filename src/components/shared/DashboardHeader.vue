@@ -93,8 +93,8 @@ export default {
   align-items: center;
 }
 #avatar {
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
 }
 #avatar a{

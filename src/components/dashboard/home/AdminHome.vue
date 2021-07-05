@@ -11,10 +11,6 @@ import SideNav from '@/components/dashboard/SideNavigation.vue';
 
 export default {
   name: 'Admin',
-  data() {
-    return {
-    };
-  },
   components: {
     SideNav,
     Content,

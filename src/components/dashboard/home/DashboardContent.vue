@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard-content">
     <DashboardHeader />
+    <div class="content-area">h</div>
   </div>
 </template>
 <script>
@@ -16,5 +17,8 @@ export default {
 <style scoped>
 .dashboard-content{
   width:90%;
+}
+.content-area{
+  border:1px solid red;
 }
 </style>
