@@ -14,7 +14,7 @@ export const state = {
     },
     {
       name: 'mariat ndagire',
-      review: 'Asalamu aleikumu, visit clarke farm and you will love the experience',
+      review: 'Asalamu alaikumu, visit clarke farm and you will love the experience',
       period: 'August 2020',
     },
     {
