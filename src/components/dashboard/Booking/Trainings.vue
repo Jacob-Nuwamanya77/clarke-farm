@@ -1,5 +1,5 @@
 <template>
-    <div class="content-container" >
+    <div class="content-container container-fluid" >
         <h5>Bookings</h5>
         <nav aria-label="breadcrumb" class="mt-3">
             <ol class="breadcrumb">
@@ -21,7 +21,7 @@
             </div>
             <form class="form-inline my-lg-0 col-md-6 ml-5 ">
                 <input class="form-control mr-sm-2 mt-3"
-                type="search" placeholder="Search" aria-label="Search">
+                type="search" placeholder="Search" aria-label="Search" v-model="searchterm">
             </form>
           </div>
         <table class="table table-striped table-bordered table-responsive table-hover mt-5">
@@ -41,7 +41,7 @@
                 </tr>
             </thead>
               <tbody>
-          <tr v-for="visitor in visitorList" :key="visitor._id">
+          <tr v-for="visitor in filteredVisitors" :key="visitor._id">
               <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1"></td>
             <!-- <td>{{ visitor.createdAt }}</td> -->
             <td>{{ visitor.name }}</td>
@@ -115,10 +115,11 @@ export default {
   data() {
     return {
       visitorList: [],
+      searchterm: '',
     };
   },
-  created() {
-    axios
+  async created() {
+    await axios
       .get('http://localhost:3000/visitors')
       .then((res) => {
         this.visitorList = res.data;
@@ -159,6 +160,16 @@ export default {
           this.$swal('Cancelled', 'Your data is still intact', 'info');
         }
       });
+    },
+  },
+  computed: {
+    filteredVisitors() {
+      let visitors = this.visitorList;
+      if (this.searchterm !== '' && this.searchterm) {
+        visitors = visitors.filter((item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
+        || item.email.toUpperCase().includes(this.searchterm.toUpperCase()));
+      }
+      return visitors;
     },
   },
 };

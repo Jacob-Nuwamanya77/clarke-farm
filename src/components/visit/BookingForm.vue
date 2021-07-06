@@ -83,7 +83,7 @@
             />
           </div>
           <div class="input-container">
-            <fieldset name="topics">
+            <fieldset name="accomodation">
               <legend>Select accomodation type</legend>
               <div class="checkbox-list">
                 <div class="checkbox-pair">

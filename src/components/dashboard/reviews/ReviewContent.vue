@@ -1,5 +1,5 @@
 <template>
-    <div class="content-container" >
+    <div class="content-container container-fluid" >
         <h5>Reviews</h5>
         <nav aria-label="breadcrumb" class="mt-3">
             <ol class="breadcrumb">

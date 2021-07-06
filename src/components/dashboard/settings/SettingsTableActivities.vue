@@ -14,36 +14,36 @@
           </div>
           <div class="modal-body">
             <form @submit.prevent="submitActivityObject" class="form-group">
-              <div class="mt-1 mb-3 form-group">
+              <div class="mb-3 form-group">
                 <label for="title">Activity title</label>
                 <input type="text" class="form-control" name="title" id="title" v-model="title">
               </div>
-              <div class="mt-1 mb-3 form-group">
+              <div class="mb-3 form-group">
                 <label for="description">Describe the activity in brief</label>
                 <input type="text" class="form-control" name="description"
                 id="description" v-model="description">
               </div>
-              <div class="mt-1 mb-3 form-group ">
-                <label for="Priced" class="form-check-label" >Is activity priced?</label><br>
+              <div class="mb-3 form-group ">
+                <label for="Priced" class="form-check-label" >Is the activity priced?</label><br>
                 <input type="radio" class="form-check-input"
                 name="priced" value="Yes" v-model="priced"> Yes
                 <input type="radio" class="form-check-input" name="priced" value="No"
                  checked v-model="priced"> No
               </div>
-              <div class="mt-1 mb-3 form-group">
-                <span class="mt-1 mb-5">
+              <div class="mb-3 form-group">
+                <span class="mb-5" v-if="priced=='Yes'">
                   <label for="currency">Currency</label>
                   <select name="currency" class="form-select" id="currency" v-model="currency">
                     <option value="ugx">UGX</option>
                     <option value="$">USD</option>
                   </select>
                 </span><br>
-                <span class="mt-1 mb-3"  v-if="priced=='Yes'">
+                <span class="mb-3"  v-if="priced=='Yes'">
                   <label for="cost">Cost of activity</label>
                   <input type="text" class="form-control" name="cost" id="cost" v-model="cost">
                 </span>
               </div>
-              <div class="mt-1  mb-3 form-group">
+              <div class="mb-3 form-group">
                  <label class="form-label"  for="image">Upload image</label>
                 <input type="file"  class="form-control form-control-md" name="image" id="image"
                 ref="file" @change="onFileChange">
@@ -100,3 +100,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.mb-5{
+  margin-bottom: 5px;
+}
+</style>

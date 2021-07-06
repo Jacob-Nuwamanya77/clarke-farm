@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <SideNav @mouseover="togglesidebar" @mouseout="togglesidebar"/>
+    <SideNav/>
     <Content id="maincontent"/>
   </div>
 </template>

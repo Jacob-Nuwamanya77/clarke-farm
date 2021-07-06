@@ -13,9 +13,9 @@ const activitySchema = mongoose.Schema({
     required: true,
     type: String,
   },
-  img: {
-    data: Buffer,
-    contentType: String,
+  filename: {
+    required: true,
+    type: String,
   },
   currency: String,
   cost: String,

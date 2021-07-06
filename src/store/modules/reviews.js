@@ -1,5 +1,4 @@
-import ActivityService from '@/services/activity-service';
-
+/* eslint-disable max-len */
 export const state = {
   reviews: [
     {
@@ -28,20 +27,4 @@ export const state = {
       period: 'October 2020',
     },
   ],
-};
-
-export const actions = {
-  saveActivity(context, payload) {
-    ActivityService.postActivity(payload);
-  },
-  async fetchAll({ commit }) {
-    const activities = await ActivityService.getActivities();
-    commit('ADD_ALL_ACTIVITIES', activities.data);
-  },
-};
-
-export const mutations = {
-  ADD_ALL_ACTIVITIES(state, activities) {
-    state.activities = activities;
-  },
 };

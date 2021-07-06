@@ -46,16 +46,6 @@ export default {
   name: 'MainFooter',
 };
 </script>
-<style>
-@font-face {
-  font-family: "Roboto";
-  src: url("../assets/Roboto-Regular.ttf");
-}
-@font-face {
-  font-family: "Playfair";
-  src: url("../assets/PlayfairDisplay-Regular.ttf");
-}
-</style>
 
 <style scoped>
 /* Active link styles. */
