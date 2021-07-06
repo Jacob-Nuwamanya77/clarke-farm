@@ -13,13 +13,14 @@
       </div>
       <div id="form-container">
         <p id="description">We promise to contact you within 24 hours.</p>
-        <form>
+        <form @submit.prevent="handleSubmitForm" action="/visitors/add">
           <div class="input-container">
             <input
               type="text"
               name="name"
               placeholder="Name"
               required
+              v-model="visitor.name"
             />
           </div>
           <div class="input-container">
@@ -28,6 +29,8 @@
               placeholder="Email Address"
               name="email"
               required
+              v-model="visitor.email"
+
             />
           </div>
           <div class="input-container">
@@ -36,26 +39,31 @@
               placeholder="Telephone"
               name="phone"
               required
+              v-model="visitor.phone"
+
             />
           </div>
           <div class="input-container">
-            <fieldset name="topics">
+            <fieldset name="packages">
               <legend>Select package type</legend>
               <div class="checkbox-list">
                 <div class="checkbox-pair">
                   <input
                     type="radio"
-                    name="accomodation"
+                    name="package"
                     value="Paper bag"
                     checked
+              v-model="visitor.package"
+
                   />
                   Paper Bag
                 </div>
                 <div class="checkbox-pair">
                   <input
                     type="radio"
-                    name="accomodation"
+                    name="package"
                     value="Sack"
+              v-model="visitor.package"
                   />
                   Sacks
                 </div>
@@ -68,12 +76,21 @@
               name="order"
               placeholder="Estimated order"
               required
+              v-model="visitor.order"
+
             />
           </div>
+           <input
+              type="text"
+              name="bookingtype"
+              v-model="visitor.bookingtype"
+              hidden
+            />
           <div class="input-container">
             <textarea
               placeholder="Questions or special requests"
               name="requests"
+              v-model="visitor.requests"
             ></textarea>
           </div>
           <div class="submit-container">
@@ -88,8 +105,48 @@
 </template>
 
 <script>
+import axios from 'axios';
+
+const api = 'http://localhost:3000';
 export default {
   name: 'BookingForm',
+  data() {
+    return {
+      visitor: {
+        name: '',
+        email: '',
+        phone: '',
+        package: '',
+        order: '',
+        requests: '',
+        bookingtype: 'Coffee-Farm',
+      },
+    };
+  },
+  methods: {
+    async handleSubmitForm() {
+      const endpoint = '/visitors/add';
+      try {
+        await axios.post(api + endpoint, this.visitor);
+        // this.$router.push('/admin');
+        this.visitor = {
+          name: '',
+          email: '',
+          phone: '',
+          package: '',
+          order: '',
+          requests: '',
+        };
+        // Use sweetalert2
+        this.$swal({
+          showCloseButton: true,
+        });
+        this.$swal('Received', 'Your booking has been received.!!!', 'success');
+      } catch {
+        this.message = 'failed to submit; please, try again!';
+      }
+    },
+  },
 };
 </script>
 
