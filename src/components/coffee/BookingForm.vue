@@ -39,13 +39,13 @@
             />
           </div>
           <div class="input-container">
-            <fieldset name="topics">
+            <fieldset>
               <legend>Select package type</legend>
               <div class="checkbox-list">
                 <div class="checkbox-pair">
                   <input
                     type="radio"
-                    name="accomodation"
+                    name="package"
                     value="Paper bag"
                     checked
                   />
@@ -54,7 +54,7 @@
                 <div class="checkbox-pair">
                   <input
                     type="radio"
-                    name="accomodation"
+                    name="package"
                     value="Sack"
                   />
                   Sacks

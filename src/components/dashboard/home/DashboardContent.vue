@@ -2,7 +2,9 @@
   <div class="dashboard-content">
     <DashboardHeader />
     <div class="content-area">
-      <div id="content-left"></div>
+      <div id="content-left">
+        <DailyOrders />
+      </div>
       <div id="content-right">
         <div id="filter-container">
           <label for="filter">Filter By: </label>
@@ -11,14 +13,21 @@
             <option value="coffee">Coffee</option>
           </select>
         </div>
-        <SummaryByDate cardTitle="Incoming guests"/>
-        <SummaryByDate cardTitle="Check out"/>
+        <template v-if="filter === 'tourism'">
+          <SummaryByDate cardTitle="Incoming guests" product="tourism" :list ="incomingGuests" category="in" />
+          <SummaryByDate cardTitle="Check out" product="tourism" :list ="checkOutGuests" category="out" />
+        </template>
+        <template v-else>
+          <SummaryByDate cardTitle="Latest orders" product="coffee" :list="incomingOrders" category="in" />
+        </template>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
 import DashboardHeader from '@/components/shared/DashboardHeader.vue';
+import DailyOrders from './DailyOrders.vue';
 import SummaryByDate from './SummaryByDate.vue';
 
 export default {
@@ -31,11 +40,21 @@ export default {
   components: {
     DashboardHeader,
     SummaryByDate,
+    DailyOrders,
   },
   methods: {
     setFilter(event) {
       this.filter = event.target.value;
     },
+  },
+  computed: {
+    ...mapGetters({
+      incomingGuests: 'sortIncomingGuests',
+      checkOutGuests: 'sortCheckOutGuests',
+      incomingOrders: 'sortIncomingOrders',
+      deliveredOrders: 'sortDeliveredOrders',
+      pendingOrders: 'sortPendingOrders',
+    }),
   },
 };
 </script>

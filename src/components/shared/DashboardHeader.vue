@@ -3,7 +3,7 @@
     <div class="section-container">
       <div id="avatar-container">
         <div id="avatar">
-          <a href="https://www.vecteezy.com/free-vector/human">
+          <a href="https://www.vecteezy.com/free-vector/human"  target="_blank">
             <img src="@/assets/images/avatars/female_avatar.png" alt="female avatar" aria-hidden="true">
           </a>
         </div>
@@ -72,9 +72,8 @@ export default {
 
 <style scoped>
 #dashboard-header{
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 150px;
+  margin-top: 12px;
+  height:115px;
 }
 .section-container{
   height:50%;
@@ -178,6 +177,7 @@ img{
 .sub-text{
   font-weight: bold;
   color:#a9a9a9;
+  font-size: 14px;
 }
 #dropdown-signout{
   position: absolute;
