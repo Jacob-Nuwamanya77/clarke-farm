@@ -44,11 +44,7 @@
             />
           </div>
           <div class="input-container">
-<<<<<<< HEAD
-            <fieldset>
-=======
             <fieldset name="packages">
->>>>>>> 88a51ce6e155565b51484244a46588b3363a5276
               <legend>Select package type</legend>
               <div class="checkbox-list">
                 <div class="checkbox-pair">
