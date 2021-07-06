@@ -1,6 +1,6 @@
 <template>
-    <div class="content-container" >
-        <h5>Reviews</h5>
+    <div class="content-container container-fluid" >
+        <h5 class="mt-3">Reviews</h5>
         <nav aria-label="breadcrumb" class="mt-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
