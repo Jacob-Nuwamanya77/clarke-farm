@@ -15,7 +15,7 @@
         <p class="muted-detail">70% of total orders have been delivered</p>
       </div>
       <div id="doughnut-chart">
-        <DoughnutChart />
+        <DoughnutChart :chartData="configData.chartData" :chartOptions="configData.options"/>
       </div>
     </div>
   </div>
@@ -28,7 +28,20 @@ export default {
   name: 'SummaryDoughtnutChart',
   data() {
     return {
-      configData: {},
+      configData: {
+        chartData: {
+          labels: ['Paper bags', 'Sacks'],
+          datasets: [
+            {
+              data: [10, 30],
+              backgroundColor: ['orange', 'rgba(6,141,104,1)'],
+            },
+          ],
+        },
+        options: {
+          cutoutPercentage: 65,
+        },
+      },
     };
   },
   components: {
@@ -76,6 +89,7 @@ export default {
 }
 #doughnut-chart{
   width:65%;
+  padding-top: 10px;
 }
 .title{
   margin:0;

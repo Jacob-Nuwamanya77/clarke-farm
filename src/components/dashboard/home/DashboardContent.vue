@@ -5,7 +5,9 @@
       <div id="content-left">
         <SummaryBarChart />
         <div id="split-doughnut-reminders">
-          <div id="reminder-container"></div>
+          <div id="reminder-container">
+            <TodoList />
+          </div>
           <div id="doughnut-container">
             <SummaryDoughnut />
           </div>
@@ -36,6 +38,7 @@ import DashboardHeader from '@/components/shared/DashboardHeader.vue';
 import SummaryBarChart from './SummaryBarChart.vue';
 import SummaryByDate from './SummaryByDate.vue';
 import SummaryDoughnut from './SummaryDoughnutChart.vue';
+import TodoList from './TodoList.vue';
 
 export default {
   name: 'DashboardHome',
@@ -49,6 +52,7 @@ export default {
     SummaryByDate,
     SummaryBarChart,
     SummaryDoughnut,
+    TodoList,
   },
   methods: {
     setFilter(event) {
@@ -80,7 +84,7 @@ export default {
 }
 #content-right{
   width:25%;
-  height:80vh;
+  height:85vh;
   border-radius: 10px;
   background-color: rgb(250,250,250)
 }
@@ -107,12 +111,12 @@ export default {
 #split-doughnut-reminders{
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 25px;
 }
 #doughnut-container{
   width:63%;
-  height:260px;
   background-color:white;
+  padding-bottom: 10px;
 }
 #reminder-container{
   width:35%;

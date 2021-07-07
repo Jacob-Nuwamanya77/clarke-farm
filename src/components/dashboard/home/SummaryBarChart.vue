@@ -27,7 +27,15 @@ export default {
           datasets: [
             {
               data: [1, 2, 3, 4, 5, 6, 7],
-              backgroundColor: ['red', 'yellow', 'blue', 'green', 'purple', 'pink', 'orange'],
+              backgroundColor: [
+                '#041C34',
+                '#143454',
+                '#04346C',
+                '#34547C',
+                '#04548C',
+                '#34547C',
+                '#143454',
+              ],
             },
           ],
         },
@@ -41,6 +49,7 @@ export default {
             text: 'This week - Guest Bookings',
             fontSize: 14,
             padding: 12,
+            fontColor: '#a9a9a9',
           },
           scales: {
             yAxes: [{

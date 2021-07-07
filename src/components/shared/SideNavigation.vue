@@ -114,7 +114,7 @@ export default {
   color:#04548C;
 }
 #reviews-icon{
-  color:#FCA705
+  color:#FCA705;
 }
 #settings-icon{
   color:#FC646C;
