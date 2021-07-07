@@ -9,7 +9,7 @@
 <script>
 import Content from '@/components/dashboard/settings/SettingsTableActivities.vue';
 import SubNav from '@/components/dashboard/settings/SettingsContent.vue';
-import SideNav from '@/components/dashboard/SideNavigation.vue';
+import SideNav from '@/components/shared/SideNavigation.vue';
 
 export default {
   name: 'Admin',

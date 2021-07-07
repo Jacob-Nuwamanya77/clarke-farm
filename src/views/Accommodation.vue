@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import SideNav from '@/components/dashboard/SideNavigation.vue';
+import SideNav from '@/components/shared/SideNavigation.vue';
 import SubNav from '@/components/dashboard/settings/SettingsContent.vue';
 import Content from '@/components/dashboard/settings/SettingsTableAccommodation.vue';
 
