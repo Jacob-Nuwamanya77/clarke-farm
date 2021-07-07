@@ -3,7 +3,13 @@
     <DashboardHeader />
     <div class="content-area">
       <div id="content-left">
-        <DailyOrders />
+        <SummaryBarChart />
+        <div id="split-doughnut-reminders">
+          <div id="reminder-container"></div>
+          <div id="doughnut-container">
+            <SummaryDoughnut />
+          </div>
+        </div>
       </div>
       <div id="content-right">
         <div id="filter-container">
@@ -27,8 +33,9 @@
 <script>
 import { mapGetters } from 'vuex';
 import DashboardHeader from '@/components/shared/DashboardHeader.vue';
-import DailyOrders from './DailyOrders.vue';
+import SummaryBarChart from './SummaryBarChart.vue';
 import SummaryByDate from './SummaryByDate.vue';
+import SummaryDoughnut from './SummaryDoughnutChart.vue';
 
 export default {
   name: 'DashboardHome',
@@ -40,7 +47,8 @@ export default {
   components: {
     DashboardHeader,
     SummaryByDate,
-    DailyOrders,
+    SummaryBarChart,
+    SummaryDoughnut,
   },
   methods: {
     setFilter(event) {
@@ -68,10 +76,10 @@ export default {
   justify-content: space-between;
 }
 #content-left{
-  width:70%;
+  width:74%;
 }
 #content-right{
-  width:28%;
+  width:25%;
   height:80vh;
   border-radius: 10px;
   background-color: rgb(250,250,250)
@@ -95,5 +103,19 @@ export default {
 }
 #filter-container select:hover{
   cursor: pointer;
+}
+#split-doughnut-reminders{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+#doughnut-container{
+  width:63%;
+  height:260px;
+  background-color:white;
+}
+#reminder-container{
+  width:35%;
+  background-color:  rgb(250,250,250);;
 }
 </style>

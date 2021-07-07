@@ -55,8 +55,8 @@ export default {
 
 <style scoped>
 .side-navigation{
-  max-width:250px;
-  min-width: 250px;
+  max-width:230px;
+  min-width: 230px;
   min-height: 100vh;
   display: flex;
   align-items: center;
