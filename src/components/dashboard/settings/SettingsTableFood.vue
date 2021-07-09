@@ -1,27 +1,27 @@
 <template>
   <div class="mt-4">
     <div id="add-button">
-   <a  class="btn btn-success btn-sm float-end" href="#" data-bs-toggle="modal" data-bs-target="#Accommodation_ID">
-      Add Accommodation
+   <a  class="btn btn-success btn-sm float-end" href="#" data-bs-toggle="modal" data-bs-target="#Food_ID">
+      Add Food
     </a>
  </div>
     <!-- Modal -->
-    <div class="modal fade" tabindex="-1" id="Accommodation_ID">
+    <div class="modal fade" tabindex="-1" id="Food_ID">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Add Accommodation</h5>
+            <h5 class="modal-title">Add Food</h5>
             <button type="button" class="btn-close"
             data-bs-dismiss="modal" aria-label="Close"/>
           </div>
           <div class="modal-body">
-            <form class="form-group">
+              <form class="form-group">
               <div class="mb-3 form-group">
-                <label for="title">Accommodation title</label>
+                <label for="title">Dish title</label>
                 <input type="text" class="form-control" name="title" id="title" v-model="title">
               </div>
               <div class="mb-3 form-group">
-                <label for="description">Describe the accommodation in brief</label>
+                <label for="description">Describe the dish in brief</label>
                 <input type="text" class="form-control" name="description"
                 id="description" v-model="description">
               </div>
@@ -33,7 +33,7 @@
                   </select>
                    </div>
                  <div class="mb-3 form-group">
-                  <label for="cost">Cost of accommodation</label>
+                  <label for="cost">Cost of food</label>
                   <input type="text" class="form-control" name="cost" id="cost" v-model="cost">
               </div>
               <div class="mb-4 form-group">
@@ -65,6 +65,7 @@ export default {
       file: '',
     };
   },
+
 };
 </script>
 
