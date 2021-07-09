@@ -1,8 +1,10 @@
 <template>
-  <div class="mt-5">
-    <a href="#" class="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <div class="mt-4">
+    <div id="add-button">
+   <a  class="btn btn-success btn-sm float-end" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Add Activity
     </a>
+ </div>
     <!-- Modal -->
     <div class="modal fade" tabindex="-1" id="exampleModal">
       <div class="modal-dialog" role="document">
@@ -23,15 +25,15 @@
                 <input type="text" class="form-control" name="description"
                 id="description" v-model="description">
               </div>
-              <div class="mb-3 form-group ">
+              <div class="mb-2 form-group ">
                 <label for="Priced" class="form-check-label" >Is the activity priced?</label><br>
                 <input type="radio" class="form-check-input"
                 name="priced" value="Yes" v-model="priced"> Yes
                 <input type="radio" class="form-check-input" name="priced" value="No"
                  checked v-model="priced"> No
               </div>
-              <div class="mb-3 form-group">
-                <span class="mb-5" v-if="priced=='Yes'">
+              <div class="mb-2 form-group">
+                <span class="mb-2" v-if="priced=='Yes'">
                   <label for="currency">Currency</label>
                   <select name="currency" class="form-select" id="currency" v-model="currency">
                     <option value="ugx">UGX</option>
@@ -43,20 +45,50 @@
                   <input type="text" class="form-control" name="cost" id="cost" v-model="cost">
                 </span>
               </div>
-              <div class="mb-3 form-group">
+              <div class="mb-4 form-group">
                  <label class="form-label"  for="image">Upload image</label>
                 <input type="file"  class="form-control form-control-md" name="image" id="image"
                 ref="file" @change="onFileChange">
               </div>
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Submit Data</button>
-                <button type="button" class="btn btn-secondary"
-                data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Submit Data</button>
               </div>
             </form>
           </div>
         </div>
       </div>
+    </div>
+    <br>
+    <div class="div-table mt-3">
+      <table class="table bg-white mt-3">
+  <thead class="table-secondary ">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
     </div>
   </div>
 </template>
