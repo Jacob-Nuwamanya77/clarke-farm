@@ -1,134 +1,259 @@
 <template>
-    <div class="content-container container-fluid" >
-        <h5 class="mt-3">Bookings</h5>
-        <nav aria-label="breadcrumb" class="mt-3">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Bookings</li>
-            </ol>
-        </nav>
-        <hr>
-        <div class="table-div">
-          <div class="row">
-            <div class="col-md-6 mt-3">
-              <label class=" mt-1">Sort By:</label>
-              <select class="form-select" aria-label="Default select example">
-                <option selected>All Bookings</option>
-                <option value="1">Tours</option>
-                <option value="2">Trainings</option>
-                <option value="3">CoffeeFarm</option>
+  <div class="content-container container-fluid">
+    <h5 class="mt-3">Bookings</h5>
+    <nav
+      aria-label="breadcrumb"
+      class="mt-3"
+    >
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#" class="crumb-link">Dashboard</a>
+        </li>
+        <li
+          class="breadcrumb-item active"
+          aria-current="page"
+        >Bookings</li>
+      </ol>
+      </nav>
+      <hr>
+      <div class="table-div">
+        <div class="row">
+          <div class="col-md-6 mt-3">
+            <label class=" mt-1">Sort By:</label>
+            <select
+              class="form-select form-select-sm "
+              aria-label="Default select example"
+            >
+              <option selected>All Categories</option>
+              <option value="1">Tours</option>
+              <option value="2">Trainings</option>
+              <option value="3">CoffeeFarm</option>
               </select>
-            </div>
-            <form class=" my-lg-0 col-md-6 ml-5 float-right">
-                <input class="form-control mr-sm-2 mt-3 "
-                type="search" placeholder="Search bookings" aria-label="Search" v-model="searchterm">
-            </form>
           </div>
-          <a data-toggle="tooltip" data-placement="top" title="Delete" class="d-none" id="delete-btn"
-           href="" @click.prevent="deleteVisitor(visitor._id)"
-                ><fa
-                  icon="trash-alt" class="text-danger delete-btn"/>
+          <div class="form-group my-lg-0 d-flex justify-content-end col-md-6 float-right has-search">
+            <div>
+            <span class="form-control-feedback ">
+              <fa icon="search" />
+            </span>
+            </div>
+            <div>
+            <input
+              type="text"
+              class="form-control form-control-sm mr-sm-2 mt-3 search"
+              placeholder="Search Bookings..."
+              v-model="searchterm"
+            >
+            </div>
+          </div>
+        </div>
+        <a
+          data-toggle="tooltip"
+          data-placement="bottom"
+          title="Delete"
+          class="d-none "
+          id="delete-btn"
+          href=""
+          @click.prevent="deleteVisitor(visitor._id)"
+        >
+          <fa
+            icon="trash-alt"
+            class="text-danger delete-btn"
+          />
           </a>
-        <table class="table  table-responsive table-hover table-nowrap mt-5 font-size-12">
-            <thead class="table-secondary font-size-10">
-                <tr >
-                    <td><input class="form-check-input" type="checkbox" value="" id="defaultCheck1" @click="check"></td>
-                    <th >Name</th>
-                    <th>Email Address</th>
+          <table class="table  table-responsive table-hover table-nowrap mt-5 font-size-12">
+            <thead class="table-secondary font-size-10 ">
+              <tr >
+                <td>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="defaultCheck1"
+                    @click="check"
+                  ></td>
+                <th>Name <fa icon="sort" class="sort-icon"/></th>
+                <th>Email Address <fa icon="sort" class="sort-icon"/></th>
 
-                    <th>Phone Number</th>
+                <th>Phone Number <fa icon="sort" class="sort-icon"/></th>
+                <th>Order Amount<fa icon="sort" class="sort-icon"/></th>
+                <th>Booking Type <fa icon="sort" class="sort-icon"/></th>
+                <th>Checkin <fa icon="sort" class="sort-icon"/></th>
+                <th>Action <fa icon="sort" class="sort-icon"/></th>
 
-                    <th>Booking Type</th>
-                    <th>Checkin</th>
-                    <th>Action</th>
-
-                </tr>
+              </tr>
             </thead>
             <tbody>
-          <tr v-for="visitor in filteredVisitors" :key="visitor._id">
-              <td><input class="form-check-input" type="checkbox" value="" name="visitor" id="defaultCheck1"></td>
-            <!-- <td>{{ visitor.createdAt }}</td> -->
-            <td class="text-start">{{ visitor.name }}</td>
-            <td class="text-start">{{ visitor.email }}</td>
-            <td class="text-start">{{ visitor.phone }}</td>
-            <td class="text-start" v-if="visitor.bookingtype=='Tour'">
-              <span class="badge badge-pill bg-success font-size-11">Tour</span></td>
-              <td class="text-start" v-else-if="visitor.bookingtype=='Coffee-Farm'">
-              <span class="badge badge-pill bg-danger font-size-11">Coffee</span></td>
-              <td class="text-start" v-else-if="visitor.bookingtype=='Training'">
-              <span class="badge badge-pill bg-warning font-size-11">Trainings</span></td>
-            <!-- <td>{{ visitor.guestNumber }}</td> -->
-            <td class="text-start">{{ visitor.checkin }}</td>
-            <td class="text-start">
-              <button type="button" class="btn btn-primary btn-sm btn-rounded"
-              data-toggle="modal" data-target=".booking-detailModal">View Details</button>
-            </td>
-          </tr>
-        </tbody>
-        </table>
-        <p>
+              <tr
+                v-for="visitor in filteredVisitors"
+                :key="visitor._id"
+              >
+                <td>
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    name="visitor"
+                    id="defaultCheck1"
+                  ></td>
+                <!-- <td>{{ visitor.createdAt }}</td> -->
+                <td class="text-start">{{ visitor.name }}</td>
+                <td class="text-start">{{ visitor.email }}</td>
+                <td class="text-start">{{ visitor.phone }}</td>
+                <td v-if="visitor.bookingtype=='Tour'" class="text-center">N/A</td>
+                <td v-if="visitor.bookingtype=='Coffee-Farm'" class="text-center">50 bags</td>
+                <td v-if="visitor.bookingtype=='Training'" class="text-center">--/--</td>
+                <td
+                  class="text-center"
+                  v-if="visitor.bookingtype=='Tour'"
+                >
+                  <span class="badge badge-pill tour-badge font-size-11">Tour</span>
+                  </td>
+                  <td
+                    class="text-center"
+                    v-else-if="visitor.bookingtype=='Coffee-Farm'"
+                  >
+                    <span class="badge badge-pill bg-danger font-size-11">Coffee</span>
+                    </td>
+                    <td
+                      class="text-center"
+                      v-else-if="visitor.bookingtype=='Training'"
+                    >
+                      <span class="badge badge-pill bg-warning font-size-11">Trainings</span>
+                      </td>
+                      <!-- <td>{{ visitor.guestNumber }}</td> -->
+                      <td class="text-center">{{ visitor.checkin }}<span
+                      v-if="visitor.bookingtype==='Coffee-Farm'">N/A</span></td>
+                      <td class="text-start">
+                        <button
+                          type="button"
+                          class="btn  view-btn btn-sm btn-rounded"
+                          data-toggle="modal"
+                          data-target=".booking-detailModal"
+                        >View Details</button>
+                      </td>
+                      </tr>
+            </tbody>
+          </table>
+          <p>
             Showing {{visitorList.length}} entries of {{visitorList.length}}</p>
-        <p v-if="visitorList<=0" class="text-center">No Bookings are Available yet!!!</p>
-        </div>
-        <!-- details modal -->
-        <details-modal/>
-        <!-- modal-end -->
-    </div>
+          <p
+            v-if="visitorList<=0"
+            class="text-center"
+          >No Bookings are Available yet!!!</p>
+      </div>
+      <!-- details modal -->
+      <details-modal/>
+      <!-- modal-end -->
+  </div>
 </template>
 <style scoped>
-th, td {
-font-family: ‘Lato’, sans-serif;
-font-size: 14px;
-font-weight: 400;
-padding: 10px;
+
+th,
+td {
+  font-family: ‘Lato’, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 10px;
 }
-.eye{
-    margin-right: 10px;
-    color: #068d68;
+option,
+select {
+  font-family: ‘Lato’, sans-serif;
+  font-size: 14px;
 }
-.btn-rounded{
+.eye {
+  margin-right: 10px;
+  color: #068d68;
+}
+.btn-rounded {
   border-radius: 10px;
   height: 30px;
 }
- .form-select{
-width: 250px;
-margin-left: 70px;
-margin-top: -30px;
+.form-select {
+  width: 250px;
+  margin-left: 70px;
+  margin-top: -30px;
 }
-.form-inline{
+.form-inline {
   width: 310px;
   margin-left: 100px;
 }
 
-h5,h3{
-    color:rgb(53, 53, 85)
+h5,
+h3 {
+  color:#2c3e50;
 }
 
-a{
-    text-decoration: none;
-    color: #068d68;
+a {
+  text-decoration: none;
+  color: #045c44;
 }
-a:hover{
-    color:rgb(53, 53, 85)
+a:hover {
+  color: rgb(53, 53, 85);
 }
-.delete-btn{
-  float:right;
+.delete-btn {
+  float: left;
   margin-right: 20px;
   margin-top: 10px;
 }
-
-td{
+.view-btn {
+  color: #2c3e50;
+  background-color: #f5f5f5;
+}
+.search {
+  background: #f5f5f5;
+}
+td {
+  text-align: center;
+  color: #2c3e50;
+}
+table {
+    border-collapse:separate;
+    border:solid #2c3e50   1px;
+    border-radius:6px;
+    -moz-border-radius:6px;
+}
+.eye {
+  margin-right: 10px;
+  color: #068d68;
+}
+.table-div p {
+  color: #2c3e50;
+  margin-top: 20px;
+}
+.sort-icon,th{
+  color:#2c3e50;
+}
+.badge {
+  width: 60px;
+}
+.tour-badge {
+  background-color: #045c44;
+}
+.has-search .form-control-feedback {
+    position: fixed;
+    float: right;
+    right:10px;
+    /* padding-top: 20px; */
+    z-index: 2;
+    display: block;
+    background: #045c44;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    width: 2.375rem;
+    height:30px;
+    /* line-height: 2.375rem; */
     text-align: center;
-    color:rgb(53, 53, 85)
+    pointer-events: none;
+    color: #f5f5f5;
 }
-.eye{
-    margin-right: 10px;
-    color: #068d68;
+@media screen and (min-width: 2000px) {
+ .has-search .form-control-feedback {
+   right: 18.5%;
+ }
 }
-.table-div p{
-    color:rgb(53, 53, 85);
-    margin-top:20px;
-}
+
 </style>
 <script>
 import axios from 'axios';
@@ -198,13 +323,33 @@ export default {
     },
   },
   computed: {
+    // sort() {
+    //   let visitors = this.visitorList;
+
+    //   visitors = visitors.sort((a, b) => {
+    //     const fa = a.name.toLowerCase(); const
+    //       fb = b.name.toLowerCase();
+    //     if (fa < fb) {
+    //       return -1;
+    //     }
+    //     if (fa > fb) {
+    //       return 1;
+    //     }
+    //     return 0;
+    //   });
+    //   return visitors;
+    // },
     filteredVisitors() {
       let visitors = this.visitorList;
       console.log(typeof this.visitorList);
       if (this.searchterm !== '' && this.searchterm) {
-        visitors = visitors.filter((item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
-        || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
-        || item.bookingtype.toUpperCase().includes(this.searchterm.toUpperCase()));
+        visitors = visitors.filter(
+          (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.bookingtype
+              .toUpperCase()
+              .includes(this.searchterm.toUpperCase()),
+        );
       }
       return visitors;
     },

@@ -7,7 +7,7 @@ import {
   faPlus, faEdit, faAngleLeft, faCogs, faAngleDown,
   faStarAndCrescent, faAngleRight, faHamburger, faGraduationCap, faCampground,
   faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen, faBalanceScale,
-  faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake, faMugHot,
+  faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake, faMugHot, faSearch, faSort,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
@@ -22,9 +22,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 library.add(faPhone, faBars, faEye, faFacebookF, faTwitter, faCogs, faTrashAlt, faCampground,
-  faGraduationCap, faHouseUser, faUserFriends,
+  faGraduationCap, faHouseUser, faUserFriends, faSearch,
   faUserCog, faStarAndCrescent, faHome, faAngleDown, faArrowRight,
-  faInstagram, faTrash, faCog, faHome, faBook, faStar, faSignOutAlt,
+  faInstagram, faTrash, faCog, faHome, faBook, faStar, faSignOutAlt, faSort,
   faComments, faBell, faUser, faPlus, faEdit, faAngleLeft, faAngleRight, faRunning,
   faHamburger, faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen,
   faBalanceScale, faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake, faMugHot);
