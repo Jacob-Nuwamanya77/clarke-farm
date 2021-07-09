@@ -15,62 +15,66 @@
        <fa icon="minus" v-else />
       </span>
     </div>
-    <template v-if="notTakingNotes && tasks.length == 0">
-      <div id="default-note-screen">
-        <p class="default-title">Set tasks or reminders</p>
-        <p class="muted-gray default-text">
-          Do you have any tasks or creative ideas, this tool will be your safe place.
-          Click on the plus icon to add new notes.
-        </p>
-      </div>
-    </template>
-    <template v-if="!notTakingNotes">
-      <div id="note-form">
-        <form @submit.prevent="submitTask">
-          <div class="input-container">
-            <input type="text" v-model="title" placeholder="Title" maxlength="22" id="note-title" required>
-            <textarea
-              v-model="note" cols="29" rows="5"
-              maxlength="80" placeholder="Type here" @input="checkInputLength"></textarea>
-            <span class="text-limits">{{ textarea }} / 80</span>
-          </div>
-          <button class="save-button" type="submit">Save</button>
-        </form>
-      </div>
-    </template>
-    <template v-if="notTakingNotes && tasks.length != 0">
-      <div id="display-list">
-        <div class="task-item" v-for="(task, index) in tasks" :key="index" :id="task._id">
-          <span :class="['task-initials', task.color]">
-            {{ extractInitials(task.title) }}
-          </span>
-          <span class="task-details">
-            <span class="task-name">{{ capitalizeEachWord(task.title) }}</span>
-            <span class="muted-detail">
-              {{ sliceString(task.note) }}
+    <template v-if="!showSingleTask">
+      <template v-if="notTakingNotes && tasks.length == 0">
+        <div id="default-note-screen">
+          <p class="default-title">Set tasks or reminders</p>
+          <p class="muted-gray default-text">
+            Do you have any tasks or creative ideas, this tool will be your safe place.
+            Click on the plus icon to add new notes.
+          </p>
+        </div>
+      </template>
+      <template v-if="!notTakingNotes">
+        <div id="note-form">
+          <form @submit.prevent="submitTask">
+            <div class="input-container">
+              <input type="text" v-model="title" placeholder="Title" maxlength="22" id="note-title" required>
+              <textarea
+                v-model="note" cols="29" rows="5"
+                maxlength="80" placeholder="Type here" @input="checkInputLength"></textarea>
+              <span class="text-limits">{{ textarea }} / 80</span>
+            </div>
+            <button class="save-button" type="submit">Save</button>
+          </form>
+        </div>
+      </template>
+      <template v-if="notTakingNotes && tasks.length != 0">
+        <div class="display-list">
+          <div class="task-item" v-for="(task, index) in taskList" :key="index">
+            <span :class="['task-initials', task.color]" @click="deleteTask" :id="task._id">
+              {{ extractInitials(task.title) }}
             </span>
-          </span>
+            <span class="task-details" :id="task._id" @click="displaySingleTask">
+              <span class="task-name">{{ capitalizeEachWord(task.title) }}</span>
+              <span class="muted-detail">
+                {{ sliceString(task.note) }}
+              </span>
+            </span>
+          </div>
+        </div>
+      </template>
+    </template>
+    <template v-if="showSingleTask">
+      <div class="display-list single-task">
+        <span class="single-task-title">{{ capitalizeEachWord(singleTask.title) }}</span>
+        <div class="single-task-note">
+          {{ singleTask.note }}
         </div>
       </div>
+      <button class="close-btn" @click="closeSingleTask">Close</button>
     </template>
   </div>
 </template>
 
 <script>
-import CrudService from '@/services/crud-service';
+import TaskService from '@/services/task-service';
 import FormatText from '@/mixins/format-text';
 
 export default {
   name: 'TodoList',
   created() {
-    CrudService.get('api/tasks')
-      .then((response) => {
-        const data = [...response.data].map((task, index) => {
-          const color = this.addBgColor(index);
-          return { ...task, color };
-        });
-        this.tasks = data;
-      });
+    this.fetchTasks();
   },
   data() {
     return {
@@ -86,16 +90,25 @@ export default {
       textarea: 0,
       title: '',
       note: '',
+      showSingleTask: false,
+      singleTask: {},
     };
   },
   mixins: [FormatText],
   methods: {
-    changeIcon() {
-      this.notTakingNotes = !this.notTakingNotes;
-      this.textarea = 0;
+    fetchTasks() {
+      TaskService.get()
+        .then((response) => {
+          this.tasks = response.data;
+        });
     },
-    checkInputLength(event) {
-      this.textarea = event.target.value.length;
+    formatTaskList(tasks) {
+      const data = tasks.map((task, index) => {
+        const color = this.addBgColor(index);
+        return { ...task, color };
+      });
+      this.colorIndex = 0;
+      return data;
     },
     addBgColor(index) {
       if (index <= 3) {
@@ -110,6 +123,33 @@ export default {
       this.colorIndex += 1;
       return color;
     },
+    changeIcon() {
+      this.notTakingNotes = !this.notTakingNotes;
+      this.showSingleTask = false;
+      this.textarea = 0;
+    },
+    checkInputLength(event) {
+      this.textarea = event.target.value.length;
+    },
+    displaySingleTask(event) {
+      const id = event.target.parentNode.id;
+      const task = this.tasks.filter((task) => task._id === id)[0];
+      this.showSingleTask = true;
+      this.singleTask = task;
+    },
+    closeSingleTask() {
+      this.showSingleTask = false;
+    },
+    deleteTask(event) {
+      const srcElement = event.target;
+      const id = srcElement.id;
+      srcElement.classList.add('delete-task');
+      srcElement.textContent = 'X';
+      TaskService.delete(id)
+        .then((response) => {
+          this.tasks = this.tasks.filter((task) => task._id !== response.data._id);
+        });
+    },
     createTaskObject() {
       const inputData = {
         title: this.title,
@@ -119,13 +159,18 @@ export default {
     },
     submitTask() {
       const task = this.createTaskObject();
-      CrudService.post('api/tasks', task)
+      TaskService.post(task)
         .then((response) => {
           this.notTakingNotes = !this.notTakingNotes;
           this.title = '';
           this.note = '';
           this.tasks.push(response.data);
         });
+    },
+  },
+  computed: {
+    taskList() {
+      return this.formatTaskList(this.tasks);
     },
   },
 };
@@ -227,6 +272,7 @@ textarea{
   border:none;
   background-color: var(--mono-dark-green);
   width:80px;
+  height: 30px;
   margin-right: 10px;
   margin-top: 10px;
 }
@@ -238,7 +284,7 @@ textarea{
   float: right;
   margin-top: 10px;
 }
-#display-list{
+.display-list{
   margin-top: 25px;
   height:90%;
   overflow-y: scroll;
@@ -248,12 +294,16 @@ textarea{
   width:50px;
   height: 50px;
   background-color: var(--smoky-white);
-  border-radius: 10px;
+  border-radius: 50%;
   padding-top: 2px;
   margin-right: 15px;
   font-weight: bold;
   align-items: center;
   justify-content: center;
+}
+.task-initials:hover{
+  cursor: pointer;
+  transform: scale(0.9);
 }
 .initials{
   font-weight: bolder;
@@ -271,6 +321,10 @@ textarea{
 .task-details{
   display: flex;
   flex-direction: column;
+}
+.task-details:hover{
+  transform: scale(0.9);
+  cursor: pointer;
 }
 .task-name{
   font-size: 14px;
@@ -293,5 +347,30 @@ textarea{
 }
 .light-red{
   background-color:rgba(252, 100, 108, 0.1);
+}
+.delete-task{
+  background-color:rgba(252, 100, 108, 0.7);
+  font-size: 16px;
+  color: white;
+}
+.single-task{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.single-task-title{
+  font-size: 16px;
+  font-weight: bold;
+}
+.single-task-note{
+  margin-top: 15px;
+}
+.close-btn{
+  margin-top: 30px;
+  margin-left: 10px;
+  border:none;
+  height: 30px;
+  width: 80px;
+  background-color: rgba(252, 100, 108, 0.7);
+  color: white;
 }
 </style>
