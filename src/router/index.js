@@ -10,10 +10,6 @@ import LoginPage from '@/views/LoginPage.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import Reviews from '@/views/AdminReviews.vue';
 import Settings from '@/views/AdminSettings.vue';
-import Activities from '@/views/Activities.vue';
-import Accommodation from '@/views/Accommodation.vue';
-import CoffeeProcess from '@/views/CoffeeProcess.vue';
-import TrainingProgram from '@/views/TrainingProgram.vue';
 
 const routes = [
   {
@@ -57,32 +53,10 @@ const routes = [
     component: Reviews,
   },
   {
-    path: '/admin/settings',
+    path: '/admin/settings/',
     name: 'Settings',
     component: Settings,
   },
-  {
-    path: '/admin/settings/activities',
-    name: 'Activities',
-    component: Activities,
-  },
-  {
-    path: '/admin/settings/accommodation',
-    name: 'Accommodation',
-    component: Accommodation,
-  },
-  {
-    path: '/admin/settings/coffee',
-    name: 'CoffeeProcess',
-    component: CoffeeProcess,
-  },
-
-  {
-    path: '/admin/settings/training-program',
-    name: 'TrainingProgram',
-    component: TrainingProgram,
-  },
-
 ];
 
 const router = createRouter({

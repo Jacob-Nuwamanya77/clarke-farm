@@ -1,200 +1,85 @@
 <template>
-<!-- eslint-disable max-len -->
-<div class="mt-3">
-   <div class="action">
-         <a href="#" class="btn btn-sm text-white add mb-3" type="button" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">Add Training Program</a>
-               <!-- Modal -->
-    <div class="modal fade" tabindex="-1"  id="exampleModal">
-   <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Add Coffee Process Step</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form @submit.prevent="onSubmit" enctype="multipart/form-data">
-        <input type="file" ref="file" @change="onSelect" />
-        <h6>{{ message }}</h6>
-
-         <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="filename"
-            v-model="training.filename"
-          /></div> <br>
-
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="training program title"
-            v-model="training.programtitle"
-          />
+  <div class="mt-4">
+    <div id="add-button">
+   <a  class="btn btn-success btn-sm float-end" href="#" data-bs-toggle="modal" data-bs-target="#training_ID">
+      Add Training Program
+    </a>
+ </div>
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" id="training_ID">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Training Program</h5>
+            <button type="button" class="btn-close"
+            data-bs-dismiss="modal" aria-label="Close"/>
+          </div>
+          <div class="modal-body">
+            <form class="form-group">
+              <div class="mb-3 form-group">
+                <label for="title">Training Program title</label>
+                <input type="text" class="form-control" name="title" id="title" v-model="title">
+              </div>
+              <div class="mb-3 form-group">
+                <label for="description">Describe the training program in brief</label>
+                <input type="text" class="form-control" name="description"
+                id="description" v-model="description">
+              </div>
+              <div class="mb-2 form-group ">
+                <label for="Priced" class="form-check-label" >Is the training program priced?</label><br>
+                <input type="radio" class="form-check-input"
+                name="priced" value="Yes" v-model="priced"> Yes
+                <input type="radio" class="form-check-input" name="priced" value="No"
+                 checked v-model="priced"> No
+              </div>
+              <div class="mb-2 form-group">
+                <span class="mb-2" v-if="priced=='Yes'">
+                  <label for="currency">Currency</label>
+                  <select name="currency" class="form-select" id="currency" v-model="currency">
+                    <option value="ugx">UGX</option>
+                    <option value="$">USD</option>
+                  </select>
+                </span><br>
+                <span class="mb-3"  v-if="priced=='Yes'">
+                  <label for="cost">Cost of training</label>
+                  <input type="text" class="form-control" name="cost" id="cost" v-model="cost">
+                </span>
+              </div>
+              <div class="mb-4 form-group">
+                 <label class="form-label"  for="image">Upload image</label>
+                <input type="file"  class="form-control form-control-md" name="image" id="image"
+                ref="file" @change="onFileChange">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-success">Submit Data</button>
+              </div>
+            </form>
+          </div>
         </div>
-          <br>
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="description"
-            v-model="training.description"
-            required
-          />
-        </div>
-         <br>
-         <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="fee"
-            v-model="training.fee"
-            required
-          />
-        </div>
-         <br>
-
-         <div class="modal-footer">
-        <button  class="btn btn-success">Save changes</button>
-      </div>
-        </form>
       </div>
     </div>
-     </div>
+    <br>
   </div>
-      </div>
-    <div class="table-settings">
-         <table class="table table-striped table-bordered">
-        <thead class="align-left">
-          <th>Program Name</th>
-          <th>Image</th>
-          <th>Description</th>
-          <th>Fee</th>
-          <th>Action</th>
-        </thead>
-        <tbody>
-          <tr v-for="training in trainingsList" :key="training._id">
-            <td>{{training.programtitle }}</td>
-             <td>
-              <img src="" alt="activity"/>
-              </td>
-            <td>{{ training.description}}</td>
-            <td>{{training.fee}}</td>
-            <td>
-              <a style="color: #068d68"><fa icon="edit" /></a>
-              <a href=""
-                ><fa
-                  icon="trash"
-                  style="
-                    float: right;
-                    margin-left: 35px;
-                    margin-top: -20px;
-                    color: red;
-                  "
-              /></a>
-            </td>
-          </tr>
-        </tbody>
-     </table>
-    </div>
-</div>
 </template>
-<script>
-import axios from 'axios';
 
-const api = 'http://localhost:3000';
+<script>
 export default {
-  name: 'SettingsTableTraining',
+  name: 'ActivityModal',
   data() {
     return {
-      trainingsList: [],
-      training: {
-        filename: '',
-        programtitle: '',
-        description: '',
-        fee: '',
-      },
+      title: '',
+      description: '',
+      priced: 'No',
+      currency: '$',
+      cost: '0.00',
+      file: '',
     };
-  },
-  created() {
-    // const endpoint = '/activities';
-    axios
-      .get('http://localhost:3000/trainings')
-      .then((res) => {
-        this.trainingsList = res.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
-  methods: {
-    onSelect() {
-      const file = this.$refs.file.files[0];
-      this.file = file;
-    },
-    async onSubmit() {
-      const formData = new FormData();
-      formData.append('file', this.file);
-      // Form1
-      const endpoint1 = '/uploads';
-      try {
-        await axios.post(api + endpoint1, formData);
-        this.message = 'uploaded file successfully';
-      } catch {
-        this.message = 'file not uploaded';
-      }
-      // Form2
-      const endpoint2 = '/trainings/add';
-      axios
-        .post(api + endpoint2, this.training)
-        .then(() => {
-          // this.$router.push('/list-activities');
-          this.training = {
-            filename: '',
-            programtitle: '',
-            description: '',
-            fee: '',
-          };
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
   },
 };
 </script>
-<style scoped>
-table{
-  padding:0px;
-  margin-top:30px;
-  margin-left:70px;
-}
-th{
-    padding:5px;
-    vertical-align:left;
-     text-align: left;
-}
-td{
-    text-align: center;
-    font-family: 'Roboto';
-    font-size:14px;
-    padding:0px;
-}
-table,td,th{
-     font-family: 'Roboto';
-}
-img{
-  width:150px;
-   height:100px;
-}
- ul{
-    display: flex;
-  }
-  .add{
-  float: right;
-  background-color: #068d68;
-  margin-right: 10px;
 
+<style scoped>
+.mb-5{
+  margin-bottom: 5px;
 }
 </style>
