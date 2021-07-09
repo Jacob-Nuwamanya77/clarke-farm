@@ -17,5 +17,20 @@ export default {
     capitalizeFirstLetter(text) {
       return text.replace(text.charAt(0), text.charAt(0).toUpperCase());
     },
+    extractInitials(text) {
+      const splitTextArr = text.split(' ');
+      let initials = '';
+      for (let i = 0; i < 2; i += 1) {
+        initials += this.capitalizeEachWord(splitTextArr[i].charAt(0));
+      }
+      return initials;
+    },
+    sliceString(text) {
+      if (text.length > 27) {
+        const shortText = text.slice(0, 27);
+        return `${shortText} ...`;
+      }
+      return text;
+    },
   },
 };

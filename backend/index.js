@@ -16,8 +16,10 @@ const activityRouter = require('./Controllers/activityRoutes');
 const accomodationRouter = require('./Controllers/accommodationRoutes');
 const coffeeprocessRouter = require('./Controllers/coffeeprocessRoutes');
 const trainingRouter = require('./Controllers/trainingRoutes');
+const tasksRouter = require('./Controllers/tasksRoutes');
 
 app.use('/api/activities', activityRouter);
+app.use('/api/tasks', tasksRouter);
 app.use(accomodationRouter);
 app.use(coffeeprocessRouter);
 app.use(trainingRouter);

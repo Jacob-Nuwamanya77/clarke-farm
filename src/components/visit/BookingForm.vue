@@ -18,18 +18,19 @@
       <div id="form-container">
         <p id="description">We promise to contact you within 24 hours.</p>
         <form @submit.prevent="handleSubmitForm" action="/visitors/add">
-          <div class="input-container">
+          <div class="input-container form-group">
             <input
               type="text"
+              class="form-control"
               name="name"
               placeholder="Name"
               v-model="visitor.name"
-              required
             />
           </div>
           <div class="input-container">
             <input
               type="email"
+              class="form-control"
               placeholder="Email Address"
               name="email"
               v-model="visitor.email"
@@ -39,6 +40,7 @@
           <div class="input-container">
             <input
               type="text"
+              class="form-control"
               placeholder="Telephone"
               name="phone"
               v-model="visitor.phone"
@@ -51,6 +53,7 @@
                 <input
                   type="text"
                   name="checkin"
+                  class="form-control"
                   placeholder="Check-in"
                   v-model="visitor.checkin"
                   onfocus='(this.type="date")'
@@ -60,6 +63,7 @@
                 <input
                   type="text"
                   name="checkout"
+                  class="form-control"
                   placeholder="Check-out"
                   v-model="visitor.checkout"
                   onfocus='(this.type="date")'
@@ -70,6 +74,7 @@
           <div class="input-container">
             <input
               type="text"
+              class="form-control"
               name="guestNumber"
               placeholder="Number of travelers"
               v-model="visitor.guestNumber"
@@ -77,6 +82,7 @@
             />
              <input
               type="text"
+              class="form-control"
               name="bookingtype"
               v-model="visitor.bookingtype"
               hidden
@@ -90,6 +96,7 @@
                   <span>
                     <input
                       type="radio"
+                      class="form-check-input"
                       name="accomodation"
                       value="none"
                       checked
@@ -100,6 +107,7 @@
                   <span>
                     <input
                       type="radio"
+                      class="form-check-input"
                       name="accomodation"
                       value="tent"
                       v-model="visitor.accomodation"
@@ -111,6 +119,7 @@
                   <span>
                     <input
                       type="radio"
+                      class="form-check-input"
                       name="accomodation"
                       value="cottage"
                       v-model="visitor.accomodation"
@@ -120,6 +129,7 @@
                   <span>
                     <input
                       type="radio"
+                      class="form-check-input"
                       name="accomodation"
                       value="container"
                       v-model="visitor.accomodation"
@@ -131,6 +141,7 @@
                   <span>
                     <input
                       type="radio"
+                      class="form-check-input"
                       name="accomodation"
                       value="hilltop"
                       v-model="visitor.accomodation"
@@ -144,6 +155,7 @@
           <div class="input-container">
             <textarea
               placeholder="Questions or special requests"
+              class="form-control"
               name="requests"
               v-model="visitor.requests"
             ></textarea>

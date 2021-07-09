@@ -7,7 +7,7 @@
 
 <script>
 import Content from '@/components/dashboard/reviews/ReviewContent.vue';
-import SideNav from '@/components/dashboard/SideNavigation.vue';
+import SideNav from '@/components/shared/SideNavigation.vue';
 
 export default {
   name: 'UserReviews',
