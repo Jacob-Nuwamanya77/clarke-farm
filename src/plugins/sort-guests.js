@@ -26,7 +26,7 @@ export const incoming = (arr) => {
     const visitMonth = date.extractMonth(booking.checkin) - 1;
     const difference = checkin - todayDate;
     if (visitMonth === todayMonth) {
-      if (difference >= 0 && difference <= 2) {
+      if (difference >= 0 && difference < 2) {
         incomingArr.push(booking);
       }
     }
@@ -54,4 +54,19 @@ export const currentWeekGuests = (arr) => {
   });
 };
 
-// export const guestTotalByDay() {};
+export const guestTotalByDay = (arr) => {
+  const summary = {
+    Sun: 0,
+    Mon: 0,
+    Tue: 0,
+    Wed: 0,
+    Thu: 0,
+    Fri: 0,
+    Sat: 0,
+  };
+  arr.forEach((guest) => {
+    const day = date.extractDay(guest.checkin);
+    summary[day] += Number(guest.guestNumber);
+  });
+  return summary;
+};

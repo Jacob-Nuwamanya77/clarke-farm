@@ -26,7 +26,7 @@ export default {
           labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
           datasets: [
             {
-              data: this.arrData,
+              data: this.weeklyData(),
               backgroundColor: [
                 '#041C34',
                 '#143454',
@@ -75,14 +75,22 @@ export default {
       type: String,
       required: true,
     },
-    arrData: {
-      type: Array,
+    dataObj: {
+      type: Object,
       required: true,
     },
   },
   methods: {
     setFilter(event) {
       this.filter = event.target.value;
+    },
+    weeklyData() {
+      const arrData = [];
+      const srcObject = this.dataObj;
+      for (const prop in srcObject) {
+        if (Object.prototype.hasOwnProperty.call(srcObject, prop)) arrData.push(srcObject[prop]);
+      }
+      return arrData;
     },
   },
 };
