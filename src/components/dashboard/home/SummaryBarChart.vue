@@ -23,10 +23,10 @@ export default {
       filter: 'tourism',
       configData: {
         chartData: {
-          labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
           datasets: [
             {
-              data: [1, 2, 3, 4, 5, 6, 7],
+              data: this.arrData,
               backgroundColor: [
                 '#041C34',
                 '#143454',
@@ -46,7 +46,7 @@ export default {
           },
           title: {
             display: true,
-            text: 'This week - Guest Bookings',
+            text: `This week - ${this.chartTitle}`,
             fontSize: 14,
             padding: 12,
             fontColor: '#a9a9a9',
@@ -69,6 +69,16 @@ export default {
   },
   components: {
     BarGraph,
+  },
+  props: {
+    chartTitle: {
+      type: String,
+      required: true,
+    },
+    arrData: {
+      type: Array,
+      required: true,
+    },
   },
   methods: {
     setFilter(event) {

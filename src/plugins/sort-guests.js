@@ -39,3 +39,19 @@ export const incoming = (arr) => {
   });
   return incomingArr;
 };
+
+export const currentWeekGuests = (arr) => {
+  const currentDay = date.today().day;
+  const currentDate = date.today().date;
+  const currentDayInText = date.dayInText(currentDay);
+  const weekStart = currentDayInText === 'Sun' ? currentDate : currentDayInText === 'Sat'
+    ? currentDate - 6 : currentDate - currentDay;
+  const weekEnd = currentDayInText === 'Sun' ? weekStart + 6 : currentDayInText === 'Sat'
+    ? currentDate : currentDate + (6 - currentDay);
+  return arr.filter((guest) => {
+    const checkin = date.extractDate(guest.checkin);
+    return checkin >= weekStart && checkin <= weekEnd;
+  });
+};
+
+// export const guestTotalByDay() {};

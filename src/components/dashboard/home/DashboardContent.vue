@@ -3,7 +3,7 @@
     <DashboardHeader />
     <div class="content-area">
       <div id="content-left">
-        <SummaryBarChart />
+        <SummaryBarChart chartTitle="Guest Bookings" :arrData="weeklyGuests"/>
         <div id="split-doughnut-reminders">
           <div id="reminder-container">
             <TodoList />
@@ -42,6 +42,9 @@ import TodoList from './TodoList.vue';
 
 export default {
   name: 'DashboardHome',
+  created() {
+    console.log(this.weeklyGuests);
+  },
   data() {
     return {
       filter: 'tourism',
@@ -66,6 +69,7 @@ export default {
       incomingOrders: 'sortIncomingOrders',
       deliveredOrders: 'sortDeliveredOrders',
       pendingOrders: 'sortPendingOrders',
+      weeklyGuests: 'sortCurrentWeekGuests',
     }),
   },
 };

@@ -323,7 +323,6 @@ textarea{
   flex-direction: column;
 }
 .task-details:hover{
-  transform: scale(0.9);
   cursor: pointer;
 }
 .task-name{

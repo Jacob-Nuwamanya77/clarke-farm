@@ -18,6 +18,7 @@ module.exports = {
     'prefer-destructuring': ['error', { VariableDeclarator: { array: false } }],
     'no-restricted-syntax': ['off'],
     'no-underscore-dangle': 'off',
+    'no-nested-ternary': 'off',
     'max-len': ['error', { code: 120 }],
   },
   overrides: [
