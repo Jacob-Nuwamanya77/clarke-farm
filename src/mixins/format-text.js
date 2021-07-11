@@ -20,8 +20,12 @@ export default {
     extractInitials(text) {
       const splitTextArr = text.split(' ');
       let initials = '';
-      for (let i = 0; i < 2; i += 1) {
-        initials += this.capitalizeEachWord(splitTextArr[i].charAt(0));
+      if (splitTextArr.length < 2) {
+        initials = this.capitalizeEachWord(splitTextArr[0].charAt(0));
+      } else {
+        for (let i = 0; i < 2; i += 1) {
+          initials += this.capitalizeEachWord(splitTextArr[i].charAt(0));
+        }
       }
       return initials;
     },
