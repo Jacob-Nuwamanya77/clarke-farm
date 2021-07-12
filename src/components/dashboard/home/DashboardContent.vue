@@ -3,7 +3,19 @@
     <DashboardHeader />
     <div class="content-area">
       <div id="content-left">
-        <SummaryBarChart chartTitle="Guest Bookings" :dataObj="weeklyGuests"/>
+        <div class="filter-container">
+          <label for="filter">Filter By: </label>
+          <select id="filter" @change="setBarChartFilter">
+            <option value="tourism">Tourism</option>
+            <option value="coffee">Coffee</option>
+          </select>
+        </div>
+        <template v-if="barChartFilter === 'tourism'">
+          <SummaryBarChart chartTitle="Guest Bookings" :dataObj="weeklyGuests"/>
+        </template>
+        <template v-else>
+          <SummaryBarChart chartTitle="Coffee Orders"/>
+        </template>
         <div id="split-doughnut-reminders">
           <div id="reminder-container">
             <TodoList />
@@ -14,14 +26,14 @@
         </div>
       </div>
       <div id="content-right">
-        <div id="filter-container">
+        <div class="filter-container">
           <label for="filter">Filter By: </label>
-          <select id="filter" @change="setFilter">
+          <select id="filter" @change="setSummaryFilter">
             <option value="tourism">Tourism</option>
             <option value="coffee">Coffee</option>
           </select>
         </div>
-        <template v-if="filter === 'tourism'">
+        <template v-if="summaryFilter === 'tourism'">
           <SummaryByDate cardTitle="Incoming guests" product="tourism" :list ="incomingGuests" category="in" />
           <SummaryByDate cardTitle="Check out" product="tourism" :list ="checkOutGuests" category="out" />
         </template>
@@ -44,7 +56,8 @@ export default {
   name: 'DashboardHome',
   data() {
     return {
-      filter: 'tourism',
+      summaryFilter: 'tourism',
+      barChartFilter: 'tourism',
     };
   },
   components: {
@@ -55,8 +68,11 @@ export default {
     TodoList,
   },
   methods: {
-    setFilter(event) {
-      this.filter = event.target.value;
+    setSummaryFilter(event) {
+      this.summaryFilter = event.target.value;
+    },
+    setBarChartFilter(event) {
+      this.barChartFilter = event.target.value;
     },
   },
   computed: {
@@ -89,24 +105,24 @@ export default {
   border-radius: 10px;
   background-color: rgb(250,250,250)
 }
-#filter-container{
+.filter-container{
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 10px;
 }
-#filter-container label {
+.filter-container label {
   margin-right: 10px;
   color:#a9a9a9;
   font-weight: bold;
 }
-#filter-container select{
+.filter-container select{
   border:none;
   height:30px;
   padding-left: 10px;
   padding-right: 10px;
 }
-#filter-container select:hover{
+.filter-container select:hover{
   cursor: pointer;
 }
 #split-doughnut-reminders{
