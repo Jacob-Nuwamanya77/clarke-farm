@@ -9,7 +9,7 @@ export const state = {
       package: 'Paper bag',
       order: '50',
       requests: '',
-      createdAt: '2021-07-02',
+      createdAt: '2021-07-11',
       delivered: false,
     },
     {
@@ -19,7 +19,7 @@ export const state = {
       package: 'Paper bag',
       order: '50',
       requests: '',
-      createdAt: '2021-07-04',
+      createdAt: '2021-07-12',
       delivered: true,
     },
     {
@@ -29,7 +29,7 @@ export const state = {
       package: 'Sack',
       order: '50',
       requests: '',
-      createdAt: '2021-07-04',
+      createdAt: '2021-07-12',
       delivered: true,
     },
     {
@@ -39,7 +39,7 @@ export const state = {
       package: 'Paper bag',
       order: '50',
       requests: '',
-      createdAt: '2021-07-03',
+      createdAt: '2021-07-13',
       delivered: true,
     },
     {
@@ -49,7 +49,7 @@ export const state = {
       package: 'Paper bag',
       order: '50',
       requests: '',
-      createdAt: '2021-07-06',
+      createdAt: '2021-07-14',
       delivered: true,
     },
     {
@@ -59,7 +59,17 @@ export const state = {
       package: 'Sack',
       order: '150',
       requests: '',
-      createdAt: '2021-07-04',
+      createdAt: '2021-07-16',
+      delivered: true,
+    },
+    {
+      name: 'emmanuel kodwo',
+      email: 'nuwamanyajacob@gmail.com',
+      phone: '0784246950',
+      package: 'Sack',
+      order: '150',
+      requests: '',
+      createdAt: '2021-07-17',
       delivered: true,
     },
   ],
@@ -74,5 +84,9 @@ export const getters = {
   },
   sortPendingOrders(state) {
     return SortOrders.delivered(state.orders).pendingDeliveryArr;
+  },
+  sortCurrentWeekOrders(state) {
+    const orders = SortOrders.currentWeekOrders(state.orders);
+    return SortOrders.orderTotalByDay(orders);
   },
 };

@@ -14,7 +14,7 @@
           <SummaryBarChart chartTitle="Guest Bookings" :dataObj="weeklyGuests"/>
         </template>
         <template v-else>
-          <SummaryBarChart chartTitle="Coffee Orders"/>
+          <SummaryBarChart chartTitle="Coffee Orders" :dataObj="weeklyOrders"/>
         </template>
         <div id="split-doughnut-reminders">
           <div id="reminder-container">
@@ -83,6 +83,7 @@ export default {
       deliveredOrders: 'sortDeliveredOrders',
       pendingOrders: 'sortPendingOrders',
       weeklyGuests: 'sortCurrentWeekGuests',
+      weeklyOrders: 'sortCurrentWeekOrders',
     }),
   },
 };

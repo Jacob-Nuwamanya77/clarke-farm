@@ -35,3 +35,34 @@ export const delivered = (arr) => {
   });
   return { deliveredArr, pendingDeliveryArr };
 };
+
+export const currentWeekOrders = (arr) => {
+  const currentDay = date.today().day;
+  const currentDate = date.today().date;
+  const currentDayInText = date.dayInText(currentDay);
+  const weekStart = currentDayInText === 'Sun' ? currentDate : currentDayInText === 'Sat'
+    ? currentDate - 6 : currentDate - currentDay;
+  const weekEnd = currentDayInText === 'Sun' ? weekStart + 6 : currentDayInText === 'Sat'
+    ? currentDate : currentDate + (6 - currentDay);
+  return arr.filter((order) => {
+    const checkin = date.extractDate(order.createdAt);
+    return checkin >= weekStart && checkin <= weekEnd;
+  });
+};
+
+export const orderTotalByDay = (arr) => {
+  const summary = {
+    Sun: 0,
+    Mon: 0,
+    Tue: 0,
+    Wed: 0,
+    Thu: 0,
+    Fri: 0,
+    Sat: 0,
+  };
+  arr.forEach((order) => {
+    const day = date.extractDay(order.createdAt);
+    summary[day] += Number(order.order);
+  });
+  return summary;
+};
