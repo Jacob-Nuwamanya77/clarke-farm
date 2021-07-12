@@ -17,7 +17,7 @@
       </div>
       <div id="form-container">
         <p id="description">We promise to contact you within 24 hours.</p>
-        <form @submit.prevent="handleSubmitForm" action="/visitors/add">
+        <form @submit.prevent="handleSubmitForm">
           <div class="input-container form-group">
             <input
               type="text"
@@ -172,9 +172,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+import GuestService from '@/services/guest-service';
 
-const api = 'http://localhost:3000';
 export default {
   name: 'BookingForm',
   data() {
@@ -194,10 +193,8 @@ export default {
   },
   methods: {
     async handleSubmitForm() {
-      const endpoint = '/visitors/add';
       try {
-        await axios.post(api + endpoint, this.visitor);
-        // this.$router.push('/admin');
+        await GuestService.postGuest(this.visitor);
         this.visitor = {
           name: '',
           email: '',
@@ -208,7 +205,6 @@ export default {
           accomodation: '',
           requests: '',
         };
-        // Use sweetalert2
         this.$swal({
           showCloseButton: true,
         });

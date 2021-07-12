@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // APP ROUTES
-const visitorRoute = require('./Controllers/visitorRoutes');
+const visitorRouter = require('./Controllers/visitorRoutes');
 const activityRouter = require('./Controllers/activityRoutes');
 const accomodationRouter = require('./Controllers/accommodationRoutes');
 const coffeeprocessRouter = require('./Controllers/coffeeprocessRoutes');
@@ -20,10 +20,10 @@ const tasksRouter = require('./Controllers/tasksRoutes');
 
 app.use('/api/activities', activityRouter);
 app.use('/api/tasks', tasksRouter);
+app.use('/api/guests', visitorRouter);
 app.use(accomodationRouter);
 app.use(coffeeprocessRouter);
 app.use(trainingRouter);
-app.use(visitorRoute);
 
 // ESTABLISHING DATABASE CONNECTION
 mongoose.connect(process.env.DATABASE, {

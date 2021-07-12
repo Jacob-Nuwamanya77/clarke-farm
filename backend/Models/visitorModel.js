@@ -9,7 +9,6 @@ const visitorSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
   },
   phone: {
     type: String,
@@ -31,9 +30,6 @@ const visitorSchema = new Schema({
   },
   requests: {
     type: String,
-  },
-  topics: {
-    type: Array,
   },
 },
 { timestamps: true },
