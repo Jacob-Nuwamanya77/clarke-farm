@@ -1,5 +1,12 @@
 <template>
   <div id="daily-orders">
+    <div class="filter-container">
+      <label for="filter">Filter By: </label>
+      <select id="filter" @change="setFilter">
+        <option value="tourism">Tourism</option>
+        <option value="coffee">Coffee</option>
+      </select>
+    </div>
     <div id="graph-container">
       <BarGraph :height="180" :chartData="configData.chartData" :chartOptions="configData.options"/>
     </div>
@@ -14,12 +21,57 @@ export default {
   data() {
     return {
       filter: 'tourism',
-      configData: {
+      guests: [],
+      orders: [],
+      chartTitle: 'Guest Bookings',
+    };
+  },
+  components: {
+    BarGraph,
+  },
+  props: {
+    weeklyGuests: {
+      type: Object,
+      required: true,
+    },
+    weeklyOrders: {
+      type: Object,
+      required: true,
+    },
+  },
+  watch: {
+    weeklyGuests(newData) {
+      this.guests = this.weeklyData(newData);
+    },
+    weeklyOrders(newData) {
+      this.orders = this.weeklyData(newData);
+    },
+  },
+  methods: {
+    setFilter(event) {
+      this.filter = event.target.value;
+      if (event.target.value === 'tourism') {
+        this.chartTitle = 'Guest Bookings';
+      } else {
+        this.chartTitle = 'Coffee Orders';
+      }
+    },
+    weeklyData(srcObject) {
+      const arrData = [];
+      for (const prop in srcObject) {
+        if (Object.prototype.hasOwnProperty.call(srcObject, prop)) arrData.push(srcObject[prop]);
+      }
+      return arrData;
+    },
+  },
+  computed: {
+    configData() {
+      return {
         chartData: {
           labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
           datasets: [
             {
-              data: [],
+              data: this.filter === 'tourism' ? this.guests : this.orders,
               backgroundColor: [
                 '#041C34',
                 '#143454',
@@ -57,39 +109,7 @@ export default {
             }],
           },
         },
-      },
-    };
-  },
-  components: {
-    BarGraph,
-  },
-  props: {
-    chartTitle: {
-      type: String,
-      required: true,
-    },
-    dataObj: {
-      type: Object,
-      required: true,
-    },
-  },
-  watch: {
-    dataObj(newData) {
-      console.log(newData);
-      this.configData.chartData.datasets[0].data = newData;
-    },
-  },
-  methods: {
-    setFilter(event) {
-      this.filter = event.target.value;
-    },
-    weeklyData() {
-      const arrData = [];
-      const srcObject = this.dataObj;
-      for (const prop in srcObject) {
-        if (Object.prototype.hasOwnProperty.call(srcObject, prop)) arrData.push(srcObject[prop]);
-      }
-      return arrData;
+      };
     },
   },
 };
@@ -104,5 +124,25 @@ export default {
   background-color: white;
   height: 340px;
   padding-left: 2px;
+}
+.filter-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+.filter-container label {
+  margin-right: 10px;
+  color:#a9a9a9;
+  font-weight: bold;
+}
+.filter-container select{
+  border:none;
+  height:30px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.filter-container select:hover{
+  cursor: pointer;
 }
 </style>

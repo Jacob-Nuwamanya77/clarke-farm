@@ -3,19 +3,7 @@
     <DashboardHeader />
     <div class="content-area">
       <div id="content-left">
-        <div class="filter-container">
-          <label for="filter">Filter By: </label>
-          <select id="filter" @change="setBarChartFilter">
-            <option value="tourism">Tourism</option>
-            <option value="coffee">Coffee</option>
-          </select>
-        </div>
-        <template v-if="barChartFilter === 'tourism'">
-          <SummaryBarChart chartTitle="Guest Bookings" :dataObj="weeklyGuests"/>
-        </template>
-        <template v-else>
-          <SummaryBarChart chartTitle="Coffee Orders" :dataObj="weeklyOrders"/>
-        </template>
+        <SummaryBarChart :weeklyGuests="weeklyGuests" :weeklyOrders="weeklyOrders"/>
         <div id="split-doughnut-reminders">
           <div id="reminder-container">
             <TodoList />
@@ -57,7 +45,6 @@ export default {
   data() {
     return {
       summaryFilter: 'tourism',
-      barChartFilter: 'tourism',
     };
   },
   components: {
@@ -70,9 +57,6 @@ export default {
   methods: {
     setSummaryFilter(event) {
       this.summaryFilter = event.target.value;
-    },
-    setBarChartFilter(event) {
-      this.barChartFilter = event.target.value;
     },
   },
   computed: {

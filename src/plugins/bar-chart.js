@@ -14,6 +14,11 @@ export default defineComponent({
       required: true,
     },
   },
+  watch: {
+    chartData(newData) {
+      this.renderChart(newData, this.chartOptions);
+    },
+  },
   mounted() {
     this.renderChart(this.chartData, this.chartOptions);
   },
