@@ -71,14 +71,14 @@
                     id="defaultCheck1"
                     @click="check"
                   ></td>
-                <th>Name <fa icon="sort" class="sort-icon"/></th>
-                <th>Email Address <fa icon="sort" class="sort-icon"/></th>
+                <th>Name</th>
+                <th>Email Address</th>
 
-                <th>Phone Number <fa icon="sort" class="sort-icon"/></th>
-                <th>Order Amount<fa icon="sort" class="sort-icon"/></th>
-                <th>Booking Type <fa icon="sort" class="sort-icon"/></th>
-                <th>Checkin <fa icon="sort" class="sort-icon"/></th>
-                <th>Action <fa icon="sort" class="sort-icon"/></th>
+                <th>Phone Number</th>
+                <th>Order Amount</th>
+                <th>Booking Type </th>
+                <th>Checkin</th>
+                <th>Action</th>
 
               </tr>
             </thead>
@@ -208,7 +208,7 @@ td {
 }
 table {
     border-collapse:separate;
-    border:solid #2c3e50   1px;
+    border:solid #F5F5F5   1px;
     border-radius:6px;
     -moz-border-radius:6px;
 }
@@ -323,22 +323,6 @@ export default {
     },
   },
   computed: {
-    // sort() {
-    //   let visitors = this.visitorList;
-
-    //   visitors = visitors.sort((a, b) => {
-    //     const fa = a.name.toLowerCase(); const
-    //       fb = b.name.toLowerCase();
-    //     if (fa < fb) {
-    //       return -1;
-    //     }
-    //     if (fa > fb) {
-    //       return 1;
-    //     }
-    //     return 0;
-    //   });
-    //   return visitors;
-    // },
     filteredVisitors() {
       let visitors = this.visitorList;
       console.log(typeof this.visitorList);
