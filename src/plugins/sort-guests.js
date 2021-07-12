@@ -6,7 +6,7 @@ export const checkout = (arr) => {
     const checkout = date.extractDate(booking.checkout);
     const todayDate = date.today().date;
     const todayMonth = date.today().month;
-    const visitMonth = date.extractMonth(booking.checkin) - 1;
+    const visitMonth = date.extractMonth(booking.checkin);
     const difference = checkout - todayDate;
     if (visitMonth === todayMonth) {
       if (difference === 0) {
@@ -23,7 +23,7 @@ export const incoming = (arr) => {
     const checkin = date.extractDate(booking.checkin);
     const todayDate = date.today().date;
     const todayMonth = date.today().month;
-    const visitMonth = date.extractMonth(booking.checkin) - 1;
+    const visitMonth = date.extractMonth(booking.checkin);
     const difference = checkin - todayDate;
     if (visitMonth === todayMonth) {
       if (difference >= 0 && difference < 2) {

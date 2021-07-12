@@ -89,4 +89,7 @@ export const getters = {
     const orders = SortOrders.currentWeekOrders(state.orders);
     return SortOrders.orderTotalByDay(orders);
   },
+  sortCurrentMonthOrders(state) {
+    return SortOrders.currentMonthOrders(state.orders);
+  },
 };

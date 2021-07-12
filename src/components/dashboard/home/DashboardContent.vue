@@ -21,7 +21,7 @@
             <TodoList />
           </div>
           <div id="doughnut-container">
-            <SummaryDoughnut />
+            <SummaryDoughnut :dataArr="monthlyOrders"/>
           </div>
         </div>
       </div>
@@ -84,6 +84,7 @@ export default {
       pendingOrders: 'sortPendingOrders',
       weeklyGuests: 'sortCurrentWeekGuests',
       weeklyOrders: 'sortCurrentWeekOrders',
+      monthlyOrders: 'sortCurrentMonthOrders',
     }),
   },
 };

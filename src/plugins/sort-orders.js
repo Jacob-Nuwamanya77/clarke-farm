@@ -6,7 +6,7 @@ export const incoming = (arr) => {
     const createdAt = date.extractDate(order.createdAt);
     const todayDate = date.today().date;
     const todayMonth = date.today().month;
-    const createdAtMonth = date.extractMonth(order.createdAt) - 1;
+    const createdAtMonth = date.extractMonth(order.createdAt);
     const difference = todayDate - createdAt;
     if (createdAtMonth === todayMonth) {
       if (difference >= 0 && difference <= 3) {
@@ -65,4 +65,14 @@ export const orderTotalByDay = (arr) => {
     summary[day] += Number(order.order);
   });
   return summary;
+};
+
+export const currentMonthOrders = (arr) => {
+  const currentMonth = date.today().month;
+  const currentYear = date.today().year;
+  return arr.filter((order) => {
+    const orderMonth = date.extractMonth(order.createdAt);
+    const orderYear = date.extractYear(order.createdAt);
+    return currentMonth === orderMonth && currentYear === orderYear;
+  });
 };

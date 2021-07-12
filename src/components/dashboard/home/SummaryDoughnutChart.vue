@@ -1,18 +1,11 @@
 <template>
   <div id="summary-doughnut-container">
-    <div id="filter-container">
-      <label for="filter">Filter By: </label>
-      <select id="filter" @change="setFilter">
-        <option value="tourism">Tourism</option>
-        <option value="coffee">Coffee</option>
-      </select>
-    </div>
     <div id="chart-details">
       <div id="doughnut-description">
         <p class="title">Coffee Orders</p>
         <p class="muted-detail">Total orders this month</p>
-        <p class="total-count">289</p>
-        <p class="muted-detail">70% of total orders have been delivered</p>
+        <p class="total-count">{{ dataArr.length }}</p>
+        <p class="muted-detail">{{ deliveredOrders }}% of total orders have been processed</p>
       </div>
       <div id="doughnut-chart">
         <DoughnutChart :chartData="configData.chartData" :chartOptions="configData.options"/>
@@ -33,7 +26,7 @@ export default {
           labels: ['Paper bags', 'Sacks'],
           datasets: [
             {
-              data: [10, 30],
+              data: this.monthlyData(),
               backgroundColor: ['orange', 'rgba(6,141,104,1)'],
             },
           ],
@@ -44,8 +37,36 @@ export default {
       },
     };
   },
+  props: {
+    dataArr: {
+      type: Array,
+      required: true,
+    },
+  },
   components: {
     DoughnutChart,
+  },
+  methods: {
+    monthlyData() {
+      let deliveredSacks = 0;
+      let deliveredPaperBags = 0;
+      this.dataArr.forEach((order) => {
+        if (order.delivered === true && order.package === 'Paper bag') {
+          deliveredPaperBags += Number(order.order);
+        }
+        if (order.delivered === true && order.package === 'Sack') {
+          deliveredSacks += Number(order.order);
+        }
+      });
+      return [deliveredPaperBags, deliveredSacks];
+    },
+  },
+  computed: {
+    deliveredOrders() {
+      const totalOrdersPlaced = this.dataArr.length;
+      const deliveredArr = this.dataArr.filter((order) => order.delivered === true);
+      return Math.floor((deliveredArr.length / totalOrdersPlaced) * 100);
+    },
   },
 };
 </script>
@@ -53,27 +74,6 @@ export default {
 <style scoped>
 #summary-doughnut-container{
   height: 100%;
-}
-#filter-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 5px;
-}
-#filter-container label {
-  margin-right: 10px;
-  color:#a9a9a9;
-  font-weight: bold;
-}
-#filter-container select{
-  border:none;
-  height:30px;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: #FAFAFA;
-}
-#filter-container select:hover{
-  cursor: pointer;
 }
 #chart-details{
   display: flex;

@@ -39,18 +39,21 @@ export const monthInText = (index) => {
 };
 
 export const extractDate = (value) => {
-  // Format yyyy-mm-dd
-  const date = Number(value.substr(value.length - 2, 2));
-  return date;
+  const valueDate = new Date(value);
+  return valueDate.getDate();
 };
 
 export const extractMonth = (value) => {
-  // Format yyyy-mm-dd
-  const month = Number(value.substr(5, 2));
-  return month;
+  const valueDate = new Date(value);
+  return valueDate.getMonth();
 };
 
 export const extractDay = (value) => {
-  const date = new Date(value);
-  return dayInText(date.getDay());
+  const valueDate = new Date(value);
+  return dayInText(valueDate.getDay());
+};
+
+export const extractYear = (value) => {
+  const valueDate = new Date(value);
+  return valueDate.getFullYear();
 };
