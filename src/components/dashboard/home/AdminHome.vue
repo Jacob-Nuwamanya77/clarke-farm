@@ -15,6 +15,9 @@ export default {
     SideNav,
     Content,
   },
+  created() {
+    this.$store.dispatch('fetchAllGuests');
+  },
 };
 </script>
 

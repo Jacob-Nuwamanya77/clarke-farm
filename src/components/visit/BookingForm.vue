@@ -172,8 +172,6 @@
 </template>
 
 <script>
-import GuestService from '@/services/guest-service';
-
 export default {
   name: 'BookingForm',
   data() {
@@ -194,7 +192,7 @@ export default {
   methods: {
     async handleSubmitForm() {
       try {
-        await GuestService.postGuest(this.visitor);
+        await this.$store.dispatch('saveGuest', this.visitor);
         this.visitor = {
           name: '',
           email: '',
@@ -203,6 +201,7 @@ export default {
           checkout: '',
           guestNumber: '',
           accomodation: '',
+          bookingtype: 'Tour',
           requests: '',
         };
         this.$swal({

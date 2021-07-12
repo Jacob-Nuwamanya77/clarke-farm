@@ -19,7 +19,7 @@ export default {
           labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
           datasets: [
             {
-              data: this.weeklyData(),
+              data: [],
               backgroundColor: [
                 '#041C34',
                 '#143454',
@@ -71,6 +71,12 @@ export default {
     dataObj: {
       type: Object,
       required: true,
+    },
+  },
+  watch: {
+    dataObj(newData) {
+      console.log(newData);
+      this.configData.chartData.datasets[0].data = newData;
     },
   },
   methods: {
