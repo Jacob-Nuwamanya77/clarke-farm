@@ -22,7 +22,7 @@ app.use('/api/activities', activityRouter);
 app.use('/api/tasks', tasksRouter);
 app.use('/api/guests', visitorRouter);
 app.use('/api/coffee-orders', coffeeRouter);
-app.use(accomodationRouter);
+app.use('/api/accomodations', accomodationRouter);
 app.use(trainingRouter);
 
 // ESTABLISHING DATABASE CONNECTION

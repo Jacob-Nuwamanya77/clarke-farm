@@ -1,30 +1,28 @@
 const express = require('express');
 
-// eslint-disable-next-line import/no-unresolved
-const Accomodation = require('../models/accommodationModel');
-
-// Creating a Router
 const router = express.Router();
+const uploads = require('../shared/multer')('accomodations');
+const Accomodation = require('../Models/accommodationModel');
 
-// ADD ACCOMODATION TO ACCOMODATIONS TABLE
-router.post('/accomodations/add', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const newAccomodation = new Accomodation(req.body);
-    await newAccomodation.save()
-      .then(() => res.json('Accomodation Added'));
+    const accomodation = await Accomodation.find({});
+    res.send(accomodation);
   } catch (error) {
-    console.error(error);
-    res.json('Unsuccessful! Please Try Again');
+    console.log(error);
   }
 });
 
-// FIND ALL ACCOMODATIONS
-router.get('/accommodations', async (req, res) => {
+router.post('/', uploads.single('file'), async (req, res) => {
   try {
-    const accomodations = await Accomodation.find();
-    res.json(accomodations);
+    const { filename } = req.file;
+    const data = { ...req.body, filename };
+    const activity = await Accomodation(data);
+    activity.save();
   } catch (error) {
-    res.status(400).send('Unable to find records');
+    console.log(error);
+    res.status(400).send('Something went wrong with the upload');
   }
 });
+
 module.exports = router;

@@ -1,22 +1,20 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
-
-const accomodationSchema = new Schema({
-  filename: {
-    type: String,
-  },
-  accommodationtype: {
+const accomodationSchema = mongoose.Schema({
+  title: {
+    required: true,
     type: String,
   },
   description: {
+    required: true,
     type: String,
   },
-  fee: {
+  filename: {
+    required: true,
     type: String,
   },
-}, {
-  collection: 'accomodations',
+  currency: String,
+  cost: String,
 });
 
-module.exports = mongoose.model('Accomodation', accomodationSchema);
+module.exports = mongoose.model('accomodations', accomodationSchema);
