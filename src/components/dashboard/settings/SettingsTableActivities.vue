@@ -127,7 +127,15 @@ export default {
     },
     submitActivityObject() {
       const activity = this.createActivityObject();
-      this.$store.dispatch('saveActivity', activity);
+      this.$store.dispatch('saveActivity', activity)
+        .then(() => {
+          this.title = '';
+          this.description = '';
+          this.priced = 'No';
+          this.currency = '$';
+          this.cost = '0.00';
+          this.file = '';
+        });
     },
   },
 };
