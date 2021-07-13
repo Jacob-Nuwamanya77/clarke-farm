@@ -286,8 +286,17 @@ textarea{
 }
 .display-list{
   margin-top: 25px;
-  height:90%;
-  overflow-y: scroll;
+  height:100%;
+  overflow-y: auto;
+}
+.display-list::-webkit-scrollbar{
+  width:10px;
+}
+.display-list::-webkit-scrollbar-track{
+  background-color: #989898;
+}
+.display-list::-webkit-scrollbar-thumb{
+  background-color: #767676;
 }
 .task-initials{
   display: flex;

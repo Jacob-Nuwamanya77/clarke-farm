@@ -105,7 +105,16 @@ export default {
   margin-right: auto;
   padding-left: 10px;
   margin-top: 15px;
-  overflow-y:scroll;
+  overflow-y:auto;
+}
+.summary-container::-webkit-scrollbar{
+  width:10px;
+}
+.summary-container::-webkit-scrollbar-track{
+  background-color: #989898;
+}
+.summary-container::-webkit-scrollbar-thumb{
+  background-color: #767676;
 }
 .title{
   margin:0;
