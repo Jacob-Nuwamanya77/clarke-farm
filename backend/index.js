@@ -14,15 +14,15 @@ app.use(express.urlencoded({ extended: true }));
 const visitorRouter = require('./Controllers/visitorRoutes');
 const activityRouter = require('./Controllers/activityRoutes');
 const accomodationRouter = require('./Controllers/accommodationRoutes');
-const coffeeprocessRouter = require('./Controllers/coffeeprocessRoutes');
+const coffeeRouter = require('./Controllers/coffeeRoutes');
 const trainingRouter = require('./Controllers/trainingRoutes');
 const tasksRouter = require('./Controllers/tasksRoutes');
 
 app.use('/api/activities', activityRouter);
 app.use('/api/tasks', tasksRouter);
 app.use('/api/guests', visitorRouter);
+app.use('/api/coffee-orders', coffeeRouter);
 app.use(accomodationRouter);
-app.use(coffeeprocessRouter);
 app.use(trainingRouter);
 
 // ESTABLISHING DATABASE CONNECTION

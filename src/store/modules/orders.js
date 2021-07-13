@@ -1,78 +1,27 @@
 import * as SortOrders from '@/plugins/sort-orders';
+import CoffeeOrderService from '@/services/coffee-order-service';
 
 export const state = {
-  orders: [
-    {
-      name: 'jacob nuwamanya',
-      email: 'nuwamanyajacob@gmail.com',
-      phone: '0784246950',
-      package: 'Paper bag',
-      order: '50',
-      requests: '',
-      createdAt: '2021-07-11',
-      delivered: false,
-    },
-    {
-      name: 'mercy wamanga',
-      email: 'nuwamanyajacob@gmail.com',
-      phone: '0784246950',
-      package: 'Paper bag',
-      order: '50',
-      requests: '',
-      createdAt: '2021-07-12',
-      delivered: true,
-    },
-    {
-      name: 'mariat ndagire',
-      email: 'nuwamanyajacob@gmail.com',
-      phone: '0784246950',
-      package: 'Sack',
-      order: '50',
-      requests: '',
-      createdAt: '2021-07-12',
-      delivered: true,
-    },
-    {
-      name: 'stephen mwanika',
-      email: 'nuwamanyajacob@gmail.com',
-      phone: '0784246950',
-      package: 'Paper bag',
-      order: '50',
-      requests: '',
-      createdAt: '2021-07-13',
-      delivered: true,
-    },
-    {
-      name: 'marieh musiimenta',
-      email: 'nuwamanyajacob@gmail.com',
-      phone: '0784246950',
-      package: 'Paper bag',
-      order: '50',
-      requests: '',
-      createdAt: '2021-07-14',
-      delivered: true,
-    },
-    {
-      name: 'emmanuel kodwo',
-      email: 'nuwamanyajacob@gmail.com',
-      phone: '0784246950',
-      package: 'Sack',
-      order: '150',
-      requests: '',
-      createdAt: '2021-07-16',
-      delivered: true,
-    },
-    {
-      name: 'emmanuel kodwo',
-      email: 'nuwamanyajacob@gmail.com',
-      phone: '0784246950',
-      package: 'Sack',
-      order: '150',
-      requests: '',
-      createdAt: '2021-07-17',
-      delivered: true,
-    },
-  ],
+  orders: [],
+};
+
+export const actions = {
+  saveCoffeeOrder(context, payload) {
+    CoffeeOrderService.postCoffeeOrder(payload);
+  },
+  fetchAllCoffeeOrders({ commit }) {
+    CoffeeOrderService.getCoffeeOrders()
+      .then((response) => {
+        commit('ADD_ALL_ORDERS', response.data);
+      })
+      .catch((error) => console.log(error));
+  },
+};
+
+export const mutations = {
+  ADD_ALL_ORDERS(state, orders) {
+    state.orders = orders;
+  },
 };
 
 export const getters = {
