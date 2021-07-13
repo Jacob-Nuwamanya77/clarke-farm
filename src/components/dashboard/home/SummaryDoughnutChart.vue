@@ -5,7 +5,7 @@
         <p class="title">Coffee Orders</p>
         <p class="muted-detail">Total orders this month</p>
         <p class="total-count">{{ dataArr.length }}</p>
-        <p class="muted-detail">{{ deliveredOrders }}% of total orders have been processed</p>
+        <p class="muted-detail">{{ deliveredPercent }}% of total orders have been processed</p>
       </div>
       <div id="doughnut-chart">
         <DoughnutChart :chartData="configData.chartData" :chartOptions="configData.options"/>
@@ -21,20 +21,8 @@ export default {
   name: 'SummaryDoughtnutChart',
   data() {
     return {
-      configData: {
-        chartData: {
-          labels: ['Paper bags', 'Sacks'],
-          datasets: [
-            {
-              data: this.monthlyData(),
-              backgroundColor: ['orange', 'rgba(6,141,104,1)'],
-            },
-          ],
-        },
-        options: {
-          cutoutPercentage: 65,
-        },
-      },
+      orders: [],
+      deliveredPercent: 0,
     };
   },
   props: {
@@ -43,29 +31,51 @@ export default {
       required: true,
     },
   },
+  watch: {
+    dataArr(newData) {
+      this.orders = this.monthlyData(newData);
+      this.deliveredPercent = this.deliveredOrders(newData);
+    },
+  },
   components: {
     DoughnutChart,
   },
   methods: {
-    monthlyData() {
-      let deliveredSacks = 0;
-      let deliveredPaperBags = 0;
-      this.dataArr.forEach((order) => {
-        if (order.delivered === true && order.package === 'Paper bag') {
-          deliveredPaperBags += Number(order.order);
+    monthlyData(data) {
+      let sackOrders = 0;
+      let paperbagOrders = 0;
+      data.forEach((order) => {
+        if (order.package === 'Paper bag') {
+          paperbagOrders += Number(order.order);
         }
-        if (order.delivered === true && order.package === 'Sack') {
-          deliveredSacks += Number(order.order);
+        if (order.package === 'Sack') {
+          sackOrders += Number(order.order);
         }
       });
-      return [deliveredPaperBags, deliveredSacks];
+      return [paperbagOrders, sackOrders];
+    },
+    deliveredOrders(data) {
+      const totalOrdersPlaced = data.length;
+      const deliveredArr = data.filter((order) => order.delivered === true);
+      return Math.floor((deliveredArr.length / totalOrdersPlaced) * 100);
     },
   },
   computed: {
-    deliveredOrders() {
-      const totalOrdersPlaced = this.dataArr.length;
-      const deliveredArr = this.dataArr.filter((order) => order.delivered === true);
-      return Math.floor((deliveredArr.length / totalOrdersPlaced) * 100);
+    configData() {
+      return {
+        chartData: {
+          labels: ['Paper bags', 'Sacks'],
+          datasets: [
+            {
+              data: this.orders,
+              backgroundColor: ['orange', 'rgba(6,141,104,1)'],
+            },
+          ],
+        },
+        options: {
+          cutoutPercentage: 65,
+        },
+      };
     },
   },
 };

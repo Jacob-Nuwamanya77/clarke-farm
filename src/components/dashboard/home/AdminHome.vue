@@ -17,6 +17,7 @@ export default {
   },
   created() {
     this.$store.dispatch('fetchAllGuests');
+    this.$store.dispatch('fetchAllCoffeeOrders');
   },
 };
 </script>

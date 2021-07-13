@@ -26,7 +26,7 @@
           <SummaryByDate cardTitle="Check out" product="tourism" :list ="checkOutGuests" category="out" />
         </template>
         <template v-else>
-          <SummaryByDate cardTitle="Latest orders" product="coffee" :list="incomingOrders" category="in" />
+          <SummaryByDate cardTitle="Today's orders" product="coffee" :list="incomingOrders" category="in" />
         </template>
       </div>
     </div>

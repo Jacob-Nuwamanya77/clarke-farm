@@ -22,6 +22,11 @@ const coffeeOrderSchema = new Schema({
   requests: {
     type: String,
   },
+  estimatedDelivery: {
+    type: String,
+    required: true,
+  },
+  delivered: Boolean,
   bookingtype: {
     type: String,
   },

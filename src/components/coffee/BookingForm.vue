@@ -80,12 +80,15 @@
 
             />
           </div>
-           <input
+          <div class="input-container">
+            <input
               type="text"
               name="bookingtype"
-              v-model="order.bookingtype"
-              hidden
+              placeholder="When do you want this order"
+              onfocus='(this.type="date")'
+              v-model="order.estimatedDelivery"
             />
+          </div>
           <div class="input-container">
             <textarea
               placeholder="Questions or special requests"
@@ -115,6 +118,8 @@ export default {
         phone: '',
         package: 'Paper bag',
         order: '',
+        estimatedDelivery: '',
+        delivered: false,
         requests: '',
         bookingtype: 'Coffee',
       },
@@ -130,6 +135,8 @@ export default {
           phone: '',
           package: 'Paper bag',
           order: '',
+          estimatedDelivery: '',
+          delivered: false,
           requests: '',
           bookingtype: 'Coffee',
         };
