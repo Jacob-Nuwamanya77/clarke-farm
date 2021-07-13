@@ -8,10 +8,10 @@
           </a>
         </div>
         <div id="signin-options">
-          <span id="notifications">
+          <!-- <span id="notifications">
             <fa icon = "bell" id="bell-icon"/>
             <span id="notifications-counter">10</span>
-          </span>
+          </span> -->
           <span id="user-details">
             <span id="user-name">Mariat Ndagire</span>
             <span id="user-role">Administrator</span>
