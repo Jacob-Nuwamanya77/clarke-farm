@@ -77,9 +77,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
-const api = 'http://localhost:3000';
 export default {
   name: 'TrainingRegistration',
   data() {
@@ -97,10 +94,7 @@ export default {
   },
   methods: {
     async handleSubmitForm() {
-      const endpoint = '/visitors/add';
       try {
-        await axios.post(api + endpoint, this.visitor);
-        // this.$router.push('/admin');
         this.visitor = {
           name: '',
           email: '',
