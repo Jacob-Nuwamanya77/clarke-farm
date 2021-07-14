@@ -45,7 +45,12 @@ mongoose.connection
 
 // Handle production.
 if (process.env.NODE_ENV === 'production') {
+  // Static directory.
   app.use(express.static(path.join(__dirname, '/public/')));
+  // Handle routing in SPA.
+  app.get(/.*/, (req, res) => {
+    res.sendFile(path.join(__dirname, '/public/index.html'));
+  });
 }
 
 // SERVER LISTENING TO REQUESTS
