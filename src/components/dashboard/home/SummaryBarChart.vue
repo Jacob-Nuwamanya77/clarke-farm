@@ -8,7 +8,7 @@
       </select>
     </div>
     <div id="graph-container">
-      <BarGraph :height="180" :chartData="configData.chartData" :chartOptions="configData.options"/>
+      <BarGraph :height="180" :chartData="configData.chartData" :chartOptions="configData.options" :key="componentKey"/>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@ export default {
       guests: [],
       orders: [],
       chartTitle: 'Guest Bookings',
+      componentKey: 0,
     };
   },
   components: {
@@ -55,6 +56,7 @@ export default {
       } else {
         this.chartTitle = 'Coffee Orders';
       }
+      this.forceRender();
     },
     weeklyData(srcObject) {
       const arrData = [];
@@ -62,6 +64,9 @@ export default {
         if (Object.prototype.hasOwnProperty.call(srcObject, prop)) arrData.push(srcObject[prop]);
       }
       return arrData;
+    },
+    forceRender() {
+      this.componentKey += 1;
     },
   },
   computed: {

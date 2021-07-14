@@ -7,18 +7,7 @@ const Activity = require('../Models/activityModel');
 router.get('/', async (req, res) => {
   try {
     const activities = await Activity.find({});
-    const data = [];
-    activities.forEach((entry) => {
-      const activity = {
-        title: entry.title,
-        description: entry.description,
-        priced: entry.priced,
-        currency: entry.currency,
-        cost: entry.cost,
-      };
-      data.push(activity);
-    });
-    res.send(data);
+    res.send(activities);
   } catch (error) {
     console.log(error);
   }
