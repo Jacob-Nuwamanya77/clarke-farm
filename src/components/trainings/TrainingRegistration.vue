@@ -95,6 +95,7 @@ export default {
   methods: {
     async handleSubmitForm() {
       try {
+        await this.$store.dispatch('saveTraining', this.visitor);
         this.visitor = {
           name: '',
           email: '',

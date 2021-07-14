@@ -6,7 +6,7 @@
   </div>
 <div class="main-body">
 <h4 class="text-center">Sign In</h4>
-<img src="@/assets/images/Login/siginImage.png"  class="center">
+<!-- <img src="@/assets/images/Login/siginImage.png"  class="center"> -->
 <div>
 </div>
 <form>

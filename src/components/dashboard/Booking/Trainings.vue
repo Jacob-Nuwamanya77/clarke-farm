@@ -20,22 +20,17 @@
         <div class="row">
           <div class="col-md-6 mt-3">
             <label class=" mt-1">Sort By:</label>
-            <select
+            <select v-model="selected" @change="tourists"
               class="form-select form-select-sm "
               aria-label="Default select example"
             >
-              <option selected>All Categories</option>
-              <option value="1">Tours</option>
-              <option value="2">Trainings</option>
-              <option value="3">CoffeeFarm</option>
+              <option value="all">All Categories</option>
+              <option value="tours">Tours</option>
+              <option value="trainings">Trainings</option>
+              <option value="coffee">CoffeeFarm</option>
               </select>
           </div>
-          <div class="form-group my-lg-0 d-flex justify-content-end col-md-6 float-right has-search">
-            <div>
-            <span class="form-control-feedback ">
-              <fa icon="search" />
-            </span>
-            </div>
+          <div class="form-group my-lg-0 d-flex justify-content-end col-md-6 float-right">
             <div>
             <input
               type="text"
@@ -60,7 +55,7 @@
             class="text-danger delete-btn"
           />
           </a>
-          <table class="table  table-responsive table-hover table-nowrap mt-5 font-size-12">
+          <table class="table  table-responsive table-hover table-striped table-nowrap mt-5 font-size-12">
             <thead class="table-secondary font-size-10 ">
               <tr >
                 <td>
@@ -269,9 +264,11 @@ export default {
     return {
       visitorList: [],
       searchterm: '',
+      selected: '',
     };
   },
   async created() {
+    console.log(this.$store.state.trainings);
     await axios
       .get('http://localhost:3000/visitors')
       .then((res) => {
@@ -336,6 +333,14 @@ export default {
         );
       }
       return visitors;
+    },
+    tourists() {
+      let tourvisitors = this.visitorList;
+      if (this.selected === 'coffee') {
+        tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Coffee Farm');
+      }
+
+      return tourvisitors;
     },
   },
 };
