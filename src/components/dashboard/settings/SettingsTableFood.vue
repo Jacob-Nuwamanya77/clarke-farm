@@ -15,7 +15,7 @@
             data-bs-dismiss="modal" aria-label="Close"/>
           </div>
           <div class="modal-body">
-              <form class="form-group">
+              <form class="form-group" @submit.prevent="submitFoodObject">
               <div class="mb-3 form-group">
                 <label for="title">Dish title</label>
                 <input type="text" class="form-control" name="title" id="title" v-model="title">
@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import FoodService from '@/services/food-service';
+
 export default {
   name: 'ActivityModal',
   data() {
@@ -64,6 +66,29 @@ export default {
       cost: '0.00',
       file: '',
     };
+  },
+  methods: {
+    onFileChange() {
+      this.file = this.$refs.file.files[0];
+    },
+    createFoodObject() {
+      const inputData = {
+        title: this.title,
+        description: this.description,
+        currency: this.currency,
+        cost: this.cost,
+        file: this.file,
+      };
+      const formData = new FormData();
+      for (const [key, value] of Object.entries(inputData)) {
+        formData.append(key, value);
+      }
+      return formData;
+    },
+    submitFoodObject() {
+      const food = this.createFoodObject();
+      FoodService.postFood(food);
+    },
   },
 
 };
