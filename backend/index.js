@@ -15,6 +15,7 @@ const visitorRouter = require('./Controllers/visitorRoutes');
 const activityRouter = require('./Controllers/activityRoutes');
 const accomodationRouter = require('./Controllers/accommodationRoutes');
 const coffeeRouter = require('./Controllers/coffeeRoutes');
+const foodRouter = require('./Controllers/foodRoutes');
 const trainingRouter = require('./Controllers/trainingRoutes');
 const tasksRouter = require('./Controllers/tasksRoutes');
 
@@ -23,6 +24,7 @@ app.use('/api/tasks', tasksRouter);
 app.use('/api/guests', visitorRouter);
 app.use('/api/coffee-orders', coffeeRouter);
 app.use('/api/accomodations', accomodationRouter);
+app.use('/api/foods', foodRouter);
 app.use(trainingRouter);
 
 // ESTABLISHING DATABASE CONNECTION
