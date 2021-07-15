@@ -1,7 +1,7 @@
 const express = require('express');
 
 const router = express.Router();
-const uploads = require('../shared/multer')('activities');
+const uploads = require('../shared/multer')();
 const Activity = require('../Models/activityModel');
 
 router.get('/', async (req, res) => {
