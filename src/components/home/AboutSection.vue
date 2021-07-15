@@ -35,7 +35,12 @@
       <div id="our-projects">
         <p class="section-sub-heading center-text">Projects</p>
         <div class="card-container">
-          <Card v-for="(project, index) in filterDisplayData" :key="index" :item="project"/>
+          <Card
+            v-for="(project, index) in filterDisplayData"
+            :key="index"
+            :item="project"
+            :staticImg="true"
+            imgDir="projects"/>
         </div>
         <div class="arr-nav-container">
           <ArrowNavigation

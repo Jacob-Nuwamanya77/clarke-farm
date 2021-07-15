@@ -2,14 +2,12 @@
   <div id="train-with-us">
     <p class="section-title">Why train with us</p>
     <p class="sub-text">
-      Wisdom is a product of knowledge and experience. Over the years, we have
-      acquired both through testing and trials. We will teach you how to manage a large
-      workforce, increase production and revenue. Below are our seasonal harvests.
+      Our production reflects our experience and knowledge.
     </p>
     <div id="capacity">
       <div class="stat-container">
         <div class="stat">
-          <div class="stat-num">700K</div>
+          <div class="stat-num">1M +</div>
           <div class="stat-text">KGs of coffee </div>
         </div>
         <div class="stat">
@@ -18,22 +16,27 @@
         </div>
         <div class="stat">
           <div class="stat-num">20K</div>
-          <div class="stat-text">KGs of Irish</div>
+          <div class="stat-text">KGs of Irish / ha</div>
         </div>
         <div class="stat">
-          <div class="stat-num">120 ha</div>
+          <div class="stat-num">60 ha</div>
           <div class="stat-text">Maize</div>
         </div>
         <div class="stat">
           <div class="stat-num">9 ha</div>
-          <div class="stat-text">Matooke</div>
+          <div class="stat-text">Matooke &amp; Vanilla</div>
         </div>
       </div>
     </div>
     <div id="training-programs">
-      <p class="section-sub-heading">Categories</p>
+      <p class="section-sub-heading">Training Categories</p>
       <div class="card-container">
-        <Card v-for="(project, index) in filterDisplayData" :key="index" :item="project"/>
+        <Card
+        v-for="(project, index) in filterDisplayData"
+        :key="index"
+        :item="project"
+        :staticImg="true"
+        imgDir="categories"/>
       </div>
       <div class="arr-nav-container">
           <ArrowNavigation
@@ -70,7 +73,7 @@ export default {
   },
   computed: {
     ...mapState({
-      projects: (state) => state.projects.projects,
+      projects: (state) => state.trainings.categories,
     }),
     filterDisplayData() {
       const data = [...this.projects];

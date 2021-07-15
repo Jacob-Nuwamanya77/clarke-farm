@@ -6,6 +6,8 @@ import * as reviews from './modules/reviews';
 import * as projects from './modules/projects';
 import * as bookings from './modules/bookings';
 import * as orders from './modules/orders';
+import * as trainings from './modules/training-categories';
+import * as processing from './modules/processing-guide';
 
 export default createStore({
   modules: {
@@ -16,5 +18,7 @@ export default createStore({
     projects,
     bookings,
     orders,
+    trainings,
+    processing,
   },
 });

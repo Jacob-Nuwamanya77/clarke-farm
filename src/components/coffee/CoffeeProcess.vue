@@ -6,7 +6,12 @@
         This is a step by step guide showing our coffee process.
       </p>
       <div class="card-container">
-        <Card v-for="(process, index) in filterDisplayData" :key="index" :item="process"/>
+        <Card
+        v-for="(process, index) in filterDisplayData"
+        :key="index"
+        :item="process"
+        :staticImg="true"
+        imgDir="processing"/>
       </div>
       <div class="arr-nav-container">
         <ArrowNavigation

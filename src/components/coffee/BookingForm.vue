@@ -6,7 +6,7 @@
     <div class="registration-container">
       <div id="registration-image">
         <img
-          src="@/assets/images/mother-garden.jpg"
+          src="@/assets/images/stalk.jpg"
           alt="welcome"
           aria-hidden="true"
         />
