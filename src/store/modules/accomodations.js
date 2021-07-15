@@ -19,3 +19,7 @@ export const mutations = {
     state.accomodations = accomodations;
   },
 };
+
+export const getters = {
+  allAccomodations: (state) => state.accomodations,
+};

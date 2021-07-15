@@ -19,3 +19,7 @@ export const mutations = {
     state.foods = foods;
   },
 };
+
+export const getters = {
+  allFoods: (state) => state.foods,
+};

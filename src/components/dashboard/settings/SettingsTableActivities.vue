@@ -97,7 +97,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'ActivityModal',
   created() {
-    this.fetchAll();
+    this.fetchAllActivities();
   },
   data() {
     return {
@@ -111,7 +111,7 @@ export default {
   },
   computed: mapGetters(['allActivities']),
   methods: {
-    ...mapActions(['fetchAll', 'deleteActivity']),
+    ...mapActions(['fetchAllActivities']),
     onFileChange() {
       this.file = this.$refs.file.files[0];
     },
@@ -176,10 +176,5 @@ td{
 .edit{
   color:rgba(20,20,20,0.7);
 }
-/*
-table{
-    border-collapse: separate;
-    border-spacing:0 20px;
-} */
 
 </style>
