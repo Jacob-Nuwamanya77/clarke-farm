@@ -54,8 +54,6 @@
 </template>
 
 <script>
-import AccomodationService from '@/services/accomodation-service';
-
 export default {
   name: 'ActivityModal',
   data() {
@@ -87,7 +85,12 @@ export default {
     },
     submitAccomodationObject() {
       const accomodation = this.createAccomodationObject();
-      AccomodationService.postAccomodation(accomodation);
+      this.$store.dispatch('saveAccomodation', accomodation);
+      this.title = '';
+      this.description = '';
+      this.currency = '$';
+      this.cost = '0.00';
+      this.file = '';
     },
   },
 };
