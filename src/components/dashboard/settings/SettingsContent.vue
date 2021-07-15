@@ -67,12 +67,14 @@ export default {
 
 .nav-tabs .nav-item .nav-link {
   background-color: #fff;
-   color: #068d68;
+   color: #068D68;
 }
 
 .nav-tabs .nav-item .nav-link.active {
-  color: #fff;
-  background-color:  #068d68;
+  color: #6c757d;
+  /* background-color:  #068d68; */
+  border-bottom: 3px solid  #068D68;
+
 }
 a{
     text-decoration: none;
