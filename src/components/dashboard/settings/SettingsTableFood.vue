@@ -88,6 +88,11 @@ export default {
     submitFoodObject() {
       const food = this.createFoodObject();
       FoodService.postFood(food);
+      this.title = '';
+      this.description = '';
+      this.currency = '$';
+      this.cost = '0.00';
+      this.file = '';
     },
   },
 
