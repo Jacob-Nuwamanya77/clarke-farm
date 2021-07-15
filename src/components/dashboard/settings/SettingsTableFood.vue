@@ -54,8 +54,6 @@
 </template>
 
 <script>
-import FoodService from '@/services/food-service';
-
 export default {
   name: 'ActivityModal',
   data() {
@@ -87,7 +85,7 @@ export default {
     },
     submitFoodObject() {
       const food = this.createFoodObject();
-      FoodService.postFood(food);
+      this.$store.dispatch('saveFood', food);
       this.title = '';
       this.description = '';
       this.currency = '$';

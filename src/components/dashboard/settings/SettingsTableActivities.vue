@@ -94,8 +94,6 @@
 </template>
 
 <script>
-import ActivityService from '@/services/activity-service';
-
 export default {
   name: 'ActivityModal',
   data() {
@@ -129,7 +127,7 @@ export default {
     },
     submitActivityObject() {
       const activity = this.createActivityObject();
-      ActivityService.postActivity(activity);
+      this.$store.dispatch('saveActivity', activity);
       this.title = '';
       this.description = '';
       this.priced = 'No';
