@@ -1,7 +1,7 @@
 <template>
   <div class="card-item">
     <div class="card-image-container">
-      <img :src="item.img" aria-hidden="true">
+      <img :src="createImagePath(item.filename)" aria-hidden="true">
     </div>
     <div class="card-content">
       <p class="card-title">{{ capitalizeEachWord(item.title) }}</p>
@@ -27,6 +27,11 @@ export default {
     },
   },
   mixins: [FormatText],
+  methods: {
+    createImagePath(filename) {
+      return `/images/${filename}`;
+    },
+  },
 };
 </script>
 

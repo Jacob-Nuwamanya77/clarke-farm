@@ -24,9 +24,11 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'OurOffers',
-  // created() {
-  //   this.$store.dispatch('fetchAll');
-  // },
+  created() {
+    this.$store.dispatch('fetchAllActivities');
+    this.$store.dispatch('fetchAllAccomodations');
+    this.$store.dispatch('fetchAllFoods');
+  },
   data() {
     return {
       tabs: ['Activities', 'Accomodation', 'Food'],

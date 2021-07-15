@@ -15,7 +15,7 @@
             data-bs-dismiss="modal" aria-label="Close"/>
           </div>
           <div class="modal-body">
-            <form class="form-group">
+            <form class="form-group" @submit.prevent="submitAccomodationObject">
               <div class="mb-3 form-group">
                 <label for="title">Accommodation title</label>
                 <input type="text" class="form-control" name="title" id="title" v-model="title">
@@ -64,6 +64,34 @@ export default {
       cost: '0.00',
       file: '',
     };
+  },
+  methods: {
+    onFileChange() {
+      this.file = this.$refs.file.files[0];
+    },
+    createAccomodationObject() {
+      const inputData = {
+        title: this.title,
+        description: this.description,
+        currency: this.currency,
+        cost: this.cost,
+        file: this.file,
+      };
+      const formData = new FormData();
+      for (const [key, value] of Object.entries(inputData)) {
+        formData.append(key, value);
+      }
+      return formData;
+    },
+    submitAccomodationObject() {
+      const accomodation = this.createAccomodationObject();
+      this.$store.dispatch('saveAccomodation', accomodation);
+      this.title = '';
+      this.description = '';
+      this.currency = '$';
+      this.cost = '0.00';
+      this.file = '';
+    },
   },
 };
 </script>
