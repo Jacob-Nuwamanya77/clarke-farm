@@ -13,11 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 
 // APP ROUTES
 const visitorRouter = require('./Controllers/visitorRoutes');
-const activityRouter = require('./Controllers/activityRoutes');
-const accomodationRouter = require('./Controllers/accommodationRoutes');
+const activityRouter = require('./Controllers/activitiesRoutes');
+const accomodationRouter = require('./Controllers/accomodationsRoutes');
 const coffeeRouter = require('./Controllers/coffeeRoutes');
 const foodRouter = require('./Controllers/foodRoutes');
-const trainingRouter = require('./Controllers/trainingRoutes');
+const trainingRouter = require('./Controllers/trainingsRoutes');
 const tasksRouter = require('./Controllers/tasksRoutes');
 
 app.use('/api/activities', activityRouter);
