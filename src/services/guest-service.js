@@ -3,7 +3,6 @@ import axios from 'axios';
 const apiClient = axios.create({
   withCredentials: false,
   headers: {
-    'Access-Control-Allow-Origin': '*',
     Accept: 'application/json',
     'Content-Type': 'application/json',
   },

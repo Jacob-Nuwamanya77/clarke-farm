@@ -20,34 +20,20 @@ import TabMenu from '@/components/shared/TabMenu.vue';
 import Card from '@/components/shared/Card.vue';
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
 import SlideNavigation from '@/mixins/slide-navigation';
-import ActivityService from '@/services/activity-service';
-import AccomodationService from '@/services/accomodation-service';
-import FoodService from '@/services/food-service';
+import { mapState } from 'vuex';
 
 export default {
   name: 'OurOffers',
   created() {
-    ActivityService.getActivities()
-      .then((response) => {
-        this.activities = response.data;
-      }).catch(() => console.log('Error fetching activities data'));
-    AccomodationService.getAccomodations()
-      .then((response) => {
-        this.accomodation = response.data;
-      }).catch(() => console.log('Error fetching accomodation data'));
-    FoodService.getFoods()
-      .then((response) => {
-        this.food = response.data;
-      }).catch(() => console.log('Error fetching food data'));
+    this.$store.dispatch('fetchAllActivites');
+    this.$store.dispatch('fetchAllAccomodations');
+    this.$store.dispatch('fetchAllFoods');
   },
   data() {
     return {
       tabs: ['Activities', 'Accomodation', 'Food'],
       page: 1,
       filterBy: 'activities',
-      activities: [],
-      accomodation: [],
-      food: [],
     };
   },
   mixins: [SlideNavigation],
@@ -62,6 +48,11 @@ export default {
     },
   },
   computed: {
+    ...mapState({
+      activities: (state) => state.activities.activities,
+      accomodation: (state) => state.accomodations.accomodations,
+      food: (state) => state.foods.foods,
+    }),
     filterDisplayData() {
       const data = [...this[this.filterBy]];
       return this.filter(data);
