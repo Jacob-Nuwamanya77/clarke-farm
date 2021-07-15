@@ -10,6 +10,7 @@ app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // APP ROUTES
 const visitorRouter = require('./Controllers/visitorRoutes');
@@ -28,6 +29,10 @@ app.use('/api/accomodations', accomodationRouter);
 app.use('/api/foods', foodRouter);
 app.use(trainingRouter);
 
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/index.html'));
+});
+
 // ESTABLISHING DATABASE CONNECTION
 mongoose.connect(process.env.DATABASE, {
   useCreateIndex: true,
@@ -42,16 +47,6 @@ mongoose.connection
   .on('error', (error) => {
     console.log(`Connection error: ${error.message}`);
   });
-
-// Handle production.
-if (process.env.NODE_ENV === 'production') {
-  // Static directory.
-  app.use(express.static(path.join(__dirname, '/public/')));
-  // Handle routing in SPA.
-  app.get(/.*/, (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/index.html'));
-  });
-}
 
 // SERVER LISTENING TO REQUESTS
 const port = process.env.PORT || 3000;
