@@ -29,8 +29,7 @@ export default {
   mixins: [FormatText],
   methods: {
     createImagePath(filename) {
-      console.log(`${__dirname}uploads/${filename}`);
-      return `${__dirname}uploads/${filename}`;
+      return `/images/${filename}`;
     },
   },
 };
