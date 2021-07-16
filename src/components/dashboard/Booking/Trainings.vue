@@ -263,13 +263,13 @@ export default {
     };
   },
   created() {
-    this.$store.dispatch('fetchAllTrainees');
+    // this.$store.dispatch('fetchAllTrainees');
     // console.log(this.visitorList);
     this.Allvisitors();
   },
   methods: {
     Allvisitors() {
-      this.visitorList = this.$store.state.trainees.trainees;
+      this.visitorList = this.$store.state.trainees;
       console.log(this.visitorList);
     },
     check() {

@@ -6,12 +6,9 @@ import * as reviews from './modules/reviews';
 import * as projects from './modules/projects';
 import * as bookings from './modules/bookings';
 import * as orders from './modules/orders';
-<<<<<<< HEAD
 import * as trainees from './modules/trainees';
-=======
 import * as trainings from './modules/training-categories';
 import * as processing from './modules/processing-guide';
->>>>>>> 016b1a4a51f81e631f31ee0472b258337b2f8088
 
 export default createStore({
   modules: {
@@ -22,11 +19,8 @@ export default createStore({
     projects,
     bookings,
     orders,
-<<<<<<< HEAD
     trainees,
-=======
     trainings,
     processing,
->>>>>>> 016b1a4a51f81e631f31ee0472b258337b2f8088
   },
 });
