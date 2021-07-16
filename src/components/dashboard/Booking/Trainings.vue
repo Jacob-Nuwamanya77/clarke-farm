@@ -78,7 +78,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="visitor in visitorList" :key="visitor.id">
+              <tr v-for="visitor in trainees" :key="visitor.id">
                 <td>
                   <input
                     class="form-check-input"
@@ -124,7 +124,7 @@
             </tbody>
           </table>
           <p>
-            Showing {{visitorList.length}} entries of {{visitorList.length}}</p>
+            Showing {{trainees.length}} entries of {{trainees.length}}</p>
           <p
             v-if="visitorList<=0"
             class="text-center"
@@ -257,19 +257,16 @@ export default {
   },
   data() {
     return {
-      visitorList: [],
       searchterm: '',
       selected: '',
     };
   },
   created() {
-    // this.$store.dispatch('fetchAllTrainees');
-    // console.log(this.visitorList);
-    this.Allvisitors();
+    this.$store.dispatch('fetchAllTrainees');
   },
   methods: {
     Allvisitors() {
-      this.visitorList = this.$store.state.trainees;
+      this.visitorList = this.$store.state.trainees.trainees;
       console.log(this.visitorList);
     },
     check() {
