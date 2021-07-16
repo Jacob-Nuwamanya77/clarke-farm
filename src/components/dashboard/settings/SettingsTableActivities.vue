@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-4">
+  <div class="mt-3">
     <div id="add-button">
    <a  class="btn btn-success btn-sm float-end" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Add Activity
@@ -59,33 +59,31 @@
       </div>
     </div>
     <br>
-    <div class="div-table mt-3">
+    <div class="div-table mt-4">
       <table class="table bg-white mt-3">
-  <thead class="table-secondary ">
+  <thead  id="bg-color">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col" >Description</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
+    <tr  v-for="activities in allActivities" :key="activities.id" class="mt-3">
+      <td>
+         <img :src="activities.filename" aria-hidden="true">
+      </td>
+      <td class="title">{{activities.title}}</td>
+       <td class="description">{{activities.description}}</td>
+       <td class="price">{{activities.currency}}{{activities.cost}}</td>
+        <td class="actions">
+          <a href="#"  class="btn text-secondary  btn-sm"
+          role="button" aria-pressed="true">
+            <fa icon="edit" /></a>
+          <a href="#" class="btn text-danger btn-sm edit" role="button" aria-pressed="true"><fa icon="trash" /></a>
+         </td>
     </tr>
   </tbody>
 </table>
@@ -94,8 +92,13 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'ActivityModal',
+  created() {
+    this.fetchAllActivities();
+  },
   data() {
     return {
       title: '',
@@ -106,7 +109,9 @@ export default {
       file: '',
     };
   },
+  computed: mapGetters(['allActivities']),
   methods: {
+    ...mapActions(['fetchAllActivities']),
     onFileChange() {
       this.file = this.$refs.file.files[0];
     },
@@ -143,4 +148,33 @@ export default {
 .mb-5{
   margin-bottom: 5px;
 }
+.description{
+  max-width:150px;
+}
+#bg-color{
+  background-color: #f4f4f4;
+  color:rgba(0,0,0,0.6);
+
+}
+
+td{
+  font-size:15px;
+  color: #6c757d;
+}
+.title{
+  max-width:50px;
+}
+
+.price{
+  max-width:10px;
+}
+
+.actions{
+   max-width:20px;
+}
+
+.edit{
+  color:rgba(20,20,20,0.7);
+}
+
 </style>

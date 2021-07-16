@@ -1,7 +1,12 @@
 <template>
   <div class="card-item">
     <div class="card-image-container">
-      <img :src="createImagePath(item.filename)" aria-hidden="true">
+      <template v-if="staticImg">
+        <img :src="require(`@/assets/images/${imgDir}/${item.filename}`)" aria-hidden="true">
+      </template>
+      <template v-else>
+        <img :src="createImagePath(item.filename)" aria-hidden="true">
+      </template>
     </div>
     <div class="card-content">
       <p class="card-title">{{ capitalizeEachWord(item.title) }}</p>
@@ -24,6 +29,15 @@ export default {
     item: {
       type: Object,
       required: true,
+    },
+    staticImg: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    imgDir: {
+      type: String,
+      required: false,
     },
   },
   mixins: [FormatText],

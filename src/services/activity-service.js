@@ -15,4 +15,12 @@ export default {
   postActivity(activity) {
     return apiClient.post('/api/activities', activity);
   },
+
+  // getActivitiesByID() {
+  //   return apiClient.get('/api/activities/:id');
+  // },
+
+  // deleteActivitiesByID() {
+  //   return apiClient.delete('/api/activities/:id');
+  // },
 };

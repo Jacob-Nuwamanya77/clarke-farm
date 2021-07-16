@@ -50,12 +50,46 @@
       </div>
     </div>
     <br>
+      <div class="div-table mt-4">
+      <table class="table bg-white mt-3">
+  <thead  id="bg-color">
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Title</th>
+      <th scope="col" >Description</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  v-for="accomodations in allAccomodations" :key="accomodations.id" class="mt-3">
+      <td>
+         <img :src="accomodations.filename" aria-hidden="true">
+      </td>
+      <td class="title">{{accomodations.title}}</td>
+       <td class="description">{{accomodations.description}}</td>
+       <td class="price">{{accomodations.currency}}{{accomodations.cost}}</td>
+        <td class="actions">
+          <a href="#"  class="btn text-secondary  btn-sm"
+          role="button" aria-pressed="true">
+            <fa icon="edit" /></a>
+          <a href="#" class="btn text-danger btn-sm edit" role="button" aria-pressed="true"><fa icon="trash" /></a>
+         </td>
+    </tr>
+  </tbody>
+</table>
+    </div>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
-  name: 'ActivityModal',
+  name: 'AccomodationModal',
+  created() {
+    this.fetchAllAccomodations();
+  },
   data() {
     return {
       title: '',
@@ -65,7 +99,9 @@ export default {
       file: '',
     };
   },
+  computed: mapGetters(['allAccomodations']),
   methods: {
+    ...mapActions(['fetchAllAccomodations']),
     onFileChange() {
       this.file = this.$refs.file.files[0];
     },
@@ -99,5 +135,33 @@ export default {
 <style scoped>
 .mb-5{
   margin-bottom: 5px;
+}
+.description{
+  max-width:150px;
+}
+#bg-color{
+  background-color: #f4f4f4;
+  color:rgba(0,0,0,0.6);
+
+}
+
+td{
+  font-size:15px;
+  color: #6c757d;
+}
+.title{
+  max-width:50px;
+}
+
+.price{
+  max-width:10px;
+}
+
+.actions{
+   max-width:20px;
+}
+
+.edit{
+  color:rgba(20,20,20,0.7);
 }
 </style>
