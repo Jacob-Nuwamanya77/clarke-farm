@@ -21,11 +21,14 @@ const coffeeRouter = require('./Controllers/coffeeRoutes');
 const foodRouter = require('./Controllers/foodRoutes');
 const trainingRouter = require('./Controllers/trainingsRoutes');
 const tasksRouter = require('./Controllers/tasksRoutes');
+const traineeRouter = require('./Controllers/TraineeRoutes');
 
 app.use('/api/activities', activityRouter);
 app.use('/api/tasks', tasksRouter);
 app.use('/api/guests', visitorRouter);
+app.use('/api/trainings', trainingRouter);
 app.use('/api/coffee-orders', coffeeRouter);
+app.use('/api/trainees', traineeRouter);
 app.use('/api/accomodations', accomodationRouter);
 app.use('/api/foods', foodRouter);
 app.use(trainingRouter);

@@ -11,10 +11,7 @@ import Content from './Trainings.vue';
 
 export default {
   name: 'Admin',
-  data() {
-    return {
-    };
-  },
+
   components: {
     SideNav,
     Content,

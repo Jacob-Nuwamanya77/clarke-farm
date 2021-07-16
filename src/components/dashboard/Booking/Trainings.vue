@@ -68,20 +68,17 @@
                   ></td>
                 <th>Name</th>
                 <th>Email Address</th>
-
                 <th>Phone Number</th>
                 <th>Order Amount</th>
                 <th>Booking Type </th>
+                <th>GuestNumber</th>
                 <th>Checkin</th>
-                <th>Action</th>
+                <!-- <th>Action</th> -->
 
               </tr>
             </thead>
             <tbody>
-              <tr
-                v-for="visitor in filteredVisitors"
-                :key="visitor._id"
-              >
+              <tr v-for="visitor in visitorList" :key="visitor.id">
                 <td>
                   <input
                     class="form-check-input"
@@ -89,18 +86,15 @@
                     value=""
                     name="visitor"
                     id="defaultCheck1"
-                  ></td>
-                <!-- <td>{{ visitor.createdAt }}</td> -->
-                <td class="text-start">{{ visitor.name }}</td>
-                <td class="text-start">{{ visitor.email }}</td>
-                <td class="text-start">{{ visitor.phone }}</td>
+                  >
+                  </td>
+                 <td class="text-start">{{visitor.name}}</td>
+                <td class="text-start">{{visitor.email}}</td>
+                <td class="text-start">{{visitor.phone}}</td>
                 <td v-if="visitor.bookingtype=='Tour'" class="text-center">N/A</td>
                 <td v-if="visitor.bookingtype=='Coffee-Farm'" class="text-center">50 bags</td>
-                <td v-if="visitor.bookingtype=='Training'" class="text-center">--/--</td>
-                <td
-                  class="text-center"
-                  v-if="visitor.bookingtype=='Tour'"
-                >
+                <td v-if="visitor.bookingtype=='Training'" class="text-center">N/A</td>
+                <td class="text-center" v-if="visitor.bookingtype=='Tour'">
                   <span class="badge badge-pill tour-badge font-size-11">Tour</span>
                   </td>
                   <td
@@ -111,21 +105,21 @@
                     </td>
                     <td
                       class="text-center"
-                      v-else-if="visitor.bookingtype=='Training'"
+                      v-else
                     >
                       <span class="badge badge-pill bg-warning font-size-11">Trainings</span>
                       </td>
-                      <!-- <td>{{ visitor.guestNumber }}</td> -->
+                      <td class="text-center">{{visitor.groupsize}}</td>
                       <td class="text-center">{{ visitor.checkin }}<span
                       v-if="visitor.bookingtype==='Coffee-Farm'">N/A</span></td>
-                      <td class="text-start">
+                      <!-- <td class="text-start">
                         <button
                           type="button"
                           class="btn  view-btn btn-sm btn-rounded"
                           data-toggle="modal"
                           data-target=".booking-detailModal"
                         >View Details</button>
-                      </td>
+                      </td> -->
                       </tr>
             </tbody>
           </table>
@@ -252,6 +246,7 @@ table {
 </style>
 <script>
 import axios from 'axios';
+import { mapState } from 'vuex';
 import detailsModal from './DetailsModal.vue';
 
 const api = 'http://localhost:3000';
@@ -267,18 +262,16 @@ export default {
       selected: '',
     };
   },
-  async created() {
-    console.log(this.$store.state.trainings);
-    await axios
-      .get('http://localhost:3000/visitors')
-      .then((res) => {
-        this.visitorList = res.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  created() {
+    this.$store.dispatch('fetchAllTrainees');
+    // console.log(this.visitorList);
+    this.Allvisitors();
   },
   methods: {
+    Allvisitors() {
+      this.visitorList = this.$store.state.trainees.trainees;
+      console.log(this.visitorList);
+    },
     check() {
       const checkboxes = document.getElementsByName('visitor');
       for (const checkbox of checkboxes) {
@@ -320,6 +313,9 @@ export default {
     },
   },
   computed: {
+    ...mapState({
+      trainees: (state) => state.trainees.trainees,
+    }),
     filteredVisitors() {
       let visitors = this.visitorList;
       console.log(typeof this.visitorList);
@@ -334,14 +330,14 @@ export default {
       }
       return visitors;
     },
-    tourists() {
-      let tourvisitors = this.visitorList;
-      if (this.selected === 'coffee') {
-        tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Coffee Farm');
-      }
+    // tourists() {
+    //   let tourvisitors = this.visitorList;
+    //   if (this.selected === 'coffee') {
+    //     tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Coffee Farm');
+    //   }
 
-      return tourvisitors;
-    },
+    //   return tourvisitors;
+    // },
   },
 };
 </script>
