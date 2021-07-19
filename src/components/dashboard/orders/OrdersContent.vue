@@ -23,13 +23,15 @@
         <div class="row">
           <div class="col-md-6 mt-3">
             <label class=" mt-1">Sort By:</label>
-            <select @change="tourists"
+            <select
+              @change="filteredVisitors"
+              v-model="selected"
               class="form-select form-select-sm "
               aria-label="Default select example"
             >
               <option value="all">All Categories</option>
               <option value="sacks">Sacks</option>
-              <option value="paerbags">Paper Bags</option>
+              <option value="paperbags">Paper Bags</option>
               </select>
           </div>
           <div class="form-group my-lg-0 d-flex justify-content-end col-md-6 float-right">
@@ -94,7 +96,7 @@
                 <td class="text-start">{{order.name}}</td>
                 <td class="text-start">{{order.email}}</td>
                 <td class="text-start">{{order.phone}}</td>
-                <td class="text-center">{{order.order}} {{order.package}}s</td>
+                <td class="text-start">{{order.order}} {{order.package}}s</td>
                 <td
                   class="text-center"
                   v-if="order.delivered=='true'"
@@ -121,6 +123,7 @@
                             class="form-check-label"
                             for="flexSwitchCheckChecked"
                           ></label>
+                      <fa icon="trash-alt" class="delete-icon"/>
                       </div>
                     </td>
                     </tr>
@@ -244,14 +247,14 @@ th {
 }
 </style>
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 
 export default {
   name: 'OrdersContent',
   data() {
     return {
       searchterm: '',
-      selected: '',
+      selected: 'all',
     };
   },
   created() {
@@ -275,19 +278,55 @@ export default {
     ...mapState({
       orders: (state) => state.orders.orders,
     }),
+    ...mapGetters({
+      paperBagOrders: 'paperBags',
+      sackOrders: 'sacks',
+    }),
     filteredOrders() {
-      let orders = this.orders;
-      if (this.searchterm !== '' && this.searchterm) {
-        orders = orders.filter(
-          (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
+      let orders;
+      if (this.selected === 'paperbags') {
+        orders = this.paperBagOrders;
+        if (this.searchterm !== '' && this.searchterm) {
+          orders = orders.filter(
+            (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
             || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
             || item.bookingtype
               .toUpperCase()
               .includes(this.searchterm.toUpperCase()),
-        );
+          );
+        }
+      } else if (this.selected === 'sacks') {
+        orders = this.sackOrders;
+        if (this.searchterm !== '' && this.searchterm) {
+          orders = orders.filter(
+            (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.bookingtype
+              .toUpperCase()
+              .includes(this.searchterm.toUpperCase()),
+          );
+        }
+      } else {
+        orders = this.orders;
+        if (this.searchterm !== '' && this.searchterm) {
+          orders = orders.filter(
+            (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.bookingtype
+              .toUpperCase()
+              .includes(this.searchterm.toUpperCase()),
+          );
+        }
       }
+
       return orders;
     },
   },
 };
 </script>
+<style scoped>
+.delete-icon:hover{
+  color:red;
+  cursor: pointer;
+}
+</style>

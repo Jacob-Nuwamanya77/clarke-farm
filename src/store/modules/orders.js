@@ -47,4 +47,12 @@ export const getters = {
   sortCurrentMonthOrders(state) {
     return SortOrders.currentMonthOrders(state.orders);
   },
+  paperBags(state) {
+    const filtered = state.orders.filter((el) => el.package === 'Paper bag');
+    return filtered;
+  },
+  sacks(state) {
+    const filtered = state.orders.filter((el) => el.package === 'Sack');
+    return filtered;
+  },
 };

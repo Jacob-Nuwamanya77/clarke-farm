@@ -7,7 +7,10 @@
     >
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#" class="crumb-link">Dashboard</a>
+          <a
+            href="#"
+            class="crumb-link"
+          >Dashboard</a>
         </li>
         <li
           class="breadcrumb-item active"
@@ -20,7 +23,9 @@
         <div class="row">
           <div class="col-md-6 mt-3">
             <label class=" mt-1">Sort By:</label>
-            <select @change="filteredVisitors" v-model="selected"
+            <select
+              @change="filteredVisitors"
+              v-model="selected"
               class="form-select form-select-sm "
               aria-label="Default select example"
             >
@@ -31,12 +36,12 @@
           </div>
           <div class="form-group my-lg-0 d-flex justify-content-end col-md-6 float-right">
             <div>
-            <input
-              type="text"
-              class="form-control form-control-sm mr-sm-2 mt-3 search"
-              placeholder="Search Bookings..."
-              v-model="searchterm"
-            >
+              <input
+                type="text"
+                class="form-control form-control-sm mr-sm-2 mt-3 search"
+                placeholder="Search Bookings..."
+                v-model="searchterm"
+              >
             </div>
           </div>
         </div>
@@ -56,7 +61,7 @@
           </a>
           <table class="table  table-responsive table-hover table-striped table-nowrap mt-5 font-size-12">
             <thead class="table-secondary font-size-10 ">
-              <tr >
+              <tr>
                 <td>
                   <input
                     class="form-check-input"
@@ -69,14 +74,17 @@
                 <th>Email Address</th>
                 <th>Phone Number</th>
                 <th>Booking Type </th>
-                <th>GuestNumber</th>
+                <th>Group Size</th>
                 <th>Checkin</th>
                 <!-- <th>Action</th> -->
 
               </tr>
             </thead>
             <tbody>
-              <tr v-for="visitor in filteredVisitors" :key="visitor.id">
+              <tr
+                v-for="visitor in filteredVisitors"
+                :key="visitor.id"
+              >
                 <td>
                   <input
                     class="form-check-input"
@@ -85,11 +93,14 @@
                     name="visitor"
                     id="defaultCheck1"
                   >
-                  </td>
-                 <td class="text-start">{{visitor.name}}</td>
+                </td>
+                <td class="text-start">{{visitor.name}}</td>
                 <td class="text-start">{{visitor.email}}</td>
                 <td class="text-start">{{visitor.phone}}</td>
-                <td class="text-center" v-if="visitor.bookingtype=='Tour'">
+                <td
+                  class="text-center"
+                  v-if="visitor.bookingtype=='Tour'"
+                >
                   <span class="badge badge-pill tour-badge font-size-11">Tour</span>
                   </td>
                   <td
@@ -104,11 +115,18 @@
                     >
                       <span class="badge badge-pill bg-warning font-size-11">Trainings</span>
                       </td>
-                      <td v-if="visitor.bookingtype==='Training'" class="text-center">{{visitor.groupsize}}</td>
-                      <td v-else class="text-center">{{visitor.guestNumber}}</td>
-                      <td class="text-center">{{ visitor.checkin }}<span
-                      v-if="visitor.bookingtype==='Coffee-Farm'">N/A</span></td>
-                      <!-- <td class="text-start">
+                      <td
+                        v-if="visitor.bookingtype==='Training'"
+                        class="text-center"
+                      >{{visitor.groupsize}}</td>
+                        <td
+                          v-else
+                          class="text-center"
+                        >{{visitor.guestNumber}}</td>
+                          <td class="text-center">{{ visitor.checkin }}
+                            <span v-if="visitor.bookingtype==='Coffee-Farm'">N/A</span>
+                          </td>
+                          <!-- <td class="text-start">
                         <button
                           type="button"
                           class="btn  view-btn btn-sm btn-rounded"
@@ -116,7 +134,7 @@
                           data-target=".booking-detailModal"
                         >View Details</button>
                       </td> -->
-                      </tr>
+                          </tr>
             </tbody>
           </table>
           <p>
@@ -132,7 +150,6 @@
   </div>
 </template>
 <style scoped>
-
 th,
 td {
   font-family: ‘Lato’, sans-serif;
@@ -165,7 +182,7 @@ select {
 
 h5,
 h3 {
-  color:#2c3e50;
+  color: #2c3e50;
 }
 
 a {
@@ -192,10 +209,10 @@ td {
   color: #2c3e50;
 }
 table {
-    border-collapse:separate;
-    border:solid #F5F5F5   1px;
-    border-radius:6px;
-    -moz-border-radius:6px;
+  border-collapse: separate;
+  border: solid #f5f5f5 1px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
 }
 .eye {
   margin-right: 10px;
@@ -205,8 +222,9 @@ table {
   color: #2c3e50;
   margin-top: 20px;
 }
-.sort-icon,th{
-  color:#2c3e50;
+.sort-icon,
+th {
+  color: #2c3e50;
 }
 .badge {
   width: 60px;
@@ -215,30 +233,29 @@ table {
   background-color: #045c44;
 }
 .has-search .form-control-feedback {
-    position: fixed;
-    float: right;
-    right:10px;
-    /* padding-top: 20px; */
-    z-index: 2;
-    display: block;
-    background: #045c44;
-    margin-top: 16px;
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    width: 2.375rem;
-    height:30px;
-    /* line-height: 2.375rem; */
-    text-align: center;
-    pointer-events: none;
-    color: #f5f5f5;
+  position: fixed;
+  float: right;
+  right: 10px;
+  /* padding-top: 20px; */
+  z-index: 2;
+  display: block;
+  background: #045c44;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  width: 2.375rem;
+  height: 30px;
+  /* line-height: 2.375rem; */
+  text-align: center;
+  pointer-events: none;
+  color: #f5f5f5;
 }
 @media screen and (min-width: 2000px) {
- .has-search .form-control-feedback {
-   right: 18.5%;
- }
+  .has-search .form-control-feedback {
+    right: 18.5%;
+  }
 }
-
 </style>
 <script>
 import axios from 'axios';
@@ -263,22 +280,6 @@ export default {
     this.$store.dispatch('fetchAllGuests');
   },
   methods: {
-    categoryFilter(event) {
-      console.log('in category filter');
-      let tourvisitors = this.filteredVisitors;
-      this.selected = event.target.value;
-      if (this.selected === 'tours') {
-        tourvisitors = this.tourists;
-        // tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Tour');
-      } else if (this.selected === 'trainings') {
-        // tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Trainings');
-        tourvisitors = this.trainees;
-      } else {
-        tourvisitors = this.trainees;
-      }
-
-      return tourvisitors;
-    },
     check() {
       const checkboxes = document.getElementsByName('visitor');
       for (const checkbox of checkboxes) {
@@ -325,26 +326,40 @@ export default {
       tourists: (state) => state.bookings.bookings,
     }),
     filteredVisitors() {
-      let visitors = (this.trainees).concat(this.tourists);
-      console.log(typeof this.visitorList);
-      if (this.searchterm !== '' && this.searchterm) {
-        visitors = visitors.filter(
-          (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
+      let visitors;
+      if (this.selected === 'tours') {
+        visitors = this.tourists;
+        if (this.searchterm !== '' && this.searchterm) {
+          visitors = visitors.filter(
+            (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
             || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
             || item.bookingtype
               .toUpperCase()
               .includes(this.searchterm.toUpperCase()),
-        );
-      }
-      // this.selected = event.target.value;
-      if (this.selected === 'tours') {
-        visitors = this.tourists;
-        // tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Tour');
+          );
+        }
       } else if (this.selected === 'trainings') {
-        // tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Trainings');
         visitors = this.trainees;
+        if (this.searchterm !== '' && this.searchterm) {
+          visitors = visitors.filter(
+            (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.bookingtype
+              .toUpperCase()
+              .includes(this.searchterm.toUpperCase()),
+          );
+        }
       } else {
-        visitors = (this.trainees).concat(this.tourists);
+        visitors = this.trainees.concat(this.tourists);
+        if (this.searchterm !== '' && this.searchterm) {
+          visitors = visitors.filter(
+            (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
+            || item.bookingtype
+              .toUpperCase()
+              .includes(this.searchterm.toUpperCase()),
+          );
+        }
       }
       return visitors;
     },
