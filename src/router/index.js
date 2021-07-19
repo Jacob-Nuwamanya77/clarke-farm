@@ -6,6 +6,7 @@ import CoffeePage from '@/views/CoffeePage.vue';
 import TrainingPrograms from '@/views/TrainingPrograms.vue';
 // eslint-disable-next-line import/no-unresolved
 import AdminBooking from '@/views/AdminBooking.vue';
+import CoffeeOrders from '@/views/CoffeeOrders.vue';
 import LoginPage from '@/views/LoginPage.vue';
 import Dashboard from '@/views/Dashboard.vue';
 import Reviews from '@/views/AdminReviews.vue';
@@ -48,12 +49,17 @@ const routes = [
     component: AdminBooking,
   },
   {
+    path: '/admin/orders',
+    name: 'CoffeeOrders',
+    component: CoffeeOrders,
+  },
+  {
     path: '/admin/reviews',
     name: 'Reviews',
     component: Reviews,
   },
   {
-    path: '/admin/settings/',
+    path: '/admin/settings',
     name: 'Settings',
     component: Settings,
   },

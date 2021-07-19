@@ -16,11 +16,17 @@ export const actions = {
       })
       .catch((error) => console.log(error));
   },
+  FulFillOrder({ commit }, order) {
+    commit('FULFILL_ORDER', order);
+  },
 };
 
 export const mutations = {
   ADD_ALL_ORDERS(state, orders) {
     state.orders = orders;
+  },
+  FULFILL_ORDER(state, order) {
+    state.orders.find((x) => x.order === order).delivered = true;
   },
 };
 

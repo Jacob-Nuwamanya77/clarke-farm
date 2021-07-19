@@ -20,14 +20,13 @@
         <div class="row">
           <div class="col-md-6 mt-3">
             <label class=" mt-1">Sort By:</label>
-            <select v-model="selected" @change="tourists"
+            <select @change="tourists"
               class="form-select form-select-sm "
               aria-label="Default select example"
             >
               <option value="all">All Categories</option>
               <option value="tours">Tours</option>
               <option value="trainings">Trainings</option>
-              <option value="coffee">CoffeeFarm</option>
               </select>
           </div>
           <div class="form-group my-lg-0 d-flex justify-content-end col-md-6 float-right">
@@ -69,7 +68,6 @@
                 <th>Name</th>
                 <th>Email Address</th>
                 <th>Phone Number</th>
-                <th>Order Amount</th>
                 <th>Booking Type </th>
                 <th>GuestNumber</th>
                 <th>Checkin</th>
@@ -78,7 +76,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="visitor in trainees" :key="visitor.id">
+              <tr v-for="visitor in filteredVisitors" :key="visitor.id">
                 <td>
                   <input
                     class="form-check-input"
@@ -91,9 +89,6 @@
                  <td class="text-start">{{visitor.name}}</td>
                 <td class="text-start">{{visitor.email}}</td>
                 <td class="text-start">{{visitor.phone}}</td>
-                <td v-if="visitor.bookingtype=='Tour'" class="text-center">N/A</td>
-                <td v-if="visitor.bookingtype=='Coffee-Farm'" class="text-center">50 bags</td>
-                <td v-if="visitor.bookingtype=='Training'" class="text-center">N/A</td>
                 <td class="text-center" v-if="visitor.bookingtype=='Tour'">
                   <span class="badge badge-pill tour-badge font-size-11">Tour</span>
                   </td>
@@ -109,7 +104,8 @@
                     >
                       <span class="badge badge-pill bg-warning font-size-11">Trainings</span>
                       </td>
-                      <td class="text-center">{{visitor.groupsize}}</td>
+                      <td v-if="visitor.bookingtype==='Training'" class="text-center">{{visitor.groupsize}}</td>
+                      <td v-else class="text-center">{{visitor.guestNumber}}</td>
                       <td class="text-center">{{ visitor.checkin }}<span
                       v-if="visitor.bookingtype==='Coffee-Farm'">N/A</span></td>
                       <!-- <td class="text-start">
@@ -124,9 +120,9 @@
             </tbody>
           </table>
           <p>
-            Showing {{trainees.length}} entries of {{trainees.length}}</p>
+            Showing {{filteredVisitors.length}} entries of {{filteredVisitors.length}}</p>
           <p
-            v-if="visitorList<=0"
+            v-if="filteredVisitors<=0"
             class="text-center"
           >No Bookings are Available yet!!!</p>
       </div>
@@ -259,10 +255,12 @@ export default {
     return {
       searchterm: '',
       selected: '',
+      visitorList: [],
     };
   },
   created() {
     this.$store.dispatch('fetchAllTrainees');
+    this.$store.dispatch('fetchAllGuests');
   },
   methods: {
     Allvisitors() {
@@ -312,9 +310,10 @@ export default {
   computed: {
     ...mapState({
       trainees: (state) => state.trainees.trainees,
+      tourists: (state) => state.bookings.bookings,
     }),
     filteredVisitors() {
-      let visitors = this.visitorList;
+      let visitors = (this.trainees).concat(this.tourists);
       console.log(typeof this.visitorList);
       if (this.searchterm !== '' && this.searchterm) {
         visitors = visitors.filter(

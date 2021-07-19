@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import Dashboard from '@/components/dashboard/Booking/AdminBooking.vue';
+import Dashboard from '@/components/dashboard/orders/Orders.vue';
 
 export default {
-  name: 'AdminBooking',
+  name: 'CoffeeOrders',
   components: {
     Dashboard,
   },
