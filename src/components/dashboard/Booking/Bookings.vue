@@ -20,7 +20,7 @@
         <div class="row">
           <div class="col-md-6 mt-3">
             <label class=" mt-1">Sort By:</label>
-            <select @change="tourists"
+            <select @change="filteredVisitors" v-model="selected"
               class="form-select form-select-sm "
               aria-label="Default select example"
             >
@@ -254,7 +254,7 @@ export default {
   data() {
     return {
       searchterm: '',
-      selected: '',
+      selected: 'all',
       visitorList: [],
     };
   },
@@ -263,9 +263,21 @@ export default {
     this.$store.dispatch('fetchAllGuests');
   },
   methods: {
-    Allvisitors() {
-      this.visitorList = this.$store.state.trainees.trainees;
-      console.log(this.visitorList);
+    categoryFilter(event) {
+      console.log('in category filter');
+      let tourvisitors = this.filteredVisitors;
+      this.selected = event.target.value;
+      if (this.selected === 'tours') {
+        tourvisitors = this.tourists;
+        // tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Tour');
+      } else if (this.selected === 'trainings') {
+        // tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Trainings');
+        tourvisitors = this.trainees;
+      } else {
+        tourvisitors = this.trainees;
+      }
+
+      return tourvisitors;
     },
     check() {
       const checkboxes = document.getElementsByName('visitor');
@@ -324,16 +336,18 @@ export default {
               .includes(this.searchterm.toUpperCase()),
         );
       }
+      // this.selected = event.target.value;
+      if (this.selected === 'tours') {
+        visitors = this.tourists;
+        // tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Tour');
+      } else if (this.selected === 'trainings') {
+        // tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Trainings');
+        visitors = this.trainees;
+      } else {
+        visitors = (this.trainees).concat(this.tourists);
+      }
       return visitors;
     },
-    // tourists() {
-    //   let tourvisitors = this.visitorList;
-    //   if (this.selected === 'coffee') {
-    //     tourvisitors = tourvisitors.filter((visitor) => visitor.bookingtype === 'Coffee Farm');
-    //   }
-
-    //   return tourvisitors;
-    // },
   },
 };
 </script>
