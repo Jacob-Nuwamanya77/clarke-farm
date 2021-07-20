@@ -34,11 +34,23 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import { defineAsyncComponent } from 'vue';
+
 import DashboardHeader from '@/components/shared/DashboardHeader.vue';
 import SummaryBarChart from './SummaryBarChart.vue';
 import SummaryByDate from './SummaryByDate.vue';
-import SummaryDoughnut from './SummaryDoughnutChart.vue';
-import TodoList from './TodoList.vue';
+
+const SummaryDoughnut = defineAsyncComponent({
+  loader: () => import('./SummaryDoughnutChart.vue'),
+  delay: 200,
+  timeout: 2000,
+});
+
+const TodoList = defineAsyncComponent({
+  loader: () => import('./TodoList.vue'),
+  delay: 200,
+  timeout: 2000,
+});
 
 export default {
   name: 'DashboardHome',
