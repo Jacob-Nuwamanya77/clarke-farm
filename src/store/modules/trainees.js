@@ -19,9 +19,3 @@ export const mutations = {
     state.trainees = trainees;
   },
 };
-export const getters = {
-  not_done: (state) => {
-    const filtered = state.todos.filter((el) => el.status === false);
-    return filtered;
-  },
-};

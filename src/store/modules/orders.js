@@ -16,11 +16,17 @@ export const actions = {
       })
       .catch((error) => console.log(error));
   },
+  FulFillOrder({ commit }, order) {
+    commit('FULFILL_ORDER', order);
+  },
 };
 
 export const mutations = {
   ADD_ALL_ORDERS(state, orders) {
     state.orders = orders;
+  },
+  FULFILL_ORDER(state, order) {
+    state.orders.find((x) => x.order === order).delivered = true;
   },
 };
 
@@ -40,5 +46,13 @@ export const getters = {
   },
   sortCurrentMonthOrders(state) {
     return SortOrders.currentMonthOrders(state.orders);
+  },
+  paperBags(state) {
+    const filtered = state.orders.filter((el) => el.package === 'Paper bag');
+    return filtered;
+  },
+  sacks(state) {
+    const filtered = state.orders.filter((el) => el.package === 'Sack');
+    return filtered;
   },
 };

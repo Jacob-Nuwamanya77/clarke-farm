@@ -1,16 +1,16 @@
 <template>
 <div>
-  <AdminDashboard/>
+  <Bookings/>
 </div>
 </template>
 
 <script>
-import AdminDashboard from '@/components/dashboard/booking/BookingDashboard.vue';
+import Bookings from '@/components/dashboard/Booking/AdminBooking.vue';
 
 export default {
   name: 'AdminBooking',
   components: {
-    AdminDashboard,
+    Bookings,
   },
 };
 </script>

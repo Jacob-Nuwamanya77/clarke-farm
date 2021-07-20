@@ -38,12 +38,17 @@ const routes = [
     component: () => import('@/views/AdminBooking.vue'),
   },
   {
+    path: '/admin/orders',
+    name: 'CoffeeOrders',
+    component: () => import('@/views/CoffeeOrders.vue'),
+  },
+  {
     path: '/admin/reviews',
     name: 'Reviews',
     component: () => import('@/views/AdminReviews.vue'),
   },
   {
-    path: '/admin/settings/',
+    path: '/admin/settings',
     name: 'Settings',
     component: () => import('@/views/AdminSettings.vue'),
   },

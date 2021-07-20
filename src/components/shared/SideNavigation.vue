@@ -1,6 +1,6 @@
 <template>
-  <div class="side-navigation">
-    <div class="white-container">
+  <div class="side-navigation ">
+    <div class="white-container ">
       <div class="company-details">
         <div class="company-logo">
           <fa icon="mug-hot" />
@@ -24,6 +24,14 @@
           </span>
           <span class="navigation-title">
             Booking
+          </span>
+        </router-link>
+        <router-link :to="{ name: 'CoffeeOrders' }" class="navigation-item">
+          <span class="item-icon" id="orders-icon">
+            <fa icon="cart-arrow-down" />
+          </span>
+          <span class="navigation-title">
+            Orders
           </span>
         </router-link>
         <router-link :to="{ name: 'Reviews' }" class="navigation-item">
@@ -116,6 +124,9 @@ export default {
 #reviews-icon{
   color:#FCA705;
 }
+#orders-icon{
+  color: #068d68;
+}
 #settings-icon{
   color:#FC646C;
 }
@@ -139,6 +150,9 @@ export default {
   color:white;
 }
 .router-link-active > #reviews-icon{
+  color:white;
+}
+.router-link-active > #orders-icon{
   color:white;
 }
 .router-link-active > #settings-icon{
