@@ -7,10 +7,13 @@ const coffeeOrderModel = require('../Models/coffeeOrderModel');
 const router = express.Router();
 
 router.post('/visitor', async (req, res) => {
+  const category = 'visitor';
+  const verified = false;
+  const reviewDetails = { ...req.body, category, verified };
   try {
     visitorModel.find({ email: req.body.email }).exec(async (err, response) => {
       if (response.length > 0) {
-        const review = await visitorReviews(req.body);
+        const review = await visitorReviews(reviewDetails);
         review.save().then(() => res.json({ status: 'success' }));
       } else {
         res.json({ status: 'rejected' });
@@ -22,10 +25,13 @@ router.post('/visitor', async (req, res) => {
 });
 
 router.post('/coffee', async (req, res) => {
+  const category = 'coffee';
+  const verified = false;
+  const reviewDetails = { ...req.body, category, verified };
   try {
     coffeeOrderModel.find({ email: req.body.email }).exec(async (err, response) => {
       if (response.length > 0) {
-        const review = await coffeeReviews(req.body);
+        const review = await coffeeReviews(reviewDetails);
         review.save().then(() => res.json({ status: 'success' }));
       } else {
         res.json({ status: 'rejected' });

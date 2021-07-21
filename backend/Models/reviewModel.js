@@ -13,9 +13,9 @@ const reviewSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  createdAt: {
-    type: String,
-  },
+  category: String,
+  verified: Boolean,
+  createdAt: String,
 });
 
 module.exports = function mapToSchema(schemaName) {
