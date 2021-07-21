@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Bookings from '@/components/dashboard/booking/AdminBooking.vue';
+import Bookings from '@/components/dashboard/bookings/AdminBooking.vue';
 
 export default {
   name: 'AdminBooking',
