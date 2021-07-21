@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <SideNav @mouseover="togglesidebar" @mouseout="togglesidebar" id="sidebar"/>
+    <SideNav id="sidebar"/>
     <Content id="maincontent"/>
   </div>
 </template>
@@ -11,10 +11,6 @@ import SideNav from '@/components/shared/SideNavigation.vue';
 
 export default {
   name: 'UserReviews',
-  data() {
-    return {
-    };
-  },
   components: {
     SideNav,
     Content,

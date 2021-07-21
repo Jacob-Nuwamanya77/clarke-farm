@@ -6,6 +6,24 @@ const coffeeOrderModel = require('../Models/coffeeOrderModel');
 
 const router = express.Router();
 
+router.get('/visitor', async (req, res) => {
+  try {
+    const reviews = await visitorReviews.find({});
+    res.send(reviews);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.get('/coffee', async (req, res) => {
+  try {
+    const reviews = await coffeeReviews.find({});
+    res.send(reviews);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.post('/visitor', async (req, res) => {
   const category = 'visitor';
   const verified = false;
@@ -36,6 +54,46 @@ router.post('/coffee', async (req, res) => {
       } else {
         res.json({ status: 'rejected' });
       }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.put('/update/visitor/:id', async (req, res) => {
+  try {
+    await visitorReviews.findByIdAndUpdate(req.params.id, req.body).exec((err, updated) => {
+      res.send(updated);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.put('/update/coffee/:id', async (req, res) => {
+  try {
+    await coffeeReviews.findByIdAndUpdate(req.params.id, req.body).exec((err, updated) => {
+      res.send(updated);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.delete('/delete/visitor/:id', async (req, res) => {
+  try {
+    await visitorReviews.findByIdAndDelete(req.params.id).exec((err, deleted) => {
+      res.send(deleted);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.delete('/delete/coffee/:id', async (req, res) => {
+  try {
+    await coffeeReviews.findByIdAndDelete(req.params.id).exec((err, deleted) => {
+      res.send(deleted);
     });
   } catch (error) {
     console.log(error);
