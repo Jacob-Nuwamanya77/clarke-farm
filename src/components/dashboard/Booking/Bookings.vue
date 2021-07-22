@@ -59,7 +59,7 @@
             class="text-danger delete-btn"
           />
           </a>
-          <table class="table  table-responsive table-hover table-striped table-nowrap mt-5 font-size-12">
+          <table class="table  table-hover table-striped table-nowrap mt-5 font-size-12">
             <thead class="table-secondary font-size-10 ">
               <tr>
                 <td>
@@ -76,8 +76,6 @@
                 <th>Booking Type </th>
                 <th>Group Size</th>
                 <th>Checkin</th>
-                <!-- <th>Action</th> -->
-
               </tr>
             </thead>
             <tbody>
@@ -298,26 +296,27 @@ export default {
         cancelButtonText: 'No, Keep it!',
         showCloseButton: true,
         showLoaderOnConfirm: true,
-      }).then((result) => {
-        if (result.value) {
-          const endpoint = `/delete-visitor/${id}`;
-          axios
-            .get(api + endpoint)
-            .then(() => {
-              this.visitorList.splice(indexOfArrayItem, 1);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-          this.$swal(
-            'Deleted',
-            'visitor has been Permanently deleted',
-            'success',
-          );
-        } else {
-          this.$swal('Cancelled', 'Your data is still intact', 'info');
-        }
-      });
+      })
+        .then((result) => {
+          if (result.value) {
+            const endpoint = `/delete-visitor/${id}`;
+            axios
+              .get(api + endpoint)
+              .then(() => {
+                this.visitorList.splice(indexOfArrayItem, 1);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+            this.$swal(
+              'Deleted',
+              'visitor has been Permanently deleted',
+              'success',
+            );
+          } else {
+            this.$swal('Cancelled', 'Your data is still intact', 'info');
+          }
+        });
     },
   },
   computed: {
