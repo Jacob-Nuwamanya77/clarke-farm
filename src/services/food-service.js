@@ -15,4 +15,7 @@ export default {
   postFood(food) {
     return apiClient.post('/api/foods', food);
   },
+  deleteFood(id) {
+    return apiClient.delete(`/api/foods/delete/${id}`);
+  },
 };

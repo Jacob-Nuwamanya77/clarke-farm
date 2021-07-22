@@ -15,12 +15,7 @@ export default {
   postActivity(activity) {
     return apiClient.post('/api/activities', activity);
   },
-
-  // getActivitiesByID() {
-  //   return apiClient.get('/api/activities/:id');
-  // },
-
-  // deleteActivitiesByID() {
-  //   return apiClient.delete('/api/activities/:id');
-  // },
+  deleteActivity(id) {
+    return apiClient.delete(`/api/activities/delete/${id}`);
+  },
 };

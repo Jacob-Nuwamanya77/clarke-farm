@@ -7,7 +7,7 @@ import * as projects from './modules/projects';
 import * as bookings from './modules/bookings';
 import * as orders from './modules/orders';
 import * as trainees from './modules/trainees';
-import * as trainings from './modules/training-categories';
+import * as trainings from './modules/trainings';
 import * as processing from './modules/processing-guide';
 
 export default createStore({

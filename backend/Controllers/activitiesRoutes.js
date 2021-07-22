@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 
 const router = express.Router();
 const uploads = require('../shared/multer')();
@@ -18,30 +20,25 @@ router.post('/', uploads.single('file'), async (req, res) => {
     const { filename } = req.file;
     const data = { ...req.body, filename };
     const activity = await Activity(data);
-    activity.save();
+    activity.save().then((saved) => res.send(saved));
   } catch (error) {
     console.log(error);
     res.status(400).send('Something went wrong with the upload');
   }
 });
 
-// FIND ACTIVITIES BY ID
-router.get('/:id', async (req, res) => {
-  try {
-    const activity = await Activity.findOne({ _id: req.params.id });
-    res.json(activity);
-  } catch (error) {
-    res.status(400).send('Unable to find the record in the list');
-  }
-});
+// Path to deleted image.
+const dirPath = path.join(__dirname, '..', 'uploads');
 
-// DELETE ACTIVITY
-router.delete('/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
   try {
-    await Activity.deleteOne({ _id: req.params.id });
-    res.json('Activity Deleted');
+    await Activity.findByIdAndDelete(req.params.id).exec((err, deleted) => {
+      const uploadedImg = path.join(dirPath, `/${deleted.filename}`);
+      fs.unlinkSync(uploadedImg);
+      res.send(deleted);
+    });
   } catch (error) {
-    res.status(400).send('Unable to delete the record from the database');
+    console.log(error);
   }
 });
 

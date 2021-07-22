@@ -1,29 +1,45 @@
 const express = require('express');
+const path = require('path');
+const fs = require('fs');
 
-const Training = require('../Models/trainingModel');
-
-// Creating a Router
 const router = express.Router();
+const uploads = require('../shared/multer')();
+const TrainingModel = require('../Models/trainingModel');
 
-// ADD TRAINING TO TRAININGS TABLE
-router.post('/trainings/add', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const newTraining = new Training(req.body);
-    await newTraining.save()
-      .then(() => res.json('Training Added'));
+    const training = await TrainingModel.find({});
+    res.send(training);
   } catch (error) {
-    console.error(error);
-    res.json('Unsuccessful! Please Try Again');
+    console.log(error);
   }
 });
 
-// FIND ALL TRAININGS
-router.get('/trainings', async (req, res) => {
+router.post('/', uploads.single('file'), async (req, res) => {
   try {
-    const trainings = await Training.find();
-    res.json(trainings);
+    const { filename } = req.file;
+    const data = { ...req.body, filename };
+    const training = await TrainingModel(data);
+    training.save().then((saved) => res.send(saved));
   } catch (error) {
-    res.status(400).send('Unable to find records');
+    console.log(error);
+    res.status(400).send('Something went wrong with the upload');
   }
 });
+
+// Path to deleted image.
+const dirPath = path.join(__dirname, '..', 'uploads');
+
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    await TrainingModel.findByIdAndDelete(req.params.id).exec((err, deleted) => {
+      const uploadedImg = path.join(dirPath, `/${deleted.filename}`);
+      fs.unlinkSync(uploadedImg);
+      res.send(deleted);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

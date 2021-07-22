@@ -1,54 +1,48 @@
 <template>
   <div class="mt-3">
     <div id="add-button">
-   <a  class="btn btn-success btn-sm float-end" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Add Activity
-    </a>
- </div>
-    <!-- Modal -->
-    <div class="modal fade" tabindex="-1" id="exampleModal">
+      <a  class="btn btn-success btn-sm float-end" @click.prevent="showModal">
+        Add Activity
+      </a>
+    </div>
+    <div class="modal-overlay" v-if="modalVisible">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Add Activity</h5>
-            <button type="button" class="btn-close"
-            data-bs-dismiss="modal" aria-label="Close"/>
+            <button type="button" class="btn-close"  aria-label="Close" @click="closeModal"/>
           </div>
           <div class="modal-body">
-            <form @submit.prevent="submitActivityObject" class="form-group">
+            <form class="form-group" @submit.prevent="submitActivityObject">
               <div class="mb-3 form-group">
-                <label for="title">Activity title</label>
-                <input type="text" class="form-control" name="title" id="title" v-model="title">
+                <label>Activity title</label>
+                <input type="text" name="title" v-model="title" class="form-control">
               </div>
               <div class="mb-3 form-group">
-                <label for="description">Describe the activity in brief</label>
-                <input type="text" class="form-control" name="description"
-                id="description" v-model="description">
-              </div>
-              <div class="mb-2 form-group ">
-                <label for="Priced" class="form-check-label" >Is the activity priced?</label><br>
-                <input type="radio" class="form-check-input"
-                name="priced" value="Yes" v-model="priced"> Yes
-                <input type="radio" class="form-check-input" name="priced" value="No"
-                 checked v-model="priced"> No
+                <label>Describe the activity in brief</label>
+                <input type="text" name="description" v-model="description" class="form-control">
               </div>
               <div class="mb-2 form-group">
-                <span class="mb-2" v-if="priced=='Yes'">
-                  <label for="currency">Currency</label>
-                  <select name="currency" class="form-select" id="currency" v-model="currency">
+                <label class="form-check-label">Is the activity priced?</label><br>
+                <input type="radio" name="priced" value="Yes" v-model="priced" class="form-check-input"> Yes
+                <input type="radio" name="priced" value="No" checked v-model="priced" class="form-check-input"> No
+              </div>
+              <div class="mb-2 form-group">
+                <span v-if="priced=='Yes'">
+                  <label>Currency</label>
+                  <select name="currency" v-model="currency" class="form-select">
                     <option value="ugx">UGX</option>
                     <option value="$">USD</option>
                   </select>
                 </span><br>
-                <span class="mb-3"  v-if="priced=='Yes'">
-                  <label for="cost">Cost of activity</label>
-                  <input type="text" class="form-control" name="cost" id="cost" v-model="cost">
+                <span v-if="priced=='Yes'">
+                  <label>Cost of activity</label>
+                  <input type="text" name="cost" v-model="cost" class="form-control">
                 </span>
               </div>
               <div class="mb-4 form-group">
-                 <label class="form-label"  for="image">Upload image</label>
-                <input type="file"  class="form-control form-control-md" name="image" id="image"
-                ref="file" @change="onFileChange">
+                <label class="form-label">Upload image</label>
+                <input type="file"  name="image" ref="file" @change="onFileChange" class="form-control form-control-md">
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-success">Submit Data</button>
@@ -59,48 +53,26 @@
       </div>
     </div>
     <br>
-    <div class="div-table mt-4">
-      <table class="table bg-white mt-3">
-  <thead  id="bg-color">
-    <tr>
-      <th scope="col">Image</th>
-      <th scope="col">Title</th>
-      <th scope="col" >Description</th>
-      <th scope="col">Cost</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr  v-for="activities in allActivities" :key="activities.id" class="mt-3">
-      <td>
-         <img :src="activities.filename" aria-hidden="true">
-      </td>
-      <td class="title">{{activities.title}}</td>
-       <td class="description">{{activities.description}}</td>
-       <td class="price">{{activities.currency}}{{activities.cost}}</td>
-        <td class="actions">
-          <a href="#"  class="btn text-secondary  btn-sm"
-          role="button" aria-pressed="true">
-            <fa icon="edit" /></a>
-          <a href="#" class="btn text-danger btn-sm edit" role="button" aria-pressed="true"><fa icon="trash" /></a>
-         </td>
-    </tr>
-  </tbody>
-</table>
-    </div>
+    <Table :itemList="allActivities" @delete-item="confirmDelete"/>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapState } from 'vuex';
+import ActivityService from '@/services/activity-service';
+import Table from './Table.vue';
 
 export default {
   name: 'ActivityModal',
   created() {
-    this.fetchAllActivities();
+    this.$store.dispatch('fetchAllActivities');
+  },
+  components: {
+    Table,
   },
   data() {
     return {
+      modalVisible: false,
       title: '',
       description: '',
       priced: 'No',
@@ -109,11 +81,20 @@ export default {
       file: '',
     };
   },
-  computed: mapGetters(['allActivities']),
+  computed: {
+    ...mapState({
+      allActivities: (state) => state.activities.activities,
+    }),
+  },
   methods: {
-    ...mapActions(['fetchAllActivities']),
     onFileChange() {
       this.file = this.$refs.file.files[0];
+    },
+    showModal() {
+      this.modalVisible = true;
+    },
+    closeModal() {
+      this.modalVisible = false;
     },
     createActivityObject() {
       const inputData = {
@@ -130,9 +111,7 @@ export default {
       }
       return formData;
     },
-    submitActivityObject() {
-      const activity = this.createActivityObject();
-      this.$store.dispatch('saveActivity', activity);
+    resetActivityObject() {
       this.title = '';
       this.description = '';
       this.priced = 'No';
@@ -140,41 +119,58 @@ export default {
       this.cost = '0.00';
       this.file = '';
     },
+    submitActivityObject() {
+      const activity = this.createActivityObject();
+      ActivityService.postActivity(activity)
+        .then((response) => {
+          this.closeModal();
+          this.$swal('Saved', 'Activity has been added', 'success');
+          this.$store.dispatch('addActivity', response.data);
+        });
+      this.resetActivityObject();
+    },
+    deleteActivityItem(id) {
+      ActivityService.deleteActivity(id)
+        .then((response) => {
+          this.$swal('Deleted', 'Activity has been Permanently deleted', 'success');
+          this.$store.dispatch('deleteActivity', response.data);
+        });
+    },
+    confirmDelete(id) {
+      this.$swal({
+        title: 'Are you sure?',
+        text: 'You can\'t revert this action',
+        showCancelButton: true,
+        confirmButtonText: 'Yes Delete it!',
+        cancelButtonText: 'No, Keep it!',
+        showCloseButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteActivityItem(id);
+        } else {
+          this.$swal('Cancelled', 'Activity is still available', 'info');
+        }
+      });
+    },
   },
 };
 </script>
 
 <style scoped>
-.mb-5{
-  margin-bottom: 5px;
+.modal-overlay{
+  background-color: rgba(0, 0, 0, 0.4);
+  width:100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
-.description{
-  max-width:150px;
+.content-header{
+  background-color: #ececec;
+  height:50px;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
-#bg-color{
-  background-color: #f4f4f4;
-  color:rgba(0,0,0,0.6);
-
-}
-
-td{
-  font-size:15px;
-  color: #6c757d;
-}
-.title{
-  max-width:50px;
-}
-
-.price{
-  max-width:10px;
-}
-
-.actions{
-   max-width:20px;
-}
-
-.edit{
-  color:rgba(20,20,20,0.7);
-}
-
 </style>

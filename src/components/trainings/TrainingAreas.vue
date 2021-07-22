@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     ...mapState({
-      projects: (state) => state.trainings.categories,
+      projects: (state) => state.trainings.trainings,
     }),
     filterDisplayData() {
       const data = [...this.projects];

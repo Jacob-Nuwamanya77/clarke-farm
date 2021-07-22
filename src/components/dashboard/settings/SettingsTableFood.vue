@@ -1,45 +1,41 @@
 <template>
-  <div class="mt-4">
+  <div class="mt-3">
     <div id="add-button">
-   <a  class="btn btn-success btn-sm float-end" href="#" data-bs-toggle="modal" data-bs-target="#Food_ID">
-      Add Food
-    </a>
- </div>
-    <!-- Modal -->
-    <div class="modal fade" tabindex="-1" id="Food_ID">
+      <a class="btn btn-success btn-sm float-end" @click.prevent="showModal">
+        Add Food
+      </a>
+    </div>
+    <div class="modal-overlay" v-if="modalVisible">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Add Food</h5>
-            <button type="button" class="btn-close"
-            data-bs-dismiss="modal" aria-label="Close"/>
+            <button type="button" class="btn-close" aria-label="Close" @click="closeModal"/>
           </div>
           <div class="modal-body">
               <form class="form-group" @submit.prevent="submitFoodObject">
               <div class="mb-3 form-group">
-                <label for="title">Dish title</label>
-                <input type="text" class="form-control" name="title" id="title" v-model="title">
+                <label>Dish title</label>
+                <input type="text" class="form-control" name="title" v-model="title">
               </div>
               <div class="mb-3 form-group">
-                <label for="description">Describe the dish in brief</label>
-                <input type="text" class="form-control" name="description"
-                id="description" v-model="description">
+                <label>Describe the dish in brief</label>
+                <input type="text" class="form-control" name="description" v-model="description">
               </div>
               <div class="mb-3 form-group">
-                  <label for="currency">Currency</label>
-                  <select name="currency" class="form-select" id="currency" v-model="currency">
+                  <label>Currency</label>
+                  <select name="currency" class="form-select" v-model="currency">
                     <option value="ugx">UGX</option>
                     <option value="$">USD</option>
                   </select>
                    </div>
                  <div class="mb-3 form-group">
-                  <label for="cost">Cost of food</label>
-                  <input type="text" class="form-control" name="cost" id="cost" v-model="cost">
+                  <label>Cost of food</label>
+                  <input type="text" class="form-control" name="cost" v-model="cost">
               </div>
               <div class="mb-4 form-group">
-                 <label class="form-label"  for="image">Upload image</label>
-                <input type="file"  class="form-control form-control-md" name="image" id="image"
-                ref="file" @change="onFileChange">
+                 <label class="form-label">Upload image</label>
+                <input type="file"  class="form-control form-control-md" name="image" ref="file" @change="onFileChange">
               </div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-success">Submit Data</button>
@@ -50,48 +46,26 @@
       </div>
     </div>
     <br>
-       <div class="div-table mt-4">
-      <table class="table bg-white mt-3">
-  <thead  id="bg-color">
-    <tr>
-      <th scope="col">Image</th>
-      <th scope="col">Title</th>
-      <th scope="col" >Description</th>
-      <th scope="col">Cost</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr  v-for="foods in allFoods" :key="foods.id" class="mt-3">
-      <td>
-         <img :src="foods.filename" aria-hidden="true">
-      </td>
-      <td class="title">{{foods.title}}</td>
-       <td class="description">{{foods.description}}</td>
-       <td class="price">{{foods.currency}}{{foods.cost}}</td>
-        <td class="actions">
-          <a href="#"  class="btn text-secondary  btn-sm"
-          role="button" aria-pressed="true">
-            <fa icon="edit" /></a>
-          <a href="#" class="btn text-danger btn-sm edit" role="button" aria-pressed="true"><fa icon="trash" /></a>
-         </td>
-    </tr>
-  </tbody>
-</table>
-    </div>
+    <Table :itemList="allFoods" @delete-item="confirmDelete"/>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+import { mapState } from 'vuex';
+import FoodService from '@/services/food-service';
+import Table from './Table.vue';
 
 export default {
   name: 'FoodModal',
   created() {
-    this.fetchAllFoods();
+    this.$store.dispatch('fetchAllFoods');
+  },
+  components: {
+    Table,
   },
   data() {
     return {
+      modalVisible: false,
       title: '',
       description: '',
       currency: '$',
@@ -99,11 +73,23 @@ export default {
       file: '',
     };
   },
-  computed: mapGetters(['allFoods']),
+  computed: {
+    ...mapState({
+      allFoods: (state) => state.foods.foods,
+    }),
+  },
   methods: {
-    ...mapActions(['fetchAllFoods']),
+    createImagePath(filename) {
+      return `/images/${filename}`;
+    },
     onFileChange() {
       this.file = this.$refs.file.files[0];
+    },
+    showModal() {
+      this.modalVisible = true;
+    },
+    closeModal() {
+      this.modalVisible = false;
     },
     createFoodObject() {
       const inputData = {
@@ -119,14 +105,45 @@ export default {
       }
       return formData;
     },
-    submitFoodObject() {
-      const food = this.createFoodObject();
-      this.$store.dispatch('saveFood', food);
+    resetFoodObject() {
       this.title = '';
       this.description = '';
       this.currency = '$';
       this.cost = '0.00';
       this.file = '';
+    },
+    submitFoodObject() {
+      const food = this.createFoodObject();
+      FoodService.postFood(food)
+        .then((response) => {
+          this.closeModal();
+          this.$swal('Saved', 'Food has been added', 'success');
+          this.$store.dispatch('addFood', response.data);
+        });
+      this.resetFoodObject();
+    },
+    deleteFoodItem(id) {
+      FoodService.deleteFood(id)
+        .then((response) => {
+          this.$swal('Deleted', 'Food has been Permanently deleted', 'success');
+          this.$store.dispatch('deleteFood', response.data);
+        });
+    },
+    confirmDelete(id) {
+      this.$swal({
+        title: 'Are you sure?',
+        text: 'You can\'t revert this action',
+        showCancelButton: true,
+        confirmButtonText: 'Yes Delete it!',
+        cancelButtonText: 'No, Keep it!',
+        showCloseButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.deleteFoodItem(id);
+        } else {
+          this.$swal('Cancelled', 'Food is still available', 'info');
+        }
+      });
     },
   },
 
@@ -134,35 +151,20 @@ export default {
 </script>
 
 <style scoped>
-.mb-5{
-  margin-bottom: 5px;
+.modal-overlay{
+  background-color: rgba(0, 0, 0, 0.4);
+  width:100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
 }
-.description{
-  max-width:150px;
-}
-#bg-color{
-  background-color: #f4f4f4;
-  color:rgba(0,0,0,0.6);
-
-}
-
-td{
-  font-size:15px;
-  color: #6c757d;
-}
-.title{
-  max-width:50px;
-}
-
-.price{
-  max-width:10px;
-}
-
-.actions{
-   max-width:20px;
-}
-
-.edit{
-  color:rgba(20,20,20,0.7);
+.content-header{
+  background-color: #ececec;
+  height:50px;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 </style>

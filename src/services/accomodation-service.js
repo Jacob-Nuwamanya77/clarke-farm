@@ -15,4 +15,7 @@ export default {
   postAccomodation(accomodation) {
     return apiClient.post('/api/accomodations', accomodation);
   },
+  deleteAccomodation(id) {
+    return apiClient.delete(`/api/accomodations/delete/${id}`);
+  },
 };
