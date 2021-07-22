@@ -1,5 +1,10 @@
 <template>
   <div class="reviews-container">
+    <template v-if="showModal">
+      <ReviewModal @close-modal="closeModal" @user-review="submitReview">
+        buyers
+      </ReviewModal>
+    </template>
     <div id="review-details">
       <div id="review-left">
         <p class="section-title">
@@ -17,14 +22,14 @@
           </span>
         </div>
         <div id="cta-container">
-          <div class="contact-btn-container">
-            <a href="#coffee-registration-form">Contact Us</a>
-          </div>
           <div class="forward-back-navigation">
             <ArrowNavigation
             @newPage ="setNewPage"
             :pageNumber="page"
             :isLastPage="checkIfLastPage" />
+          </div>
+          <div class="contact-btn-container">
+            <a @click.prevent="showReviewModal">Write Review</a>
           </div>
         </div>
       </div>
@@ -56,6 +61,8 @@
 
 <script>
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
+import ReviewModal from '@/components/shared/ReviewModal.vue';
+import ReviewService from '@/services/review-service';
 import SlideNavigation from '@/mixins/slide-navigation';
 import FormatText from '@/mixins/format-text';
 import { mapState } from 'vuex';
@@ -66,15 +73,61 @@ export default {
     return {
       limit: 1,
       page: 1,
+      showModal: false,
     };
   },
   components: {
     ArrowNavigation,
+    ReviewModal,
   },
   mixins: [SlideNavigation, FormatText],
   methods: {
     setNewPage(page) {
       this.page = page;
+    },
+    showReviewModal() {
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+    },
+    showWaitingAlert() {
+      this.$swal({
+        icon: 'info',
+        title: 'Checking status',
+        text: 'Checking if you purchased with us',
+        showConfirmButton: false,
+      });
+    },
+    showReviewAccepted() {
+      this.$swal({
+        icon: 'success',
+        title: 'Review submitted',
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    },
+    showReviewRejected() {
+      this.$swal({
+        icon: 'error',
+        title: 'Review rejected',
+        text: 'Submitted user data does not match any record',
+      });
+    },
+    submitReview(review) {
+      this.closeModal();
+      this.showWaitingAlert();
+      ReviewService.postReview('coffee', review)
+        .then((response) => {
+          if (response.data.status === 'success') {
+            this.$swal.close();
+            this.showReviewAccepted();
+          }
+          if (response.data.status === 'rejected') {
+            this.$swal.close();
+            this.showReviewRejected();
+          }
+        });
     },
   },
   computed: {
@@ -273,6 +326,9 @@ img{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.contact-btn-container a:hover{
+  color:white;
 }
 #reviewee-details span{
   display: block;

@@ -1,83 +1,124 @@
 <template>
-    <div class="content-container container-fluid" >
-        <h5 class="mt-3">Reviews</h5>
-        <nav aria-label="breadcrumb" class="mt-3">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active" aria-current="page">User Reviews</li>
-            </ol>
-        </nav>
-        <hr>
-          <div class="review ">
-       <table class="table">
-          <tr>
-           <input type="checkbox" class="custom-checkbox custom-control-input">
-           <td>
-             <span>MERCY WAMANGA</span><br>
-                  <span class="text-muted">January 2021</span><br>
-                  <span class="icon"><fa icon="star"/>
-                   <fa icon="star"/> <fa icon="star"/>
-                     <fa icon="star"/> <fa icon="star"/></span><br>
-                  <strong>Bouldering and hilltop views were awesome</strong>
-                  <p>The highlight of my stay at the farm was the jeep rides
-            The highlight of my stay at <br> the farm was the jeep rides
-            The highlight of my stay at the farm was the jeep rides</p>
-           </td>
-             <a class="btn btn-danger  btn-sm text-white mt-5" @click="confirmDialog">DELETE</a>
-         </tr>
-       </table>
-     </div>
+  <div class="reviews-container">
+    <h5 class="hero-text-lg">Reviews</h5>
+    <div class="location">
+      <span class="text-green">Dashboard</span>
+      <span>&nbsp;&nbsp;/&nbsp;&nbsp;User reviews</span>
     </div>
+    <hr>
+    <template v-if="unverifiedReviews.length === 0">
+      <div class="no-reviews">
+        No new user reviews.
+      </div>
+    </template>
+    <template v-else>
+      <div class="review-content-container">
+        <div class="review" v-for="review in unverifiedReviews" :key="review._id">
+          <div class="review-details">
+            <div class="reviewee-details">
+              <span class="reviewee-name">
+                {{ capitalizeEachWord(review.name) }}
+              </span>
+              <span :class="['review-type', review.category === 'visitor'? 'type-visitor': 'type-coffee']">
+                {{ capitalizeFirstLetter(review.category) }}
+              </span>
+            </div>
+            <div class="review-date">
+            {{ getMonth(review) }}, {{ getYear(review) }}
+            </div>
+            <div class="review-content">
+              {{ capitalizeFirstLetter(review.review) }}
+            </div>
+          </div>
+          <div class="review-actions">
+            <span class="accept-review action" :id="review._id" :category="review.category" @click="confirmAccept">
+              Accept
+            </span>
+            <span class="reject-review action" :id="review._id" :category="review.category" @click="confirmDelete">
+              Delete
+            </span>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
 </template>
-<style scoped>
-h5,h3{
-    color:rgb(53, 53, 85)
-}
-
-a{
-    text-decoration: none;
-    color: #068d68;
-}
-a:hover{
-    color:rgb(53, 53, 85)
-}
-p{
-  font-size:14px;
-   color: rgba(0, 0, 0, 0.7);
-
-}
-.icon{
-  color:#068d68;
-}
-tr{
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 10px;
-}
-td{
-    color:rgb(53, 53, 85)
-}
-</style>
 <script>
+import FormatText from '@/mixins/format-text';
+import * as date from '@/plugins/date';
+import ReviewService from '@/services/review-service';
+
 export default {
+  created() {
+    this.$store.dispatch('fetchAllCoffeeReviews', 'coffee')
+      .then((response) => {
+        this.unverifiedReviews = [...this.unverifiedReviews, ...response];
+      });
+    this.$store.dispatch('fetchAllVisitorReviews', 'visitor')
+      .then((response) => {
+        this.unverifiedReviews = [...this.unverifiedReviews, ...response];
+      });
+  },
   data() {
     return {
-
+      unverifiedReviews: [],
     };
   },
+  mixins: [FormatText],
   methods: {
-    confirmDialog() {
+    getMonth(review) {
+      return date.monthInText(date.extractMonth(review.createdAt));
+    },
+    getYear(review) {
+      return date.extractYear(review.createdAt);
+    },
+    deleteReview(event) {
+      const srcElement = event.target;
+      const id = srcElement.id;
+      const category = srcElement.getAttribute('category');
+      ReviewService.delete(category, id)
+        .then((response) => {
+          this.$swal('Deleted', 'Review has been Permanently deleted', 'success');
+          this.unverifiedReviews = this.unverifiedReviews.filter((review) => review._id !== response.data._id);
+        });
+    },
+    acceptReview(event) {
+      const srcElement = event.target;
+      const id = srcElement.id;
+      const category = srcElement.getAttribute('category');
+      ReviewService.update(category, id)
+        .then((response) => {
+          this.$swal('Accepted', 'Review has been accepted', 'success');
+          this.unverifiedReviews = this.unverifiedReviews.filter((review) => review._id !== response.data._id);
+        });
+    },
+    confirmDelete(event) {
       this.$swal({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
-        type: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes Delete it!',
         cancelButtonText: 'No, Keep it!',
         showCloseButton: true,
-        showLoaderOnConfirm: true,
       }).then((result) => {
-        if (result.value) {
-          this.$swal('Deleted', 'Review has been Permanently deleted', 'success');
+        if (result.isConfirmed) {
+          this.deleteReview(event);
+        } else {
+          this.$swal('Cancelled', 'Review is still available', 'info');
+        }
+      });
+    },
+    confirmAccept(event) {
+      this.$swal({
+        title: 'Are you sure?',
+        text: 'You can\'t revert this action',
+        showCancelButton: true,
+        confirmButtonText: 'Yes Accept it!',
+        cancelButtonText: 'No, Hold on!',
+        showCloseButton: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.acceptReview(event);
         } else {
           this.$swal('Cancelled', 'Review is still available', 'info');
         }
@@ -86,3 +127,104 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.reviews-container{
+  margin-top: 12px;
+  width: 90%;
+}
+.hero-text-lg{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom:12px;
+}
+.text-green{
+  color: var(--mono-dark-green);
+}
+.location{
+  margin-top: 20px;
+}
+.review{
+  display: flex;
+  margin-bottom: 40px;
+}
+.review-content-container{
+  width:100%;
+}
+.review-details{
+  width: 76%;
+  padding-right: 10px;
+  margin-right: 3%;
+}
+.review-actions{
+  width: 20%;
+}
+.reviewee-details{
+  padding-bottom: 5px;
+}
+.review-details span{
+  display: inline-block;
+}
+.reviewee-name{
+  font-weight: bold;
+  font-size: 16px;
+  width: 180px;
+}
+.review-date{
+  font-weight: bold;
+  color: #a9a9a9;
+  padding-bottom: 5px;
+}
+.review-actions{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.action{
+  display: flex;
+  width: 40%;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.action:hover{
+  cursor: pointer;
+  transform: scale(0.9);
+}
+.accept-review{
+  background-color: var(--dark-green);
+  color:white;
+}
+.reject-review{
+  border: 1px solid #FC646C;
+  color: #FC646C;
+}
+.reject-review:hover{
+  background-color: #FC646C;
+  color: white;
+  border: none;
+}
+.no-reviews{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width:100%;
+  padding-top: 50px;
+  font-weight: bold;
+  font-size: 30px;
+  color: #a9a9a9;
+}
+.review-type{
+  font-size: 15px;
+  width: 60px;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+}
+.type-coffee{
+  background-color: rgba(4, 84, 140, 0.8)
+}
+.type-visitor{
+  background-color: rgba(252, 167, 5, 0.8);;
+}
+</style>

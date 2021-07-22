@@ -22,6 +22,7 @@ const foodRouter = require('./Controllers/foodRoutes');
 const trainingRouter = require('./Controllers/trainingsRoutes');
 const tasksRouter = require('./Controllers/tasksRoutes');
 const traineeRouter = require('./Controllers/TraineeRoutes');
+const reviewRouter = require('./Controllers/reviewRoutes');
 
 app.use('/api/activities', activityRouter);
 app.use('/api/tasks', tasksRouter);
@@ -31,7 +32,7 @@ app.use('/api/coffee-orders', coffeeRouter);
 app.use('/api/trainees', traineeRouter);
 app.use('/api/accomodations', accomodationRouter);
 app.use('/api/foods', foodRouter);
-app.use(trainingRouter);
+app.use('/api/reviews', reviewRouter);
 
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));
@@ -43,6 +44,7 @@ mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 mongoose.connection

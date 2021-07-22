@@ -1,16 +1,5 @@
-/* eslint-disable import/no-unresolved */
 import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
-import VisitPage from '@/views/VisitPage.vue';
-import CoffeePage from '@/views/CoffeePage.vue';
-import TrainingPrograms from '@/views/TrainingPrograms.vue';
-// eslint-disable-next-line import/no-unresolved
-import AdminBooking from '@/views/AdminBooking.vue';
-import CoffeeOrders from '@/views/CoffeeOrders.vue';
-import LoginPage from '@/views/LoginPage.vue';
-import Dashboard from '@/views/Dashboard.vue';
-import Reviews from '@/views/AdminReviews.vue';
-import Settings from '@/views/AdminSettings.vue';
 
 const routes = [
   {
@@ -21,47 +10,47 @@ const routes = [
   {
     path: '/visit',
     name: 'VisitPage',
-    component: VisitPage,
+    component: () => import('@/views/VisitPage.vue'),
   },
   {
     path: '/coffee',
     name: 'CoffeePage',
-    component: CoffeePage,
+    component: () => import('@/views/CoffeePage.vue'),
   },
   {
     path: '/training-programs',
     name: 'TrainingPrograms',
-    component: TrainingPrograms,
+    component: () => import('@/views/TrainingPrograms.vue'),
   },
   {
     path: '/admin',
     name: 'LoginPage',
-    component: LoginPage,
+    component: () => import('@/views/LoginPage.vue'),
   },
   {
     path: '/admin/dashboard',
     name: 'Dashboard',
-    component: Dashboard,
+    component: () => import('@/views/Dashboard.vue'),
   },
   {
     path: '/admin/booking',
     name: 'AdminBooking',
-    component: AdminBooking,
+    component: () => import('@/views/AdminBooking.vue'),
   },
   {
     path: '/admin/orders',
     name: 'CoffeeOrders',
-    component: CoffeeOrders,
+    component: () => import('@/views/CoffeeOrders.vue'),
   },
   {
     path: '/admin/reviews',
     name: 'Reviews',
-    component: Reviews,
+    component: () => import('@/views/AdminReviews.vue'),
   },
   {
     path: '/admin/settings',
     name: 'Settings',
-    component: Settings,
+    component: () => import('@/views/AdminSettings.vue'),
   },
 ];
 

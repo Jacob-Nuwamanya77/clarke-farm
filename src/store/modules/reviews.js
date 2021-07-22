@@ -1,9 +1,10 @@
-/* eslint-disable max-len */
+import ReviewService from '@/services/review-service';
+
 export const state = {
   reviews: [
     {
       name: 'jacob nuwamanya',
-      review: 'This is Jacob Nuwamanya and I loved my experience. Explore the largest rock garden in Uganda, marked river trails, guided farm rides in our jeeps (ATV), delicious local cuisines and embrace the culture while enjoying freshly roasted coffee from the farm.',
+      review: 'This is Jacob Nuwamanya and I loved my experience. Explore the largest rock garden in Uganda',
       period: 'May 2020',
     },
     {
@@ -27,4 +28,52 @@ export const state = {
       period: 'October 2020',
     },
   ],
+  coffeeReviews: [],
+  visitorReviews: [],
+};
+
+export const actions = {
+  async fetchAllCoffeeReviews({ commit }, type) {
+    const reviews = await ReviewService.getReviews(type);
+    const verifiedReviews = [];
+    const unverifiedReviews = [];
+    reviews.data.forEach((review) => {
+      if (review.verified === true) {
+        verifiedReviews.push(review);
+      } else {
+        unverifiedReviews.push(review);
+      }
+    });
+    commit('ADD_ALL_COFFEE_REVIEWS', verifiedReviews);
+    return unverifiedReviews;
+  },
+  async fetchAllVisitorReviews({ commit }, type) {
+    const reviews = await ReviewService.getReviews(type);
+    const verifiedReviews = [];
+    const unverifiedReviews = [];
+    reviews.data.forEach((review) => {
+      if (review.verified === true) {
+        verifiedReviews.push(review);
+      } else {
+        unverifiedReviews.push(review);
+      }
+    });
+    commit('ADD_ALL_VISITOR_REVIEWS', verifiedReviews);
+    return unverifiedReviews;
+  },
+  commitCoffeeReviews({ commit }, payload) {
+    commit('ADD_ALL_COFFEE_REVIEWS', payload);
+  },
+  commitVisitorReviews({ commit }, payload) {
+    commit('ADD_ALL_VISITOR_REVIEWS', payload);
+  },
+};
+
+export const mutations = {
+  ADD_ALL_COFFEE_REVIEWS(state, reviews) {
+    state.coffeeReviews = [...state.coffeeReviews, ...reviews];
+  },
+  ADD_ALL_VISITOR_REVIEWS(state, reviews) {
+    state.visitorReviews = [...state.visitorReviews, ...reviews];
+  },
 };
