@@ -59,7 +59,7 @@
             class="text-danger delete-btn"
           />
           </a>
-          <table class="table  table-hover table-striped table-nowrap mt-5 font-size-12">
+          <table class=" table table-hover table-striped table-nowrap mt-5 font-size-12">
             <thead class="table-secondary font-size-10 ">
               <tr>
                 <td>
@@ -99,9 +99,9 @@
                 <td class="text-start">{{order.order}} {{order.package}}s</td>
                 <td
                   class="text-center"
-                  v-if="order.delivered=='true'"
+                  v-if="order.delivered==true"
                 >
-                  <span class="badge badge-pill tour-badge font-size-11">Fulfilled</span>
+                  <span class="badge badge-pill tour-badge bg-success font-size-11">Fulfilled</span>
                   </td>
                   <td
                     class="text-center"
@@ -114,16 +114,16 @@
                         <input
                           class="form-check-input"
                           type="checkbox"
-                          id="flexSwitchCheckChecked"
-                          :checked="order.delivered"
-                          :value="order._id"
-                          @click="fulfillOrder(order._id)"
+                          :value="order.delivered"
+                          :id="order._id"
+                          @change="toggleStatus(order._id,order.delivered)"
                         >
                           <label
                             class="form-check-label"
                             for="flexSwitchCheckChecked"
                           ></label>
-                      <fa icon="trash-alt" class="delete-icon"/>
+                     <a :id="order._id" @click="deleteOrder(order._id)" >
+                       <fa icon="trash-alt" class="delete-icon"/></a>
                       </div>
                     </td>
                     </tr>
@@ -139,6 +139,16 @@
   </div>
 </template>
 <style scoped>
+.swal-text {
+  background-color: #FEFAE3;
+  padding: 17px;
+  border: 1px solid #F0E1A1;
+  display: block;
+  margin: 22px;
+  font-size:12px !important;
+  text-align: center !important;
+  color: #61534e;
+}
 th,
 td {
   font-family: ‘Lato’, sans-serif;
@@ -248,6 +258,7 @@ th {
 </style>
 <script>
 import { mapState, mapGetters } from 'vuex';
+import OrderService from '@/services/coffee-order-service';
 
 export default {
   name: 'OrdersContent',
@@ -259,11 +270,44 @@ export default {
   },
   created() {
     this.$store.dispatch('fetchAllCoffeeOrders');
-    // this.$store.dispatch('FulFillOrder');
   },
   methods: {
-    fulfillOrder(order) {
-      this.$store.dispatch('FulFillOrder', order);
+    toggleStatus(id, value) {
+      console.log(id);
+      OrderService.update(id, value).then(() => {
+        console.log('updated');
+        this.$swal(
+          'Status updated',
+          'Refresh to see changes',
+          'success',
+        );
+      });
+    },
+    deleteOrder(id) {
+      this.$swal({
+        title: 'Are you sure?',
+        text: "You can't revert this action",
+        showCancelButton: true,
+        confirmButtonText: 'Yes Delete it!',
+        cancelButtonText: 'No, Keep it!',
+        showCloseButton: true,
+        showLoaderOnConfirm: false,
+      }).then((result) => {
+        if (result.value) {
+          OrderService.delete(id).then((response) => {
+            this.orders = this.orders.filter((order) => order._id !== response.data._id);
+            const indexOfArrayItem = this.orders.findIndex((i) => i.id === id);
+            this.orders.splice(indexOfArrayItem, 1);
+          });
+          this.$swal(
+            'Deleted',
+            'Order has been Permanently deleted',
+            'success',
+          );
+        } else {
+          this.$swal('Cancelled', 'Order data is still intact', 'info');
+        }
+      });
     },
     check() {
       const checkboxes = document.getElementsByName('visitor');

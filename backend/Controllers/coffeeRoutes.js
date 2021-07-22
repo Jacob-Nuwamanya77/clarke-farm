@@ -5,8 +5,8 @@ const Order = require('../Models/coffeeOrderModel');
 
 router.get('/', async (req, res) => {
   try {
-    const tasks = await Order.find({});
-    res.send(tasks);
+    const orders = await Order.find({});
+    res.send(orders);
   } catch (error) {
     console.log(error);
   }
@@ -14,9 +14,43 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const task = await Order(req.body);
-    task.save();
+    const order = await Order(req.body);
+    order.save();
     res.end();
+  } catch (error) {
+    console.log(error);
+  }
+});
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    await Order.findByIdAndDelete(req.params.id).exec((err, deleted) => {
+      res.send(deleted);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
+router.put('/update/:id/:value', async (req, res) => {
+  const delivered = {
+    $set: {
+      delivered: true,
+    },
+  };
+  const notdelivered = {
+    $set: {
+      delivered: false,
+    },
+  };
+  try {
+    if (req.params.value === 'true') {
+      await Order.findByIdAndUpdate(req.params.id, notdelivered, () => {
+        res.send(`item updated${req.params.value}`);
+      });
+    } else {
+      await Order.findByIdAndUpdate(req.params.id, delivered, () => {
+        res.send(`item updated${req.params.value}`);
+      });
+    }
   } catch (error) {
     console.log(error);
   }
