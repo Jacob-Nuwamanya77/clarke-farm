@@ -73,14 +73,14 @@ export default {
   },
   computed: {
     ...mapState({
-      projects: (state) => state.trainings.trainings,
+      trainings: (state) => state.trainings.trainings,
     }),
     filterDisplayData() {
-      const data = [...this.projects];
+      const data = [...this.trainings];
       return this.filter(data);
     },
     checkIfLastPage() {
-      const data = [...this.projects];
+      const data = [...this.trainings];
       if (this.page * this.limit >= data.length) {
         return true;
       }
