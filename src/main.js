@@ -7,14 +7,23 @@ import {
   faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake, faMugHot, faSearch,
   faSort, faMinus, faCheck, faCartArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
+
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Toaster from '@meforma/vue-toaster';
+
 // import VeeValidate from 'vee-validate';
 import VueSweetalert2 from 'vue-sweetalert2';
+
+// IMPORTING OKTA DEPENDENCIES
+import OktaVue from '@okta/okta-vue';
+import { oktaAuth } from './okta';
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
+
+// IMPORTING STYLES
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
@@ -35,4 +44,13 @@ createApp(App)
   .use(Toaster)
   .use(store)
   .use(router)
+  .use(OktaVue, {
+    oktaAuth,
+    onAuthRequired: () => {
+      router.push('/admin');
+    },
+    onAuthResume: () => {
+      router.push('/admin');
+    },
+  })
   .mount('#app');

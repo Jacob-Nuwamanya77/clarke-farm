@@ -3,8 +3,12 @@
     <div class="section-container">
       <div id="avatar-container">
         <div id="avatar">
-          <a href="https://www.vecteezy.com/free-vector/human"  target="_blank">
-            <img src="@/assets/images/avatars/female_avatar.png" alt="female avatar" aria-hidden="true">
+          <a href="https://www.vecteezy.com/free-vector/human" target="_blank">
+            <img
+              src="@/assets/images/avatars/female_avatar.png"
+              alt="female avatar"
+              aria-hidden="true"
+            />
           </a>
         </div>
         <div id="signin-options">
@@ -13,31 +17,24 @@
             <span id="notifications-counter">10</span>
           </span> -->
           <span id="user-details">
-            <span id="user-name">Mariat Ndagire</span>
+            <span id="user-name">{{ claims.name }}</span>
             <span id="user-role">Administrator</span>
+            <span class="logout">
+              <button class="btn btn-outline-danger" v-on:click="logout()">
+                <fa icon="sign-out-alt" /> Logout
+              </button>
+            </span>
           </span>
-          <span id="sign-out" @click="setLogOutClicked">
-            <span v-if="!logOutClicked">&caron;</span>
-            <span v-else>&circ;</span>
-          </span>
-          <div id="dropdown-signout" v-if="logOutClicked">
-            <div class="line-item">
-              <span class="item-icon" id="signout-icon">
-                <fa icon="sign-out-alt" />
-              </span>
-              <span class="item-title">
-                Sign Out
-              </span>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-    <div class="section-container">
-      <div id="greetings-container">
-        <span id="greeting" class="hero-text-lg">Good {{ setGreeting }},</span>
-        <span id="admin-name" class="hero-text-lg">Mariat</span>
-        <p class="sub-text">Here is what's happening at Clarke farm today.</p>
+      <div class="section-container">
+        <div id="greetings-container">
+          <span id="greeting" class="hero-text-lg"
+            >Good {{ setGreeting }},</span
+          >
+          <span id="admin-name" class="hero-text-lg">{{ claims.name }}</span>
+          <p class="sub-text">Here is what's happening at Clarke farm today.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -48,20 +45,39 @@ export default {
   name: 'DashboardHeader',
   data() {
     return {
+      claims: '',
       hours: new Date().getHours(),
-      logOutClicked: false,
+      authenticated: false,
     };
   },
+  async created() {
+    await this.isAuthenticated();
+    this.$auth.authStateManager.subscribe(this.isAuthenticated);
+    // OKTA CLAIMS
+    this.setup();
+  },
+  watch: {
+    // Everytime the route changes, check for auth status
+    $route: 'isAuthenticated',
+  },
   methods: {
-    setLogOutClicked() {
-      this.logOutClicked = !this.logOutClicked;
+    // OKTA CLAIMS
+    async setup() {
+      this.claims = await this.$auth.getUser();
+    },
+    async isAuthenticated() {
+      this.authenticated = await this.$auth.isAuthenticated();
+    },
+    async logout() {
+      await this.$auth.signOut();
     },
   },
   computed: {
     setGreeting() {
       if (this.hours >= 0 && this.hours < 12) {
         return 'morning';
-      } if (this.hours >= 12 && this.hours < 17) {
+      }
+      if (this.hours >= 12 && this.hours < 17) {
         return 'afternoon';
       }
       return 'evening';
@@ -71,21 +87,21 @@ export default {
 </script>
 
 <style scoped>
-#dashboard-header{
+#dashboard-header {
   margin-top: 12px;
-  height:115px;
+  height: 115px;
 }
-.section-container{
-  height:50%;
+.section-container {
+  height: 50%;
 }
-#greetings-container{
-  padding-top:10px;
+#greetings-container {
+  padding-top: 10px;
   height: 100%;
 }
-#admin-name{
+#admin-name {
   margin-left: 10px;
 }
-#avatar-container{
+#avatar-container {
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -96,24 +112,24 @@ export default {
   height: 65px;
   border-radius: 50%;
 }
-#avatar a{
+#avatar a {
   display: block;
   width: 100%;
   height: 100%;
 }
-img{
-  width:100%;
+img {
+  width: 100%;
   height: 100%;
   object-fit: cover;
 }
-#signin-options{
+#signin-options {
   height: 100%;
   display: flex;
   align-items: center;
   position: relative;
 }
 #notifications {
-  width:40px;
+  width: 40px;
   height: 40px;
   border-radius: 5px;
   background-color: white;
@@ -123,42 +139,42 @@ img{
   justify-content: center;
   position: relative;
 }
-#notifications-counter{
-  position:absolute;
-  top:-8px;
-  right:-8px;
+#notifications-counter {
+  position: absolute;
+  top: -8px;
+  right: -8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 13px;
   font-weight: bold;
-  color:white;
-  width:25px;
+  color: white;
+  width: 25px;
   height: 25px;
   border-radius: 50%;
   background-color: var(--dark-green);
 }
-#bell-icon{
-  color:#04548C;
+#bell-icon {
+  color: #04548c;
 }
-#user-details{
+#user-details {
   display: flex;
   flex-direction: column;
   margin-left: 30px;
   margin-right: 30px;
   font-weight: bold;
 }
-#user-name{
+#user-name {
   font-size: 14px;
-  color:rgba(44, 62, 80, 0.8)
+  color: rgba(44, 62, 80, 0.8);
 }
-#user-role{
+#user-role {
   font-size: 12px;
-  color:#a9a9a9;
+  color: #a9a9a9;
 }
-#sign-out{
-  width:40px;
-  height:40px;
+#sign-out {
+  width: 40px;
+  height: 40px;
   margin-right: 20px;
   padding-top: 20px;
   display: flex;
@@ -166,44 +182,44 @@ img{
   justify-content: center;
   font-size: 40px;
 }
-#sign-out:hover{
+#sign-out:hover {
   cursor: pointer;
 }
-.hero-text-lg{
+.hero-text-lg {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom:12px;
+  margin-bottom: 12px;
 }
-.sub-text{
+.sub-text {
   font-weight: bold;
-  color:#a9a9a9;
+  color: #a9a9a9;
   font-size: 14px;
 }
-#dropdown-signout{
+#dropdown-signout {
   position: absolute;
-  right:25px;
+  right: 25px;
   top: 48px;
-  background-color:white;
+  background-color: white;
   width: 160px;
-  min-height:40px;
+  min-height: 40px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   display: flex;
   align-items: center;
 }
-#dropdown-signout:hover{
+#dropdown-signout:hover {
   cursor: pointer;
 }
-.line-item{
-  width:100%;
+.line-item {
+  width: 100%;
   display: flex;
   align-items: center;
   padding-left: 10px;
 }
-.item-icon{
-  margin-right:10px;
+.item-icon {
+  margin-right: 10px;
 }
-#signout-icon{
-  color:#FC646C;
+#signout-icon {
+  color: #fc646c;
 }
 </style>
