@@ -1,10 +1,10 @@
 <template>
   <div class="arrow-navigation">
     <div class="forward-back-navigation">
-      <span class="nav-button" @click="prevPage" v-if="pageNumber !== 1">
+      <span class="nav-button" @click="previousPage" v-if="currentPage > 1">
         <fa icon="angle-left" />
       </span>
-      <span class="nav-button" @click="nextPage" v-if="!isLastPage">
+      <span class="nav-button" @click="nextPage" v-if="currentPage !== lastPage">
         <fa icon="angle-right" />
       </span>
     </div>
@@ -14,26 +14,55 @@
 <script>
 export default {
   name: 'ArrowNavigation',
+  data() {
+    return {
+      currentPage: 1,
+    };
+  },
   props: {
-    pageNumber: {
+    perPage: {
       type: Number,
-      required: true,
-      validator: (value) => Number.isInteger(value),
+      default: 3,
     },
-    isLastPage: {
-      type: Boolean,
+    itemList: {
+      type: Array,
       required: true,
-      validator: (value) => typeof value === 'boolean',
     },
   },
-  methods: {
-    nextPage() {
-      const page = this.pageNumber + 1;
-      this.$emit('newPage', page);
+  computed: {
+    lastPage() {
+      return this.itemList.length > 0 ? Math.ceil(this.itemList.length / this.perPage) : 1;
     },
-    prevPage() {
-      const page = this.pageNumber - 1;
-      this.$emit('newPage', page);
+  },
+
+  watch: {
+    itemList() {
+      this.currentPage = 1;
+      this.filterDisplayData(this.currentPage);
+    },
+  },
+  created() {
+    this.filterDisplayData(this.currentPage);
+  },
+  methods: {
+    filterDisplayData(currentPage) {
+      const startIndex = (currentPage - 1) * this.perPage;
+      const endIndex = currentPage * this.perPage;
+      const displayData = this.itemList.filter((item, index) => {
+        if (index >= startIndex && index < endIndex) { return item; }
+        return false;
+      });
+      this.$emit('display-data', displayData);
+    },
+
+    nextPage() {
+      this.currentPage += 1;
+      this.filterDisplayData(this.currentPage);
+    },
+
+    previousPage() {
+      this.currentPage -= 1;
+      this.filterDisplayData(this.currentPage);
     },
   },
 };

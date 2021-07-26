@@ -11,9 +11,6 @@
 <script>
 export default {
   name: 'TabMenu',
-  created() {
-    this.$emit('selected', this.selectedTab);
-  },
   props: {
     tabsList: {
       type: Array,
@@ -28,7 +25,7 @@ export default {
   methods: {
     onTabSelected(event) {
       this.selectedTab = event.target.textContent;
-      this.$emit('selected', this.selectedTab);
+      this.$emit('selected', this.selectedTab.toLowerCase());
     },
   },
 };

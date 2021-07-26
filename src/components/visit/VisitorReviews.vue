@@ -10,23 +10,25 @@
         <p class="section-title">
           Our visitors describe their experiences.
         </p>
-        <p id="review-text">
-          {{ filterDisplayData[0].review }}
-        </p>
-        <div id="reviewee-details">
-          <span>
-            {{ capitalizeEachWord(filterDisplayData[0].name) }}
-          </span>
-          <span id="reviewee-period">
-            {{ capitalizeFirstLetter(filterDisplayData[0].period) }}
-          </span>
-        </div>
+        <template v-if="displayData.length > 0">
+          <p id="review-text">
+          {{ displayData[0].review }}
+          </p>
+          <div id="reviewee-details">
+            <span>
+              {{ capitalizeEachWord(displayData[0].name) }}
+            </span>
+            <span id="reviewee-period">
+              {{ capitalizeFirstLetter(displayData[0].period) }}
+            </span>
+          </div>
+        </template>
+        <template v-else>
+          <p> No reviews to display </p>
+        </template>
         <div id="cta-container">
           <div class="forward-back-navigation">
-            <ArrowNavigation
-            @newPage ="setNewPage"
-            :pageNumber="page"
-            :isLastPage="checkIfLastPage" />
+            <ArrowNavigation :itemList="reviews" :perPage="1" @display-data="setDisplayData"/>
           </div>
           <div class="contact-btn-container">
             <a @click.prevent="showReviewModal">Write Review</a>
@@ -62,7 +64,6 @@
 <script>
 import ReviewService from '@/services/review-service';
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
-import SlideNavigation from '@/mixins/slide-navigation';
 import ReviewModal from '@/components/shared/ReviewModal.vue';
 import FormatText from '@/mixins/format-text';
 import { mapState } from 'vuex';
@@ -71,19 +72,18 @@ export default {
   name: 'OurReviews',
   data() {
     return {
-      limit: 1,
-      page: 1,
       showModal: false,
+      displayData: [],
     };
   },
   components: {
     ArrowNavigation,
     ReviewModal,
   },
-  mixins: [SlideNavigation, FormatText],
+  mixins: [FormatText],
   methods: {
-    setNewPage(page) {
-      this.page = page;
+    setDisplayData(data) {
+      this.displayData = data;
     },
     showReviewModal() {
       this.showModal = true;
@@ -134,17 +134,6 @@ export default {
     ...mapState({
       reviews: (state) => state.reviews.reviews,
     }),
-    filterDisplayData() {
-      const data = [...this.reviews];
-      return this.filter(data);
-    },
-    checkIfLastPage() {
-      const data = [...this.reviews];
-      if (this.page * this.limit >= data.length) {
-        return true;
-      }
-      return false;
-    },
   },
 };
 </script>

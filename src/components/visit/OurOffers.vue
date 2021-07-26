@@ -7,10 +7,10 @@
     </p>
     <TabMenu :tabsList="tabs" @selected = "setSelectedTab"/>
     <div class="card-container">
-      <Card v-for="(activity, index) in filterDisplayData" :key="index" :item="activity"/>
+      <Card v-for="(activity, index) in displayData" :key="index" :item="activity"/>
     </div>
     <div class="arr-nav-container">
-      <ArrowNavigation @newPage ="setNewPage" :pageNumber="page" :isLastPage="checkIfLastPage" />
+      <ArrowNavigation :itemList="sortPaginationData" @display-data="setDisplayData"/>
     </div>
   </div>
 </template>
@@ -19,7 +19,6 @@
 import TabMenu from '@/components/shared/TabMenu.vue';
 import Card from '@/components/shared/Card.vue';
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
-import SlideNavigation from '@/mixins/slide-navigation';
 import { mapState } from 'vuex';
 
 export default {
@@ -32,19 +31,21 @@ export default {
   data() {
     return {
       tabs: ['Activities', 'Accomodation', 'Food'],
-      page: 1,
-      filterBy: 'activities',
+      displayData: [],
+      selectedTab: 'activities',
     };
   },
-  mixins: [SlideNavigation],
   components: {
     TabMenu,
     Card,
     ArrowNavigation,
   },
   methods: {
-    setNewPage(page) {
-      this.page = page;
+    setDisplayData(data) {
+      this.displayData = data;
+    },
+    setSelectedTab(data) {
+      this.selectedTab = data;
     },
   },
   computed: {
@@ -53,16 +54,14 @@ export default {
       accomodation: (state) => state.accomodations.accomodations,
       food: (state) => state.foods.foods,
     }),
-    filterDisplayData() {
-      const data = [...this[this.filterBy]];
-      return this.filter(data);
-    },
-    checkIfLastPage() {
-      const data = [...this[this.filterBy]];
-      if (this.page * this.limit > data.length) {
-        return true;
+    sortPaginationData() {
+      if (this.selectedTab === 'activities') {
+        return this.activities;
       }
-      return false;
+      if (this.selectedTab === 'accomodation') {
+        return this.accomodation;
+      }
+      return this.food;
     },
   },
 };
