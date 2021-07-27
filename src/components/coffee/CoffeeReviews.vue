@@ -132,7 +132,7 @@ export default {
   },
   computed: {
     ...mapState({
-      reviews: (state) => state.reviews.reviews,
+      reviews: (state) => state.reviews.coffeeReviews,
     }),
   },
 };
