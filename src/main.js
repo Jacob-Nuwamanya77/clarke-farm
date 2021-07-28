@@ -14,6 +14,9 @@ import Toaster from '@meforma/vue-toaster';
 import OktaVue from '@okta/okta-vue';
 import { oktaAuth } from './okta';
 
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import App from './App.vue';
 import router from './router';
 import store from './store';

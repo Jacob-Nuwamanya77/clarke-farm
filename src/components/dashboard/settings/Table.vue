@@ -14,7 +14,7 @@
       <tbody>
         <tr v-for="item in itemList" :key="item._id">
           <td class="td-img-container">
-            <img :src="require('@/assets/images/categories/coffee.jpg')" aria-hidden="true">
+            <img :src="createImagePath(item.filename)" aria-hidden="true">
           </td>
           <td class="td-title-container">{{ item.title }}</td>
           <td class="td-description-container">{{ item.description }}</td>

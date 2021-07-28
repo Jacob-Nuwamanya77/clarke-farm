@@ -69,7 +69,7 @@ export default {
       const category = srcElement.getAttribute('category');
       ReviewService.delete(category, id)
         .then(() => {
-          this.$swal('Deleted', 'Review has been Permanently deleted', 'success');
+          Swal.fire('Deleted', 'Review has been Permanently deleted', 'success');
           this.$store.dispatch('fetchAllCoffeeReviews');
           this.$store.dispatch('fetchAllVisitorReviews');
         });
@@ -80,7 +80,7 @@ export default {
       const category = srcElement.getAttribute('category');
       ReviewService.update(category, id)
         .then(() => {
-          this.$swal('Accepted', 'Review has been accepted', 'success');
+          Swal.fire('Accepted', 'Review has been accepted', 'success');
           this.$store.dispatch('fetchAllCoffeeReviews');
           this.$store.dispatch('fetchAllVisitorReviews');
         });

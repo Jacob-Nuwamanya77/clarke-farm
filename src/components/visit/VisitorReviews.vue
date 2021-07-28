@@ -64,6 +64,7 @@ import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
 import ReviewModal from '@/components/shared/ReviewModal.vue';
 import FormatText from '@/mixins/format-text';
 import { mapGetters } from 'vuex';
+import Swal from 'sweetalert2';
 
 export default {
   name: 'OurReviews',
@@ -92,7 +93,7 @@ export default {
       this.showModal = false;
     },
     showWaitingAlert() {
-      this.$swal({
+      Swal.fire({
         icon: 'info',
         title: 'Checking status',
         text: 'Checking if you stayed with us',
@@ -100,7 +101,7 @@ export default {
       });
     },
     showReviewAccepted() {
-      this.$swal({
+      Swal.fire({
         icon: 'success',
         title: 'Review submitted',
         timer: 2000,
@@ -108,7 +109,7 @@ export default {
       });
     },
     showReviewRejected() {
-      this.$swal({
+      Swal.fire({
         icon: 'error',
         title: 'Review rejected',
         text: 'Submitted user data does not match any record',
@@ -120,11 +121,11 @@ export default {
       ReviewService.postReview('visitor', review)
         .then((response) => {
           if (response.data.status === 'success') {
-            this.$swal.close();
+            Swal.close();
             this.showReviewAccepted();
           }
           if (response.data.status === 'rejected') {
-            this.$swal.close();
+            Swal.close();
             this.showReviewRejected();
           }
         });
