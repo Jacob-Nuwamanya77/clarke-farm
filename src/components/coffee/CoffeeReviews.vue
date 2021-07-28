@@ -134,10 +134,6 @@ export default {
     ...mapGetters({
       reviews: 'getVerifiedCoffeeReviews',
     }),
-    print() {
-      console.log(this.displayData);
-      return true;
-    },
   },
 };
 </script>

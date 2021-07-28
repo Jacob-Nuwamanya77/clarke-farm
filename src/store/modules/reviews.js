@@ -40,4 +40,9 @@ export const getters = {
   getUnverifiedVisitorReviews(state) {
     return state.visitorReviews.filter((review) => review.verified === false);
   },
+  getAllUnverifiedReviews(state) {
+    const coffee = state.coffeeReviews.filter((review) => review.verified === false);
+    const visitor = state.visitorReviews.filter((review) => review.verified === false);
+    return [...coffee, ...visitor];
+  },
 };

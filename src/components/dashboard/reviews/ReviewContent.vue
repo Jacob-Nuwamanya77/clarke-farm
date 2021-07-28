@@ -54,11 +54,6 @@ export default {
     this.$store.dispatch('fetchAllCoffeeReviews');
     this.$store.dispatch('fetchAllVisitorReviews');
   },
-  data() {
-    return {
-      unverifiedReviews: [...this.unverifiedCoffeeReviews, ...this.unverifiedVisitorReviews],
-    };
-  },
   mixins: [FormatText],
   methods: {
     getMonth(review) {
@@ -72,9 +67,10 @@ export default {
       const id = srcElement.id;
       const category = srcElement.getAttribute('category');
       ReviewService.delete(category, id)
-        .then((response) => {
+        .then(() => {
           this.$swal('Deleted', 'Review has been Permanently deleted', 'success');
-          this.unverifiedReviews = this.unverifiedReviews.filter((review) => review._id !== response.data._id);
+          this.$store.dispatch('fetchAllCoffeeReviews');
+          this.$store.dispatch('fetchAllVisitorReviews');
         });
     },
     acceptReview(event) {
@@ -82,9 +78,10 @@ export default {
       const id = srcElement.id;
       const category = srcElement.getAttribute('category');
       ReviewService.update(category, id)
-        .then((response) => {
+        .then(() => {
           this.$swal('Accepted', 'Review has been accepted', 'success');
-          this.unverifiedReviews = this.unverifiedReviews.filter((review) => review._id !== response.data._id);
+          this.$store.dispatch('fetchAllCoffeeReviews');
+          this.$store.dispatch('fetchAllVisitorReviews');
         });
     },
     confirmDelete(event) {
@@ -122,8 +119,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      unverifiedCoffeeReviews: 'getUnverifiedCoffeeReviews',
-      unverifiedVisitorReviews: 'getUnverifiedVisitorReviews',
+      unverifiedReviews: 'getAllUnverifiedReviews',
     }),
   },
 };
