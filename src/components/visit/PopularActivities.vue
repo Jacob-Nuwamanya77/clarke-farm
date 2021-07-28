@@ -102,19 +102,19 @@
       <div class="card-container">
         <div class="activity-details">
           <div class="circle-container-image">
-            <img src="@/assets/images/jeep.jpg" alt="jeep ride">
+            <img src="@/assets/images/jeep.png" alt="jeep ride">
           </div>
           <p>Jeep tour of the farm</p>
         </div>
         <div class="activity-details">
           <div class="circle-container-image">
-            <img src="@/assets/images/bouldering.jpg" alt="bouldering">
+            <img src="@/assets/images/bouldering.png" alt="bouldering">
           </div>
           <p>Bouldering</p>
         </div>
         <div class="activity-details">
           <div class="circle-container-image">
-            <img src="@/assets/images/river-walks.jpg" alt="river walks">
+            <img src="@/assets/images/river-walks.png" alt="river walks">
           </div>
           <p>The river &amp; waterfall trails</p>
         </div>
