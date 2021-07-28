@@ -31,9 +31,6 @@ const coffeeOrderSchema = new Schema({
     type: String,
   },
 },
-{ timestamps: true },
-{
-  collection: 'orders',
-});
+{ timestamps: true });
 
 module.exports = mongoose.model('orders', coffeeOrderSchema);

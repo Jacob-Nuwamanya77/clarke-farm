@@ -32,9 +32,6 @@ const visitorSchema = new Schema({
     type: String,
   },
 },
-{ timestamps: true },
-{
-  collection: 'visitors',
-});
+{ timestamps: true });
 
 module.exports = mongoose.model('Visitor', visitorSchema);

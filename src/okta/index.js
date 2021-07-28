@@ -4,7 +4,7 @@ import { OktaAuth } from '@okta/okta-auth-js';
 const oktaSignIn = new OktaSignIn({
   baseUrl: 'https://dev-5812657.okta.com',
   clientId: '0oavzxa1dSRsQO4gU5d6',
-  redirectUri: 'http://localhost:8080/callback',
+  redirectUri: 'http://localhost:3000/callback',
   authParams: {
     pkce: true,
     issuer: 'https://dev-5812657.okta.com/oauth2/default',
@@ -16,7 +16,7 @@ const oktaSignIn = new OktaSignIn({
 const oktaAuth = new OktaAuth({
   issuer: 'https://dev-5812657.okta.com/oauth2/default',
   clientId: '0oavzxa1dSRsQO4gU5d6',
-  redirectUri: 'http://localhost:8080/callback',
+  redirectUri: 'http://localhost:3000/callback',
   scopes: ['openid', 'profile', 'email'],
 });
 

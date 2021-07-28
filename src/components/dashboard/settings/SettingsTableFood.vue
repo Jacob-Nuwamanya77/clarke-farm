@@ -53,6 +53,7 @@
 <script>
 import { mapState } from 'vuex';
 import FoodService from '@/services/food-service';
+import Swal from 'sweetalert2';
 import Table from './Table.vue';
 
 export default {
@@ -130,7 +131,7 @@ export default {
         });
     },
     confirmDelete(id) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -141,7 +142,7 @@ export default {
         if (result.isConfirmed) {
           this.deleteFoodItem(id);
         } else {
-          this.$swal('Cancelled', 'Food is still available', 'info');
+          Swal.fire('Cancelled', 'Food is still available', 'info');
         }
       });
     },

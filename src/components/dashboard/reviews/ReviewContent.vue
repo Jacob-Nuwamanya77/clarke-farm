@@ -47,6 +47,7 @@
 import FormatText from '@/mixins/format-text';
 import * as date from '@/plugins/date';
 import ReviewService from '@/services/review-service';
+import Swal from 'sweetalert2';
 
 export default {
   created() {
@@ -78,7 +79,7 @@ export default {
       const category = srcElement.getAttribute('category');
       ReviewService.delete(category, id)
         .then((response) => {
-          this.$swal('Deleted', 'Review has been Permanently deleted', 'success');
+          Swal.fire('Deleted', 'Review has been Permanently deleted', 'success');
           this.unverifiedReviews = this.unverifiedReviews.filter((review) => review._id !== response.data._id);
         });
     },
@@ -88,12 +89,12 @@ export default {
       const category = srcElement.getAttribute('category');
       ReviewService.update(category, id)
         .then((response) => {
-          this.$swal('Accepted', 'Review has been accepted', 'success');
+          Swal.fire('Accepted', 'Review has been accepted', 'success');
           this.unverifiedReviews = this.unverifiedReviews.filter((review) => review._id !== response.data._id);
         });
     },
     confirmDelete(event) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -104,12 +105,12 @@ export default {
         if (result.isConfirmed) {
           this.deleteReview(event);
         } else {
-          this.$swal('Cancelled', 'Review is still available', 'info');
+          Swal.fire('Cancelled', 'Review is still available', 'info');
         }
       });
     },
     confirmAccept(event) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -120,7 +121,7 @@ export default {
         if (result.isConfirmed) {
           this.acceptReview(event);
         } else {
-          this.$swal('Cancelled', 'Review is still available', 'info');
+          Swal.fire('Cancelled', 'Review is still available', 'info');
         }
       });
     },

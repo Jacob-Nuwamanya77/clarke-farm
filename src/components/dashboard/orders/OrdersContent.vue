@@ -259,6 +259,7 @@ th {
 <script>
 import { mapState, mapGetters } from 'vuex';
 import OrderService from '@/services/coffee-order-service';
+import Swal from 'sweetalert2';
 
 export default {
   name: 'OrdersContent',
@@ -275,16 +276,10 @@ export default {
     toggleStatus(id, value) {
       console.log(id);
       OrderService.update(id, value).then(() => {
-        console.log('updated');
-        this.$swal(
-          'Status updated',
-          'Refresh to see changes',
-          'success',
-        );
       });
     },
     deleteOrder(id) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: "You can't revert this action",
         showCancelButton: true,
