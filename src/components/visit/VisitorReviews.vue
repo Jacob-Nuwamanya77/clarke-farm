@@ -18,9 +18,6 @@
             <span>
               {{ capitalizeEachWord(displayData[0].name) }}
             </span>
-            <span id="reviewee-period">
-              {{ capitalizeFirstLetter(displayData[0].period) }}
-            </span>
           </div>
         </template>
         <template v-else>
@@ -66,10 +63,13 @@ import ReviewService from '@/services/review-service';
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
 import ReviewModal from '@/components/shared/ReviewModal.vue';
 import FormatText from '@/mixins/format-text';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'OurReviews',
+  created() {
+    this.$store.dispatch('fetchAllVisitorReviews');
+  },
   data() {
     return {
       showModal: false,
@@ -131,8 +131,8 @@ export default {
     },
   },
   computed: {
-    ...mapState({
-      reviews: (state) => state.reviews.visitorReviews,
+    ...mapGetters({
+      reviews: 'getVerifiedVisitorReviews',
     }),
   },
 };

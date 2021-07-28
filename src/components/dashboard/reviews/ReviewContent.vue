@@ -47,21 +47,16 @@
 import FormatText from '@/mixins/format-text';
 import * as date from '@/plugins/date';
 import ReviewService from '@/services/review-service';
+import { mapGetters } from 'vuex';
 
 export default {
   created() {
-    this.$store.dispatch('fetchAllCoffeeReviews', 'coffee')
-      .then((response) => {
-        this.unverifiedReviews = [...this.unverifiedReviews, ...response];
-      });
-    this.$store.dispatch('fetchAllVisitorReviews', 'visitor')
-      .then((response) => {
-        this.unverifiedReviews = [...this.unverifiedReviews, ...response];
-      });
+    this.$store.dispatch('fetchAllCoffeeReviews');
+    this.$store.dispatch('fetchAllVisitorReviews');
   },
   data() {
     return {
-      unverifiedReviews: [],
+      unverifiedReviews: [...this.unverifiedCoffeeReviews, ...this.unverifiedVisitorReviews],
     };
   },
   mixins: [FormatText],
@@ -124,6 +119,12 @@ export default {
         }
       });
     },
+  },
+  computed: {
+    ...mapGetters({
+      unverifiedCoffeeReviews: 'getUnverifiedCoffeeReviews',
+      unverifiedVisitorReviews: 'getUnverifiedVisitorReviews',
+    }),
   },
 };
 </script>

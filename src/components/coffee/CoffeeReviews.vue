@@ -10,7 +10,10 @@
         <p class="section-title">
           What people have to say about our coffee.
         </p>
-        <template v-if="displayData.length > 0">
+        <template v-if="displayData.length === 0">
+          <p> No reviews to display </p>
+        </template>
+        <template v-else>
            <p id="review-text">
             {{ displayData[0].review }}
           </p>
@@ -18,13 +21,7 @@
             <span>
               {{ capitalizeEachWord(displayData[0].name) }}
             </span>
-            <span id="reviewee-period">
-              {{ capitalizeFirstLetter(displayData[0].period) }}
-            </span>
           </div>
-        </template>
-        <template v-else>
-          <p> No reviews to display </p>
         </template>
         <div id="cta-container">
           <div class="forward-back-navigation">
@@ -66,10 +63,13 @@ import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
 import ReviewModal from '@/components/shared/ReviewModal.vue';
 import ReviewService from '@/services/review-service';
 import FormatText from '@/mixins/format-text';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'OurReviews',
+  created() {
+    this.$store.dispatch('fetchAllCoffeeReviews');
+  },
   data() {
     return {
       showModal: false,
@@ -131,9 +131,13 @@ export default {
     },
   },
   computed: {
-    ...mapState({
-      reviews: (state) => state.reviews.coffeeReviews,
+    ...mapGetters({
+      reviews: 'getVerifiedCoffeeReviews',
     }),
+    print() {
+      console.log(this.displayData);
+      return true;
+    },
   },
 };
 </script>
