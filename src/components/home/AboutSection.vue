@@ -1,5 +1,4 @@
 <template>
-  <!-- eslint-disable-next-line vue/max-attributes-per-line -->
   <div>
     <div class="about">
       <p class="section-title">Who we are</p>
@@ -36,17 +35,14 @@
         <p class="section-sub-heading center-text">Projects</p>
         <div class="card-container">
           <Card
-            v-for="(project, index) in filterDisplayData"
+            v-for="(project, index) in displayData"
             :key="index"
             :item="project"
             :staticImg="true"
             imgDir="projects"/>
         </div>
         <div class="arr-nav-container">
-          <ArrowNavigation
-            @newPage ="setNewPage"
-            :pageNumber="page"
-            :isLastPage="checkIfLastPage" />
+          <ArrowNavigation :itemList="projects" @display-data="setDisplayData"/>
         </div>
       </div>
     </div>
@@ -81,41 +77,28 @@
 <script>
 import Card from '@/components/shared/Card.vue';
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
-import SlideNavigation from '@/mixins/slide-navigation';
 import { mapState } from 'vuex';
 
 export default {
   name: 'AboutSection.vue',
   data() {
     return {
-      page: 1,
+      displayData: [],
     };
   },
   components: {
     ArrowNavigation,
     Card,
   },
-  mixins: [SlideNavigation],
   methods: {
-    setNewPage(page) {
-      this.page = page;
+    setDisplayData(data) {
+      this.displayData = data;
     },
   },
   computed: {
     ...mapState({
       projects: (state) => state.projects.projects,
     }),
-    filterDisplayData() {
-      const data = [...this.projects];
-      return this.filter(data);
-    },
-    checkIfLastPage() {
-      const data = [...this.projects];
-      if (this.page * this.limit >= data.length) {
-        return true;
-      }
-      return false;
-    },
   },
 };
 </script>

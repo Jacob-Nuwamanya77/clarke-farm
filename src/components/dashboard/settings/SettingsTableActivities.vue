@@ -60,6 +60,7 @@
 <script>
 import { mapState } from 'vuex';
 import ActivityService from '@/services/activity-service';
+import Swal from 'sweetalert2';
 import Table from './Table.vue';
 
 export default {
@@ -124,7 +125,7 @@ export default {
       ActivityService.postActivity(activity)
         .then((response) => {
           this.closeModal();
-          this.$swal('Saved', 'Activity has been added', 'success');
+          Swal.fire('Saved', 'Activity has been added', 'success');
           this.$store.dispatch('addActivity', response.data);
         });
       this.resetActivityObject();
@@ -132,12 +133,12 @@ export default {
     deleteActivityItem(id) {
       ActivityService.deleteActivity(id)
         .then((response) => {
-          this.$swal('Deleted', 'Activity has been Permanently deleted', 'success');
+          Swal.fire('Deleted', 'Activity has been Permanently deleted', 'success');
           this.$store.dispatch('deleteActivity', response.data);
         });
     },
     confirmDelete(id) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -148,7 +149,7 @@ export default {
         if (result.isConfirmed) {
           this.deleteActivityItem(id);
         } else {
-          this.$swal('Cancelled', 'Activity is still available', 'info');
+          Swal.fire('Cancelled', 'Activity is still available', 'info');
         }
       });
     },

@@ -32,18 +32,14 @@
       <p class="section-sub-heading">Training Categories</p>
       <div class="card-container">
         <Card
-        v-for="(project, index) in filterDisplayData"
+        v-for="(project, index) in displayData"
         :key="index"
         :item="project"
-        :staticImg="true"
-        imgDir="categories"/>
+        :priceTag="false"/>
       </div>
       <div class="arr-nav-container">
-          <ArrowNavigation
-            @newPage ="setNewPage"
-            :pageNumber="page"
-            :isLastPage="checkIfLastPage" />
-        </div>
+        <ArrowNavigation :itemList="trainings" @display-data="setDisplayData"/>
+      </div>
     </div>
   </div>
 </template>
@@ -51,41 +47,31 @@
 <script>
 import Card from '@/components/shared/Card.vue';
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
-import SlideNavigation from '@/mixins/slide-navigation';
 import { mapState } from 'vuex';
 
 export default {
   name: 'TrainingAreas',
+  created() {
+    this.$store.dispatch('fetchAllTrainings');
+  },
   data() {
     return {
-      page: 1,
+      displayData: [],
     };
   },
   components: {
     ArrowNavigation,
     Card,
   },
-  mixins: [SlideNavigation],
   methods: {
-    setNewPage(page) {
-      this.page = page;
+    setDisplayData(data) {
+      this.displayData = data;
     },
   },
   computed: {
     ...mapState({
       trainings: (state) => state.trainings.trainings,
     }),
-    filterDisplayData() {
-      const data = [...this.trainings];
-      return this.filter(data);
-    },
-    checkIfLastPage() {
-      const data = [...this.trainings];
-      if (this.page * this.limit >= data.length) {
-        return true;
-      }
-      return false;
-    },
   },
 };
 </script>

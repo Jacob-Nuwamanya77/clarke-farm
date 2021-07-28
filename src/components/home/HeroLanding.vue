@@ -26,13 +26,13 @@
     <div class="right-container">
       <div class="images-right">
         <div class="image-left-section">
-          <img src="@/assets/images/farm.jpg" alt="farm" aria-hidden="true">
+          <img src="@/assets/images/farm.png" alt="farm" aria-hidden="true">
         </div>
         <div class="image-top-section">
-          <img src="@/assets/images/friends.jpg" alt="having fun" aria-hidden="true">
+          <img src="@/assets/images/jeep.png" alt="having fun" aria-hidden="true">
         </div>
         <div class="image-bottom-section">
-          <img src="@/assets/images/jeep.jpg" alt="jeep ride" aria-hidden="true">
+          <img src="@/assets/images/river-walks.png" alt="jeep ride" aria-hidden="true">
         </div>
       </div>
     </div>

@@ -7,26 +7,19 @@ import {
   faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake, faMugHot, faSearch,
   faSort, faMinus, faCheck, faCartArrowDown,
 } from '@fortawesome/free-solid-svg-icons';
-
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Toaster from '@meforma/vue-toaster';
-
-// import VeeValidate from 'vee-validate';
-import VueSweetalert2 from 'vue-sweetalert2';
-
 // IMPORTING OKTA DEPENDENCIES
 import OktaVue from '@okta/okta-vue';
 import { oktaAuth } from './okta';
 
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import App from './App.vue';
 import router from './router';
 import store from './store';
-
-// IMPORTING STYLES
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'sweetalert2/dist/sweetalert2.min.css';
 
 library.add(faPhone, faBars, faFacebookF, faTwitter, faCogs, faTrashAlt,
   faSearch, faHome, faArrowRight, faInstagram, faHome, faStar, faSignOutAlt, faSort,
@@ -34,13 +27,8 @@ library.add(faPhone, faBars, faFacebookF, faTwitter, faCogs, faTrashAlt,
   faHamburger, faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen, faTrash, faCartArrowDown,
   faBalanceScale, faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake, faMugHot, faMinus, faCheck);
 
-// sweetalert buttons
-const options = {
-  confirmButtonColor: '#068d68',
-  cancelButtonColor: '#ff7674',
-};
 createApp(App)
-  .component('fa', FontAwesomeIcon).use(VueSweetalert2, options)
+  .component('fa', FontAwesomeIcon)
   .use(Toaster)
   .use(store)
   .use(router)

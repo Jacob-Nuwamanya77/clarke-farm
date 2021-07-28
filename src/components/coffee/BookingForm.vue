@@ -108,6 +108,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   name: 'BookingForm',
   data() {
@@ -140,11 +142,13 @@ export default {
           requests: '',
           bookingtype: 'Coffee',
         };
-        // Use sweetalert2
-        this.$swal({
-          showCloseButton: true,
+        Swal.fire({
+          title: 'Thank you',
+          text: 'Your Booking has been received ',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
         });
-        this.$swal('Received', 'Your order has been received.!!!', 'success');
       } catch {
         this.message = 'failed to submit; please, try again!';
       }

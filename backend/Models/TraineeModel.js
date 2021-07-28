@@ -29,8 +29,6 @@ const traineeSchema = new Schema({
     type: String,
   },
 },
-{ timestamps: true },
-{
-});
+{ timestamps: true });
 
 module.exports = mongoose.model('Trainees', traineeSchema);

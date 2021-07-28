@@ -13,9 +13,11 @@
       <p class="card-text">
        {{ item.description }}
       </p>
-      <p v-if="item.cost" class="activity-price">
-        {{ item.currency }} {{ item.cost }}
-      </p>
+      <template v-if="priceTag">
+        <p v-if="item.cost" class="activity-price">
+          {{ item.currency }} {{ item.cost }}
+        </p>
+      </template>
     </div>
   </div>
 </template>
@@ -38,6 +40,11 @@ export default {
     imgDir: {
       type: String,
       required: false,
+    },
+    priceTag: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
   mixins: [FormatText],

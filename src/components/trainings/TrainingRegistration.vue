@@ -77,6 +77,8 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
+
 export default {
   name: 'TrainingRegistration',
   data() {
@@ -105,11 +107,13 @@ export default {
           checkin: '',
           topics: [],
         };
-        // Use sweetalert2
-        this.$swal({
-          showCloseButton: true,
+        Swal.fire({
+          title: 'Thank you',
+          text: 'Your Booking has been received ',
+          icon: 'success',
+          timer: 1500,
+          showConfirmButton: false,
         });
-        this.$swal('Received', 'Check your email address for confirmation.!!!', 'success');
       } catch {
         this.message = 'failed to submit; please, try again!';
       }

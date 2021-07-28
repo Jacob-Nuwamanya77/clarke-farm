@@ -7,17 +7,14 @@
       </p>
       <div class="card-container">
         <Card
-        v-for="(process, index) in filterDisplayData"
+        v-for="(process, index) in displayData"
         :key="index"
         :item="process"
         :staticImg="true"
         imgDir="processing"/>
       </div>
       <div class="arr-nav-container">
-        <ArrowNavigation
-          @newPage ="setNewPage"
-          :pageNumber="page"
-          :isLastPage="checkIfLastPage" />
+        <ArrowNavigation :itemList="process" @display-data="setDisplayData"/>
       </div>
     </div>
     <div id="capacity">
@@ -54,41 +51,28 @@
 <script>
 import Card from '@/components/shared/Card.vue';
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
-import SlideNavigation from '@/mixins/slide-navigation';
 import { mapState } from 'vuex';
 
 export default {
   name: 'CoffeeProcess',
   data() {
     return {
-      page: 1,
+      displayData: [],
     };
   },
   components: {
     ArrowNavigation,
     Card,
   },
-  mixins: [SlideNavigation],
   methods: {
-    setNewPage(page) {
-      this.page = page;
+    setDisplayData(data) {
+      this.displayData = data;
     },
   },
   computed: {
     ...mapState({
       process: (state) => state.processing.processing,
     }),
-    filterDisplayData() {
-      const data = [...this.process];
-      return this.filter(data);
-    },
-    checkIfLastPage() {
-      const data = [...this.process];
-      if (this.page * this.limit >= data.length) {
-        return true;
-      }
-      return false;
-    },
   },
 };
 </script>

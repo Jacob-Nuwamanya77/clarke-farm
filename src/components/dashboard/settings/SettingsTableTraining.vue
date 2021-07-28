@@ -62,6 +62,7 @@
 <script>
 import { mapState } from 'vuex';
 import TrainingService from '@/services/training-service';
+import Swal from 'sweetalert2';
 import Table from './Table.vue';
 
 export default {
@@ -129,7 +130,7 @@ export default {
       TrainingService.postTraining(training)
         .then((response) => {
           this.closeModal();
-          this.$swal('Saved', 'Training has been added', 'success');
+          Swal.fire('Saved', 'Training has been added', 'success');
           this.$store.dispatch('addTraining', response.data);
         });
       this.resetTrainingObject();
@@ -137,12 +138,12 @@ export default {
     deleteTrainingItem(id) {
       TrainingService.deleteTraining(id)
         .then((response) => {
-          this.$swal('Deleted', 'Training has been Permanently deleted', 'success');
+          Swal.fire('Deleted', 'Training has been Permanently deleted', 'success');
           this.$store.dispatch('deleteTraining', response.data);
         });
     },
     confirmDelete(id) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -153,7 +154,7 @@ export default {
         if (result.isConfirmed) {
           this.deleteTrainingItem(id);
         } else {
-          this.$swal('Cancelled', 'Training is still available', 'info');
+          Swal.fire('Cancelled', 'Training is still available', 'info');
         }
       });
     },

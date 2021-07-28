@@ -53,6 +53,7 @@
 <script>
 import { mapState } from 'vuex';
 import FoodService from '@/services/food-service';
+import Swal from 'sweetalert2';
 import Table from './Table.vue';
 
 export default {
@@ -117,7 +118,7 @@ export default {
       FoodService.postFood(food)
         .then((response) => {
           this.closeModal();
-          this.$swal('Saved', 'Food has been added', 'success');
+          Swal.fire('Saved', 'Food has been added', 'success');
           this.$store.dispatch('addFood', response.data);
         });
       this.resetFoodObject();
@@ -125,12 +126,12 @@ export default {
     deleteFoodItem(id) {
       FoodService.deleteFood(id)
         .then((response) => {
-          this.$swal('Deleted', 'Food has been Permanently deleted', 'success');
+          Swal.fire('Deleted', 'Food has been Permanently deleted', 'success');
           this.$store.dispatch('deleteFood', response.data);
         });
     },
     confirmDelete(id) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -141,7 +142,7 @@ export default {
         if (result.isConfirmed) {
           this.deleteFoodItem(id);
         } else {
-          this.$swal('Cancelled', 'Food is still available', 'info');
+          Swal.fire('Cancelled', 'Food is still available', 'info');
         }
       });
     },

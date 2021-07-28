@@ -53,6 +53,7 @@
 <script>
 import { mapState } from 'vuex';
 import AccommodationService from '@/services/accomodation-service';
+import Swal from 'sweetalert2';
 import Table from './Table.vue';
 
 export default {
@@ -117,7 +118,7 @@ export default {
       AccommodationService.postAccomodation(accomodation)
         .then((response) => {
           this.closeModal();
-          this.$swal('Saved', 'Accomodation has been added', 'success');
+          Swal.fire('Saved', 'Accomodation has been added', 'success');
           this.$store.dispatch('addAccomodation', response.data);
         });
       this.resetAccomodationObject();
@@ -125,12 +126,12 @@ export default {
     deleteAccomodationItem(id) {
       AccommodationService.deleteAccomodation(id)
         .then((response) => {
-          this.$swal('Deleted', 'Accomodation has been Permanently deleted', 'success');
+          Swal.fire('Deleted', 'Accomodation has been Permanently deleted', 'success');
           this.$store.dispatch('deleteAccomodation', response.data);
         });
     },
     confirmDelete(id) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -141,7 +142,7 @@ export default {
         if (result.isConfirmed) {
           this.deleteAccomodationItem(id);
         } else {
-          this.$swal('Cancelled', 'Accomodation is still available', 'info');
+          Swal.fire('Cancelled', 'Accomodation is still available', 'info');
         }
       });
     },

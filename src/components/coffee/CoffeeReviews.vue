@@ -10,23 +10,22 @@
         <p class="section-title">
           What people have to say about our coffee.
         </p>
-        <p id="review-text">
-          {{ filterDisplayData[0].review }}
-        </p>
-        <div id="reviewee-details">
-          <span>
-            {{ capitalizeEachWord(filterDisplayData[0].name) }}
-          </span>
-          <span id="reviewee-period">
-            {{ capitalizeFirstLetter(filterDisplayData[0].period) }}
-          </span>
-        </div>
+        <template v-if="displayData.length === 0">
+          <p> No reviews to display </p>
+        </template>
+        <template v-else>
+           <p id="review-text">
+            {{ displayData[0].review }}
+          </p>
+          <div id="reviewee-details">
+            <span>
+              {{ capitalizeEachWord(displayData[0].name) }}
+            </span>
+          </div>
+        </template>
         <div id="cta-container">
           <div class="forward-back-navigation">
-            <ArrowNavigation
-            @newPage ="setNewPage"
-            :pageNumber="page"
-            :isLastPage="checkIfLastPage" />
+            <ArrowNavigation :itemList="reviews" :perPage="1" @display-data="setDisplayData"/>
           </div>
           <div class="contact-btn-container">
             <a @click.prevent="showReviewModal">Write Review</a>
@@ -63,27 +62,29 @@
 import ArrowNavigation from '@/components/shared/ArrowNavigation.vue';
 import ReviewModal from '@/components/shared/ReviewModal.vue';
 import ReviewService from '@/services/review-service';
-import SlideNavigation from '@/mixins/slide-navigation';
 import FormatText from '@/mixins/format-text';
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
+import Swal from 'sweetalert2';
 
 export default {
   name: 'OurReviews',
+  created() {
+    this.$store.dispatch('fetchAllCoffeeReviews');
+  },
   data() {
     return {
-      limit: 1,
-      page: 1,
       showModal: false,
+      displayData: [],
     };
   },
   components: {
     ArrowNavigation,
     ReviewModal,
   },
-  mixins: [SlideNavigation, FormatText],
+  mixins: [FormatText],
   methods: {
-    setNewPage(page) {
-      this.page = page;
+    setDisplayData(data) {
+      this.displayData = data;
     },
     showReviewModal() {
       this.showModal = true;
@@ -92,7 +93,7 @@ export default {
       this.showModal = false;
     },
     showWaitingAlert() {
-      this.$swal({
+      Swal.fire({
         icon: 'info',
         title: 'Checking status',
         text: 'Checking if you purchased with us',
@@ -100,7 +101,7 @@ export default {
       });
     },
     showReviewAccepted() {
-      this.$swal({
+      Swal.fire({
         icon: 'success',
         title: 'Review submitted',
         timer: 2000,
@@ -108,7 +109,7 @@ export default {
       });
     },
     showReviewRejected() {
-      this.$swal({
+      Swal.fire({
         icon: 'error',
         title: 'Review rejected',
         text: 'Submitted user data does not match any record',
@@ -120,31 +121,20 @@ export default {
       ReviewService.postReview('coffee', review)
         .then((response) => {
           if (response.data.status === 'success') {
-            this.$swal.close();
+            Swal.close();
             this.showReviewAccepted();
           }
           if (response.data.status === 'rejected') {
-            this.$swal.close();
+            Swal.close();
             this.showReviewRejected();
           }
         });
     },
   },
   computed: {
-    ...mapState({
-      reviews: (state) => state.reviews.reviews,
+    ...mapGetters({
+      reviews: 'getVerifiedCoffeeReviews',
     }),
-    filterDisplayData() {
-      const data = [...this.reviews];
-      return this.filter(data);
-    },
-    checkIfLastPage() {
-      const data = [...this.reviews];
-      if (this.page * this.limit >= data.length) {
-        return true;
-      }
-      return false;
-    },
   },
 };
 </script>

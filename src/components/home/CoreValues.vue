@@ -2,15 +2,15 @@
   <div id="core-values">
     <div class="card-container">
       <div class="width-m bg-white">
-        <div class="core-title mt-20">Our</div>
+        <div class="core-title mt-25">Our</div>
         <div class="core-title">Core Values</div>
       </div>
       <div class="card-item">
         <div class="value-title-container">
-          <span class="value-title">Quality</span>
           <span class="icon" id="thumbs">
             <fa icon="thumbs-up" />
           </span>
+          <span class="value-title">Quality</span>
         </div>
         <div class="item-content">
           To delivery quality products &amp; services worthy of our customers trust.
@@ -18,10 +18,10 @@
       </div>
       <div class="card-item">
         <div class="value-title-container">
-          <span class="value-title">Integrity</span>
           <span class="icon" id="handshake">
             <fa icon="handshake" />
           </span>
+          <span class="value-title">Integrity</span>
         </div>
         <div class="item-content">
           To honor our promises &amp; commitments at all times.
@@ -29,10 +29,10 @@
       </div>
       <div class="card-item">
         <div class="value-title-container">
-          <span class="value-title">Respect</span>
           <span class="icon" id="heart">
             <fa icon="heart" />
           </span>
+          <span class="value-title">Respect</span>
         </div>
         <div class="item-content">
           To value, respect &amp; deligently serve our customers.
@@ -69,32 +69,42 @@ export default {
   font-family: Playfair;
   padding-left:15px;
 }
-.mt-20{
-  margin-top:20px;
+.mt-25{
+  margin-top:15px;
+  margin-bottom: 10px;
 }
 .value-title-container{
-  margin-top:25px;
-  margin-bottom:20px;
-  display:flex;
-  align-items: center;
-  justify-content: space-between;
+  margin-top:10px;
+  margin-bottom:15px;
   padding-right:30px;
+}
+.value-title-container span{
+  display:flex;
 }
 .value-title{
   font-weight: bold;
   font-size:18px;
+  margin-top: 5px;
 }
 .icon{
   font-size:20px;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
 }
 #thumbs{
   color:var(--mono-dark-green);
+  background-color: rgba(6,141,104,0.1);
 }
 #handshake{
   color:#FCA705;
+  background-color: rgba(252, 167, 5, 0.1);
 }
 #heart{
   color:#1CACF4;
+  background-color: rgba(28, 172, 244, 0.1);
 }
 .sub-text{
   width:70%;

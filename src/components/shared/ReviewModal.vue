@@ -35,10 +35,10 @@
             placeholder="Write review"
             name="review"
             v-model="review"
-            maxlength="400"
+            maxlength="300"
             @input="checkInputLength"
           ></textarea>
-           <span class="text-limits">{{ textlimit }} / 400</span>
+           <span class="text-limits">{{ textlimit }} / 300</span>
         </div>
         <div class="submit-container">
           <button class="submit" type="submit">

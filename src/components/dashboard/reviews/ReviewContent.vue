@@ -47,22 +47,13 @@
 import FormatText from '@/mixins/format-text';
 import * as date from '@/plugins/date';
 import ReviewService from '@/services/review-service';
+import { mapGetters } from 'vuex';
+import Swal from 'sweetalert2';
 
 export default {
   created() {
-    this.$store.dispatch('fetchAllCoffeeReviews', 'coffee')
-      .then((response) => {
-        this.unverifiedReviews = [...this.unverifiedReviews, ...response];
-      });
-    this.$store.dispatch('fetchAllVisitorReviews', 'visitor')
-      .then((response) => {
-        this.unverifiedReviews = [...this.unverifiedReviews, ...response];
-      });
-  },
-  data() {
-    return {
-      unverifiedReviews: [],
-    };
+    this.$store.dispatch('fetchAllCoffeeReviews');
+    this.$store.dispatch('fetchAllVisitorReviews');
   },
   mixins: [FormatText],
   methods: {
@@ -77,9 +68,10 @@ export default {
       const id = srcElement.id;
       const category = srcElement.getAttribute('category');
       ReviewService.delete(category, id)
-        .then((response) => {
-          this.$swal('Deleted', 'Review has been Permanently deleted', 'success');
-          this.unverifiedReviews = this.unverifiedReviews.filter((review) => review._id !== response.data._id);
+        .then(() => {
+          Swal.fire('Deleted', 'Review has been Permanently deleted', 'success');
+          this.$store.dispatch('fetchAllCoffeeReviews');
+          this.$store.dispatch('fetchAllVisitorReviews');
         });
     },
     acceptReview(event) {
@@ -87,13 +79,14 @@ export default {
       const id = srcElement.id;
       const category = srcElement.getAttribute('category');
       ReviewService.update(category, id)
-        .then((response) => {
-          this.$swal('Accepted', 'Review has been accepted', 'success');
-          this.unverifiedReviews = this.unverifiedReviews.filter((review) => review._id !== response.data._id);
+        .then(() => {
+          Swal.fire('Accepted', 'Review has been accepted', 'success');
+          this.$store.dispatch('fetchAllCoffeeReviews');
+          this.$store.dispatch('fetchAllVisitorReviews');
         });
     },
     confirmDelete(event) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -104,12 +97,12 @@ export default {
         if (result.isConfirmed) {
           this.deleteReview(event);
         } else {
-          this.$swal('Cancelled', 'Review is still available', 'info');
+          Swal.fire('Cancelled', 'Review is still available', 'info');
         }
       });
     },
     confirmAccept(event) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -120,10 +113,15 @@ export default {
         if (result.isConfirmed) {
           this.acceptReview(event);
         } else {
-          this.$swal('Cancelled', 'Review is still available', 'info');
+          Swal.fire('Cancelled', 'Review is still available', 'info');
         }
       });
     },
+  },
+  computed: {
+    ...mapGetters({
+      unverifiedReviews: 'getAllUnverifiedReviews',
+    }),
   },
 };
 </script>
