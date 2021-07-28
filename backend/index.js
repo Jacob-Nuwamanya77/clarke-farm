@@ -44,7 +44,6 @@ mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
-  useFindAndModify: false,
 });
 
 mongoose.connection

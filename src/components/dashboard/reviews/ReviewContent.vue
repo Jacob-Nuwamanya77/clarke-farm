@@ -48,6 +48,7 @@ import FormatText from '@/mixins/format-text';
 import * as date from '@/plugins/date';
 import ReviewService from '@/services/review-service';
 import { mapGetters } from 'vuex';
+import Swal from 'sweetalert2';
 
 export default {
   created() {
@@ -85,7 +86,7 @@ export default {
         });
     },
     confirmDelete(event) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -96,12 +97,12 @@ export default {
         if (result.isConfirmed) {
           this.deleteReview(event);
         } else {
-          this.$swal('Cancelled', 'Review is still available', 'info');
+          Swal.fire('Cancelled', 'Review is still available', 'info');
         }
       });
     },
     confirmAccept(event) {
-      this.$swal({
+      Swal.fire({
         title: 'Are you sure?',
         text: 'You can\'t revert this action',
         showCancelButton: true,
@@ -112,7 +113,7 @@ export default {
         if (result.isConfirmed) {
           this.acceptReview(event);
         } else {
-          this.$swal('Cancelled', 'Review is still available', 'info');
+          Swal.fire('Cancelled', 'Review is still available', 'info');
         }
       });
     },
