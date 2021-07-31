@@ -16,15 +16,19 @@
             <fa icon = "bell" id="bell-icon"/>
             <span id="notifications-counter">10</span>
           </span> -->
-          <span id="user-details">
+          <div id="user-details">
             <span id="user-name">{{ claims.name }}</span>
-            <span id="user-role">Administrator</span>
-            <span class="logout">
-              <button class="btn btn-outline-danger" v-on:click="logout()">
-                <fa icon="sign-out-alt" /> Logout
-              </button>
-            </span>
-          </span>
+            <div id="user-role">
+              <span class="dropdown-toggle" data-bs-toggle="dropdown">
+                Administrator
+              </span>
+              <span class="dropdown-menu">
+                <button class="btn btn-outline-danger" v-on:click="logout()">
+                  <fa icon="sign-out-alt" /> Logout
+                </button>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
       <div class="section-container">
@@ -221,5 +225,9 @@ img {
 }
 #signout-icon {
   color: #fc646c;
+}
+.dropdown-menu {
+  border: none;
+  background: none;
 }
 </style>
