@@ -1,6 +1,6 @@
 <template>
-  <div class="content-container container-fluid">
-    <h5 class="mt-3">Coffee Orders</h5>
+  <div class="orders-container">
+    <h5 class="hero-text-lg">Coffee Orders</h5>
     <nav
       aria-label="breadcrumb"
       class="mt-3"
@@ -139,6 +139,19 @@
   </div>
 </template>
 <style scoped>
+.orders-container{
+  margin-top: 12px;
+  width: 90%;
+}
+.hero-text-lg{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom:12px;
+}
+.delete-icon:hover{
+  color:red;
+  cursor: pointer;
+}
 .swal-text {
   background-color: #FEFAE3;
   padding: 17px;
@@ -363,9 +376,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-.delete-icon:hover{
-  color:red;
-  cursor: pointer;
-}
-</style>
