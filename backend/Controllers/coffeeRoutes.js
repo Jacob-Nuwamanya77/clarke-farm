@@ -43,12 +43,17 @@ router.put('/update/:id/:value', async (req, res) => {
   };
   try {
     if (req.params.value === 'true') {
-      await Order.findByIdAndUpdate(req.params.id, notdelivered, () => {
-        res.send(`item updated${req.params.value}`);
+      // await Order.findByIdAndUpdate(req.params.id, notdelivered, () => {
+      //   res.send(`item updated${req.params.value}`);
+      // });
+      await Order.findByIdAndUpdate(req.params.id, notdelivered).exec((err, updated) => {
+        res.send(updated);
       });
     } else {
-      await Order.findByIdAndUpdate(req.params.id, delivered, () => {
-        res.send(`item updated${req.params.value}`);
+      // await Order.findByIdAndUpdate(req.params.id, delivered, () => {
+      //   res.send(`item updated${req.params.value}`);
+      await Order.findByIdAndUpdate(req.params.id, delivered).exec((err, updated) => {
+        res.send(updated);
       });
     }
   } catch (error) {

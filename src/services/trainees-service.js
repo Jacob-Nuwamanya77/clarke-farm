@@ -15,4 +15,7 @@ export default {
   postTrainee(booking) {
     return apiClient.post('/api/trainees', booking);
   },
+  delete(id) {
+    return apiClient.delete(`/api/trainees/delete/${id}`);
+  },
 };

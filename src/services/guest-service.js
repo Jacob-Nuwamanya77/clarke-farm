@@ -15,4 +15,7 @@ export default {
   postGuest(guest) {
     return apiClient.post('/api/guests', guest);
   },
+  delete(id) {
+    return apiClient.delete(`/api/guests/delete/${id}`);
+  },
 };

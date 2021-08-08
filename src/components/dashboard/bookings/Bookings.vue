@@ -45,37 +45,17 @@
             </div>
           </div>
         </div>
-        <a
-          data-toggle="tooltip"
-          data-placement="bottom"
-          title="Delete"
-          class="d-none "
-          id="delete-btn"
-          href=""
-          @click.prevent="deleteVisitor(visitor._id)"
-        >
-          <fa
-            icon="trash-alt"
-            class="text-danger delete-btn"
-          />
-          </a>
           <table class="table  table-hover table-striped table-nowrap mt-5 font-size-12">
             <thead class="table-secondary font-size-10 ">
               <tr>
-                <td>
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="defaultCheck1"
-                    @click="check"
-                  ></td>
+                <td></td>
                 <th>Name</th>
                 <th>Email Address</th>
                 <th>Phone Number</th>
                 <th>Booking Type </th>
                 <th>Group Size</th>
                 <th>Checkin</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -124,14 +104,11 @@
                           <td class="text-center">{{ visitor.checkin }}
                             <span v-if="visitor.bookingtype==='Coffee-Farm'">N/A</span>
                           </td>
-                          <!-- <td class="text-start">
-                        <button
-                          type="button"
-                          class="btn  view-btn btn-sm btn-rounded"
-                          data-toggle="modal"
-                          data-target=".booking-detailModal"
-                        >View Details</button>
-                      </td> -->
+                          <td>
+                            <a :id="visitor._id" @click="deleteVisitor(visitor)" >
+                              <fa icon="trash-alt" class="delete-icon"/>
+                            </a>
+                          </td>
                           </tr>
             </tbody>
           </table>
@@ -176,6 +153,10 @@ select {
 .btn-rounded {
   border-radius: 10px;
   height: 30px;
+}
+.delete-icon:hover{
+  color:red;
+  cursor: pointer;
 }
 .form-select {
   width: 250px;
@@ -265,11 +246,12 @@ th {
 }
 </style>
 <script>
-import axios from 'axios';
+import guestService from '@/services/guest-service';
+import traineeService from '@/services/trainees-service';
+import Swal from 'sweetalert2';
 import { mapState } from 'vuex';
 import detailsModal from './DetailsModal.vue';
 
-const api = 'http://localhost:3000';
 export default {
   name: 'Trainings',
   components: {
@@ -294,38 +276,39 @@ export default {
         document.getElementById('delete-btn').classList.remove('d-none');
       }
     },
-    deleteVisitor(id) {
-      const indexOfArrayItem = this.visitorList.findIndex((i) => i.id === id);
-      this.$swal({
+    deleteVisitor(visitor) {
+      Swal.fire({
         title: 'Are you sure?',
         text: "You can't revert this action",
-        type: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes Delete it!',
         cancelButtonText: 'No, Keep it!',
         showCloseButton: true,
-        showLoaderOnConfirm: true,
-      })
-        .then((result) => {
-          if (result.value) {
-            const endpoint = `/delete-visitor/${id}`;
-            axios
-              .get(api + endpoint)
-              .then(() => {
-                this.visitorList.splice(indexOfArrayItem, 1);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-            this.$swal(
-              'Deleted',
-              'visitor has been Permanently deleted',
-              'success',
-            );
-          } else {
-            this.$swal('Cancelled', 'Your data is still intact', 'info');
+        showLoaderOnConfirm: false,
+      }).then((result) => {
+        if (result.value) {
+          if (visitor.bookingtype === 'Tour') {
+            guestService.delete(visitor._id).then((response) => {
+              this.tourists = this.tourists.filter((visitor) => visitor._id !== response.data._id);
+              const indexOfArrayItem = this.tourists.findIndex((i) => i._id === visitor._id);
+              this.tourists.splice(indexOfArrayItem, 1);
+            });
+          } else if (visitor.bookingtype === 'Training') {
+            traineeService.delete(visitor._id).then((response) => {
+              this.trainees = this.trainees.filter((visitor) => visitor._id !== response.data._id);
+              const indexOfArrayItem = this.trainees.findIndex((i) => i._id === visitor._id);
+              this.trainees.splice(indexOfArrayItem, 1);
+            });
           }
-        });
+          Swal.fire(
+            'Deleted',
+            'Guest has been Permanently deleted',
+            'success',
+          );
+        } else {
+          Swal.fire('Cancelled', 'Guest data is still intact', 'info');
+        }
+      });
     },
   },
   computed: {

@@ -45,31 +45,10 @@
             </div>
           </div>
         </div>
-        <a
-          data-toggle="tooltip"
-          data-placement="bottom"
-          title="Delete"
-          class="d-none "
-          id="delete-btn"
-          href=""
-          @click.prevent="deleteVisitor(visitor._id)"
-        >
-          <fa
-            icon="trash-alt"
-            class="text-danger delete-btn"
-          />
-          </a>
           <table class=" table table-hover table-striped table-nowrap mt-5 font-size-12">
             <thead class="table-secondary font-size-10 ">
               <tr>
-                <td>
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="defaultCheck1"
-                    @click="check"
-                  ></td>
+                <th></th>
                 <th>Name</th>
                 <th>Email Address</th>
                 <th>Phone Number</th>
@@ -115,7 +94,6 @@
                           class="form-check-input"
                           type="checkbox"
                           :value="order.delivered"
-                          :id="order._id"
                           @change="toggleStatus(order._id,order.delivered)"
                         >
                           <label
@@ -288,7 +266,9 @@ export default {
   methods: {
     toggleStatus(id, value) {
       console.log(id);
-      OrderService.update(id, value).then(() => {
+      OrderService.update(id, value).then((response) => {
+        const indexOfArrayItem = this.orders.findIndex((i) => i._id === id);
+        this.orders.splice(indexOfArrayItem, 1, response.data);
       });
     },
     deleteOrder(id) {

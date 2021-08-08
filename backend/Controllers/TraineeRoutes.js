@@ -22,5 +22,14 @@ router.post('/', async (req, res) => {
     res.json('Unsuccessful! Please Try Again');
   }
 });
+router.delete('/delete/:id', async (req, res) => {
+  try {
+    await Trainee.findByIdAndDelete(req.params.id).exec((err, deleted) => {
+      res.send(deleted);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 module.exports = router;
