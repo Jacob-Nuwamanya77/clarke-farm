@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="nav-container">
+    <div :class="['nav-container', menuVisible ? 'transition-menu' : '']">
       <ul>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/visit">Visit</router-link></li>
@@ -13,7 +13,8 @@
       </div>
     </div>
     <span class="hamburger-menu">
-      <fa icon="bars"/>
+      <fa icon="bars" v-if="!menuVisible" @click="showMenu" :class="menuVisible ? 'display-none' : ''"/>
+      <span v-else @click="showMenu" :class="menuVisible ? 'color-white' : ''">X</span>
     </span>
   </div>
 </template>
@@ -21,6 +22,16 @@
 <script>
 export default {
   name: 'MainNav',
+  data() {
+    return {
+      menuVisible: false,
+    };
+  },
+  methods: {
+    showMenu() {
+      this.menuVisible = !this.menuVisible;
+    },
+  },
 };
 </script>
 
@@ -60,6 +71,16 @@ export default {
   .nav-container{
     display: none;
   }
+  .transition-menu{
+    display: block;
+    max-width:230px;
+    min-width: 230px;
+    min-height: 100vh;
+    position:absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--dark-green);
+  }
 }
 .nav-container ul{
   display:flex;
@@ -78,6 +99,17 @@ export default {
   text-align: center;
   margin-left:1%;
 }
+@media screen and (max-width: 768px) {
+  .nav-container ul {
+    flex-direction: column;
+    margin-top: 50px;
+    padding-left: 30px;
+  }
+  .nav-container li {
+    text-align: left;
+    margin-top: 30px;
+  }
+}
 /* The router link vue tag evaluates to an anchor so the styles apply */
 .nav-container a{
   display:flex;
@@ -92,7 +124,12 @@ export default {
   background-color: var(--dark-green);
   color:white;
 }
-
+@media screen and (max-width: 768px) {
+  .nav-container a{
+    color: white;
+    justify-content: left;
+  }
+}
 /* Active link styles. */
 .router-link-active{
   border-bottom: 2px solid var(--dark-green);
@@ -153,5 +190,11 @@ footer a{
 }
 .icons span:hover{
   cursor:pointer;
+}
+.display-none{
+  display: none;
+}
+.color-white{
+  color: white;
 }
 </style>
