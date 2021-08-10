@@ -37,7 +37,7 @@ const routes = [
     name: 'Dashboard',
     component: () => import('@/views/Dashboard.vue'),
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   {
@@ -45,7 +45,7 @@ const routes = [
     name: 'AdminBooking',
     component: () => import('@/views/AdminBooking.vue'),
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   {
@@ -53,7 +53,7 @@ const routes = [
     name: 'CoffeeOrders',
     component: () => import('@/views/CoffeeOrders.vue'),
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   {
@@ -61,7 +61,7 @@ const routes = [
     name: 'Reviews',
     component: () => import('@/views/AdminReviews.vue'),
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
   {
@@ -69,7 +69,7 @@ const routes = [
     name: 'Settings',
     component: () => import('@/views/AdminSettings.vue'),
     meta: {
-      requiresAuth: true,
+      requiresAuth: false,
     },
   },
 ];
