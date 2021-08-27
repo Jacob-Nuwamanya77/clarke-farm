@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { LoginCallback, navigationGuard } from '@okta/okta-vue';
+// import { LoginCallback, navigationGuard } from '@okta/okta-vue';
 
 const routes = [
   {
@@ -22,16 +22,16 @@ const routes = [
     name: 'TrainingPrograms',
     component: () => import('@/views/TrainingPrograms.vue'),
   },
-  // OKTA AUTHORIZATION
   {
     path: '/admin',
     name: 'LoginPage',
-    component: () => import('@/views/LoginPage.vue'),
+    component: () => import('@/views/LoginPage2.vue'),
   },
-  {
-    path: '/callback',
-    component: LoginCallback,
-  },
+  // OKTA AUTHORIZATION
+  // {
+  //   path: '/callback',
+  //   component: LoginCallback,
+  // },
   {
     path: '/admin/dashboard',
     name: 'Dashboard',
@@ -79,6 +79,6 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach(navigationGuard);
+// router.beforeEach(navigationGuard);
 
 export default router;
