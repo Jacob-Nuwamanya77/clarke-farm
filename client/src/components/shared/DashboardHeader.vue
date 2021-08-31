@@ -8,27 +8,35 @@
           </a>
         </div>
         <div id="signin-options">
-          <!-- <span id="notifications">
-            <fa icon = "bell" id="bell-icon"/>
-            <span id="notifications-counter">10</span>
-          </span> -->
           <span id="user-details">
             <span id="user-name">{{ claims.name }}</span>
             <span id="user-role">Administrator</span>
           </span>
-          <span id="sign-out" @click="setLogOutClicked">
-            <span v-if="!logOutClicked">&caron;</span>
-            <span v-else>&circ;</span>
-          </span>
-          <div id="dropdown-signout" v-if="logOutClicked">
-            <div class="line-item">
-              <span class="item-icon" id="signout-icon">
-                <fa icon="sign-out-alt" />
-              </span>
-              <span class="item-title"   @click="logout()">
-                Sign Out
-              </span>
-            </div>
+          <div class="dropdown">
+            <span id="sign-out" @click="setLogOutClicked" data-bs-toggle="dropdown">
+              <span v-if="!logOutClicked">&caron;</span>
+              <span v-else>&circ;</span>
+            </span>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li class="adduser-link" data-bs-toggle="modal" data-bs-target="#addUser">
+                  <span class="item-icon" id="adduser-icon">
+                    <fa icon="user-plus" />
+                  </span>
+                  <span class="item-title">
+                    Add User
+                  </span>
+              </li>
+              <li>
+                <a class="dropdown-item " href="#" >
+                  <span class="item-icon" id="signout-icon">
+                    <fa icon="sign-out-alt" />
+                  </span>
+                  <span class="item-title" @click="logout()">
+                    Sign Out
+                  </span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -40,12 +48,18 @@
         <p class="sub-text">Here is what's happening at Clarke farm today.</p>
       </div>
     </div>
+    <add-user id="addUser"/>
   </div>
 </template>
 
 <script>
+import addUser from '@/components/dashboard/addUserModal.vue';
+
 export default {
   name: 'DashboardHeader',
+  components: {
+    addUser,
+  },
   data() {
     return {
       hours: new Date().getHours(),
@@ -178,6 +192,7 @@ img{
   font-size: 12px;
   color:#a9a9a9;
 }
+
 #sign-out{
   width:40px;
   height:40px;
@@ -224,6 +239,21 @@ img{
 }
 .item-icon{
   margin-right:10px;
+}
+ul{
+  padding: 10px;
+}
+.adduser-link{
+  margin-left:0px;
+}
+.adduser-link:hover{
+  cursor: pointer;
+  background-color: #f5f5f5;
+}
+#adduser-icon{
+  color: var(--dark-green);
+  margin-left: 15px;;
+
 }
 #signout-icon{
   color:#FC646C;

@@ -23,6 +23,8 @@ const trainingRouter = require('./Controllers/trainingsRoutes');
 const tasksRouter = require('./Controllers/tasksRoutes');
 const traineeRouter = require('./Controllers/TraineeRoutes');
 const reviewRouter = require('./Controllers/reviewRoutes');
+const userRouter = require('./Controllers/userRoutes');
+
 
 app.use('/api/activities', activityRouter);
 app.use('/api/tasks', tasksRouter);
@@ -33,6 +35,10 @@ app.use('/api/trainees', traineeRouter);
 app.use('/api/accomodations', accomodationRouter);
 app.use('/api/foods', foodRouter);
 app.use('/api/reviews', reviewRouter);
+app.use('/api/users', userRouter);
+
+
+
 
 app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));

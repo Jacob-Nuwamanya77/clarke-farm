@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faPhone, faBars, faHome, faTrashAlt, faStar, faSignOutAlt, faRunning, faComments, faBell, faUser, faArrowRight,
-  faPlus, faEdit, faAngleLeft, faCogs, faAngleRight, faHamburger, faTrash, faAngleDown,
+  faPlus, faEdit, faAngleLeft, faCogs, faAngleRight, faHamburger, faTrash, faAngleDown, faUserPlus,
   faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen, faBalanceScale,
   faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake, faMugHot, faSearch,
   faSort, faMinus, faCheck, faCartArrowDown,
@@ -22,7 +22,7 @@ import router from './router';
 import store from './store';
 
 library.add(faPhone, faBars, faFacebookF, faTwitter, faCogs, faTrashAlt,
-  faSearch, faHome, faArrowRight, faInstagram, faHome, faStar, faSignOutAlt, faSort,
+  faSearch, faHome, faArrowRight, faInstagram, faHome, faStar, faSignOutAlt, faSort, faUserPlus,
   faComments, faBell, faUser, faPlus, faEdit, faAngleLeft, faAngleRight, faRunning, faAngleDown,
   faHamburger, faStarHalfAlt, faCheckCircle, faShoppingBag, faTruck, faBoxOpen, faTrash, faCartArrowDown,
   faBalanceScale, faMinusCircle, faBullseye, faSmile, faHeart, faThumbsUp, faHandshake, faMugHot, faMinus, faCheck);
