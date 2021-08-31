@@ -46,7 +46,7 @@
             </div>
             <ul>
               <li>Hilltop cottages</li>
-              <li>Camping tents</li>
+              <li>Camping</li>
               <li>Cliff container house</li>
             </ul>
             <div class="link-container">
@@ -73,7 +73,6 @@
               <li>Luwombo</li>
               <li>Steammed matooke</li>
               <li>Katogo</li>
-              <li>Boo</li>
             </ul>
             <div class="link-container">
               <a href="#our-offers" class="learn-more">Learn more &rarr;</a>

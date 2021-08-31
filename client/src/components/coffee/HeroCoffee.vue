@@ -2,10 +2,10 @@
   <div id="hero-coffee">
     <div id="left-container">
       <p class="hero-text-lg">
-        Money can buy you happiness
+        Life begins after
       </p>
       <p class="hero-text-lg">
-        It buys you coffee &amp; <span class="green-highlight">Coffee makes you happy</span>
+        <span class="green-highlight">Coffee</span>
       </p>
       <p class="hero-sub-text">
         Washed robusta coffee processed from ripe red cherries gives the highest

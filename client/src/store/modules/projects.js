@@ -13,7 +13,7 @@ export const state = {
     },
     {
       title: 'Egg production',
-      description: 'We have about 10,000 layer birds on the farm.',
+      description: '10,000 layer chickens on the farm.',
       filename: 'eggs.jpg',
     },
     {
