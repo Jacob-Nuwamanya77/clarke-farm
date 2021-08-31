@@ -70,7 +70,7 @@
               <fa icon="bullseye"/>
             </span>
             <span class="line-item-bold line-item-title">Product:</span>
-            <span>Dried Beans</span>
+            <span>Green Beans</span>
           </div>
           <div class="line-item">
             <span class="line-item-icon min-order-icon">
