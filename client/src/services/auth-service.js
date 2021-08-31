@@ -13,6 +13,6 @@ export default {
     return apiClient.post('/api/users', credentials);
   },
   checkCredentials(credentials) {
-    return apiClient.post('/api/login', credentials);
+    return apiClient.post('/api/users/login', credentials);
   },
 };

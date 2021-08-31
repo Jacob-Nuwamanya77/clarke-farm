@@ -24,6 +24,7 @@
                                 type="email"
                                 class="form-control"
                                 name=email
+                                v-model="email"
                               >
                                 <label for="email">Email Address</label>
                             </div>
@@ -33,7 +34,7 @@
                               <input
                                 type="password"
                                 class="form-control"
-                                name="password"
+                                name="password" v-model="password"
                               >
                                 <label for="password">Password</label>
                             </div>
@@ -43,6 +44,7 @@
                           <button
                             type="submit"
                             class="btn  login-btn btn-block"
+                            @click="userLogin"
                           >
                             Login</button>
                         </div>
@@ -86,6 +88,8 @@
 
 </template>
 <script>
+import AuthService from '@/services/auth-service';
+
 export default {
   name: 'LoginPage',
   data() {
@@ -93,6 +97,23 @@ export default {
       username: '',
       password: '',
     };
+  },
+  methods: {
+    createCredentialsObject() {
+      const userdata = {
+        username: this.username,
+        password: this.password,
+        access_token: '',
+      };
+      return userdata;
+    },
+    userLogin() {
+      console.log('Logged In');
+      const userdetails = this.createCredentialsObject();
+      AuthService.checkCredentials(userdetails).then((response) => {
+        console.log(response);
+      });
+    },
   },
 };
 </script>
