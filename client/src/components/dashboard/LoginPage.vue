@@ -24,7 +24,7 @@
                                 type="email"
                                 class="form-control"
                                 name=email
-                                v-model="email"
+                                v-model="username"
                               >
                                 <label for="email">Email Address</label>
                             </div>
