@@ -116,13 +116,12 @@ export default {
       const userdetails = this.createCredentialsObject();
       AuthService.checkCredentials(userdetails).then((response) => {
         this.$store.dispatch('authenticateUser', response.data.data);
-        console.log(response.data.data);
         sessionStorage.setItem('access_token', response.data.data.access_token);
         sessionStorage.setItem('user', JSON.stringify(response.data.data));
         this.$router.push('/admin/dashboard');
         this.username = '';
         this.password = '';
-      }).catch(() =>{
+      }).catch(() => {
         document.getElementById('close').classList.remove('d-none');
       });
     },
