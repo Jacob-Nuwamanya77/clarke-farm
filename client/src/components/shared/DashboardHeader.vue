@@ -9,7 +9,7 @@
         </div>
         <div id="signin-options">
           <span id="user-details">
-            <span id="user-name">{{ claims.name }}</span>
+            <span id="user-name">{{ user.username }}</span>
             <span id="user-role">Administrator</span>
           </span>
           <div class="dropdown">
@@ -31,7 +31,7 @@
                   <span class="item-icon" id="signout-icon">
                     <fa icon="sign-out-alt" />
                   </span>
-                  <span class="item-title" @click="logout()">
+                  <span class="item-title" @click="logOut">
                     Sign Out
                   </span>
                 </a>
@@ -44,7 +44,7 @@
     <div class="section-container">
       <div id="greetings-container">
         <span id="greeting" class="hero-text-lg">Good {{ setGreeting }},</span>
-        <span id="admin-name" class="hero-text-lg">{{ claims.name }}</span>
+        <span id="admin-name" class="hero-text-lg">{{ user.username }}</span>
         <p class="sub-text">Here is what's happening at Clarke farm today.</p>
       </div>
     </div>
@@ -64,34 +64,18 @@ export default {
     return {
       hours: new Date().getHours(),
       logOutClicked: false,
-      claims: '',
-      authenticated: false,
+      user: JSON.parse(sessionStorage.getItem('user')),
     };
   },
-  async created() {
-    await this.isAuthenticated();
-    this.$auth.authStateManager.subscribe(this.isAuthenticated);
-    // OKTA CLAIMS
-    this.setup();
-  },
-  watch: {
-    // Everytime the route changes, check for auth status
-    $route: 'isAuthenticated',
+  created() {
+    this.user = JSON.parse(sessionStorage.getItem('user'));
   },
   methods: {
-    setLogOutClicked() {
-      this.logOutClicked = !this.logOutClicked;
+    logOut() {
+      this.$store.dispatch('logOutUser');
+      this.$router.push('/admin');
     },
-    // OKTA CLAIMS
-    async setup() {
-      this.claims = await this.$auth.getUser();
-    },
-    async isAuthenticated() {
-      this.authenticated = await this.$auth.isAuthenticated();
-    },
-    async logout() {
-      await this.$auth.signOut();
-    },
+
   },
   computed: {
     setGreeting() {

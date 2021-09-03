@@ -17,16 +17,21 @@
                       <div>
                         <h6 class="text-center text-muted mb-3 ">
                           Welcome Back, Login to get Started</h6>
-                        <form class="col-12 mt-5">
+                        <form class="col-12 mt-5" @submit.prevent="userLogin">
+                          <div class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+                            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                              <span aria-hidden="true" class="close-alert"
+                              data-dismiss="alert" aria-label="Close" id="close" @click="dismissAlert">&times;</span>
+                          </div>
                           <div class="mb-3 ml-3">
                             <div class="form-floating relative mb-2">
                               <input
-                                type="email"
+                                type="text"
                                 class="form-control"
-                                name=email
+                                name="name"
                                 v-model="username"
                               >
-                                <label for="email">Email Address</label>
+                                <label for="name">Username</label>
                             </div>
                           </div>
                           <div class="mb-3 text-left ">
@@ -108,12 +113,23 @@ export default {
       return userdata;
     },
     userLogin() {
-      console.log('Logged In');
       const userdetails = this.createCredentialsObject();
       AuthService.checkCredentials(userdetails).then((response) => {
-        console.log(response);
+        this.$store.dispatch('authenticateUser', response.data.data);
+        console.log(response.data.data);
+        sessionStorage.setItem('access_token', response.data.data.access_token);
+        sessionStorage.setItem('user', JSON.stringify(response.data.data));
+        this.$router.push('/admin/dashboard');
+        this.username = '';
+        this.password = '';
+      }).catch(() =>{
+        document.getElementById('close').classList.remove('d-none');
       });
     },
+    dismissAlert() {
+      document.getElementById().classList.add('d-none');
+    },
+
   },
 };
 </script>
@@ -125,6 +141,14 @@ export default {
 .logo-text {
   color: var(--blue-ink);
   font-family: Playfair;
+}
+.close-alert{
+  float:right;
+  margin-top:-40px;
+  margin-right:-30px;
+}
+.close-alert:hover{
+  cursor: pointer;
 }
 .form-floating {
   position: relative;
@@ -151,6 +175,7 @@ button {
   background-color: #068d68;
   color: whitesmoke;
 }
+
 img {
   /* height:100vh; */
   width: 100%;

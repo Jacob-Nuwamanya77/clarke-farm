@@ -9,6 +9,7 @@ import * as orders from './modules/orders';
 import * as trainees from './modules/trainees';
 import * as trainings from './modules/trainings';
 import * as processing from './modules/processing-guide';
+import * as users from './modules/users';
 
 export default createStore({
   modules: {
@@ -22,5 +23,6 @@ export default createStore({
     trainees,
     trainings,
     processing,
+    users,
   },
 });

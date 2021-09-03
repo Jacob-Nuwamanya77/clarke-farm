@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import store from '../store';
 // import { LoginCallback, navigationGuard } from '@okta/okta-vue';
 
 const routes = [
@@ -27,49 +28,74 @@ const routes = [
     name: 'LoginPage',
     component: () => import('@/views/LoginPage2.vue'),
   },
-  // OKTA AUTHORIZATION
-  // {
-  //   path: '/callback',
-  //   component: LoginCallback,
-  // },
+  // Dashboard Routes
   {
     path: '/admin/dashboard',
     name: 'Dashboard',
     component: () => import('@/views/Dashboard.vue'),
-    meta: {
-      requiresAuth: false,
+    beforeEnter: (to, from, next) => {
+      if (store.state.users.isAuthenticated === true) {
+        next();
+      } else {
+        sessionStorage.removeItem('access_token');
+        next('/admin');
+      }
     },
+
   },
   {
     path: '/admin/booking',
     name: 'AdminBooking',
     component: () => import('@/views/AdminBooking.vue'),
-    meta: {
-      requiresAuth: false,
+    beforeEnter: (to, from, next) => {
+      if (store.state.users.isAuthenticated === true) {
+        next();
+      } else {
+        sessionStorage.removeItem('access_token');
+        next('/admin');
+      }
     },
+
   },
   {
     path: '/admin/orders',
     name: 'CoffeeOrders',
     component: () => import('@/views/CoffeeOrders.vue'),
-    meta: {
-      requiresAuth: false,
+    beforeEnter: (to, from, next) => {
+      if (store.state.users.isAuthenticated === true) {
+        next();
+      } else {
+        sessionStorage.removeItem('access_token');
+        next('/admin');
+      }
     },
+
   },
   {
     path: '/admin/reviews',
     name: 'Reviews',
     component: () => import('@/views/AdminReviews.vue'),
-    meta: {
-      requiresAuth: false,
+    beforeEnter: (to, from, next) => {
+      if (store.state.users.isAuthenticated === true) {
+        next();
+      } else {
+        sessionStorage.removeItem('access_token');
+        next('/admin');
+      }
     },
+
   },
   {
     path: '/admin/settings',
     name: 'Settings',
     component: () => import('@/views/AdminSettings.vue'),
-    meta: {
-      requiresAuth: false,
+    beforeEnter: (to, from, next) => {
+      if (store.state.users.isAuthenticated === true) {
+        next();
+      } else {
+        sessionStorage.removeItem('access_token');
+        next('/admin');
+      }
     },
   },
 ];
@@ -78,7 +104,5 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-
-// router.beforeEach(navigationGuard);
 
 export default router;
