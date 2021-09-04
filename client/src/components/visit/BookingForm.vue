@@ -18,7 +18,7 @@
       <div id="form-container">
         <p id="description">We promise to contact you within 24 hours.</p>
         <form @submit.prevent="handleSubmitForm">
-          <div class="input-container form-group">
+          <div :class="['input-container form-group', error.input.includes('name') ? 'error' : '']">
             <input
               type="text"
               class="form-control"
@@ -27,7 +27,10 @@
               v-model="visitor.name"
             />
           </div>
-          <div class="input-container">
+          <span class="error-text" v-if="error.input.includes('name')">
+            Only alphabets allowed.
+          </span>
+          <div :class="['input-container', error.input.includes('email') ? 'error' : '']">
             <input
               type="email"
               class="form-control"
@@ -37,7 +40,10 @@
               required
             />
           </div>
-          <div class="input-container">
+          <span class="error-text" v-if="error.input.includes('email')">
+            Incorrect email format.
+          </span>
+          <div :class="['input-container', error.input.includes('phone') ? 'error' : '']">
             <input
               type="text"
               class="form-control"
@@ -47,6 +53,9 @@
               required
             />
           </div>
+          <span class="error-text" v-if="error.input.includes('phone')">
+            Incorrect phone format characters detected.
+          </span>
           <div class="input-container">
             <div id="checkin-container">
               <div id="checkin">
@@ -57,6 +66,7 @@
                   placeholder="Check-in"
                   v-model="visitor.checkin"
                   onfocus='(this.type="date")'
+                  required
                 />
               </div>
               <div id="checkout">
@@ -67,11 +77,12 @@
                   placeholder="Check-out"
                   v-model="visitor.checkout"
                   onfocus='(this.type="date")'
+                  required
                 />
               </div>
             </div>
           </div>
-          <div class="input-container">
+          <div :class="['input-container', error.input.includes('guestNumber') ? 'error' : '']">
             <input
               type="text"
               class="form-control"
@@ -88,6 +99,9 @@
               hidden
             />
           </div>
+          <span class="error-text" v-if="error.input.includes('guestNumber')">
+            Must be a number.
+          </span>
           <div class="input-container">
             <fieldset name="accomodation">
               <legend>Select accomodation type</legend>
@@ -152,14 +166,20 @@
               </div>
             </fieldset>
           </div>
-          <div class="input-container">
+          <div :class="['input-container', error.input.includes('requests') ? 'error' : '']">
             <textarea
               placeholder="Questions or special requests"
               class="form-control"
               name="requests"
               v-model="visitor.requests"
+              maxlength="180"
+              @input="checkInputLength"
             ></textarea>
+            <span class="text-limits">{{ textarea }} / 180</span>
           </div>
+          <span class="error-text" v-if="error.input.includes('requests')">
+            Unsupported characters in text.
+          </span>
           <div class="submit-container">
             <button class="submit" type="submit" @click="showAlert">
               Submit
@@ -173,6 +193,7 @@
 
 <script>
 import Swal from 'sweetalert2';
+import FormValidation from '@/mixins/validate-forms';
 
 export default {
   name: 'BookingForm',
@@ -189,32 +210,51 @@ export default {
         requests: '',
         bookingtype: 'Tour',
       },
+      error: {
+        input: '',
+      },
+      textarea: 0,
     };
   },
+  mixins: [FormValidation],
   methods: {
+    checkInputLength(event) {
+      this.textarea = event.target.value.length;
+    },
+    validateForm(form) {
+      this.error.input += !this.validateAlphabetCharacters(form.name) ? ' name' : '';
+      this.error.input += !this.validateEmail(form.email) ? ' email' : '';
+      this.error.input += !this.validatePhoneNumbers(form.phone) ? ' phone' : '';
+      this.error.input += !this.validateNumbers(form.guestNumber) ? ' guestNumber' : '';
+      this.error.input += !this.validateLongText(form.requests) ? 'requests' : '';
+    },
     async handleSubmitForm() {
-      try {
-        await this.$store.dispatch('saveGuest', this.visitor);
-        this.visitor = {
-          name: '',
-          email: '',
-          phone: '',
-          checkin: '',
-          checkout: '',
-          guestNumber: '',
-          accomodation: '',
-          bookingtype: 'Tour',
-          requests: '',
-        };
-        Swal.fire({
-          title: 'Thank you',
-          text: 'Your Booking has been received ',
-          icon: 'success',
-          timer: 1500,
-          showConfirmButton: false,
-        });
-      } catch {
-        this.message = 'failed to submit; please, try again!';
+      this.error.input = '';
+      this.validateForm(this.visitor);
+      if (this.error.input.length === 0) {
+        try {
+          await this.$store.dispatch('saveGuest', this.visitor);
+          this.visitor = {
+            name: '',
+            email: '',
+            phone: '',
+            checkin: '',
+            checkout: '',
+            guestNumber: '',
+            accomodation: '',
+            bookingtype: 'Tour',
+            requests: '',
+          };
+          Swal.fire({
+            title: 'Thank you',
+            text: 'Your Booking has been received ',
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false,
+          });
+        } catch {
+          this.message = 'failed to submit; please, try again!';
+        }
       }
     },
   },
@@ -418,5 +458,24 @@ legend {
 .submit:hover {
   transform: scale(0.95);
   box-shadow: 2px 2px 4px rgb(100, 100, 100);
+}
+.error {
+  border: 1px solid red;
+}
+.error-text{
+  color:red;
+  font-size: 12px;
+  display: block;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+.text-limits{
+  font-size: 13px;
+  font-weight: bold;
+  color: #a9a9a9;
+  display: block;
+  margin-top: 10px;
 }
 </style>
