@@ -2,10 +2,7 @@
   <div id="hero-coffee">
     <div id="left-container">
       <p class="hero-text-lg">
-        Life begins after
-      </p>
-      <p class="hero-text-lg">
-        <span class="green-highlight">Coffee</span>
+        Life begins after <span class="green-highlight">Coffee</span>
       </p>
       <p class="hero-sub-text">
         Washed robusta coffee processed from ripe red cherries gives the highest
@@ -36,7 +33,7 @@
       </div>
     </div>
     <div id="right-container">
-      <img src="@/assets/images/clarke-coffee.jpg" alt="clarke coffee" aria-hidden="true">
+      <img src="@/assets/images/the-clarkes.jpg" alt="clarke coffee" aria-hidden="true">
     </div>
   </div>
 </template>
