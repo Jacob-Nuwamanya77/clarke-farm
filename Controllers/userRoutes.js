@@ -80,5 +80,9 @@ router.post('/login', async (req, res) => {
 			message: 'Server Error' + e
 		})
 	}
-})
+});
+//user logout
+router.post('logout', async (req, res) => {
+
+});
 module.exports = router;
