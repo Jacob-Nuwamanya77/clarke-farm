@@ -1,7 +1,8 @@
 <template>
   <div id="core-values">
+    <p class="section-title top-heading">Our Core Values</p>
     <div class="card-container">
-      <div class="width-m bg-white">
+      <div class="width-m bg-white side-heading">
         <div class="core-title mt-25">Our</div>
         <div class="core-title">Core Values</div>
       </div>
@@ -52,11 +53,6 @@ export default {
 #core-values {
   position: relative;
   min-height: 300px;
-}
-@media screen and (max-width:480px){
-  #core-values{
-    width:95%;
-  }
 }
 @media screen and (min-width:900px){
   #core-values{
@@ -117,6 +113,7 @@ export default {
 .section-title{
   font-weight: bold;
   font-size: 25px;
+  margin-top: 20px;
   margin-bottom:20px;
   font-family: Playfair;
   text-align: center;
@@ -165,6 +162,11 @@ export default {
   min-height: 220px;
   background-color:white;
 }
+@media screen and (max-width:480px){
+  .card-item{
+    padding-left: 20px;
+  }
+}
 .width-m{
   min-width:180px;
 }
@@ -192,5 +194,21 @@ export default {
 }
 .item-content{
   padding-right:30px;
+}
+.top-heading {
+  display: none;
+}
+.side-heading {
+  display: none;
+}
+@media screen and (max-width:480px){
+  .top-heading{
+    display: block;
+  }
+}
+@media screen and (min-width:480px){
+  .side-heading{
+    display: block;
+  }
 }
 </style>

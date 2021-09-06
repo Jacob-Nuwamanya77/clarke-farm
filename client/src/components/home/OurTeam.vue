@@ -64,11 +64,6 @@ export default {
   text-align: center;
   margin-top:15px;
 }
-@media screen and (max-width:700px){
-  .linedesign{
-    width:25%;
-  }
-}
 .our-team-images{
   display:flex;
   flex-direction:row;

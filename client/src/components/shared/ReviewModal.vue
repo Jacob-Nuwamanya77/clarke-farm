@@ -103,7 +103,7 @@ export default {
 }
 @media screen and (max-width: 480px){
   .content{
-    width: 90%;
+    width: 100%;
   }
 }
 @media screen and (min-width: 1280px) {

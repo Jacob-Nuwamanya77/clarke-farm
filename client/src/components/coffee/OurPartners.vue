@@ -11,16 +11,16 @@
           alt="UGACOF" aria-hidden="true">
       </div>
       <div class="partner">
-        <img src="@/assets/images/partners/great.jpg"
-          alt="Great lakes coffee" aria-hidden="true">
+        <img src="@/assets/images/partners/pcp.jpg"
+          alt="IFDC" aria-hidden="true">
       </div>
       <div class="partner">
         <img src="@/assets/images/partners/lifad.jpg"
           alt="LIFAD" aria-hidden="true">
       </div>
       <div class="partner">
-        <img src="@/assets/images/partners/nucafe.png"
-          alt="NUCAFE" aria-hidden="true">
+        <img src="@/assets/images/partners/ifdc.png"
+          alt="PCP" aria-hidden="true">
       </div>
     </div>
   </div>
@@ -74,6 +74,7 @@ export default {
 }
 .partner{
   min-width:200px;
+  max-width: 200px;
   height:100px;
   display:flex;
   align-items: center;
