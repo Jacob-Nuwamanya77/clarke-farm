@@ -10,9 +10,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faFacebookF, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import Toaster from '@meforma/vue-toaster';
-// IMPORTING OKTA DEPENDENCIES
-import OktaVue from '@okta/okta-vue';
-import { oktaAuth } from './okta';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,13 +29,4 @@ createApp(App)
   .use(Toaster)
   .use(store)
   .use(router)
-  .use(OktaVue, {
-    oktaAuth,
-    onAuthRequired: () => {
-      router.push('/admin');
-    },
-    onAuthResume: () => {
-      router.push('/admin');
-    },
-  })
   .mount('#app');
