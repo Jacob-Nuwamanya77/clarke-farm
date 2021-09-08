@@ -1,5 +1,6 @@
 <template>
   <div class="header">
+    <div class="company-name">Clarke Farm</div>
     <div :class="['nav-container', menuVisible ? 'transition-menu' : '']">
       <ul>
         <li><router-link to="/">Home</router-link></li>
@@ -9,7 +10,7 @@
       </ul>
       <div class="contact">
         <span class="phone-icon"><fa icon="phone"/></span>
-        <span id="telephone">&nbsp;&nbsp;&nbsp;+256 (0) 392 201 400</span>
+        <span id="telephone">+256 (0) 392 201 400</span>
       </div>
     </div>
     <span class="hamburger-menu">
@@ -38,9 +39,11 @@ export default {
 <style scoped>
 .header{
   display:flex;
-  flex-direction: row;
   position:relative;
   padding-top:20px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .nav-container{
   width:480px;
@@ -137,64 +140,36 @@ export default {
 
 .contact{
   display: flex;
-  height:100%;
-  flex-direction: row;
-  position:absolute;
-  right:65px;
+  position: absolute;
+  right: 0;
 }
-@media screen and (max-width:880px){
+@media screen and (max-width:1000px){
   .contact{
     display:none;
   }
 }
 .phone-icon{
   transform: rotate(90deg);
-  color:var(--dark-green)
+  color:var(--dark-green);
+  margin-right: 20px;
 }
 #telephone{
   color:var(--dark-green);
   display:flex;
   align-items:center;
 }
-footer{
-  margin-top: 70px;
-  min-height:250px;
-  background-color: var(--dark-green);
-  color:white;
-}
-.top-row{
-  display:flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-  justify-content: space-around;
-  padding-top: 10px;
-}
-.content{
-  margin-top: 20px;
-}
-.sub-container{
-  width:350px;
-  margin-top: 20px;
-  padding-left: 80px;
-}
-.container-icons{
-  border-top:2px solid white;
-}
-
-footer a{
-  color:white;
-}
-
-.icons span{
-  margin-right: 15px;
-}
-.icons span:hover{
-  cursor:pointer;
-}
 .display-none{
   display: none;
 }
 .color-white{
   color: white;
+}
+.company-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--dark-green);
 }
 </style>
