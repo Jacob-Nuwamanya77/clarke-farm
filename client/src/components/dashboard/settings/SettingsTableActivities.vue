@@ -138,6 +138,9 @@ export default {
     },
     onFileChange() {
       this.activity.file = this.$refs.file.files[0];
+      if (this.error.input.length !== 0) {
+        this.error.input = this.error.input.replace('file', '');
+      }
     },
     showModal() {
       this.modalVisible = true;
