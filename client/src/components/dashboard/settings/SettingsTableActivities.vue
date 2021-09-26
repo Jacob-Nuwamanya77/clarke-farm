@@ -147,6 +147,8 @@ export default {
     },
     closeModal() {
       this.modalVisible = false;
+      this.resetActivityInputData();
+      this.error.input = '';
     },
     createActivityFormData() {
       const formData = new FormData();
