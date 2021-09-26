@@ -1,4 +1,5 @@
 <template>
+<!-- eslint-disable max-len -->
   <div class="mt-3">
     <div id="add-button">
       <a class="btn btn-success btn-sm float-end" @click.prevent="showModal">
@@ -12,31 +13,52 @@
             <h5 class="modal-title">Add Food</h5>
             <button type="button" class="btn-close" aria-label="Close" @click="closeModal"/>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" :key="componentKey">
               <form class="form-group" @submit.prevent="submitFoodObject">
-              <div class="mb-3 form-group">
+              <div :class="['mb-3', 'form-group', error.input.includes('title') ? 'error' : '']">
                 <label>Dish title</label>
-                <input type="text" class="form-control" name="title" v-model="title">
+                <input type="text" class="form-control" name="title" v-model="newData.title">
               </div>
-              <div class="mb-3 form-group">
+              <span class="error-text" v-if="error.input.includes('title')">
+                Only alphabets are allowed.
+              </span>
+              <div :class="['mb-3', 'form-group', error.input.includes('description') ? 'error' : '']">
                 <label>Describe the dish in brief</label>
-                <input type="text" class="form-control" name="description" v-model="description">
+                <textarea
+                name="description"
+                v-model="newData.description"
+                maxlength="80"
+                class="form-control"
+                @input="checkInputLength"></textarea>
+                <span class="text-limits">{{ textarea }} / 80</span>
               </div>
+              <span class="error-text" v-if="error.input.includes('description')">
+                Only alphabets are allowed.
+              </span>
               <div class="mb-3 form-group">
                   <label>Currency</label>
-                  <select name="currency" class="form-select" v-model="currency">
+                  <select name="currency" class="form-select" v-model="newData.currency">
                     <option value="ugx">UGX</option>
                     <option value="$">USD</option>
                   </select>
                    </div>
-                 <div class="mb-3 form-group">
+                 <div :class="['mb-3', 'form-group', error.input.includes('cost') ? 'error' : '']">
                   <label>Cost of food</label>
-                  <input type="text" class="form-control" name="cost" v-model="cost">
+                  <input type="text" class="form-control" name="cost" v-model="newData.cost">
               </div>
-              <div class="mb-4 form-group">
+               <span class="error-text" v-if="error.input.includes('cost')">
+                Cost should be a number.
+              </span>
+              <div :class="['mb-4', 'form-group', error.input.includes('file') ? 'error' : '']">
                  <label class="form-label">Upload image</label>
-                <input type="file"  class="form-control form-control-md" name="image" ref="file" @change="onFileChange">
+                <input type="file"  class="form-control form-control-md" name="image" ref="file" @change="onFileChange" required>
               </div>
+              <span v-if="newData.file !== ''" class="sub-text">
+                {{ showFileSize }}
+              </span>
+              <span class="error-text" v-if="error.input.includes('file')">
+                File size exceeds 2MB. Smaller file sizes are better.
+              </span>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-success">Submit Data</button>
               </div>
@@ -54,6 +76,7 @@
 import { mapState } from 'vuex';
 import FoodService from '@/services/food-service';
 import Swal from 'sweetalert2';
+import FormValidation from '@/mixins/validate-forms';
 import Table from './Table.vue';
 
 export default {
@@ -67,66 +90,103 @@ export default {
   data() {
     return {
       modalVisible: false,
-      title: '',
-      description: '',
-      currency: '$',
-      cost: '0.00',
-      file: '',
+      error: {
+        input: '',
+      },
+      newData: {
+        title: '',
+        description: '',
+        currency: '$',
+        cost: '0.00',
+        file: '',
+      },
+      textarea: 0,
+      componentKey: 0,
     };
   },
+  mixins: [FormValidation],
   computed: {
     ...mapState({
       allFoods: (state) => state.foods.foods,
     }),
+    showFileSize() {
+      if (this.newData.file !== '') {
+        const size = Number(this.newData.file.size / 1024 / 1024).toFixed(2);
+        return `${size} MBs`;
+      }
+      return 0;
+    },
   },
   methods: {
     createImagePath(filename) {
       return `/images/${filename}`;
-    },
-    onFileChange() {
-      this.file = this.$refs.file.files[0];
     },
     showModal() {
       this.modalVisible = true;
     },
     closeModal() {
       this.modalVisible = false;
+      this.resetFoodObject();
+      this.error.input = '';
+    },
+    checkInputLength(event) {
+      this.textarea = event.target.value.length;
+    },
+    validateForm(form) {
+      this.error.input += !this.validateAlphabetCharacters(form.title) ? ' title' : '';
+      this.error.input += !this.checkNonEmpty(form.description) ? ' description' : '';
+      this.error.input += !this.validateNumbers(form.cost) ? ' cost' : '';
+      this.error.input += !this.checkFileSize(form.file) ? ' file' : '';
+    },
+    onFileChange() {
+      this.newData.file = this.$refs.file.files[0];
+      if (this.error.input.length !== 0) {
+        this.error.input = this.error.input.replace('file', '');
+      }
     },
     createFoodObject() {
-      const inputData = {
-        title: this.title,
-        description: this.description,
-        currency: this.currency,
-        cost: this.cost,
-        file: this.file,
-      };
       const formData = new FormData();
-      for (const [key, value] of Object.entries(inputData)) {
+      for (const [key, value] of Object.entries(this.newData)) {
         formData.append(key, value);
       }
       return formData;
     },
     resetFoodObject() {
-      this.title = '';
-      this.description = '';
-      this.currency = '$';
-      this.cost = '0.00';
-      this.file = '';
+      this.componentKey += 1;
+      this.newData.title = '';
+      this.newData.description = '';
+      this.newData.currency = '$';
+      this.newData.cost = '0.00';
+      this.newData.file = '';
     },
     submitFoodObject() {
-      const food = this.createFoodObject();
-      FoodService.postFood(food)
-        .then((response) => {
-          this.closeModal();
-          Swal.fire('Saved', 'Food has been added', 'success');
-          this.$store.dispatch('addFood', response.data);
-        });
-      this.resetFoodObject();
+      this.error.input = '';
+      this.validateForm(this.newData);
+      if (this.error.input.length === 0) {
+        const food = this.createFoodObject();
+        FoodService.postFood(food)
+          .then((response) => {
+            this.closeModal();
+            Swal.fire({
+              title: 'Saved',
+              text: 'Food has been added',
+              icon: 'success',
+              confirmButtonColor: '#045C44',
+            });
+            this.$store.dispatch('addFood', response.data);
+          });
+        this.resetFoodObject();
+      }
     },
     deleteFoodItem(id) {
       FoodService.deleteFood(id)
         .then((response) => {
-          Swal.fire('Deleted', 'Food has been Permanently deleted', 'success');
+          Swal.fire({
+            title: 'Deleted',
+            text: 'Food has been Permanently deleted',
+            icon: 'success',
+            confirmButtonColor: '#045C44',
+          });
           this.$store.dispatch('deleteFood', response.data);
         });
     },
@@ -136,13 +196,19 @@ export default {
         text: 'You can\'t revert this action',
         showCancelButton: true,
         confirmButtonText: 'Yes Delete it!',
+        confirmButtonColor: '#FC646C',
         cancelButtonText: 'No, Keep it!',
         showCloseButton: true,
       }).then((result) => {
         if (result.isConfirmed) {
           this.deleteFoodItem(id);
         } else {
-          Swal.fire('Cancelled', 'Food is still available', 'info');
+          Swal.fire({
+            title: 'Cancelled',
+            text: 'Food is still available',
+            icon: 'info',
+            confirmButtonColor: '#045C44',
+          });
         }
       });
     },
@@ -167,5 +233,28 @@ export default {
   display: flex;
   align-items: center;
   position: relative;
+}
+.error {
+  border: 1px solid red;
+}
+.error-text{
+  color:red;
+  font-size: 12px;
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-limits{
+  font-size: 13px;
+  font-weight: bold;
+  color: #a9a9a9;
+  display: block;
+  margin-top: 10px;
+}
+.sub-text{
+  font-weight: bold;
+  color:#a9a9a9;
+  font-size: 14px;
 }
 </style>
