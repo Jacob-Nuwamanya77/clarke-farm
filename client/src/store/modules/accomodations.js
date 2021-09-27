@@ -21,7 +21,7 @@ export const mutations = {
   ADD_ALL_ACCOMODATIONS(state, accomodations) {
     state.accomodations = accomodations;
   },
-  REMOVE_ACCOMODATAION(state, payload) {
+  REMOVE_ACCOMODATION(state, payload) {
     const arr = [...state.accomodations];
     state.accomodations = arr.filter((accomodation) => accomodation._id !== payload._id);
   },
