@@ -18,8 +18,9 @@
                         <h6 class="text-center text-muted mb-3 ">
                           Welcome Back, Login to get Started</h6>
                         <form class="col-12 mt-5" @submit.prevent="userLogin">
-                          <div class="alert alert-danger alert-dismissible fade show d-none" role="alert">
-                            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                          <div class="alert alert-danger alert-dismissible fade show d-none" role="alert"
+                          id="close-alert">
+                            <strong>Opps! &nbsp;</strong>{{errormessage}}
                               <span aria-hidden="true" class="close-alert"
                               data-dismiss="alert" aria-label="Close" id="close" @click="dismissAlert">&times;</span>
                           </div>
@@ -50,11 +51,12 @@
                             type="submit"
                             class="btn  login-btn btn-block"
                             @click="userLogin"
+                            id="login-btn"
                           >
-                            Login</button>
+                            {{status}}</button>
                         </div>
                         <hr>
-                        <div class="form-check terms">
+                        <!-- <div class="form-check terms">
                           <input
                             type="checkbox"
                             class="form-check-input"
@@ -64,7 +66,7 @@
                               class="form-check-label text-muted"
                               for="loggedin-check"
                             > keep me logged in</label>
-                        </div>
+                        </div> -->
                         <div class="go-to-home mb-3">
                           <router-link to="/">
                             <button
@@ -101,6 +103,8 @@ export default {
     return {
       username: '',
       password: '',
+      status: 'Login',
+      errormessage: '',
     };
   },
   methods: {
@@ -112,21 +116,35 @@ export default {
       };
       return userdata;
     },
-    userLogin() {
+    async userLogin() {
+      this.status = 'Logging in';
       const userdetails = this.createCredentialsObject();
-      AuthService.checkCredentials(userdetails).then((response) => {
+      await AuthService.checkCredentials(userdetails).then((response) => {
+        this.status = 'Login';
         this.$store.dispatch('authenticateUser', response.data.data);
         sessionStorage.setItem('access_token', response.data.data.access_token);
         sessionStorage.setItem('user', JSON.stringify(response.data.data));
         this.$router.push('/admin/dashboard');
         this.username = '';
         this.password = '';
-      }).catch(() => {
-        document.getElementById('close').classList.remove('d-none');
+      }).catch((error) => {
+        setTimeout(this.errorButton(), 2000);
+        if (error.response.data.message === 'user not found') {
+          this.errormessage = 'User does not exist';
+        } else if (error.response.data.message === 'Incorrect Password') {
+          this.errormessage = 'Check your password and try again';
+        } else {
+          this.errormessage = 'Wrong Credentials! Contact Admin for assistance';
+        }
       });
     },
+    errorButton() {
+      this.status = 'Login Failed!';
+      document.getElementById('login-btn').style.backgroundColor = 'red';
+      document.getElementById('close-alert').classList.remove('d-none');
+    },
     dismissAlert() {
-      document.getElementById().classList.add('d-none');
+      document.getElementById('close-alert').classList.add('d-none');
     },
 
   },
