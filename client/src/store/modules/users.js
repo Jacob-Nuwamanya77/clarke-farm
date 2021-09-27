@@ -1,6 +1,6 @@
 export const state = {
   user: null,
-  isAuthenticated: false,
+  isAuthenticated: !!sessionStorage.getItem('access_token'),
 };
 export const actions = {
   authenticateUser({ commit }, user) {
