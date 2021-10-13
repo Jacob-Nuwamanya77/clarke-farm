@@ -45,87 +45,95 @@
             </div>
           </div>
         </div>
-          <table class=" table table-hover table-striped table-nowrap mt-5 font-size-12">
-            <thead class="table-secondary font-size-10 ">
-              <tr>
-                <th>Name</th>
-                <th>Email Address</th>
-                <th>Phone Number</th>
-                <th>Order Amount</th>
-                <th>Status </th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="order in filteredOrders"
-                :key="order.id"
+        <table class=" table table-hover table-striped table-nowrap mt-5 font-size-12">
+          <thead class="table-secondary font-size-10 ">
+            <tr>
+              <th>Name</th>
+              <th>Email Address</th>
+              <th>Phone Number</th>
+              <th>Order Amount</th>
+              <th>Status </th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="order in filteredOrders"
+              :key="order.id"
+            >
+              <td class="text-start">{{order.name}}</td>
+              <td class="text-start">{{order.email}}</td>
+              <td class="text-start">{{order.phone}}</td>
+              <td class="text-start">{{order.order}} {{order.package}}s</td>
+              <td
+                class="text-center"
+                v-if="order.delivered==true"
               >
-                <td class="text-start">{{order.name}}</td>
-                <td class="text-start">{{order.email}}</td>
-                <td class="text-start">{{order.phone}}</td>
-                <td class="text-start">{{order.order}} {{order.package}}s</td>
+                <span class="badge badge-pill tour-badge bg-success font-size-11">Fulfilled</span>
+                </td>
                 <td
                   class="text-center"
-                  v-if="order.delivered==true"
+                  v-else
                 >
-                  <span class="badge badge-pill tour-badge bg-success font-size-11">Fulfilled</span>
+                  <span class="badge badge-pill bg-danger font-size-11">Unfulfilled</span>
                   </td>
-                  <td
-                    class="text-center"
-                    v-else
-                  >
-                    <span class="badge badge-pill bg-danger font-size-11">Unfulfilled</span>
-                    </td>
-                    <td>
-                      <div class="form-check form-switch">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          :value="order.delivered"
-                          @change="toggleStatus(order._id,order.delivered)"
-                        >
-                          <label
-                            class="form-check-label"
-                            for="flexSwitchCheckChecked"
-                          ></label>
-                     <a :id="order._id" @click="deleteOrder(order._id)" >
-                       <fa icon="trash-alt" class="delete-icon"/></a>
-                      </div>
-                    </td>
-                    </tr>
-            </tbody>
-          </table>
-          <p>
-            Showing {{filteredOrders.length}} entries of {{filteredOrders.length}}</p>
-          <p
-            v-if="filteredOrders<=0"
-            class="text-center"
-          >No Orders are Available yet!!!</p>
+                  <td>
+                    <div class="form-check form-switch">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        :value="order.delivered"
+                        id="toggle-switch"
+                        @change="toggleStatus(order._id,order.delivered)"
+                      >
+                        <label
+                          class="form-check-label"
+                          for="flexSwitchCheckChecked"
+                        ></label>
+                          <a
+                            :id="order._id"
+                            @click="deleteOrder(order._id)"
+                          >
+                            <fa
+                              icon="trash-alt"
+                              class="delete-icon"
+                            />
+                            </a>
+                    </div>
+                  </td>
+                  </tr>
+          </tbody>
+        </table>
+        <p>
+          Showing {{filteredOrders.length}} entries of {{filteredOrders.length}}</p>
+        <p
+          v-if="filteredOrders<=0"
+          class="text-center"
+        >No Orders are Available yet!!!</p>
       </div>
   </div>
 </template>
 <style scoped>
-.orders-container{
+.orders-container {
   margin-top: 12px;
   width: 90%;
 }
-.hero-text-lg{
+.hero-text-lg {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom:12px;
+  margin-bottom: 12px;
 }
-.delete-icon:hover{
-  color:red;
+.delete-icon:hover {
+  color: red;
   cursor: pointer;
 }
 .swal-text {
-  background-color: #FEFAE3;
+  background-color: #fefae3;
   padding: 17px;
-  border: 1px solid #F0E1A1;
+  border: 1px solid #f0e1a1;
   display: block;
   margin: 22px;
-  font-size:12px !important;
+  font-size: 12px !important;
   text-align: center !important;
   color: #61534e;
 }
@@ -252,12 +260,29 @@ export default {
   created() {
     this.$store.dispatch('fetchAllCoffeeOrders');
   },
+  mounted() {
+    this.orderStatus();
+  },
   methods: {
+    orderStatus() {
+      const orderarray = this.orders;
+      const toggleswitch = document.getElementById('toggle-switch');
+      const att = document.createAttribute('checked');
+      orderarray.forEach((order) => {
+        if (order.delivered === true) {
+          console.log(order);
+          toggleswitch.setAttributeNode(att);
+        } else {
+          // toggleswitch.removeAttributeNode('checked');
+          console.log(order);
+        }
+      });
+    },
     toggleStatus(id, value) {
-      console.log(id);
       OrderService.update(id, value).then((response) => {
         const indexOfArrayItem = this.orders.findIndex((i) => i._id === id);
         this.orders.splice(indexOfArrayItem, 1, response.data);
+        this.$store.dispatch('fetchAllCoffeeOrders');
       });
     },
     deleteOrder(id) {
@@ -273,8 +298,10 @@ export default {
       }).then((result) => {
         if (result.value) {
           OrderService.delete(id).then((response) => {
-            this.orders = this.orders.filter((order) => order._id !== response.data._id);
-            const indexOfArrayItem = this.orders.findIndex((i) => i.id === id);
+            this.orders = this.orders.filter(
+              (order) => order._id !== response.data._id,
+            );
+            const indexOfArrayItem = this.orders.findIndex((i) => i._id === id);
             this.orders.splice(indexOfArrayItem, 1);
           });
           this.$swal({
@@ -295,7 +322,6 @@ export default {
         document.getElementById('delete-btn').classList.remove('d-none');
       }
     },
-
   },
   computed: {
     ...mapState({
@@ -312,10 +338,12 @@ export default {
         if (this.searchterm !== '' && this.searchterm) {
           orders = orders.filter(
             (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
-            || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
-            || item.bookingtype
-              .toUpperCase()
-              .includes(this.searchterm.toUpperCase()),
+              || item.email
+                .toUpperCase()
+                .includes(this.searchterm.toUpperCase())
+              || item.bookingtype
+                .toUpperCase()
+                .includes(this.searchterm.toUpperCase()),
           );
         }
       } else if (this.selected === 'sacks') {
@@ -323,10 +351,12 @@ export default {
         if (this.searchterm !== '' && this.searchterm) {
           orders = orders.filter(
             (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
-            || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
-            || item.bookingtype
-              .toUpperCase()
-              .includes(this.searchterm.toUpperCase()),
+              || item.email
+                .toUpperCase()
+                .includes(this.searchterm.toUpperCase())
+              || item.bookingtype
+                .toUpperCase()
+                .includes(this.searchterm.toUpperCase()),
           );
         }
       } else {
@@ -334,10 +364,12 @@ export default {
         if (this.searchterm !== '' && this.searchterm) {
           orders = orders.filter(
             (item) => item.name.toUpperCase().includes(this.searchterm.toUpperCase())
-            || item.email.toUpperCase().includes(this.searchterm.toUpperCase())
-            || item.bookingtype
-              .toUpperCase()
-              .includes(this.searchterm.toUpperCase()),
+              || item.email
+                .toUpperCase()
+                .includes(this.searchterm.toUpperCase())
+              || item.bookingtype
+                .toUpperCase()
+                .includes(this.searchterm.toUpperCase()),
           );
         }
       }

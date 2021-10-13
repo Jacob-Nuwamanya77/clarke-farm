@@ -133,6 +133,8 @@ export default {
           this.errormessage = 'User does not exist';
         } else if (error.response.data.message === 'Incorrect Password') {
           this.errormessage = 'Check your password and try again';
+        } else if (error.response.data.message === 'Failed to update User token') {
+          this.errormessage = 'Network Error occured! Please Try Again';
         } else {
           this.errormessage = 'Wrong Credentials! Contact Admin for assistance';
         }
