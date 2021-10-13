@@ -28,52 +28,51 @@ router.post('/login', async (req, res) => {
 		let user = await User.findOne({ username });
 		if (!user) {
 			return res.status(400).json({
-				message: 'User' + username + 'not found',
+				message: 'user not found',
 				status: 400
 			});
 		}
-		//check password validity
-		const isMatch = await bcrypt.compare(password, user.password);
-		if (!isMatch) {
-			return res.status(400).json({
-				message: 'Incorrect Password !',
-				status: 400
-			});
-		}
-		else {
-			//random token as string 
-			function generateToken(token_length) {
-				let token = '';
-				let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-				let characterLength = characters.length;
-				for (let i = 0; i < token_length; i++) {
-					token += characters.charAt(Math.floor(Math.random() * characterLength));
-				}
-				return token;
+		else{
+			//check password validity
+			const isMatch = await bcrypt.compare(password, user.password);
+			if (!isMatch) {
+				return res.status(400).json({
+					message: 'Incorrect Password',
+					status: 400
+				});
 			}
-			//update user Objects
-			const payload = { _id: user._id };
-			const updatefield = { access_token: generateToken(30) };
-
-			await User.findOneAndUpdate(payload, updatefield, { returnOriginal: false }, (error, result) => {
-				if (error) {
-					res.status(400).json({
-						message: 'Failed to update User token'
-					})
+			else {
+				//random token as string 
+				function generateToken(token_length) {
+					let token = '';
+					let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+					let characterLength = characters.length;
+					for (let i = 0; i < token_length; i++) {
+						token += characters.charAt(Math.floor(Math.random() * characterLength));
+					}
+					return token;
 				}
-				else {
-					res.status(200).json({
-						message: 'successful login and update',
-						data: result
+				//update user Objects
+				const payload = { _id: user._id };
+				const updatefield = { access_token: generateToken(30) };
 
-					})
-				}
-			})
+				await User.findOneAndUpdate(payload, updatefield, { returnOriginal: false }, (error, result) => {
+					if (error) {
+						res.status(400).json({
+							message: 'Failed to update User token'
+						})
+					}
+					else {
+						res.status(200).json({
+							message: 'successful login and update',
+							data: result
 
+						})
+					}
+				})
+
+			}
 		}
-
-
-
 	} catch (e) {
 		console.error(e);
 		res.status(500).json({
