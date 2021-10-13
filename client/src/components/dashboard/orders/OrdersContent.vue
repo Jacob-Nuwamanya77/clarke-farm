@@ -48,14 +48,12 @@
           <table class=" table table-hover table-striped table-nowrap mt-5 font-size-12">
             <thead class="table-secondary font-size-10 ">
               <tr>
-                <th></th>
                 <th>Name</th>
                 <th>Email Address</th>
                 <th>Phone Number</th>
                 <th>Order Amount</th>
                 <th>Status </th>
                 <th>Action</th>
-
               </tr>
             </thead>
             <tbody>
@@ -63,15 +61,6 @@
                 v-for="order in filteredOrders"
                 :key="order.id"
               >
-                <td>
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    name="visitor"
-                    id="defaultCheck1"
-                  >
-                </td>
                 <td class="text-start">{{order.name}}</td>
                 <td class="text-start">{{order.email}}</td>
                 <td class="text-start">{{order.phone}}</td>
@@ -277,6 +266,7 @@ export default {
         text: "You can't revert this action",
         showCancelButton: true,
         confirmButtonText: 'Yes Delete it!',
+        confirmButtonColor: '#FC646C',
         cancelButtonText: 'No, Keep it!',
         showCloseButton: true,
         showLoaderOnConfirm: false,
@@ -287,11 +277,12 @@ export default {
             const indexOfArrayItem = this.orders.findIndex((i) => i.id === id);
             this.orders.splice(indexOfArrayItem, 1);
           });
-          this.$swal(
-            'Deleted',
-            'Order has been Permanently deleted',
-            'success',
-          );
+          this.$swal({
+            title: 'Deleted',
+            text: 'Order has been Permanently deleted',
+            icon: 'success',
+            confirmButtonColor: '#045C44',
+          });
         } else {
           this.$swal('Cancelled', 'Order data is still intact', 'info');
         }

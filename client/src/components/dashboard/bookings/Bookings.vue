@@ -48,7 +48,6 @@
           <table class="table  table-hover table-striped table-nowrap mt-5 font-size-12">
             <thead class="table-secondary font-size-10 ">
               <tr>
-                <td></td>
                 <th>Name</th>
                 <th>Email Address</th>
                 <th>Phone Number</th>
@@ -63,15 +62,6 @@
                 v-for="visitor in filteredVisitors"
                 :key="visitor.id"
               >
-                <td>
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    name="visitor"
-                    id="defaultCheck1"
-                  >
-                </td>
                 <td class="text-start">{{visitor.name}}</td>
                 <td class="text-start">{{visitor.email}}</td>
                 <td class="text-start">{{visitor.phone}}</td>
@@ -282,6 +272,7 @@ export default {
         text: "You can't revert this action",
         showCancelButton: true,
         confirmButtonText: 'Yes Delete it!',
+        confirmButtonColor: '#FC646C',
         cancelButtonText: 'No, Keep it!',
         showCloseButton: true,
         showLoaderOnConfirm: false,
@@ -300,11 +291,12 @@ export default {
               this.trainees.splice(indexOfArrayItem, 1);
             });
           }
-          Swal.fire(
-            'Deleted',
-            'Guest has been Permanently deleted',
-            'success',
-          );
+          Swal.fire({
+            title: 'Deleted',
+            text: 'Guest has been Permanently deleted',
+            icon: 'success',
+            confirmButtonColor: '#045C44',
+          });
         } else {
           Swal.fire('Cancelled', 'Guest data is still intact', 'info');
         }

@@ -40,14 +40,22 @@ export const currentWeekOrders = (arr) => {
   const currentDay = date.today().day;
   const currentDate = date.today().date;
   const currentDayInText = date.dayInText(currentDay);
+  const todayMonth = date.today().month;
+  const incomingArr = [];
   const weekStart = currentDayInText === 'Sun' ? currentDate : currentDayInText === 'Sat'
     ? currentDate - 6 : currentDate - currentDay;
   const weekEnd = currentDayInText === 'Sun' ? weekStart + 6 : currentDayInText === 'Sat'
     ? currentDate : currentDate + (6 - currentDay);
-  return arr.filter((order) => {
+  arr.forEach((order) => {
+    const visitMonth = date.extractMonth(order.estimatedDelivery);
     const checkin = date.extractDate(order.estimatedDelivery);
-    return checkin >= weekStart && checkin <= weekEnd;
+    if (visitMonth === todayMonth) {
+      if (checkin >= weekStart && checkin <= weekEnd) {
+        incomingArr.push(order);
+      }
+    }
   });
+  return incomingArr;
 };
 
 export const orderTotalByDay = (arr) => {
